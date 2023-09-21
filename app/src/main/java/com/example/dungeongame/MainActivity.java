@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 public class MainActivity extends AppCompatActivity {
     Button start;
@@ -13,7 +15,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
 
         start = (Button) findViewById(R.id.startBtn);
@@ -26,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button exitButton = findViewById(R.id.exitButton);
-
         exitButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
+
     }
 
 }

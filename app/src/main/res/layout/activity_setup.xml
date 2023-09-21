@@ -22,41 +22,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/easyBtn"
-        android:layout_width="110dp"
-        android:layout_height="40dp"
-        android:text="Easy"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/medBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <Button
-        android:id="@+id/hardBtn"
-        android:layout_width="110dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="10dp"
-        android:text="Hard"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/medBtn" />
-
-    <Button
-        android:id="@+id/medBtn"
-        android:layout_width="110dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:text="Medium"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/hardBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/easyBtn" />
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="300dp"
@@ -77,13 +42,10 @@
         android:id="@+id/contBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
         android:text="Continue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hardBtn"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageView7"
@@ -116,6 +78,7 @@
         app:srcCompat="@drawable/sprite_3" />
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
@@ -133,10 +96,37 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="101dp"
-        tools:layout_editor_absoluteY="296dp" />
+        android:id="@+id/diffRadioGroup"
+        android:layout_width="111dp"
+        android:layout_height="158dp"
+        android:layout_marginTop="1dp"
+        app:layout_constraintBottom_toBottomOf="@+id/contBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.53"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.0">
+
+        <RadioButton
+            android:id="@+id/easyBtn"
+            android:layout_width="115dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Easy" />
+
+        <RadioButton
+            android:id="@+id/mediumBtn"
+            android:layout_width="115dp"
+            android:layout_height="wrap_content"
+            android:text="Medium" />
+
+        <RadioButton
+            android:id="@+id/hardBtn"
+            android:layout_width="116dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Hard" />
+    </RadioGroup>
 
     <RadioButton
         android:id="@+id/radioButton4"
@@ -178,5 +168,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/radioButton5"
         app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

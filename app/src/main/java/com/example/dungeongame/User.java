@@ -6,7 +6,6 @@ public class User {
 
     public static int speed;
     public static int health;
-
     public User(String username, int health, int speed) {
 
         this.username = username;

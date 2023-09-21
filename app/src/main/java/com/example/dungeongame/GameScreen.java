@@ -7,7 +7,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class GameScreen extends AppCompatActivity {
-
+    private double difficulty;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,5 +21,8 @@ public class GameScreen extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //set difficulty
+        difficulty = getIntent().getDoubleExtra("difficulty", 1);
     }
 }
