@@ -27,8 +27,9 @@
 
     <Button
         android:id="@+id/startBtn"
-        android:layout_width="103dp"
-        android:layout_height="52dp"
+        android:onClick="goToSetupActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="163dp"
         android:layout_marginTop="267dp"
         android:layout_marginEnd="160dp"
