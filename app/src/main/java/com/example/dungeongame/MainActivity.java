@@ -10,14 +10,12 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 public class MainActivity extends AppCompatActivity {
-    Button start;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        start = (Button) findViewById(R.id.startBtn);
+        Button start = findViewById(R.id.startBtn);
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
