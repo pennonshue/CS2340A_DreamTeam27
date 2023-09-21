@@ -50,12 +50,14 @@
         android:id="@+id/exitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
         android:backgroundTint="#252424"
         android:fontFamily="@font/alegreya_sc"
-        android:text="Button"
+        android:text="Exit"
         android:textColorHighlight="#1C1C1C"
         android:textColorLink="#1C1C1C"
-        tools:layout_editor_absoluteX="38dp"
-        tools:layout_editor_absoluteY="36dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
