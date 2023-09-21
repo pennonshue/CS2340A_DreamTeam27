@@ -27,19 +27,34 @@
 
     <Button
         android:id="@+id/startBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="103dp"
+        android:layout_height="52dp"
         android:layout_marginStart="163dp"
         android:layout_marginTop="267dp"
         android:layout_marginEnd="160dp"
         android:layout_marginBottom="250dp"
+        android:backgroundTint="#252424"
+        android:fontFamily="@font/alegreya_sc"
         android:scaleX="2"
         android:scaleY="2"
         android:text="Start"
+        android:textColorHighlight="#302C2C"
+        android:textColorLink="#252323"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title"
-        tools:background="#201A1A" />
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <Button
+        android:id="@+id/exitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#252424"
+        android:fontFamily="@font/alegreya_sc"
+        android:text="Button"
+        android:textColorHighlight="#1C1C1C"
+        android:textColorLink="#1C1C1C"
+        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteY="36dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
