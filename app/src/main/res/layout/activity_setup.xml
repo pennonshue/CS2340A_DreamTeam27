@@ -128,50 +128,58 @@
             android:text="Hard" />
     </RadioGroup>
 
-    <RadioButton
-        android:id="@+id/radioButton4"
+    <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="25dp"
-        android:text="Player 1"
-        android:textAlignment="viewStart"
-        app:flow_horizontalAlign="start"
-        app:flow_verticalAlign="bottom"
-        app:layout_constraintEnd_toStartOf="@+id/radioButton5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
-
-    <RadioButton
-        android:id="@+id/radioButton5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="25dp"
-        android:text="Player 2"
-        android:textAlignment="viewStart"
-        app:layout_constraintEnd_toStartOf="@+id/radioButton6"
-        app:layout_constraintStart_toEndOf="@+id/radioButton4"
-        app:layout_constraintTop_toBottomOf="@+id/imageView8" />
-
-    <RadioButton
-        android:id="@+id/radioButton6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="50dp"
-        android:text="Player 3"
-        android:textAlignment="viewStart"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/radioButton5"
-        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
-        <RadioGroup
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.382">
+
+        <RadioButton
+            android:id="@+id/radioButton4"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="25dp"
+            android:text="Player 1"
+            android:textAlignment="viewStart"
+            app:flow_horizontalAlign="start"
+            app:flow_verticalAlign="bottom"
+            app:layout_constraintEnd_toStartOf="@+id/radioButton5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView7" />
 
-        </RadioGroup>
+        <RadioButton
+            android:id="@+id/radioButton5"
+            android:layout_width="89dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="25dp"
+            android:text="Player 2"
+            android:textAlignment="viewStart"
+            app:layout_constraintEnd_toStartOf="@+id/radioButton6"
+            app:layout_constraintStart_toEndOf="@+id/radioButton4"
+            app:layout_constraintTop_toBottomOf="@+id/imageView8" />
 
+        <RadioButton
+            android:id="@+id/radioButton6"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="25dp"
+            android:text="Player 3"
+            android:textAlignment="viewStart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/radioButton5"
+            app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+
+
+    </RadioGroup>
 </androidx.constraintlayout.widget.ConstraintLayout>
