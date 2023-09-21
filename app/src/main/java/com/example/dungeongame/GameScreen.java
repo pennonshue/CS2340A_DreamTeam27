@@ -24,19 +24,19 @@ public class GameScreen extends AppCompatActivity {
         });
 
         //set difficulty
-        difficulty = getIntent().getDoubleExtra("difficulty", 1);
-
-        Bundle extras = getIntent().getExtras();
-
-        String userName = extras.getString("userName");
-        String difficulty = extras.getString("difficulty");
-
-        TextView textViewUserName = findViewById(R.id.userName);
-        TextView textViewDifficulty = findViewById(R.id.difficulty);
-
-        if (userName != null && difficulty != null) {
-            textViewUserName.setText(userName);
-            textViewDifficulty.setText("Difficulty Level: " + difficulty);
-        }
+//        difficulty = getIntent().getDoubleExtra("difficulty", 1);
+//
+//        Bundle extras = getIntent().getExtras();
+//
+//        String userName = extras.getString("userName");
+//        String difficulty = extras.getString("difficulty");
+//
+//        TextView textViewUserName = findViewById(R.id.userName);
+//        TextView textViewDifficulty = findViewById(R.id.difficulty);
+//
+//        if (userName != null && difficulty != null) {
+//            textViewUserName.setText(userName);
+//            textViewDifficulty.setText("Difficulty Level: " + difficulty);
+//        }
     }
 }
