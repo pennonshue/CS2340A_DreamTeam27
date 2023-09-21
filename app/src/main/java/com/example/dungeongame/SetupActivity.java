@@ -8,19 +8,18 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SetupActivity extends AppCompatActivity {
-    //Button continue;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup);
 
-//        continue = (Button) findViewById(R.id.contBtn);
-//        continue.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(SetupActivity.this, GameActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        Button cont = findViewById(R.id.contBtn);
+        cont.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SetupActivity.this, GameScreen.class);
+                startActivity(intent);
+            }
+        });
     }
 }

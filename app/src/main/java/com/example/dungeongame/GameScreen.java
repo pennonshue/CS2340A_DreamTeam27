@@ -9,12 +9,12 @@ import androidx.appcompat.app.AppCompatActivity;
 public class GameScreen extends AppCompatActivity {
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_screen);
 
-        Button switchButton = findViewById(R.id.EndBut);
-        switchButton.setOnClickListener(new View.OnClickListener() {
+        Button end = findViewById(R.id.EndBut);
+        end.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(GameScreen.this, EndScreen.class);
