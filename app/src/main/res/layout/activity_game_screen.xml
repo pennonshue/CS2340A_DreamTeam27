@@ -16,4 +16,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.942" />
+
+    <FrameLayout
+        android:id="@+id/gameSpriteCharacter"
+        android:layout_width="414dp"
+        android:layout_height="731dp"
+        tools:layout_editor_absoluteX="-4dp"
+        tools:layout_editor_absoluteY="2dp">
+
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
