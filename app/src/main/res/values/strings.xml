@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">DungeonGame</string>
-
+    <string name="title_activity_setup">SetupActivity</string>
 </resources>
