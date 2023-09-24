@@ -65,7 +65,6 @@ public class SetupActivity extends AppCompatActivity {
                     //Sends info from one screen to another
                     intent.putExtra("playerName", playerName);
 
-
                     startActivity(intent);
                 }
 
