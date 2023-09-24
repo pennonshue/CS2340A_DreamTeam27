@@ -1,15 +1,9 @@
 package com.example.dungeongame;
 
-import android.graphics.Canvas;
-import android.view.Display;
-
-import androidx.annotation.Dimension;
-import androidx.appcompat.app.AppCompatActivity;
-
 class User {
 
 
-    private static User user_instance = null;
+    private static User userInstance = null;
 
     private static String username;
     private static int speed;
@@ -17,14 +11,16 @@ class User {
 
     private static int sprite;
 
-    private float x,y;
+    private float x;
+    private float y;
+
 
 
     public static User getInstance(String username, int sprite, String difficulty, int speed) {
-        if (user_instance == null) {
-            user_instance = new User(username, sprite, difficulty, speed);
+        if (userInstance == null) {
+            userInstance = new User(username, sprite, difficulty, speed);
         }
-        return user_instance;
+        return userInstance;
     }
 
     private User(String username, int sprite, String difficulty, int speed) {
@@ -50,11 +46,11 @@ class User {
         this.sprite = sprite;
     }
 
-//    public void draw(Canvas canvas) {
-//        sprite.draw
-//
-//
-//    }
+    //    public void draw(Canvas canvas) {
+    //        sprite.draw
+    //
+    //
+    //    }
 
 
     public static String getUsername() {
