@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class SetupActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,12 +29,18 @@ public class SetupActivity extends AppCompatActivity {
                         ((RadioButton)findViewById(difficultyChoice.getCheckedRadioButtonId()))
                                         .getText().toString();
 
+
+
                 RadioGroup playerSprite = (RadioGroup) findViewById(R.id.spriteSelector);
 
-                final String sprite = ((RadioButton)findViewById(playerSprite.getCheckedRadioButtonId()))
+                String spriteCharacter = ((RadioButton)findViewById(playerSprite.getCheckedRadioButtonId()))
                                         .getText().toString();
+                System.out.println(spriteCharacter);
 
-                User player = new User("Nik",  sprite, difficulty, 10);
+                final int sprite = Integer.parseInt(spriteCharacter.substring(spriteCharacter.length() - 1));
+                System.out.println(sprite);
+
+                User player = User.getInstance("Nik",  sprite, difficulty, 10);
 
                 Intent intent = new Intent(SetupActivity.this, GameScreen.class);
                 startActivity(intent);

@@ -6,16 +6,28 @@ import android.view.Display;
 import androidx.annotation.Dimension;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class User {
+class User {
+
+
+    private static User user_instance = null;
 
     private static String username;
     private static int speed;
     private static int health;
 
+    private static int sprite;
+
     private float x,y;
 
-    //    private Sprite sprite;
-    public User(String username, String sprite, String difficulty, int speed) {
+
+    public static User getInstance(String username, int sprite, String difficulty, int speed) {
+        if (user_instance == null) {
+            user_instance = new User(username, sprite, difficulty, speed);
+        }
+        return user_instance;
+    }
+
+    private User(String username, int sprite, String difficulty, int speed) {
 
         this.username = username;
         this.x = 30;
@@ -35,6 +47,7 @@ public class User {
                 System.out.println("You have entered an invalid difficulty level");
         }
         this.speed = speed;
+        this.sprite = sprite;
     }
 
 //    public void draw(Canvas canvas) {
@@ -50,6 +63,14 @@ public class User {
 
     public static void setUsername(String username) {
         User.username = username;
+    }
+
+    public static int getSprite() {
+        return sprite;
+    }
+
+    public static void setSprite(int sprite) {
+        User.sprite = sprite;
     }
 
     public static int getSpeed() {

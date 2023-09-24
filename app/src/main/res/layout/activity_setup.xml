@@ -141,7 +141,7 @@
         app:layout_constraintVertical_bias="0.382">
 
         <RadioButton
-            android:id="@+id/radioButton4"
+            android:id="@+id/num1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="35dp"
@@ -151,12 +151,12 @@
             android:textAlignment="viewStart"
             app:flow_horizontalAlign="start"
             app:flow_verticalAlign="bottom"
-            app:layout_constraintEnd_toStartOf="@+id/radioButton5"
+            app:layout_constraintEnd_toStartOf="@+id/num2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView7" />
 
         <RadioButton
-            android:id="@+id/radioButton5"
+            android:id="@+id/num2"
             android:layout_width="89dp"
             android:layout_height="52dp"
             android:layout_marginStart="20dp"
@@ -164,12 +164,12 @@
             android:layout_marginEnd="25dp"
             android:text="Player 2"
             android:textAlignment="viewStart"
-            app:layout_constraintEnd_toStartOf="@+id/radioButton6"
-            app:layout_constraintStart_toEndOf="@+id/radioButton4"
+            app:layout_constraintEnd_toStartOf="@+id/num3"
+            app:layout_constraintStart_toEndOf="@+id/num1"
             app:layout_constraintTop_toBottomOf="@+id/imageView8" />
 
         <RadioButton
-            android:id="@+id/radioButton6"
+            android:id="@+id/num3"
             android:layout_width="88dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -178,7 +178,7 @@
             android:text="Player 3"
             android:textAlignment="viewStart"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/radioButton5"
+            app:layout_constraintStart_toEndOf="@+id/num2"
             app:layout_constraintTop_toBottomOf="@+id/imageView9" />
 
 

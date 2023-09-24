@@ -14,16 +14,25 @@ public class GameScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        System.out.println(User.getSprite());
 
-        // Create an instance of your custom GameViewSprite
-        GameViewSprite gameView = new GameViewSprite(this);
         setContentView(R.layout.activity_game_screen);
 
         FrameLayout characterSprite = findViewById(R.id.gameSpriteCharacter);
 
-        GameViewSprite gameViewSprite = new GameViewSprite(this);
+        GameViewSprite gameViewSprite = new GameViewSprite(this, User.getSprite());
 
         characterSprite.addView(gameViewSprite);
+
+        FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(
+                FrameLayout.LayoutParams.WRAP_CONTENT, // Width (or specify a fixed width)
+                FrameLayout.LayoutParams.WRAP_CONTENT  // Height (or specify a fixed height)
+        );
+
+        layoutParams.leftMargin = 170;
+        layoutParams.topMargin = 380;
+
+        gameViewSprite.setLayoutParams(layoutParams);
 
 
         Button end = findViewById(R.id.EndBut);
