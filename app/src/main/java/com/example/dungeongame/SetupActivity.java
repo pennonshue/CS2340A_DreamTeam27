@@ -29,7 +29,11 @@ public class SetupActivity extends AppCompatActivity {
         cont.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 RadioGroup difficultyChoice = (RadioGroup) findViewById(R.id.diffRadioGroup);
+
+                //Difficulty level String ("Easy", "Medium", "Hard") - need to check if null
 
                 final String difficulty =
                         ((RadioButton)findViewById(difficultyChoice.getCheckedRadioButtonId()))
@@ -39,21 +43,29 @@ public class SetupActivity extends AppCompatActivity {
 
                 String spriteCharacter = ((RadioButton)findViewById(playerSprite.getCheckedRadioButtonId()))
                                         .getText().toString();
-                System.out.println(spriteCharacter);
 
+                //Sprite Integer  (1, 2, 3) - need to check if null
                 final int sprite = Integer.parseInt(spriteCharacter.substring(spriteCharacter.length() - 1));
-                System.out.println(sprite);
 
+                //Player Name String - Already checked
                 String playerName = nameEditText.getText().toString().trim();
 
                 // Check if the input is null, empty, or whitespace-only
                 if (playerName.isEmpty() || playerName.matches("^\\s*$")) {
                     Toast.makeText(SetupActivity.this, "Please enter a valid name", Toast.LENGTH_SHORT).show();
                 } else {
+
                     User player = User.getInstance(playerName, sprite, difficulty, 10);
 
                     Intent intent = new Intent(SetupActivity.this, GameScreen.class); // Replace NextActivity with your desired destination
+
+                    /* Im not sure if we need this exact line since we created a
+                    User class and can just access name through User.getUsername()
+                    */
+                    //Sends info from one screen to another
                     intent.putExtra("playerName", playerName);
+
+
                     startActivity(intent);
                 }
 
