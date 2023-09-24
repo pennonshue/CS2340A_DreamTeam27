@@ -14,7 +14,7 @@
         android:layout_marginStart="147dp"
         android:layout_marginEnd="147dp"
         android:layout_marginBottom="20dp"
-        android:text="Pick Your Charcter"
+        android:text="Pick Your Character"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="28dp"
