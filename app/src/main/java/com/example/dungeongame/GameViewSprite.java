@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
-import android.graphics.drawable.Drawable;
 import android.view.View;
 
 public class GameViewSprite extends View {
@@ -47,7 +46,8 @@ public class GameViewSprite extends View {
         matrix.postScale(scaleX, scaleY);
 
         // Create a scaled version of your sprite bitmap
-        Bitmap scaledSprite = Bitmap.createBitmap(sprite, 0, 0, sprite.getWidth(), sprite.getHeight(), matrix, true);
+        Bitmap scaledSprite = Bitmap.createBitmap(sprite, 0, 0, sprite.getWidth(),
+                sprite.getHeight(), matrix, true);
 
 
         // Draw the sprite on the canvas
