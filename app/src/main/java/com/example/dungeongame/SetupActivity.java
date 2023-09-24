@@ -24,23 +24,40 @@ public class SetupActivity extends AppCompatActivity {
 
         // Initialize views
         nameEditText = findViewById(R.id.nameBox);
-        continueButton = findViewById(R.id.contBtn);
 
-        continueButton.setOnClickListener(new View.OnClickListener() {
+        Button cont = findViewById(R.id.contBtn);
+        cont.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                // Get the user input from the EditText
+            public void onClick(View view) {
+                RadioGroup difficultyChoice = (RadioGroup) findViewById(R.id.diffRadioGroup);
+
+                final String difficulty =
+                        ((RadioButton)findViewById(difficultyChoice.getCheckedRadioButtonId()))
+                                        .getText().toString();
+
+                RadioGroup playerSprite = (RadioGroup) findViewById(R.id.spriteSelector);
+
+                String spriteCharacter = ((RadioButton)findViewById(playerSprite.getCheckedRadioButtonId()))
+                                        .getText().toString();
+                System.out.println(spriteCharacter);
+
+                final int sprite = Integer.parseInt(spriteCharacter.substring(spriteCharacter.length() - 1));
+                System.out.println(sprite);
+
                 String playerName = nameEditText.getText().toString().trim();
 
                 // Check if the input is null, empty, or whitespace-only
                 if (playerName.isEmpty() || playerName.matches("^\\s*$")) {
                     Toast.makeText(SetupActivity.this, "Please enter a valid name", Toast.LENGTH_SHORT).show();
                 } else {
-                    // Name and player selection are valid, proceed to the next activity
+                    User player = User.getInstance(playerName, sprite, difficulty, 10);
+
                     Intent intent = new Intent(SetupActivity.this, GameScreen.class); // Replace NextActivity with your desired destination
                     intent.putExtra("playerName", playerName);
                     startActivity(intent);
                 }
+
+
             }
         });
     }
