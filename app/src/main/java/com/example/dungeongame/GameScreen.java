@@ -1,6 +1,5 @@
 package com.example.dungeongame;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -49,7 +48,8 @@ public class GameScreen extends AppCompatActivity {
                 FrameLayout.LayoutParams.WRAP_CONTENT
         );
 
-// Calculate the position for the username TextView based on the sprite's position
+        // Calculate the position for the username TextView based on the sprite's position
+
         int spriteX = (int) gameViewSprite.getX();
 
         int spriteY = (int) gameViewSprite.getY();
@@ -58,17 +58,48 @@ public class GameScreen extends AppCompatActivity {
         int usernameWidth = usernameTextView.getMeasuredWidth();
 
 
-        int usernameX = (int) spriteX + 350 - usernameWidth/2; // Adjust this as needed
-        int usernameY = (int) (spriteY + 440); // Adjust this as needed to position it above the sprite
-        System.out.println(usernameX +"," + usernameY);
+        int usernameX = (int) spriteX + 350 - usernameWidth / 2; // Adjust this as needed
+        int usernameY = (int) (spriteY + 440); // Adjust this to position it above the sprite
+        System.out.println(usernameX + "," + usernameY);
 
-// Set the position of the username TextView
+        // Set the position of the username TextView
         usernameParams.leftMargin = usernameX;
         usernameParams.topMargin = usernameY;
 
-// Add the username TextView to the FrameLayout
+        // Add the username TextView to the FrameLayout
         characterSprite.addView(usernameTextView, usernameParams);
 
+        // Get the user's health as an integer
+        int userHealth = User.getHealth();
+
+        // Convert the integer to a String
+        String healthText = String.valueOf(userHealth);
+
+        // Create a TextView for health
+        TextView healthTextView = new TextView(this);
+        healthTextView.setText(healthText);
+        healthTextView.setTextSize(20); // Adjust text size as needed
+        healthTextView.setTextColor(Color.BLACK);
+
+
+        // Add the health TextView to the FrameLayout
+        FrameLayout.LayoutParams healthParams = new FrameLayout.LayoutParams(
+                FrameLayout.LayoutParams.WRAP_CONTENT,
+                FrameLayout.LayoutParams.WRAP_CONTENT
+        );
+
+        characterSprite.addView(healthTextView, healthParams);
+
+        // Calculate the position for the health TextView based on the sprite's position
+        int healthWidth = healthTextView.getMeasuredWidth();
+
+        int healthX = (int) spriteX + 600 - healthWidth / 2; // Adjust this as needed
+        int healthY = (int) (spriteY + 440); // Adjust this to position it above the sprite
+        System.out.println(healthX + " , " + healthY);
+
+        // Set the position of the health TextView
+        healthParams.leftMargin = healthX;
+        healthParams.topMargin = healthY;
 
 
         Button end = findViewById(R.id.EndBut);
