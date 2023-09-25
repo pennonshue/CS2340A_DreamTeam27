@@ -51,7 +51,7 @@ public class GameViewSprite extends View {
 
 
         // Draw the sprite on the canvas
-        canvas.drawBitmap(scaledSprite, 200, 200, null);
+        canvas.drawBitmap(scaledSprite, 450, 1000, null);
     }
 }
 

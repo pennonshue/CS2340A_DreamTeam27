@@ -37,10 +37,9 @@ public class GameScreen extends AppCompatActivity {
         spriteLayoutParams.gravity = Gravity.CENTER;
         gameViewSprite.setLayoutParams(spriteLayoutParams);
 
-        // Create a LinearLayout to hold the player information
-        LinearLayout infoLayout = new LinearLayout(this);
-        infoLayout.setOrientation(LinearLayout.HORIZONTAL);
-        infoLayout.setGravity(Gravity.CENTER);
+        // Create a parent LinearLayout to hold the player information
+        LinearLayout parentLayout = new LinearLayout(this);
+        parentLayout.setOrientation(LinearLayout.VERTICAL);
 
         // Create TextViews for player name, difficulty, and health
         TextView playerNameTextView = new TextView(this);
@@ -58,18 +57,21 @@ public class GameScreen extends AppCompatActivity {
         healthTextView.setTextSize(20);
         healthTextView.setTextColor(Color.BLACK);
 
-        // Add TextViews to the LinearLayout
-        infoLayout.addView(playerNameTextView);
-        infoLayout.addView(difficultyTextView);
-        infoLayout.addView(healthTextView);
-
-        // Add the LinearLayout to the top of the screen
-        FrameLayout.LayoutParams infoLayoutParams = new FrameLayout.LayoutParams(
+        // Set the position of the parent LinearLayout to (50, 50)
+        FrameLayout.LayoutParams parentLayoutParams = new FrameLayout.LayoutParams(
                 FrameLayout.LayoutParams.WRAP_CONTENT,
                 FrameLayout.LayoutParams.WRAP_CONTENT
         );
-        infoLayoutParams.gravity = Gravity.TOP | Gravity.CENTER_HORIZONTAL;
-        characterSprite.addView(infoLayout, infoLayoutParams);
+        parentLayoutParams.leftMargin = 100;
+        parentLayoutParams.topMargin = 300;
+
+        // Add TextViews to the parent LinearLayout
+        parentLayout.addView(playerNameTextView);
+        parentLayout.addView(difficultyTextView);
+        parentLayout.addView(healthTextView);
+
+        // Add the parent LinearLayout to the FrameLayout
+        characterSprite.addView(parentLayout, parentLayoutParams);
 
         // Set an OnClickListener for the End Button
         Button endButton = findViewById(R.id.EndBut);
