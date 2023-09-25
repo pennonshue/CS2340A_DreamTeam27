@@ -33,21 +33,25 @@ public class SetupActivity extends AppCompatActivity {
 
                 //Difficulty level String ("Easy", "Medium", "Hard") - need to check if null
                 if (difficultyChoice.getCheckedRadioButtonId() == -1) {
-                    Toast.makeText(SetupActivity.this, "Please select a difficulty level", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SetupActivity.this, "Please select "
+                            + "a difficulty level", Toast.LENGTH_SHORT).show();
                 } else {
                     final String difficulty =
-                            ((RadioButton)findViewById(difficultyChoice.getCheckedRadioButtonId()))
+                            ((RadioButton) findViewById(difficultyChoice.getCheckedRadioButtonId()))
                                     .getText().toString();
                     RadioGroup playerSprite = (RadioGroup) findViewById(R.id.spriteSelector);
 
 
                     //Sprite Integer  (1, 2, 3) - need to check if null
                     if (playerSprite.getCheckedRadioButtonId() == -1) {
-                        Toast.makeText(SetupActivity.this, "Please select a Character", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SetupActivity.this, "Please select a Character",
+                                Toast.LENGTH_SHORT).show();
                     } else {
-                        String spriteCharacter = ((RadioButton)findViewById(playerSprite.getCheckedRadioButtonId()))
+                        String spriteCharacter = ((RadioButton) findViewById(
+                                playerSprite.getCheckedRadioButtonId()))
                                 .getText().toString();
-                        final int sprite = Integer.parseInt(spriteCharacter.substring(spriteCharacter.length() - 1));
+                        final int sprite = Integer.parseInt(spriteCharacter.substring(
+                                spriteCharacter.length() - 1));
 
                         //Player Name String - Already checked
                         String playerName = nameEditText.getText().toString().trim();
@@ -55,14 +59,17 @@ public class SetupActivity extends AppCompatActivity {
 
                         // Check if the input is null, empty, or whitespace-only
                         if (playerName.isEmpty() || playerName.matches("^\\s*$")) {
-                            Toast.makeText(SetupActivity.this, "Please enter a valid name", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SetupActivity.this, "Please enter a "
+                                   + "valid name", Toast.LENGTH_SHORT).show();
                         } else {
 
 
                             User player = User.getInstance(playerName, sprite, difficulty, 10);
 
 
-                            Intent intent = new Intent(SetupActivity.this, GameScreen.class); // Replace NextActivity with your desired destination
+                            Intent intent = new Intent(SetupActivity.this,
+                                    GameScreen.class); // Replace NextActivity with your desired
+                            // destination
 
 
                             /* Im not sure if we need this exact line since we created a

@@ -17,17 +17,17 @@ public class GameViewSprite extends View {
         super(context);
 
         switch (num) {
-            case (1):
-                this.spriteNumber = R.drawable.sprite_1;
-                break;
-            case (2):
-                this.spriteNumber = R.drawable.sprite_2;
-                break;
-            case (3):
-                this.spriteNumber = R.drawable.sprite_3;
-                break;
-            default:
-                break;
+        case (1):
+            this.spriteNumber = R.drawable.sprite_1;
+            break;
+        case (2):
+            this.spriteNumber = R.drawable.sprite_2;
+            break;
+        case (3):
+            this.spriteNumber = R.drawable.sprite_3;
+            break;
+        default:
+            break;
 
         }
 
