@@ -30,17 +30,17 @@ class User {
         this.y = 100;
 
         switch (difficulty) {
-            case "Easy":
-                this.health = 100;
-                break;
-            case "Medium":
-                this.health = 85;
-                break;
-            case "Hard":
-                this.health = 60;
-                break;
-            default:
-                System.out.println("You have entered an invalid difficulty level");
+        case "Easy":
+            this.health = 100;
+            break;
+        case "Medium":
+            this.health = 85;
+            break;
+        case "Hard":
+            this.health = 60;
+            break;
+        default:
+            System.out.println("You have entered an invalid difficulty level");
         }
         this.speed = speed;
         this.sprite = sprite;
