@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -81,25 +82,61 @@ public class GameScreen extends AppCompatActivity {
         healthTextView.setTextSize(20); // Adjust text size as needed
         healthTextView.setTextColor(Color.BLACK);
 
+        String difficulty = User.getDifficulty();
 
-        // Add the health TextView to the FrameLayout
-        FrameLayout.LayoutParams healthParams = new FrameLayout.LayoutParams(
+        // Convert the integer to a String
+
+        // Create a TextView for health
+        TextView difficultyTextView = new TextView(this);
+        difficultyTextView.setText(difficulty);
+        difficultyTextView.setTextSize(20); // Adjust text size as needed
+        difficultyTextView.setTextColor(Color.BLACK);
+        // Create a parent LinearLayout to hold both health and difficulty TextViews
+        LinearLayout parentLayout = new LinearLayout(this);
+        parentLayout.setOrientation(LinearLayout.HORIZONTAL);
+
+
+// Add health and difficulty TextViews to the parent LinearLayout
+        parentLayout.addView(healthTextView);
+        parentLayout.addView(difficultyTextView);
+
+// Add the parent LinearLayout to the FrameLayout
+        FrameLayout.LayoutParams myParam = new FrameLayout.LayoutParams(
                 FrameLayout.LayoutParams.WRAP_CONTENT,
                 FrameLayout.LayoutParams.WRAP_CONTENT
         );
+        characterSprite.addView(parentLayout, myParam);
 
-        characterSprite.addView(healthTextView, healthParams);
+// Calculate the position for the parent LinearLayout based on the sprite's position
+        int parentWidth = parentLayout.getMeasuredWidth();
 
-        // Calculate the position for the health TextView based on the sprite's position
-        int healthWidth = healthTextView.getMeasuredWidth();
+        int parentX = (int) spriteX + 600 - parentWidth / 2; // Adjust this as needed
+        int parentY = (int) (spriteY + 440); // Adjust this to position it above the sprite
+        System.out.println(parentX + " , " + parentY);
 
-        int healthX = (int) spriteX + 600 - healthWidth / 2; // Adjust this as needed
-        int healthY = (int) (spriteY + 440); // Adjust this to position it above the sprite
-        System.out.println(healthX + " , " + healthY);
+// Set the position of the parent LinearLayout
+        myParam.leftMargin = parentX;
+        myParam.topMargin = parentY;
 
-        // Set the position of the health TextView
-        healthParams.leftMargin = healthX;
-        healthParams.topMargin = healthY;
+
+//        // Add the health TextView to the FrameLayout
+//        FrameLayout.LayoutParams healthParams = new FrameLayout.LayoutParams(
+//                FrameLayout.LayoutParams.WRAP_CONTENT,
+//                FrameLayout.LayoutParams.WRAP_CONTENT
+//        );
+//
+//        characterSprite.addView(healthTextView, healthParams);
+//
+//        // Calculate the position for the health TextView based on the sprite's position
+//        int healthWidth = healthTextView.getMeasuredWidth();
+//
+//        int healthX = (int) spriteX + 600 - healthWidth / 2; // Adjust this as needed
+//        int healthY = (int) (spriteY + 440); // Adjust this to position it above the sprite
+//        System.out.println(healthX + " , " + healthY);
+//
+//        // Set the position of the health TextView
+//        healthParams.leftMargin = healthX;
+//        healthParams.topMargin = healthY;
 
 
         Button end = findViewById(R.id.EndBut);

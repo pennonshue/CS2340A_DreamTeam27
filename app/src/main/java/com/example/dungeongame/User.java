@@ -10,6 +10,8 @@ class User {
     private static int health;
 
     private static int sprite;
+    private static String difficulty;
+
 
     private float x;
     private float y;
@@ -24,7 +26,7 @@ class User {
     }
 
     private User(String username, int sprite, String difficulty, int speed) {
-
+        this.difficulty = difficulty;
         this.username = username;
         this.x = 30;
         this.y = 100;
@@ -83,6 +85,10 @@ class User {
 
     public static void setHealth(int health) {
         User.health = health;
+    }
+
+    public static String getDifficulty() {
+        return difficulty;
     }
 
 }
