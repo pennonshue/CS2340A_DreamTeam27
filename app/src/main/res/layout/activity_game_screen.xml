@@ -6,10 +6,10 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/EndBut"
+        android:id="@+id/toScreen2Btn"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:text="End"
+        android:text="to Screen 2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

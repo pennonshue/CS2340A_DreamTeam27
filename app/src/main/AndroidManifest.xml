@@ -18,6 +18,17 @@
             android:label="GameScreen"
             android:theme="@style/Theme.DungeonGame" />
         <activity
+            android:name=".views.GameScreen2"
+            android:exported="false"
+            android:label="GameScreen2"
+            android:theme="@style/Theme.DungeonGame" />
+        <activity
+            android:name=".views.GameScreen3"
+            android:exported="false"
+            android:label="GameScreen3"
+            android:theme="@style/Theme.DungeonGame" />
+
+        <activity
             android:name=".views.EndScreen"
             android:exported="false"
             android:label="EndScreen"

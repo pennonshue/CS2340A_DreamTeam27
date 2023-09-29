@@ -79,11 +79,11 @@ public class GameScreen extends AppCompatActivity {
         characterSprite.addView(parentLayout, parentLayoutParams);
 
         // Set an OnClickListener for the End Button
-        Button endButton = findViewById(R.id.EndBut);
-        endButton.setOnClickListener(new View.OnClickListener() {
+        Button toScreen2Btn = findViewById(R.id.toScreen2Btn);
+        toScreen2Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(GameScreen.this, EndScreen.class);
+                Intent intent = new Intent(GameScreen.this, GameScreen2.class);
                 startActivity(intent);
             }
         });

@@ -14,8 +14,6 @@ public class User {
 
     private static int sprite;
     private static String difficulty;
-
-
     private float x;
     private float y;
 
@@ -33,6 +31,7 @@ public class User {
         this.username = username;
         this.x = 30;
         this.y = 100;
+        this.score = 0;
 
         switch (difficulty) {
         case "Easy":
