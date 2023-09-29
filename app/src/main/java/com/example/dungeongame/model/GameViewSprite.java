@@ -1,4 +1,4 @@
-package com.example.dungeongame;
+package com.example.dungeongame.model;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -6,6 +6,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.view.View;
+
+import com.example.dungeongame.R;
 
 public class GameViewSprite extends View {
 
@@ -51,7 +53,7 @@ public class GameViewSprite extends View {
 
 
         // Draw the sprite on the canvas
-        canvas.drawBitmap(scaledSprite, 200, 200, null);
+        canvas.drawBitmap(scaledSprite, 500, 500, null);
     }
 }
 

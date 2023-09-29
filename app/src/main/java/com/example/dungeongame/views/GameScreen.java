@@ -1,4 +1,4 @@
-package com.example.dungeongame;
+package com.example.dungeongame.views;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -11,6 +11,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.dungeongame.model.GameViewSprite;
+import com.example.dungeongame.R;
+import com.example.dungeongame.model.User;
 
 public class GameScreen extends AppCompatActivity {
     private double difficulty;
@@ -68,7 +72,7 @@ public class GameScreen extends AppCompatActivity {
                 FrameLayout.LayoutParams.WRAP_CONTENT,
                 FrameLayout.LayoutParams.WRAP_CONTENT
         );
-        infoLayoutParams.gravity = Gravity.TOP | Gravity.CENTER_HORIZONTAL;
+        infoLayoutParams.gravity = Gravity.TOP + 100 | Gravity.CENTER_HORIZONTAL;
         characterSprite.addView(infoLayout, infoLayoutParams);
 
         // Set an OnClickListener for the End Button

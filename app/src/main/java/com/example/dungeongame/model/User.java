@@ -1,11 +1,14 @@
-package com.example.dungeongame;
+package com.example.dungeongame.model;
 
-class User {
+public class User {
 
 
     private static User userInstance = null;
 
     private static String username;
+
+
+    private static int score;
     private static int speed;
     private static int health;
 
