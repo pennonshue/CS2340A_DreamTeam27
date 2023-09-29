@@ -4,6 +4,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <Button
+        android:id="@+id/playAgainButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Play Again" />
+
     <TextView
         android:id="@+id/leaderboardTitle"
         android:layout_width="wrap_content"
@@ -19,4 +25,6 @@
         android:layout_height="325dp"
         android:translationY="150dp" />
 
+
 </LinearLayout>
+

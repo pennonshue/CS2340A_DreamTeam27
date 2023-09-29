@@ -4,25 +4,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
 import androidx.appcompat.app.AppCompatActivity;
-
-public class EndScreen extends AppCompatActivity {
-    @Override
+public class GameScreen3 extends AppCompatActivity{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_end);
+        setContentView(R.layout.activity_game_3);
 
-        Button playAgainButton = findViewById(R.id.playAgainButton);
-        playAgainButton.setOnClickListener(new View.OnClickListener() {
+        Button endBtn = findViewById(R.id.EndBut);
+        endBtn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(EndScreen.this, MainActivity.class);
+                Intent intent = new Intent(GameScreen3.this, EndScreen.class);
                 startActivity(intent);
             }
         });
     }
-
-
 }
