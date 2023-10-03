@@ -14,8 +14,7 @@ public class User {
 
     private static int sprite;
     private static String difficulty;
-    private float x;
-    private float y;
+
 
 
 
@@ -29,8 +28,6 @@ public class User {
     private User(String username, int sprite, String difficulty, int speed) {
         this.difficulty = difficulty;
         this.username = username;
-        this.x = 30;
-        this.y = 100;
         this.score = 0;
 
         switch (difficulty) {

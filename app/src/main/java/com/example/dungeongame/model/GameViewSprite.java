@@ -13,6 +13,14 @@ public class GameViewSprite extends View {
 
     private Bitmap sprite;
     private static int spriteNumber;
+    private int x = 500;
+    private int y = 500;
+
+    public static boolean moveUp;
+    public static boolean moveDown;
+    public static boolean moveRight;
+    public static boolean moveLeft;
+
 
 
     public GameViewSprite(Context context, int num) {
@@ -21,39 +29,95 @@ public class GameViewSprite extends View {
         switch (num) {
         case (1):
             this.spriteNumber = R.drawable.sprite_1;
+            sprite = BitmapFactory.decodeResource(getResources(), this.spriteNumber);
+
             break;
         case (2):
             this.spriteNumber = R.drawable.sprite_2;
+            sprite = BitmapFactory.decodeResource(getResources(), this.spriteNumber);
+
             break;
         case (3):
             this.spriteNumber = R.drawable.sprite_3;
+            sprite = BitmapFactory.decodeResource(getResources(), this.spriteNumber);
             break;
         default:
             break;
 
         }
-
-        sprite = BitmapFactory.decodeResource(getResources(), this.spriteNumber);
+        float scaleX = 0.2f;
+        float scaleY = 0.2f;
+        Matrix matrix = new Matrix();
+        matrix.postScale(scaleX, scaleY);
+        sprite = Bitmap.createBitmap(sprite, 0, 0, sprite.getWidth(), sprite.getHeight(), matrix, true);
     }
 
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        canvas.drawBitmap(sprite, x, y, null);
 
+    }
 
-        float scaleX = 0.2f; // Adjust this value as needed
-        float scaleY = 0.2f; // Adjust this value as needed
+    public void moveLeft() {
+        if (moveLeft) {
+            x -= 30;
+            if (y < 170 && x <= 118) {
+                x = 118;
+            } else if (y > 170 && x <= 276) {
+                x = 276;
+            }
+            invalidate();
+        }
+    }
 
-        // Create a Matrix to apply scaling
-        Matrix matrix = new Matrix();
-        matrix.postScale(scaleX, scaleY);
+    public void moveDown() {
+        if (moveDown) {
+            y += 30;
+            if (y > 325) {
+                y = 325;
+            }
+            invalidate();
+        }
+    }
 
-        // Create a scaled version of your sprite bitmap
-        Bitmap scaledSprite = Bitmap.createBitmap(sprite, 0, 0, sprite.getWidth(),
-                sprite.getHeight(), matrix, true);
+    public void moveRight() {
+        if (moveRight) {
+            x += 30;
+            if (y < 166 && x > 612) {
+                x = 612;
+            } else if (y > 166 && x > 492) {
+                x = 492;
+            }
+            invalidate();
+        }
+    }
 
+    public void moveUp() {
+        if (moveUp) {
+            y -= 50;
+            if (y < 90) {
+                y = 90;
+            }
+            invalidate();
+        }
+    }
 
-        // Draw the sprite on the canvas
-        canvas.drawBitmap(scaledSprite, 500, 500, null);
+    // Setters for the movement flags
+    public void setMoveUp(boolean moveUp) {
+        this.moveUp = moveUp;
+        System.out.println("UPPPPPPP");
+    }
+
+    public void setMoveDown(boolean moveDown) {
+        this.moveDown = moveDown;
+    }
+
+    public void setMoveRight(boolean moveRight) {
+        this.moveRight = moveRight;
+    }
+
+    public void setMoveLeft(boolean moveLeft) {
+        this.moveLeft = moveLeft;
     }
 }
 

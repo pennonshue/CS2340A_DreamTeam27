@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -19,6 +20,7 @@ import com.example.dungeongame.model.User;
 
 public class GameScreen extends AppCompatActivity {
     private double difficulty;
+    private GameViewSprite gameViewSprite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +31,7 @@ public class GameScreen extends AppCompatActivity {
 
         ConstraintLayout characterSprite = findViewById(R.id.gameSpriteCharacter);
 
-        GameViewSprite gameViewSprite = new GameViewSprite(this, User.getSprite());
+        gameViewSprite = new GameViewSprite(this, User.getSprite());
 
         characterSprite.addView(gameViewSprite);
 //
@@ -88,5 +90,47 @@ public class GameScreen extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+    }
+
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_DPAD_LEFT:
+                gameViewSprite.setMoveLeft(true);
+                gameViewSprite.moveLeft();
+                return true;
+            case KeyEvent.KEYCODE_DPAD_RIGHT:
+                gameViewSprite.setMoveRight(true);
+                gameViewSprite.moveRight();
+                return true;
+            case KeyEvent.KEYCODE_DPAD_UP:
+                gameViewSprite.setMoveUp(true);
+                gameViewSprite.moveUp();
+                return true;
+            case KeyEvent.KEYCODE_DPAD_DOWN:
+                gameViewSprite.setMoveDown(true);
+                gameViewSprite.moveDown();
+                return true;
+        }
+        return false;
+    }
+
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_DPAD_LEFT:
+                gameViewSprite.setMoveLeft(false);
+                return true; // Return true to indicate that you've handled the event
+            case KeyEvent.KEYCODE_DPAD_RIGHT:
+                gameViewSprite.setMoveRight(false);
+                return true;
+            case KeyEvent.KEYCODE_DPAD_UP:
+                gameViewSprite.setMoveUp(false);
+                return true;
+            case KeyEvent.KEYCODE_DPAD_DOWN:
+                gameViewSprite.setMoveDown(false);
+                return true;
+        }
+        return false;
     }
 }
