@@ -40,8 +40,8 @@ public class GameViewSprite extends View {
         super.onDraw(canvas);
 
 
-        float scaleX = 0.4f; // Adjust this value as needed
-        float scaleY = 0.4f; // Adjust this value as needed
+        float scaleX = 0.2f; // Adjust this value as needed
+        float scaleY = 0.2f; // Adjust this value as needed
 
         // Create a Matrix to apply scaling
         Matrix matrix = new Matrix();
@@ -54,7 +54,6 @@ public class GameViewSprite extends View {
 
         // Draw the sprite on the canvas
         canvas.drawBitmap(scaledSprite, 500, 500, null);
-        canvas.drawBitmap(scaledSprite, 450, 1000, null);
     }
 }
 
