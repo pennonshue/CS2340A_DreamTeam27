@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -22,6 +23,9 @@ import com.example.dungeongame.model.User;
 public class GameScreen extends AppCompatActivity {
     private double difficulty;
     private GameViewSprite gameViewSprite;
+    private Runnable scoreUpdater;
+    private Handler handler = new Handler();
+
 
 
 
@@ -44,7 +48,7 @@ public class GameScreen extends AppCompatActivity {
         LinearLayout parentLayout = new LinearLayout(this);
         parentLayout.setOrientation(LinearLayout.VERTICAL);
 
-        // Create TextViews for player name, difficulty, and health
+        // Create TextViews for player name, difficulty, score and health
         TextView playerNameTextView = new TextView(this);
         playerNameTextView.setText("Name: " + User.getUsername());
         playerNameTextView.setTextSize(20);
@@ -60,6 +64,11 @@ public class GameScreen extends AppCompatActivity {
         healthTextView.setTextSize(20);
         healthTextView.setTextColor(Color.GRAY);
 
+        TextView scoreTextView = new TextView(this);
+        scoreTextView.setText("Score: " + User.getScore());
+        scoreTextView.setTextSize(20);
+        scoreTextView.setTextColor(Color.GRAY);
+
         // Set the position of the parent LinearLayout to (50, 50)
         FrameLayout.LayoutParams parentLayoutParams = new FrameLayout.LayoutParams(
                 FrameLayout.LayoutParams.WRAP_CONTENT,
@@ -73,23 +82,37 @@ public class GameScreen extends AppCompatActivity {
         parentLayout.addView(playerNameTextView);
         parentLayout.addView(difficultyTextView);
         parentLayout.addView(healthTextView);
+        parentLayout.addView(scoreTextView);
 
         // Add the parent LinearLayout to the FrameLayout
         characterSprite.addView(parentLayout, parentLayoutParams);
 
+        // Create a Runnable to update the score every second
+        scoreUpdater = new Runnable() {
+            @Override
+            public void run() {
+                User.setScore(User.getScore() - 1);
+                scoreTextView.setText("Score: " + User.getScore());
+                //Delay update by 1 second
+                handler.postDelayed(this, 1000);
+            }
+        };
+        handler.post(scoreUpdater);
         // Set an OnClickListener for the End Button
         Button toScreen2Btn = findViewById(R.id.toScreen2Btn);
         toScreen2Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                stopScoreUpdater();
                 Intent intent = new Intent(GameScreen.this, GameScreen2.class);
                 startActivity(intent);
             }
         });
-
-
     }
-
+    private void stopScoreUpdater() {
+        // Remove the callbacks to stop the timer when the button is clicked
+        handler.removeCallbacks(scoreUpdater);
+    }
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         switch (keyCode) {
             case KeyEvent.KEYCODE_DPAD_LEFT:
