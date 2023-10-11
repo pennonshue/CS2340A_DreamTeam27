@@ -2,6 +2,7 @@ package com.example.dungeongame.views;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -22,6 +23,9 @@ public class GameScreen extends AppCompatActivity {
     private double difficulty;
     private GameViewSprite gameViewSprite;
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,15 +38,7 @@ public class GameScreen extends AppCompatActivity {
         gameViewSprite = new GameViewSprite(this, User.getSprite());
 
         characterSprite.addView(gameViewSprite);
-//
-//        FrameLayout.LayoutParams spriteLayoutParams = new FrameLayout.LayoutParams(
-//                FrameLayout.LayoutParams.WRAP_CONTENT,
-//                FrameLayout.LayoutParams.WRAP_CONTENT
-//        );
-//
-//        // Center the sprite in the middle of the screen
-//        spriteLayoutParams.gravity = Gravity.CENTER;
-//        gameViewSprite.setLayoutParams(spriteLayoutParams);
+
 
         // Create a parent LinearLayout to hold the player information
         LinearLayout parentLayout = new LinearLayout(this);
@@ -133,4 +129,5 @@ public class GameScreen extends AppCompatActivity {
         }
         return false;
     }
+
 }
