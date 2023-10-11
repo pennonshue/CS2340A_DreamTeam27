@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.dungeongame.R;
+import com.example.dungeongame.model.Leaderboard;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                
                 Intent intent = new Intent(MainActivity.this, SetupActivity.class);
                 startActivity(intent);
             }

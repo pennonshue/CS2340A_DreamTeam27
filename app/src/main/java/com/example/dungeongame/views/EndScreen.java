@@ -18,21 +18,24 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.dungeongame.R;
+import com.example.dungeongame.model.Leaderboard;
+import com.example.dungeongame.model.LeaderboardEntry;
 import com.example.dungeongame.model.User;
 
 public class EndScreen extends AppCompatActivity {
-    private static List<LeaderboardEntry> leaderboardEntries;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_end);
+        LeaderboardEntry entry = new LeaderboardEntry(User.getUsername(), User.getScore());
 
         Button playAgainButton = findViewById(R.id.playAgainButton);
         playAgainButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(EndScreen.this, MainActivity.class);
+                Intent intent = new Intent(EndScreen.this, SetupActivity.class);
                 startActivity(intent);
             }
         });
@@ -42,12 +45,12 @@ public class EndScreen extends AppCompatActivity {
 
         // Create TextViews for player name, difficulty, score and health
         TextView score1TextView = new TextView(this);
-        score1TextView.setText("#1: " + getTop5PlayerNames());
+        score1TextView.setText("#1: " + Leaderboard.getTop5PlayerNames());
         score1TextView.setTextSize(20);
         score1TextView.setTextColor(Color.GRAY);
 
         TextView score2TextView = new TextView(this);
-        score2TextView.setText("#2: " + getTop5Scores());
+        score2TextView.setText("#2: " + mainLeagetTop5Scores());
         score2TextView.setTextSize(20);
         score2TextView.setTextColor(Color.GRAY);
 
@@ -83,94 +86,42 @@ public class EndScreen extends AppCompatActivity {
 //        parentLayout.addView(score4TextView);
 //        parentLayout.addView(score5TextView);
     }
-    public List<LeaderboardEntry> getTop5Entries() {
-        if (leaderboardEntries.size() >= 5) {
-            return leaderboardEntries.subList(0, 5);
-        } else {
-            return leaderboardEntries;
-        }
-    }
-
-    public List<String> getTop5PlayerNames() {
-        List<LeaderboardEntry> top5Entries = getTop5Entries();
-        List<String> top5PlayerNames = new ArrayList<>();
-        for (LeaderboardEntry entry : top5Entries) {
-            top5PlayerNames.add(entry.getPlayerName());
-        }
-        return top5PlayerNames;
-    }
-
-    public List<Integer> getTop5Scores() {
-        List<LeaderboardEntry> top5Entries = getTop5Entries();
-        List<Integer> top5Scores = new ArrayList<>();
-        for (LeaderboardEntry entry : top5Entries) {
-            top5Scores.add(entry.getScore());
-        }
-        return top5Scores;
-    }
-
-    public List<String> getTop5Timestamps() {
-        List<LeaderboardEntry> top5Entries = getTop5Entries();
-        List<String> top5Timestamps = new ArrayList<>();
-        for (LeaderboardEntry entry : top5Entries) {
-            top5Timestamps.add(entry.getFormattedDate());
-        }
-        return top5Timestamps;
-    }
-
-    // Singleton for Leaderboard
-    private static class Leaderboard {
-        private static Leaderboard instance;
-
-        private Leaderboard() {
-        }
-
-        public static Leaderboard getInstance() {
-            if (instance == null) {
-                instance = new Leaderboard();
-            }
-            return instance;
-        }
-
-        public void addEntry(LeaderboardEntry entry) {
-            leaderboardEntries.add(entry);
-            // Sort entries in descending order by score
-            Collections.sort(leaderboardEntries, Collections.reverseOrder(Comparator.comparing(LeaderboardEntry::getScore)));
-        }
-
-    }
+//    public List<LeaderboardEntry> getTop5Entries() {
+//        if (mainLeaderboard.getLeaderboardEntries().size() >= 5) {
+//            return mainLeaderboard.getLeaderboar.subList(0, 5);
+//        } else {
+//            return leaderboardEntries;
+//        }
+//    }
+//
+//    public List<String> getTop5PlayerNames() {
+//        List<LeaderboardEntry> top5Entries = getTop5Entries();
+//        List<String> top5PlayerNames = new ArrayList<>();
+//        for (LeaderboardEntry entry : top5Entries) {
+//            top5PlayerNames.add(entry.getPlayerName());
+//        }
+//        return top5PlayerNames;
+//    }
+//
+//    public List<Integer> getTop5Scores() {
+//        List<LeaderboardEntry> top5Entries = getTop5Entries();
+//        List<Integer> top5Scores = new ArrayList<>();
+//        for (LeaderboardEntry entry : top5Entries) {
+//            top5Scores.add(entry.getScore());
+//        }
+//        return top5Scores;
+//    }
+//
+//    public List<String> getTop5Timestamps() {
+//        List<LeaderboardEntry> top5Entries = getTop5Entries();
+//        List<String> top5Timestamps = new ArrayList<>();
+//        for (LeaderboardEntry entry : top5Entries) {
+//            top5Timestamps.add(entry.getFormattedDate());
+//        }
+//        return top5Timestamps;
+//    }
 
     // LeaderboardEntry class
-    private static class LeaderboardEntry {
-        private String playerName;
-        private int score;
-        private Date timestamp;
-
-        public LeaderboardEntry(String playerName, int score) {
-            this.playerName = playerName;
-            this.score = score;
-            this.timestamp = new Date();
-        }
-
-        public String getPlayerName() {
-            return playerName;
-        }
-
-        public int getScore() {
-            return score;
-        }
-
-        public String getFormattedDate() {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            return dateFormat.format(timestamp);
-        }
-
-        public void onGameEnd(String playerName, int score) {
-            Leaderboard leaderboard = Leaderboard.getInstance();
-            LeaderboardEntry entry = new LeaderboardEntry(playerName, score);
-            leaderboard.addEntry(entry);
-//            displayLeaderboard();
-        }
 
 //        private void displayLeaderboard() {
 //            Leaderboard leaderboard = Leaderboard.getInstance();
