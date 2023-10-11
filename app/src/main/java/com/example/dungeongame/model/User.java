@@ -28,7 +28,7 @@ public class User {
     private User(String username, int sprite, String difficulty, int speed) {
         this.difficulty = difficulty;
         this.username = username;
-        this.score = 0;
+        this.score = 1000;
 
         switch (difficulty) {
         case "Easy":
@@ -89,6 +89,13 @@ public class User {
     public static String getDifficulty() {
         return difficulty;
     }
+    public static int getScore() {
+        return score;
+    }
+    public static void setScore(int score) {
+        User.score = score;
+    }
+
 
     public static void setDifficulty(String difficulty) {
         switch (difficulty) {
