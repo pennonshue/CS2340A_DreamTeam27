@@ -4,6 +4,13 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+import android.app.Instrumentation;
+import android.content.Context;
+
+import com.example.dungeongame.model.User;
+import com.example.dungeongame.views.SetupActivity;
+import com.google.android.material.textfield.TextInputEditText;
+
 /**
  * Example local unit test, which will execute on the development machine (host).
  *
@@ -14,4 +21,18 @@ public class ExampleUnitTest {
     public void addition_isCorrect() {
         assertEquals(4, 2 + 2);
     }
+
+    @Test
+    public void difficultyTest() {
+        User test = User.getInstance("player1", 1, "Easy", 10);
+
+        assertTrue(test.getHealth() == 100);
+        test.setDifficulty("Hard");
+        assertTrue(test.getHealth() == 60);
+    }
+
+
+
+
+
 }

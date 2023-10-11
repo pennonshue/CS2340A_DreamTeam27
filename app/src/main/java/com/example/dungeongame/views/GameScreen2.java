@@ -87,19 +87,19 @@ public class GameScreen2 extends AppCompatActivity {
         switch (keyCode) {
             case KeyEvent.KEYCODE_DPAD_LEFT:
                 gameViewSprite.setMoveLeft(true);
-//                gameViewSprite.moveLeft();
+                gameViewSprite.moveLeft();
                 return true;
             case KeyEvent.KEYCODE_DPAD_RIGHT:
                 gameViewSprite.setMoveRight(true);
-//                gameViewSprite.moveRight();
+                gameViewSprite.moveRight();
                 return true;
             case KeyEvent.KEYCODE_DPAD_UP:
                 gameViewSprite.setMoveUp(true);
-//                gameViewSprite.moveUp();
+                gameViewSprite.moveUp();
                 return true;
             case KeyEvent.KEYCODE_DPAD_DOWN:
                 gameViewSprite.setMoveDown(true);
-//                gameViewSprite.moveDown();
+                gameViewSprite.moveDown();
                 return true;
         }
         return false;

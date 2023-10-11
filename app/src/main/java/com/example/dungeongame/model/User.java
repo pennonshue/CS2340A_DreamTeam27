@@ -90,5 +90,22 @@ public class User {
         return difficulty;
     }
 
+    public static void setDifficulty(String difficulty) {
+        switch (difficulty) {
+            case "Easy":
+                User.health = 100;
+                break;
+            case "Medium":
+                User.health = 85;
+                break;
+            case "Hard":
+                User.health = 60;
+                break;
+            default:
+                System.out.println("You have entered an invalid difficulty level");
+        }
+
+    }
+
 }
 

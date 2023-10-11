@@ -15,11 +15,42 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class SetupActivity extends AppCompatActivity {
 
+    public RadioGroup getPlayerRadioGroup() {
+        return playerRadioGroup;
+    }
+
+    public RadioButton getSelectedPlayerRadioButton() {
+        return selectedPlayerRadioButton;
+    }
+
+    public Button getContinueButton() {
+        return continueButton;
+    }
+
     private TextInputEditText nameEditText;
     private RadioGroup playerRadioGroup;
     private RadioButton selectedPlayerRadioButton;
     private Button continueButton;
 
+    public void setNameEditText(TextInputEditText nameEditText) {
+        this.nameEditText = nameEditText;
+    }
+
+    public void setPlayerRadioGroup(RadioGroup playerRadioGroup) {
+        this.playerRadioGroup = playerRadioGroup;
+    }
+
+    public void setSelectedPlayerRadioButton(RadioButton selectedPlayerRadioButton) {
+        this.selectedPlayerRadioButton = selectedPlayerRadioButton;
+    }
+
+    public void setContinueButton(Button continueButton) {
+        this.continueButton = continueButton;
+    }
+
+    public TextInputEditText getNameEditText() {
+        return nameEditText;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
