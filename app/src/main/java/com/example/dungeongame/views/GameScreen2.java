@@ -94,54 +94,56 @@ public class GameScreen2 extends AppCompatActivity {
         Button toScreen3Btn = findViewById(R.id.toScreen3Btn);
         toScreen3Btn.setOnClickListener(new View.OnClickListener() {
 
-        @Override
-        public void onClick(View view) {
-            stopScoreUpdater();
-            Intent intent = new Intent(GameScreen2.this, GameScreen3.class);
-            startActivity(intent);
-        }
-    });
-}
+            @Override
+            public void onClick(View view) {
+                stopScoreUpdater();
+                Intent intent = new Intent(GameScreen2.this, GameScreen3.class);
+                startActivity(intent);
+            }
+        });
+    }
     private void stopScoreUpdater() {
         // Remove the callbacks to stop the timer when the button is clicked
         handler.removeCallbacks(scoreUpdater);
     }
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         switch (keyCode) {
-            case KeyEvent.KEYCODE_DPAD_LEFT:
-                gameViewSprite.setMoveLeft(true);
-                gameViewSprite.moveLeft();
-                return true;
-            case KeyEvent.KEYCODE_DPAD_RIGHT:
-                gameViewSprite.setMoveRight(true);
-                gameViewSprite.moveRight();
-                return true;
-            case KeyEvent.KEYCODE_DPAD_UP:
-                gameViewSprite.setMoveUp(true);
-                gameViewSprite.moveUp();
-                return true;
-            case KeyEvent.KEYCODE_DPAD_DOWN:
-                gameViewSprite.setMoveDown(true);
-                gameViewSprite.moveDown();
-                return true;
+        case KeyEvent.KEYCODE_DPAD_LEFT:
+            gameViewSprite.setMoveLeft(true);
+            gameViewSprite.moveLeft();
+            return true;
+        case KeyEvent.KEYCODE_DPAD_RIGHT:
+            gameViewSprite.setMoveRight(true);
+            gameViewSprite.moveRight();
+            return true;
+        case KeyEvent.KEYCODE_DPAD_UP:
+            gameViewSprite.setMoveUp(true);
+            gameViewSprite.moveUp();
+            return true;
+        case KeyEvent.KEYCODE_DPAD_DOWN:
+            gameViewSprite.setMoveDown(true);
+            gameViewSprite.moveDown();
+            return true;
+        default:
         }
         return false;
     }
 
     public boolean onKeyUp(int keyCode, KeyEvent event) {
         switch (keyCode) {
-            case KeyEvent.KEYCODE_DPAD_LEFT:
-                gameViewSprite.setMoveLeft(false);
-                return true; // Return true to indicate that you've handled the event
-            case KeyEvent.KEYCODE_DPAD_RIGHT:
-                gameViewSprite.setMoveRight(false);
-                return true;
-            case KeyEvent.KEYCODE_DPAD_UP:
-                gameViewSprite.setMoveUp(false);
-                return true;
-            case KeyEvent.KEYCODE_DPAD_DOWN:
-                gameViewSprite.setMoveDown(false);
-                return true;
+        case KeyEvent.KEYCODE_DPAD_LEFT:
+            gameViewSprite.setMoveLeft(false);
+            return true; // Return true to indicate that you've handled the event
+        case KeyEvent.KEYCODE_DPAD_RIGHT:
+            gameViewSprite.setMoveRight(false);
+            return true;
+        case KeyEvent.KEYCODE_DPAD_UP:
+            gameViewSprite.setMoveUp(false);
+            return true;
+        case KeyEvent.KEYCODE_DPAD_DOWN:
+            gameViewSprite.setMoveDown(false);
+            return true;
+        default:
         }
         return false;
     }

@@ -16,10 +16,10 @@ public class GameViewSprite extends View {
     private int x = 500;
     private int y = 500;
 
-    public static boolean moveUp;
-    public static boolean moveDown;
-    public static boolean moveRight;
-    public static boolean moveLeft;
+    private static boolean moveUp;
+    private static boolean moveDown;
+    private static boolean moveRight;
+    private static boolean moveLeft;
 
 
 
@@ -48,7 +48,8 @@ public class GameViewSprite extends View {
         float scaleY = 0.15f;
         Matrix matrix = new Matrix();
         matrix.postScale(scaleX, scaleY);
-        sprite = Bitmap.createBitmap(sprite, 0, 0, sprite.getWidth(), sprite.getHeight(), matrix, true);
+        sprite = Bitmap.createBitmap(sprite, 0, 0, sprite.getWidth(),
+                sprite.getHeight(), matrix, true);
     }
 
     protected void onDraw(Canvas canvas) {
@@ -60,12 +61,12 @@ public class GameViewSprite extends View {
     public void moveLeft() {
         if (moveLeft) {
             x -= 30;
-//            System.out.println(x + "," + y);
-//            if (y < 170 && x <= 118) {
-//                x = 118;
-//            } else if (y > 170 && x <= 276) {
-//                x = 276;
-//            }
+            /* System.out.println(x + "," + y);
+            if (y < 170 && x <= 118) {
+                x = 118;
+            } else if (y > 170 && x <= 276) {
+                x = 276;
+            } */
             invalidate();
         }
     }
@@ -73,10 +74,10 @@ public class GameViewSprite extends View {
     public void moveDown() {
         if (moveDown) {
             y += 30;
-//            System.out.println(x + "," + y);
-//            if (y > 325) {
-//                y = 325;
-//            }
+            /* System.out.println(x + "," + y);
+              if (y > 325) {
+                  y = 325;
+              }*/
             invalidate();
         }
     }
@@ -84,12 +85,12 @@ public class GameViewSprite extends View {
     public void moveRight() {
         if (moveRight) {
             x += 30;
-//            System.out.println(x + "," + y);
-//            if (y < 166 && x > 612) {
-//                x = 612;
-//            } else if (y > 166 && x > 492) {
-//                x = 492;
-//            }
+            /* System.out.println(x + "," + y);
+            if (y < 166 && x > 612) {
+                x = 612;
+            } else if (y > 166 && x > 492) {
+                x = 492;
+            } */
             invalidate();
         }
     }
@@ -97,10 +98,10 @@ public class GameViewSprite extends View {
     public void moveUp() {
         if (moveUp) {
             y -= 50;
-//            System.out.println(x + "," + y);
-//            if (y < 90) {
-//                y = 90;
-//            }
+            /* System.out.println(x + "," + y);
+            if (y < 90) {
+                y = 90;
+            } */
             invalidate();
         }
     }
