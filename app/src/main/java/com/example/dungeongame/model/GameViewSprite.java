@@ -43,7 +43,6 @@ public class GameViewSprite extends View {
             break;
         default:
             break;
-
         }
         float scaleX = 0.2f;
         float scaleY = 0.2f;
@@ -61,6 +60,7 @@ public class GameViewSprite extends View {
     public void moveLeft() {
         if (moveLeft) {
             x -= 30;
+            System.out.println(x + "," + y);
             if (y < 170 && x <= 118) {
                 x = 118;
             } else if (y > 170 && x <= 276) {
@@ -73,6 +73,7 @@ public class GameViewSprite extends View {
     public void moveDown() {
         if (moveDown) {
             y += 30;
+            System.out.println(x + "," + y);
             if (y > 325) {
                 y = 325;
             }
@@ -83,6 +84,7 @@ public class GameViewSprite extends View {
     public void moveRight() {
         if (moveRight) {
             x += 30;
+            System.out.println(x + "," + y);
             if (y < 166 && x > 612) {
                 x = 612;
             } else if (y > 166 && x > 492) {
@@ -95,6 +97,7 @@ public class GameViewSprite extends View {
     public void moveUp() {
         if (moveUp) {
             y -= 50;
+            System.out.println(x + "," + y);
             if (y < 90) {
                 y = 90;
             }
