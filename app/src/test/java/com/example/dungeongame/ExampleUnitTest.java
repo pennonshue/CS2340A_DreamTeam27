@@ -36,7 +36,6 @@ public class ExampleUnitTest {
     public void negativeScore() {
         User test = User.getInstance("player1", 1, "Easy", 10);
         GameScreen testScreen = new GameScreen();
-
         test.setScore(-5);
         assertTrue(test.getScore() >= 0);
     }
