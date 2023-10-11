@@ -8,6 +8,7 @@ import android.app.Instrumentation;
 import android.content.Context;
 
 import com.example.dungeongame.model.User;
+import com.example.dungeongame.views.GameScreen;
 import com.example.dungeongame.views.SetupActivity;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -29,6 +30,15 @@ public class ExampleUnitTest {
         assertTrue(test.getHealth() == 100);
         test.setDifficulty("Hard");
         assertTrue(test.getHealth() == 60);
+    }
+
+    @Test
+    public void negativeScore() {
+        User test = User.getInstance("player1", 1, "Easy", 10);
+        GameScreen testScreen = new GameScreen();
+
+        test.setScore(-5);
+        assertTrue(test.getScore() >= 0);
     }
 
 

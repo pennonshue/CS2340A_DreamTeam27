@@ -18,6 +18,8 @@ import com.example.dungeongame.model.GameViewSprite;
 import com.example.dungeongame.R;
 import com.example.dungeongame.model.User;
 
+import kotlin._Assertions;
+
 public class GameScreen extends AppCompatActivity {
     private double difficulty;
     private GameViewSprite gameViewSprite;
@@ -84,12 +86,16 @@ public class GameScreen extends AppCompatActivity {
 
         // Add the parent LinearLayout to the FrameLayout
         characterSprite.addView(parentLayout, parentLayoutParams);
+        User.setScore(1000);
 
         // Create a Runnable to update the score every second
         scoreUpdater = new Runnable() {
             @Override
             public void run() {
                 User.setScore(User.getScore() - 1);
+                if (User.getScore() <= 0) {
+                    User.setScore(0);
+                }
                 scoreTextView.setText("Score: " + User.getScore());
                 //Delay update by 1 second
                 handler.postDelayed(this, 1000);
