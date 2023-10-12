@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.List;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,6 +31,7 @@ public class EndScreen extends AppCompatActivity {
         setContentView(R.layout.activity_game_end);
 
         LeaderboardEntry entry = new LeaderboardEntry(User.getUsername(), User.getScore());
+        System.out.println(entry.getPlayerName());
         Leaderboard.getInstance().addEntry(entry);
 
         Button playAgainButton = findViewById(R.id.playAgainButton);
@@ -46,6 +48,10 @@ public class EndScreen extends AppCompatActivity {
         parentLayout.setOrientation(LinearLayout.VERTICAL);
 
         // Create TextViews for player name, difficulty, score and health
+
+
+        TextView number1 = findViewById(R.id.number1);
+        number1.setText("Leaderboard.getInstance().getTop5PlayerNames().get(0)");
 
 
         TextView score1TextView = new TextView(this);

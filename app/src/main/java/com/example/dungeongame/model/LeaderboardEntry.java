@@ -12,6 +12,7 @@ public class LeaderboardEntry {
         this.playerName = playerName;
         this.score = score;
         this.timestamp = new Date();
+
     }
 
     public String getPlayerName() {
