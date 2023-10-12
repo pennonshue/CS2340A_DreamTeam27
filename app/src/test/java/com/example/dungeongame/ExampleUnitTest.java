@@ -6,6 +6,7 @@ import static org.junit.Assert.*;
 
 import android.app.Instrumentation;
 import android.content.Context;
+import com.example.dungeongame.views.SetupActivity;
 
 import com.example.dungeongame.model.User;
 import com.example.dungeongame.views.GameScreen;
@@ -35,9 +36,10 @@ public class ExampleUnitTest {
         assertTrue(test.getScore() == 0);
     }
     @Test
-    public void rightName() {
-        User test = User.getInstance("", 1, "Easy", 10);
-        assertTrue(test.getUsername() != null || !(test.getUsername().isEmpty()) );
+    public void checkName() {
+        assertEquals(false, SetupActivity.validName("    "));
+        assertEquals(false, SetupActivity.validName(""));
+
     }
     @Test
     public void userSingleton() {
