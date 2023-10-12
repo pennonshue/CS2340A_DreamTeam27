@@ -18,10 +18,6 @@ import com.google.android.material.textfield.TextInputEditText;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class ExampleUnitTest {
-    @Test
-    public void addition_isCorrect() {
-        assertEquals(4, 2 + 2);
-    }
 
     @Test
     public void difficultyTest() {
@@ -35,9 +31,8 @@ public class ExampleUnitTest {
     @Test
     public void negativeScore() {
         User test = User.getInstance("player1", 1, "Easy", 10);
-        GameScreen testScreen = new GameScreen();
         test.setScore(-5);
-        assertTrue(test.getScore() >= 0);
+        assertTrue(test.getScore() == 0);
     }
     @Test
     public void rightName() {
@@ -54,6 +49,4 @@ public class ExampleUnitTest {
         assertTrue(User.getSprite() == 1);
         assertTrue(User.getSpeed() == 10);
     }
-
-
 }
