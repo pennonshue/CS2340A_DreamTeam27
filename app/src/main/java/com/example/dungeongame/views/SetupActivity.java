@@ -37,11 +37,11 @@ public class SetupActivity extends AppCompatActivity {
     }
     public static boolean validName(String val) {
         // Check if the name is empty or consists of only whitespace characters
-        return val.isEmpty() || val.matches("^\\s*$");
+        return !(val.isEmpty() || val.matches("^\\s*$"));
     }
 
     public static boolean validSprite(Integer spriteNumber) {
-        return spriteNumber != 1 && spriteNumber != 2 && spriteNumber != 3;
+        return !(spriteNumber != 1 && spriteNumber != 2 && spriteNumber != 3);
     }
 
     public void setPlayerRadioGroup(RadioGroup playerRadioGroup) {
