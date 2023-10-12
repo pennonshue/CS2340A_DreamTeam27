@@ -16,6 +16,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.dungeongame.R;
 import com.example.dungeongame.model.GameViewSprite;
+import com.example.dungeongame.model.Leaderboard;
+import com.example.dungeongame.model.LeaderboardEntry;
 import com.example.dungeongame.model.User;
 
 public class GameScreen3 extends AppCompatActivity {
@@ -100,6 +102,9 @@ public class GameScreen3 extends AppCompatActivity {
             public void onClick(View view) {
                 stopScoreUpdater();
                 Intent intent = new Intent(GameScreen3.this, EndScreen.class);
+                LeaderboardEntry entry = new LeaderboardEntry(User.getUsername(), User.getScore());
+                System.out.println(entry.getPlayerName());
+                Leaderboard.getInstance().addEntry(entry);
                 startActivity(intent);
             }
         });
