@@ -109,13 +109,13 @@ public class GameViewSprite extends View {
     }
 
     public void moveUp() {
-//        if (moveUp) {
-            y -= 50;
-            /* System.out.println(x + "," + y);
+        // if (moveUp) {
+        y -= 50;
+        /* System.out.println(x + "," + y);
             if (y < 90) {
                 y = 90;
             } */
-            invalidate();
+        invalidate();
 
     }
 

@@ -36,20 +36,12 @@ public class SetupActivity extends AppCompatActivity {
         this.nameEditText = nameEditText;
     }
     public static boolean validName(String val) {
-        // Check if the name is empty or consists of only whitespace characters.
-        if (val.isEmpty() || val.matches("^\\s*$")) {
-            return false; // Name is not valid
-        } else {
-            return true; // Name is valid
-        }
+        // Check if the name is empty or consists of only whitespace characters
+        return val.isEmpty() || val.matches("^\\s*$");
     }
 
     public static boolean validSprite(Integer spriteNumber) {
-        if (spriteNumber != 1 && spriteNumber != 2 && spriteNumber != 3) {
-            return false;
-        } else {
-            return true;
-        }
+        return spriteNumber != 1 && spriteNumber != 2 && spriteNumber != 3;
     }
 
     public void setPlayerRadioGroup(RadioGroup playerRadioGroup) {
