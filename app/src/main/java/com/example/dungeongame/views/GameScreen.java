@@ -18,7 +18,6 @@ import com.example.dungeongame.model.GameViewSprite;
 import com.example.dungeongame.R;
 import com.example.dungeongame.model.User;
 
-import kotlin._Assertions;
 
 public class GameScreen extends AppCompatActivity {
     private double difficulty;

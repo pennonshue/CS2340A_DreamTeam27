@@ -112,24 +112,26 @@ public class GameScreen2 extends AppCompatActivity {
     }
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         switch (keyCode) {
-            case KeyEvent.KEYCODE_DPAD_LEFT:
-                gameViewSprite.setMoveLeft(true);
-                gameViewSprite.moveLeft();
-                return true;
-            case KeyEvent.KEYCODE_DPAD_RIGHT:
-                gameViewSprite.setMoveRight(true);
-                gameViewSprite.moveRight();
-                return true;
-            case KeyEvent.KEYCODE_DPAD_UP:
-                gameViewSprite.setMoveUp(true);
-                gameViewSprite.moveUp();
-                return true;
-            case KeyEvent.KEYCODE_DPAD_DOWN:
-                gameViewSprite.setMoveDown(true);
-                gameViewSprite.moveDown();
-                return true;
+        case KeyEvent.KEYCODE_DPAD_LEFT:
+            gameViewSprite.setMoveLeft(true);
+            gameViewSprite.moveLeft();
+            return true;
+        case KeyEvent.KEYCODE_DPAD_RIGHT:
+            gameViewSprite.setMoveRight(true);
+            gameViewSprite.moveRight();
+            return true;
+        case KeyEvent.KEYCODE_DPAD_UP:
+            gameViewSprite.setMoveUp(true);
+            gameViewSprite.moveUp();
+            return true;
+        case KeyEvent.KEYCODE_DPAD_DOWN:
+            gameViewSprite.setMoveDown(true);
+            gameViewSprite.moveDown();
+            return true;
+        default:
+            return false;
         }
-        return false;
+
     }
 
     public boolean onKeyUp(int keyCode, KeyEvent event) {
