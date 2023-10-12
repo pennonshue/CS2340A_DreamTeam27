@@ -6,6 +6,11 @@ import static org.junit.Assert.*;
 
 import android.app.Instrumentation;
 import android.content.Context;
+
+import androidx.constraintlayout.utils.widget.MockView;
+
+import com.example.dungeongame.model.GameViewSprite;
+import com.example.dungeongame.views.GameScreen2;
 import com.example.dungeongame.views.SetupActivity;
 
 import com.example.dungeongame.model.User;
@@ -72,5 +77,10 @@ public class ExampleUnitTest {
         assertTrue(test.getHealth() == 60);
         test.setDifficulty("Medium");
         assertTrue(test.getHealth() == 85);
+    }
+    @Test
+    public void validSprite() {
+        User test = User.getInstance("player1", 1, "Hard", 10);
+        assertEquals(true, SetupActivity.validSprite(User.getSprite()));
     }
 }
