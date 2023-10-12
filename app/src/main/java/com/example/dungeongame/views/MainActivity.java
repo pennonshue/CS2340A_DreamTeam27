@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.dungeongame.R;
+import com.example.dungeongame.model.Leaderboard;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Leaderboard mainLeaderboard = Leaderboard.getInstance();
 
         Button start = findViewById(R.id.startBtn);
         start.setOnClickListener(new View.OnClickListener() {
