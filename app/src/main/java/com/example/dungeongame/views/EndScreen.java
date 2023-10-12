@@ -40,6 +40,7 @@ public class EndScreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(EndScreen.this, SetupActivity.class);
+                User.setScore(1000);
                 startActivity(intent);
             }
         });
@@ -49,25 +50,59 @@ public class EndScreen extends AppCompatActivity {
 
         // Create TextViews for player name, difficulty, score and health
 
+        for (int i = 0; i < Leaderboard.getInstance().getTop5Entries().size(); i++) {
+            number1.setText(Leaderboard.getInstance().getTop5PlayerNames().get(i) + "   " +
+                    Leaderboard.getInstance().getTop5Scores().get(i));
+        }
 
         TextView number1 = findViewById(R.id.number1);
-        number1.setText("Leaderboard.getInstance().getTop5PlayerNames().get(0)");
+        number1.setText(Leaderboard.getInstance().getTop5PlayerNames().get(0) + "   " +
+                        Leaderboard.getInstance().getTop5Scores().get(0));
 
 
-        TextView score1TextView = new TextView(this);
-        score1TextView.setText("#1: " + Leaderboard.getInstance().getTop5PlayerNames().get(0));
-        score1TextView.setTextSize(20);
-        score1TextView.setTextColor(Color.GRAY);
 
-        TextView score2TextView = new TextView(this);
-        score2TextView.setText("#2: " + Leaderboard.getInstance().getTop5Scores().get(0));
-        score2TextView.setTextSize(20);
-        score2TextView.setTextColor(Color.GRAY);
+        TextView number2 = findViewById(R.id.number2);
+        if (Leaderboard.getInstance().getLeaderboardEntries().size() >= 2 ) {
+            System.out.println(Leaderboard.getInstance().getTop5PlayerNames().get(1));
+            number2.setText(Leaderboard.getInstance().getTop5PlayerNames().get(1) + "   " +
+                    Leaderboard.getInstance().getTop5Scores().get(1));
+        }
+        System.out.println("Number 3");
 
-        TextView score3TextView = new TextView(this);
-        score3TextView.setText("#3: " + Leaderboard.getInstance().getTop5Timestamps().get(0));
-        score3TextView.setTextSize(20);
-        score3TextView.setTextColor(Color.GRAY);
+////
+        TextView number3 = findViewById(R.id.number3);
+//        if (Leaderboard.getInstance().getLeaderboardEntries().get(2) != null) {
+//            number3.setText(Leaderboard.getInstance().getTop5PlayerNames().get(2) + "   " +
+//                    Leaderboard.getInstance().getTop5Scores().get(2));
+//        }
+        TextView number4 = findViewById(R.id.number4);
+//        if (Leaderboard.getInstance().getLeaderboardEntries().get(3) != null) {
+//            number4.setText(Leaderboard.getInstance().getTop5PlayerNames().get(3) + "   " +
+//                    Leaderboard.getInstance().getTop5Scores().get(3));
+//        }
+        TextView number5 = findViewById(R.id.number5);
+//        if (Leaderboard.getInstance().getLeaderboardEntries().get(4) != null) {
+//            number5.setText(Leaderboard.getInstance().getTop5PlayerNames().get(4) + "   " +
+//                    Leaderboard.getInstance().getTop5Scores().get(4));
+//        }
+
+
+
+
+//        TextView score1TextView = new TextView(this);
+//        score1TextView.setText("#1: " + Leaderboard.getInstance().getTop5PlayerNames().get(0));
+//        score1TextView.setTextSize(20);
+//        score1TextView.setTextColor(Color.GRAY);
+//
+//        TextView score2TextView = new TextView(this);
+//        score2TextView.setText("#2: " + Leaderboard.getInstance().getTop5Scores().get(0));
+//        score2TextView.setTextSize(20);
+//        score2TextView.setTextColor(Color.GRAY);
+//
+//        TextView score3TextView = new TextView(this);
+//        score3TextView.setText("#3: " + Leaderboard.getInstance().getTop5Timestamps().get(0));
+//        score3TextView.setTextSize(20);
+//        score3TextView.setTextColor(Color.GRAY);
 
 //        TextView score4TextView = new TextView(this);
 //        score4TextView.setText("#4: " + User.getScore());
@@ -86,13 +121,13 @@ public class EndScreen extends AppCompatActivity {
                 FrameLayout.LayoutParams.WRAP_CONTENT
         );
 
-        parentLayoutParams.leftMargin = 100;
-        parentLayoutParams.topMargin = 1000;
+        parentLayoutParams.leftMargin = 200;
+        parentLayoutParams.topMargin = 900;
 
         // Add TextViews to the parent LinearLayout
-        parentLayout.addView(score1TextView);
-        parentLayout.addView(score2TextView);
-        parentLayout.addView(score3TextView);
+//        parentLayout.addView(score1TextView);
+//        parentLayout.addView(score2TextView);
+//        parentLayout.addView(score3TextView);
 //        parentLayout.addView(score4TextView);
 //        parentLayout.addView(score5TextView);
     }
