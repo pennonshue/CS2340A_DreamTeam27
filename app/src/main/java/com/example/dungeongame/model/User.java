@@ -93,7 +93,11 @@ public class User {
         return score;
     }
     public static void setScore(int score) {
-        User.score = score;
+        if (score < 0) {
+            User.score = 0;
+        } else {
+            User.score = score;
+        }
     }
 
 
