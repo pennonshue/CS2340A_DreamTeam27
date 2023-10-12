@@ -16,6 +16,7 @@ public class Leaderboard {
     private static Leaderboard instance;
 
     private Leaderboard() {
+        leaderboardEntries = new ArrayList<>();
     }
 
     public static Leaderboard getInstance() {
