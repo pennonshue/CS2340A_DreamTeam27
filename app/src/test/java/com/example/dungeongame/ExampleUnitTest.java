@@ -44,12 +44,16 @@ public class ExampleUnitTest {
         User test = User.getInstance("", 1, "Easy", 10);
         assertTrue(test.getUsername() != null || !(test.getUsername().isEmpty()) );
     }
-
-
-
-
-
-
+    @Test
+    public void userSingleton() {
+        User test = User.getInstance("player1", 1, "Easy", 10);
+        User test2 = User.getInstance("player100", 3, "Hard", 50);
+        assertTrue(test == test2);
+        assertTrue(User.getUsername() == "player1");
+        assertTrue(User.getDifficulty() == "Easy");
+        assertTrue(User.getSprite() == 1);
+        assertTrue(User.getSpeed() == 10);
+    }
 
 
 }
