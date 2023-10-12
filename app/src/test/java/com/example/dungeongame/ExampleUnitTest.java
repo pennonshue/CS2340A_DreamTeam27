@@ -20,7 +20,7 @@ import com.google.android.material.textfield.TextInputEditText;
 public class ExampleUnitTest {
 
     @Test
-    public void difficultyTest() {
+    public void hardDifficultyHealth() {
         User test = User.getInstance("player1", 1, "Easy", 10);
 
         assertTrue(test.getHealth() == 100);
@@ -48,5 +48,21 @@ public class ExampleUnitTest {
         assertTrue(User.getDifficulty() == "Easy");
         assertTrue(User.getSprite() == 1);
         assertTrue(User.getSpeed() == 10);
+    }
+    @Test
+    public void easyDifficultyHealth() {
+        User test = User.getInstance("player1", 1, "Medium", 10);
+
+        assertTrue(test.getHealth() == 85);
+        test.setDifficulty("Easy");
+        assertTrue(test.getHealth() == 100);
+    }
+    @Test
+    public void medDifficultyHealth() {
+        User test = User.getInstance("player1", 1, "Hard", 10);
+
+        assertTrue(test.getHealth() == 60);
+        test.setDifficulty("Medium");
+        assertTrue(test.getHealth() == 85);
     }
 }
