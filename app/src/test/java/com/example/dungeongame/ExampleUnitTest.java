@@ -39,6 +39,14 @@ public class ExampleUnitTest {
         test.setScore(-5);
         assertTrue(test.getScore() >= 0);
     }
+    @Test
+    public void rightName() {
+        User test = User.getInstance("", 1, "Easy", 10);
+        assertTrue(test.getUsername() != null || !(test.getUsername().isEmpty()) );
+    }
+
+
+
 
 
 
