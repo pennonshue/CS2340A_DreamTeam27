@@ -64,7 +64,8 @@ public class EndScreen extends AppCompatActivity {
         for (int i = 0; i < Leaderboard.getInstance().getTop5Entries().size(); i++) {
             System.out.println(Leaderboard.getInstance().getLeaderboardEntries().get(i));
             numbers.get(i).setText(Leaderboard.getInstance().getTop5PlayerNames().get(i) + "   " +
-                    Leaderboard.getInstance().getTop5Scores().get(i));
+                    Leaderboard.getInstance().getTop5Scores().get(i) + "      "
+                    + Leaderboard.getInstance().getTop5Timestamps().get(i));
         }
 
 //        TextView number1 = findViewById(R.id.number1);
