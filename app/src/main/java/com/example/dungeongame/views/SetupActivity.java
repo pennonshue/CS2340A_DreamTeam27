@@ -44,6 +44,14 @@ public class SetupActivity extends AppCompatActivity {
         }
     }
 
+    public static boolean validSprite(Integer spriteNumber) {
+        if (spriteNumber != 1 && spriteNumber != 2 && spriteNumber != 3) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     public void setPlayerRadioGroup(RadioGroup playerRadioGroup) {
         this.playerRadioGroup = playerRadioGroup;
     }
