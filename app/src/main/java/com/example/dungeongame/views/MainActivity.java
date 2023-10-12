@@ -16,12 +16,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Leaderboard mainLeaderboard = Leaderboard.getInstance();
 
         Button start = findViewById(R.id.startBtn);
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
                 Intent intent = new Intent(MainActivity.this, SetupActivity.class);
                 startActivity(intent);
             }

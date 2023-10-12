@@ -28,7 +28,7 @@ public class Leaderboard {
     public void addEntry(LeaderboardEntry entry) {
         leaderboardEntries.add(entry);
         // Sort entries in descending order by score
-        Collections.sort(leaderboardEntries, Collections.reverseOrder(Comparator.comparing(EndScreen.LeaderboardEntry::getScore)));
+        Collections.sort(leaderboardEntries, Collections.reverseOrder(Comparator.comparing(LeaderboardEntry::getScore)));
     }
 
     public List<LeaderboardEntry> getTop5Entries() {

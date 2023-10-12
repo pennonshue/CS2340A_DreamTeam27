@@ -28,7 +28,9 @@ public class EndScreen extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_end);
+
         LeaderboardEntry entry = new LeaderboardEntry(User.getUsername(), User.getScore());
+        Leaderboard.getInstance().addEntry(entry);
 
         Button playAgainButton = findViewById(R.id.playAgainButton);
         playAgainButton.setOnClickListener(new View.OnClickListener() {
@@ -44,18 +46,20 @@ public class EndScreen extends AppCompatActivity {
         parentLayout.setOrientation(LinearLayout.VERTICAL);
 
         // Create TextViews for player name, difficulty, score and health
+
+
         TextView score1TextView = new TextView(this);
-        score1TextView.setText("#1: " + Leaderboard.getTop5PlayerNames());
+        score1TextView.setText("#1: " + Leaderboard.getInstance().getTop5PlayerNames().get(0));
         score1TextView.setTextSize(20);
         score1TextView.setTextColor(Color.GRAY);
 
         TextView score2TextView = new TextView(this);
-        score2TextView.setText("#2: " + mainLeagetTop5Scores());
+        score2TextView.setText("#2: " + Leaderboard.getInstance().getTop5Scores().get(0));
         score2TextView.setTextSize(20);
         score2TextView.setTextColor(Color.GRAY);
 
         TextView score3TextView = new TextView(this);
-        score3TextView.setText("#3: " + getTop5Timestamps());
+        score3TextView.setText("#3: " + Leaderboard.getInstance().getTop5Timestamps().get(0));
         score3TextView.setTextSize(20);
         score3TextView.setTextColor(Color.GRAY);
 
@@ -136,5 +140,5 @@ public class EndScreen extends AppCompatActivity {
 //                for (int i = 0; i < topEntries.toArray().length; i++) {
 //                    topEntries.get(i)
 //            }
-        }
+
     }

@@ -19,12 +19,6 @@
         android:textSize="24sp"
         android:translationY="100dp" />
 
-    <ListView
-        android:id="@+id/leaderboardList"
-        android:layout_width="match_parent"
-        android:layout_height="323dp"
-        android:translationY="150dp" />
-
 
 </LinearLayout>
 
