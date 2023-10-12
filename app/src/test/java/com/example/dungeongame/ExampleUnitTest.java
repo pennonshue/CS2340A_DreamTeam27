@@ -6,6 +6,7 @@ import static org.junit.Assert.*;
 
 import android.app.Instrumentation;
 import android.content.Context;
+import com.example.dungeongame.views.SetupActivity;
 
 import com.example.dungeongame.model.User;
 import com.example.dungeongame.views.GameScreen;
@@ -18,13 +19,9 @@ import com.google.android.material.textfield.TextInputEditText;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class ExampleUnitTest {
-    @Test
-    public void addition_isCorrect() {
-        assertEquals(4, 2 + 2);
-    }
 
     @Test
-    public void difficultyTest() {
+    public void hardDifficultyHealth() {
         User test = User.getInstance("player1", 1, "Easy", 10);
 
         assertTrue(test.getHealth() == 100);
@@ -35,13 +32,45 @@ public class ExampleUnitTest {
     @Test
     public void negativeScore() {
         User test = User.getInstance("player1", 1, "Easy", 10);
-        GameScreen testScreen = new GameScreen();
         test.setScore(-5);
-        assertTrue(test.getScore() >= 0);
+        assertTrue(test.getScore() == 0);
     }
+    @Test
+    public void invalidName() {
+        assertEquals(false, SetupActivity.validName("    "));
+        assertEquals(false, SetupActivity.validName(""));
 
+    }
+    @Test
+    public void validName() {
+        assertEquals(true, SetupActivity.validName(" a;slkdjf;asdlkf   "));
+        assertEquals(true, SetupActivity.validName("kdasjf;lkadsjf: "));
 
+    }
+    @Test
+    public void userSingleton() {
+        User test = User.getInstance("player1", 1, "Easy", 10);
+        User test2 = User.getInstance("player100", 3, "Hard", 50);
+        assertTrue(test == test2);
+        assertTrue(User.getUsername() == "player1");
+        assertTrue(User.getDifficulty() == "Easy");
+        assertTrue(User.getSprite() == 1);
+        assertTrue(User.getSpeed() == 10);
+    }
+    @Test
+    public void easyDifficultyHealth() {
+        User test = User.getInstance("player1", 1, "Medium", 10);
 
+        assertTrue(test.getHealth() == 85);
+        test.setDifficulty("Easy");
+        assertTrue(test.getHealth() == 100);
+    }
+    @Test
+    public void medDifficultyHealth() {
+        User test = User.getInstance("player1", 1, "Hard", 10);
 
-
+        assertTrue(test.getHealth() == 60);
+        test.setDifficulty("Medium");
+        assertTrue(test.getHealth() == 85);
+    }
 }

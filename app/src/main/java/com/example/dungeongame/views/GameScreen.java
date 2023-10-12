@@ -18,7 +18,6 @@ import com.example.dungeongame.model.GameViewSprite;
 import com.example.dungeongame.R;
 import com.example.dungeongame.model.User;
 
-import kotlin._Assertions;
 
 public class GameScreen extends AppCompatActivity {
     private double difficulty;
@@ -93,9 +92,6 @@ public class GameScreen extends AppCompatActivity {
             @Override
             public void run() {
                 User.setScore(User.getScore() - 1);
-                if (User.getScore() <= 0) {
-                    User.setScore(0);
-                }
                 scoreTextView.setText("Score: " + User.getScore());
                 //Delay update by 1 second
                 handler.postDelayed(this, 1000);

@@ -85,9 +85,6 @@ public class GameScreen3 extends AppCompatActivity {
             @Override
             public void run() {
                 User.setScore(User.getScore() - 1);
-                if (User.getScore() <= 0) {
-                    User.setScore(0);
-                }
                 scoreTextView.setText("Score: " + User.getScore());
                 //Delay update by 1 second
                 handler.postDelayed(this, 1000);

@@ -35,6 +35,14 @@ public class SetupActivity extends AppCompatActivity {
     public void setNameEditText(TextInputEditText nameEditText) {
         this.nameEditText = nameEditText;
     }
+    public static boolean validName(String val) {
+        // Check if the name is empty or consists of only whitespace characters.
+        if (val.isEmpty() || val.matches("^\\s*$")) {
+            return false; // Name is not valid
+        } else {
+            return true; // Name is valid
+        }
+    }
 
     public void setPlayerRadioGroup(RadioGroup playerRadioGroup) {
         this.playerRadioGroup = playerRadioGroup;
@@ -60,6 +68,8 @@ public class SetupActivity extends AppCompatActivity {
         nameEditText = findViewById(R.id.nameBox);
 
         Button cont = findViewById(R.id.contBtn);
+
+
         cont.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
