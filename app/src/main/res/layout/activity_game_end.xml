@@ -61,18 +61,20 @@
         android:id="@+id/number4"
         android:layout_width="253dp"
         android:layout_height="39dp"
+        app:layout_constraintBottom_toTopOf="@+id/number5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="618dp" />
+        app:layout_constraintHorizontal_bias="0.585"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/number5"
         android:layout_width="253dp"
         android:layout_height="39dp"
+        android:layout_marginBottom="324dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/number4" />
+        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

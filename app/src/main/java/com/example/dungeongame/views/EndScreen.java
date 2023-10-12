@@ -30,9 +30,6 @@ public class EndScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_end);
 
-        LeaderboardEntry entry = new LeaderboardEntry(User.getUsername(), User.getScore());
-        System.out.println(entry.getPlayerName());
-        Leaderboard.getInstance().addEntry(entry);
 
         Button playAgainButton = findViewById(R.id.playAgainButton);
         playAgainButton.setOnClickListener(new View.OnClickListener() {
@@ -50,37 +47,52 @@ public class EndScreen extends AppCompatActivity {
 
         // Create TextViews for player name, difficulty, score and health
 
+        TextView number1 = findViewById(R.id.number1);
+        TextView number2 = findViewById(R.id.number2);
+        TextView number3 = findViewById(R.id.number3);
+        TextView number4 = findViewById(R.id.number4);
+        TextView number5 = findViewById(R.id.number5);
+
+        ArrayList<TextView> numbers= new ArrayList<>();
+        numbers.add(number1);
+        numbers.add(number2);
+        numbers.add(number3);
+        numbers.add(number4);
+        numbers.add(number5);
+
+
         for (int i = 0; i < Leaderboard.getInstance().getTop5Entries().size(); i++) {
-            number1.setText(Leaderboard.getInstance().getTop5PlayerNames().get(i) + "   " +
+            System.out.println(Leaderboard.getInstance().getLeaderboardEntries().get(i));
+            numbers.get(i).setText(Leaderboard.getInstance().getTop5PlayerNames().get(i) + "   " +
                     Leaderboard.getInstance().getTop5Scores().get(i));
         }
 
-        TextView number1 = findViewById(R.id.number1);
-        number1.setText(Leaderboard.getInstance().getTop5PlayerNames().get(0) + "   " +
-                        Leaderboard.getInstance().getTop5Scores().get(0));
-
-
-
-        TextView number2 = findViewById(R.id.number2);
-        if (Leaderboard.getInstance().getLeaderboardEntries().size() >= 2 ) {
-            System.out.println(Leaderboard.getInstance().getTop5PlayerNames().get(1));
-            number2.setText(Leaderboard.getInstance().getTop5PlayerNames().get(1) + "   " +
-                    Leaderboard.getInstance().getTop5Scores().get(1));
-        }
-        System.out.println("Number 3");
+//        TextView number1 = findViewById(R.id.number1);
+//        number1.setText(Leaderboard.getInstance().getTop5PlayerNames().get(0) + "   " +
+//                        Leaderboard.getInstance().getTop5Scores().get(0));
+//
+//
+//
+//        TextView number2 = findViewById(R.id.number2);
+//        if (Leaderboard.getInstance().getLeaderboardEntries().size() >= 2 ) {
+//            System.out.println(Leaderboard.getInstance().getTop5PlayerNames().get(1));
+//            number2.setText(Leaderboard.getInstance().getTop5PlayerNames().get(1) + "   " +
+//                    Leaderboard.getInstance().getTop5Scores().get(1));
+//        }
+//        System.out.println("Number 3");
 
 ////
-        TextView number3 = findViewById(R.id.number3);
-//        if (Leaderboard.getInstance().getLeaderboardEntries().get(2) != null) {
-//            number3.setText(Leaderboard.getInstance().getTop5PlayerNames().get(2) + "   " +
-//                    Leaderboard.getInstance().getTop5Scores().get(2));
-//        }
-        TextView number4 = findViewById(R.id.number4);
-//        if (Leaderboard.getInstance().getLeaderboardEntries().get(3) != null) {
-//            number4.setText(Leaderboard.getInstance().getTop5PlayerNames().get(3) + "   " +
-//                    Leaderboard.getInstance().getTop5Scores().get(3));
-//        }
-        TextView number5 = findViewById(R.id.number5);
+//        TextView number3 = findViewById(R.id.number3);
+////        if (Leaderboard.getInstance().getLeaderboardEntries().get(2) != null) {
+////            number3.setText(Leaderboard.getInstance().getTop5PlayerNames().get(2) + "   " +
+////                    Leaderboard.getInstance().getTop5Scores().get(2));
+////        }
+//        TextView number4 = findViewById(R.id.number4);
+////        if (Leaderboard.getInstance().getLeaderboardEntries().get(3) != null) {
+////            number4.setText(Leaderboard.getInstance().getTop5PlayerNames().get(3) + "   " +
+////                    Leaderboard.getInstance().getTop5Scores().get(3));
+////        }
+//        TextView number5 = findViewById(R.id.number5);
 //        if (Leaderboard.getInstance().getLeaderboardEntries().get(4) != null) {
 //            number5.setText(Leaderboard.getInstance().getTop5PlayerNames().get(4) + "   " +
 //                    Leaderboard.getInstance().getTop5Scores().get(4));
