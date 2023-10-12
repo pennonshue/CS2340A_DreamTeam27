@@ -36,9 +36,15 @@ public class ExampleUnitTest {
         assertTrue(test.getScore() == 0);
     }
     @Test
-    public void checkName() {
+    public void invalidName() {
         assertEquals(false, SetupActivity.validName("    "));
         assertEquals(false, SetupActivity.validName(""));
+
+    }
+    @Test
+    public void validName() {
+        assertEquals(true, SetupActivity.validName(" a;slkdjf;asdlkf   "));
+        assertEquals(true, SetupActivity.validName("kdasjf;lkadsjf: "));
 
     }
     @Test
