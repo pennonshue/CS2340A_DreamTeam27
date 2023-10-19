@@ -1,6 +1,5 @@
 package com.example.dungeongame.model;
 
-import com.example.dungeongame.views.EndScreen;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -30,7 +29,8 @@ public class Leaderboard {
         leaderboardEntries.add(entry);
         System.out.println("YO" + leaderboardEntries);
         // Sort entries in descending order by score
-        Collections.sort(leaderboardEntries, Collections.reverseOrder(Comparator.comparing(LeaderboardEntry::getScore)));
+        Collections.sort(leaderboardEntries,
+                Collections.reverseOrder(Comparator.comparing(LeaderboardEntry::getScore)));
     }
 
     public List<LeaderboardEntry> getTop5Entries() {

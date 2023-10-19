@@ -14,12 +14,15 @@ public class GameViewSprite extends View {
     private Bitmap sprite;
     private static int spriteNumber;
     private int x = 500;
+
     private int y = 500;
 
     private static boolean moveUp;
     private static boolean moveDown;
     private static boolean moveRight;
     private static boolean moveLeft;
+
+
 
 
 
@@ -50,6 +53,16 @@ public class GameViewSprite extends View {
         matrix.postScale(scaleX, scaleY);
         sprite = Bitmap.createBitmap(sprite, 0, 0, sprite.getWidth(),
                 sprite.getHeight(), matrix, true);
+    }
+
+    @Override
+    public float getX() {
+        return x;
+    }
+
+    @Override
+    public float getY() {
+        return y;
     }
 
     protected void onDraw(Canvas canvas) {
@@ -96,14 +109,14 @@ public class GameViewSprite extends View {
     }
 
     public void moveUp() {
-        if (moveUp) {
-            y -= 50;
-            /* System.out.println(x + "," + y);
+        // if (moveUp) {
+        y -= 50;
+        /* System.out.println(x + "," + y);
             if (y < 90) {
                 y = 90;
             } */
-            invalidate();
-        }
+        invalidate();
+
     }
 
     // Setters for the movement flags

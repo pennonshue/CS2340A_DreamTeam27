@@ -21,9 +21,15 @@ import com.example.dungeongame.model.User;
 
 public class GameScreen extends AppCompatActivity {
     private double difficulty;
+
+    public GameViewSprite getGameViewSprite() {
+        return gameViewSprite;
+    }
+
     private GameViewSprite gameViewSprite;
     private Runnable scoreUpdater;
     private Handler handler = new Handler();
+
 
 
 

@@ -27,4 +27,7 @@ public class LeaderboardEntry {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return dateFormat.format(timestamp);
     }
+    public Date getTimestamp() {
+        return timestamp;
+    }
 }
