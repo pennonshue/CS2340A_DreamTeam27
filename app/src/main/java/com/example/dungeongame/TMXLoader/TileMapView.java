@@ -14,13 +14,13 @@ import com.example.dungeongame.views.GameScreen;
 public class TileMapView extends View {
 
     private TileMapData tileMap;
-    private Paint paint;
     Bitmap tilemapBitmap;
-    private Bitmap userSprite;
 
-    public TileMapView(Context context) {
+    TileMapData tileData;
+
+    public TileMapView(Context context, TileMapData tileData) {
         super(context);
-        userSprite = User.getSprite1();
+        this.tileData = tileData;
         TileMapData t = TMXLoader.readTMX("Map1.tmx", context);
         tilemapBitmap = TMXLoader.createBitmap(t, context, 0, t.getLayers().size());
 //        Bitmap unscaledBitMap = TMXLoader.createBitmap(t, context, 0, t.getLayers().size());
@@ -34,7 +34,6 @@ public class TileMapView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.drawBitmap(tilemapBitmap, 0, 0, null);
-        canvas.drawBitmap(userSprite, 20, 20, null);
     }
 }
 

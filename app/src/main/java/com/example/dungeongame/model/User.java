@@ -8,11 +8,22 @@ import android.graphics.Matrix;
 import android.view.View;
 
 import com.example.dungeongame.R;
+import com.example.dungeongame.TMXLoader.TileMapData;
 
 public class User extends View {
 
-    private int x = 50;
-    private int y = 50;
+    private MovementStrategy movementStrategy;
+    private int x = 300;
+    @Override
+    public float getX() {
+        return x;
+    }
+
+    public float getY() {
+        return x;
+    }
+
+    private int y = 300;
 
     public static Bitmap getSprite1() {
         return sprite1;
@@ -40,11 +51,17 @@ public class User extends View {
         return userInstance;
     }
 
+    public static User getInstance() {
+        return userInstance;
+    }
+
+
     private User(Context context, String username, int sprite, String difficulty, int speed) {
         super(context);
         this.difficulty = difficulty;
         this.username = username;
         this.score = 20;
+        this.movementStrategy = new WalkStrategy();
 
         switch (difficulty) {
         case "Easy":
@@ -88,10 +105,19 @@ public class User extends View {
                 sprite1.getHeight(), matrix, true);
     }
 
+    public void updatePosition(int newX, int newY) {
+        x = newX;
+        y = newY;
+        // Call invalidate to trigger redraw
+        invalidate();
+    }
+
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.drawBitmap(sprite1, x, y, null);
     }
+
+
 
 
     public static String getUsername() {
