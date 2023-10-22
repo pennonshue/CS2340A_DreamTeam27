@@ -13,9 +13,9 @@ public class GameViewSprite extends View {
 
     private Bitmap sprite;
     private static int spriteNumber;
-    private int x = 500;
+    private int x = 100;
 
-    private int y = 500;
+    private int y = 100;
 
     private static boolean moveUp;
     private static boolean moveDown;
@@ -71,13 +71,6 @@ public class GameViewSprite extends View {
     public void moveLeft() {
         if (moveLeft) {
             x -= 30;
-            /* System.out.println(x + "," + y);
-            if (y < 170 && x <= 118) {
-                x = 118;
-            } else if (y > 170 && x <= 276) {
-                x = 276;
-            } */
-            invalidate();
         }
     }
 
