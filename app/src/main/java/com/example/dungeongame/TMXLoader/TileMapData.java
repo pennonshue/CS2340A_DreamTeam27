@@ -20,6 +20,8 @@ public class TileMapData {
 		public int tileWidth, tileHeight;
 		
 		public String ImageFilename;
+
+
 		public int imageWidth, imageHeight;
 		
 		// Design decision note:
