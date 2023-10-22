@@ -103,7 +103,7 @@ public class SetupActivity extends AppCompatActivity {
 
 
                         // Check if the input is null, empty, or whitespace-only
-                        if (validName(playerName)) {
+                        if (!validName(playerName)) {
                             Toast.makeText(SetupActivity.this, "Please enter a "
                                    + "valid name", Toast.LENGTH_SHORT).show();
                         } else {
