@@ -44,7 +44,6 @@ public class GameScreen extends AppCompatActivity {
         System.out.println(User.getSprite());
 
         setContentView(R.layout.activity_game_screen);
-
         ConstraintLayout characterSprite = findViewById(R.id.gameSpriteCharacter);
 
         gameViewSprite = new GameViewSprite(this, User.getSprite());
