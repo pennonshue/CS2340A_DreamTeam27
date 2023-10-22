@@ -85,6 +85,7 @@ public class User {
         User.health = health;
         if (health <= 0) {
             setWin(false);
+            setScore(0);
         } else {
             setWin(true);
         }
