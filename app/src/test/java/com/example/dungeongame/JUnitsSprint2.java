@@ -40,6 +40,15 @@ public class JUnitsSprint2 {
         assertTrue(User.getWin() == true);
 
     }
+    @Test
+    public void checkLeaderboardEntryToString() {
+        Leaderboard lead = Leaderboard.getInstance();
+        LeaderboardEntry l1= new LeaderboardEntry("Steve", 5);
+        lead.addEntry(l1);
+        assertTrue(lead.getLastEntry().toString().equals(l1.getPlayerName() +  "   "
+                + lead.getLastEntry().getScore() + "      "
+                + lead.getLastEntry().getTimestamp()));
+    }
 
 
 
