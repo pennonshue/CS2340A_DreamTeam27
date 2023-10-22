@@ -26,6 +26,21 @@ public class JUnitsSprint2 {
         lead.addEntry(l6);
         assertTrue(lead.getLastEntry().equals(l6));
     }
+    @Test
+    public void checkLose() {
+        User test = User.getInstance("player1", 1, "Medium", 10);
+        test.setHealth(0);
+        assertTrue(User.getWin() == false);
+
+    }
+    @Test
+    public void checkWin() {
+        User test = User.getInstance("player1", 1, "Medium", 10);
+        test.setHealth(50);
+        assertTrue(User.getWin() == true);
+
+    }
+
 
 
 }

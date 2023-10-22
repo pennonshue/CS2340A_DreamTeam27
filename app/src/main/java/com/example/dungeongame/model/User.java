@@ -13,7 +13,7 @@ public class User {
     private static int sprite;
     private static String difficulty;
 
-
+    private static boolean win;
 
 
     public static User getInstance(String username, int sprite, String difficulty, int speed) {
@@ -27,6 +27,7 @@ public class User {
         this.difficulty = difficulty;
         this.username = username;
         this.score = 20;
+        this.win = true;
 
         switch (difficulty) {
         case "Easy":
@@ -82,8 +83,17 @@ public class User {
 
     public static void setHealth(int health) {
         User.health = health;
+        if (health <= 0) {
+            setWin(false);
+        } else {
+            setWin(true);
+        }
+    }
+    public static void setWin(boolean win) {
+        User.win = win;
     }
 
+    public static boolean getWin() { return win; }
     public static String getDifficulty() {
         return difficulty;
     }
