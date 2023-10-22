@@ -65,7 +65,6 @@ public class GameViewSprite extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.drawBitmap(sprite, x, y, null);
-
     }
 
     public void moveLeft() {

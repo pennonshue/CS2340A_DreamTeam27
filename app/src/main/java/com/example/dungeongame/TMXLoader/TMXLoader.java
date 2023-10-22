@@ -118,7 +118,7 @@ public class TMXLoader {
 	    			
 	    		}
 
-				Bitmap mapImage1 = Bitmap.createScaledBitmap(mapImage, 2100, 950, true);
+				Bitmap mapImage1 = Bitmap.createScaledBitmap(mapImage, (int) (t.width * t.tilewidth * 1.8), (int) (t.height * t.tileheight* 1.6), true);
 	    		
 	    		return mapImage1;
 	    		
