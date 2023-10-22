@@ -16,8 +16,7 @@
             android:name=".views.GameScreen"
             android:exported="false"
             android:label="GameScreen"
-            android:theme="@style/Theme.DungeonGame"
-            android:configChanges="orientation|screenSize|keyboardHidden"/>
+            android:theme="@style/Theme.DungeonGame" />
         <activity
             android:name=".views.GameScreen2"
             android:exported="false"
