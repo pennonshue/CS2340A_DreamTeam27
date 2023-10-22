@@ -1,6 +1,7 @@
 package com.example.dungeongame.views;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -8,13 +9,17 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.dungeongame.R;
+import com.example.dungeongame.TMXLoader.TMXLoader;
+import com.example.dungeongame.TMXLoader.TileMapData;
 import com.example.dungeongame.model.GameViewSprite;
 import com.example.dungeongame.model.User;
 
@@ -22,6 +27,7 @@ public class GameScreen2 extends AppCompatActivity {
 
     private GameViewSprite gameViewSprite;
     private Runnable scoreUpdater;
+    private ImageView mapView;
     private Handler handler = new Handler();
 
     public void onCreate(Bundle savedInstanceState) {
@@ -75,6 +81,18 @@ public class GameScreen2 extends AppCompatActivity {
         parentLayout.addView(healthTextView);
         parentLayout.addView(scoreTextView);
 
+        TileMapData t = TMXLoader.readTMX("Map2.tmx", this);
+        mapView = (ImageView) findViewById(R.id.MapImage);
+        Bitmap mapImage = TMXLoader.createBitmap (t, this, 0, t.getLayers().size());
+
+        if (mapImage != null) {
+            mapView.setImageBitmap (mapImage);
+        } else {
+            Toast errorMessage = Toast.makeText(getApplicationContext(),
+                    "Map could not be loaded", Toast.LENGTH_LONG);
+            errorMessage.show();
+        }
+
 
         // Add the parent LinearLayout to the FrameLayout
         characterSprite.addView(parentLayout, parentLayoutParams);
@@ -86,6 +104,7 @@ public class GameScreen2 extends AppCompatActivity {
                 scoreTextView.setText("Score: " + User.getScore());
                 //Delay update by 1 second
                 handler.postDelayed(this, 1000);
+
             }
         };
         handler.post(scoreUpdater);
@@ -125,8 +144,9 @@ public class GameScreen2 extends AppCompatActivity {
             gameViewSprite.moveDown();
             return true;
         default:
+            return false;
         }
-        return false;
+
     }
 
     public boolean onKeyUp(int keyCode, KeyEvent event) {

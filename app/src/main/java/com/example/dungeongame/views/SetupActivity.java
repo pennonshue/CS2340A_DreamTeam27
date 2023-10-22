@@ -15,10 +15,50 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class SetupActivity extends AppCompatActivity {
 
+    public RadioGroup getPlayerRadioGroup() {
+        return playerRadioGroup;
+    }
+
+    public RadioButton getSelectedPlayerRadioButton() {
+        return selectedPlayerRadioButton;
+    }
+
+    public Button getContinueButton() {
+        return continueButton;
+    }
+
     private TextInputEditText nameEditText;
     private RadioGroup playerRadioGroup;
     private RadioButton selectedPlayerRadioButton;
     private Button continueButton;
+
+    public void setNameEditText(TextInputEditText nameEditText) {
+        this.nameEditText = nameEditText;
+    }
+    public static boolean validName(String val) {
+        // Check if the name is empty or consists of only whitespace characters
+        return !(val.isEmpty() || val.matches("^\\s*$"));
+    }
+
+    public static boolean validSprite(Integer spriteNumber) {
+        return !(spriteNumber != 1 && spriteNumber != 2 && spriteNumber != 3);
+    }
+
+    public void setPlayerRadioGroup(RadioGroup playerRadioGroup) {
+        this.playerRadioGroup = playerRadioGroup;
+    }
+
+    public void setSelectedPlayerRadioButton(RadioButton selectedPlayerRadioButton) {
+        this.selectedPlayerRadioButton = selectedPlayerRadioButton;
+    }
+
+    public void setContinueButton(Button continueButton) {
+        this.continueButton = continueButton;
+    }
+
+    public TextInputEditText getNameEditText() {
+        return nameEditText;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +69,8 @@ public class SetupActivity extends AppCompatActivity {
         nameEditText = findViewById(R.id.nameBox);
 
         Button cont = findViewById(R.id.contBtn);
+
+
         cont.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -68,6 +110,8 @@ public class SetupActivity extends AppCompatActivity {
 
 
                             User player = User.getInstance(playerName, sprite, difficulty, 10);
+                            User.setUsername(playerName);
+                            User.setSprite(sprite);
 
 
                             Intent intent = new Intent(SetupActivity.this,

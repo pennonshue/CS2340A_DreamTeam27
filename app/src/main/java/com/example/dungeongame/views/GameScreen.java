@@ -1,29 +1,40 @@
 package com.example.dungeongame.views;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.example.dungeongame.TMXLoader.TMXLoader;
+import com.example.dungeongame.TMXLoader.TileMapData;
 import com.example.dungeongame.model.GameViewSprite;
 import com.example.dungeongame.R;
 import com.example.dungeongame.model.User;
 
+
 public class GameScreen extends AppCompatActivity {
     private double difficulty;
+
+    public GameViewSprite getGameViewSprite() {
+        return gameViewSprite;
+    }
     private GameViewSprite gameViewSprite;
     private Runnable scoreUpdater;
+    private ImageView mapView;
     private Handler handler = new Handler();
-
 
 
 
@@ -84,6 +95,20 @@ public class GameScreen extends AppCompatActivity {
 
         // Add the parent LinearLayout to the FrameLayout
         characterSprite.addView(parentLayout, parentLayoutParams);
+        User.setScore(1000);
+
+
+        TileMapData t = TMXLoader.readTMX("Map1.tmx", this);
+        mapView = (ImageView) findViewById(R.id.MapImage);
+        Bitmap mapImage = TMXLoader.createBitmap (t, this, 0, t.getLayers().size());
+
+        if (mapImage != null) {
+            mapView.setImageBitmap (mapImage);
+        } else {
+            Toast errorMessage = Toast.makeText(getApplicationContext(),
+                    "Map could not be loaded", Toast.LENGTH_LONG);
+            errorMessage.show();
+        }
 
         // Create a Runnable to update the score every second
         scoreUpdater = new Runnable() {

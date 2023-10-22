@@ -4,9 +4,7 @@ public class User {
 
 
     private static User userInstance = null;
-
     private static String username;
-
 
     private static int score;
     private static int speed;
@@ -28,7 +26,7 @@ public class User {
     private User(String username, int sprite, String difficulty, int speed) {
         this.difficulty = difficulty;
         this.username = username;
-        this.score = 1000;
+        this.score = 20;
 
         switch (difficulty) {
         case "Easy":
@@ -93,9 +91,30 @@ public class User {
         return score;
     }
     public static void setScore(int score) {
-        User.score = score;
+        if (score < 0) {
+            User.score = 0;
+        } else {
+            User.score = score;
+        }
     }
 
+
+    public static void setDifficulty(String difficulty) {
+        switch (difficulty) {
+        case "Easy":
+            User.health = 100;
+            break;
+        case "Medium":
+            User.health = 85;
+            break;
+        case "Hard":
+            User.health = 60;
+            break;
+        default:
+            System.out.println("You have entered an invalid difficulty level");
+        }
+
+    }
 
 }
 

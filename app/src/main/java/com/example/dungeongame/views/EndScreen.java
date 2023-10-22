@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+<<<<<<< HEAD
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,26 +14,43 @@ import java.util.Date;
 import java.util.List;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+=======
+import java.util.ArrayList;
+
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+
+>>>>>>> 5b9eb63e0cb49b16395afd772c8ec68a08198586
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.dungeongame.R;
+<<<<<<< HEAD
 import com.example.dungeongame.model.User;
 
 public class EndScreen extends AppCompatActivity {
     private static List<LeaderboardEntry> leaderboardEntries;
+=======
+import com.example.dungeongame.model.Leaderboard;
+import com.example.dungeongame.model.User;
+
+public class EndScreen extends AppCompatActivity {
+
+>>>>>>> 5b9eb63e0cb49b16395afd772c8ec68a08198586
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_end);
+
 
         Button playAgainButton = findViewById(R.id.playAgainButton);
         playAgainButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(EndScreen.this, MainActivity.class);
+                Intent intent = new Intent(EndScreen.this, SetupActivity.class);
+                User.setScore(1000);
                 startActivity(intent);
             }
         });
@@ -41,6 +59,7 @@ public class EndScreen extends AppCompatActivity {
         parentLayout.setOrientation(LinearLayout.VERTICAL);
 
         // Create TextViews for player name, difficulty, score and health
+<<<<<<< HEAD
         TextView score1TextView = new TextView(this);
         score1TextView.setText("#1: " + getTop5PlayerNames());
         score1TextView.setTextSize(20);
@@ -66,6 +85,29 @@ public class EndScreen extends AppCompatActivity {
 //        score5TextView.setTextSize(20);
 //        score5TextView.setTextColor(Color.GRAY);
 
+=======
+
+        TextView number1 = findViewById(R.id.number1);
+        TextView number2 = findViewById(R.id.number2);
+        TextView number3 = findViewById(R.id.number3);
+        TextView number4 = findViewById(R.id.number4);
+        TextView number5 = findViewById(R.id.number5);
+
+        ArrayList<TextView> numbers = new ArrayList<>();
+        numbers.add(number1);
+        numbers.add(number2);
+        numbers.add(number3);
+        numbers.add(number4);
+        numbers.add(number5);
+
+
+        for (int i = 0; i < Leaderboard.getInstance().getTop5Entries().size(); i++) {
+            System.out.println(Leaderboard.getInstance().getLeaderboardEntries().get(i));
+            numbers.get(i).setText(Leaderboard.getInstance().getTop5PlayerNames().get(i) + "   "
+                    + Leaderboard.getInstance().getTop5Scores().get(i) + "      "
+                    + Leaderboard.getInstance().getTop5Timestamps().get(i));
+        }
+>>>>>>> 5b9eb63e0cb49b16395afd772c8ec68a08198586
 
         // Set the position of the parent LinearLayout to (50, 50)
         FrameLayout.LayoutParams parentLayoutParams = new FrameLayout.LayoutParams(
@@ -73,6 +115,7 @@ public class EndScreen extends AppCompatActivity {
                 FrameLayout.LayoutParams.WRAP_CONTENT
         );
 
+<<<<<<< HEAD
         parentLayoutParams.leftMargin = 100;
         parentLayoutParams.topMargin = 1000;
 
@@ -187,3 +230,11 @@ public class EndScreen extends AppCompatActivity {
 //            }
         }
     }
+=======
+        parentLayoutParams.leftMargin = 200;
+        parentLayoutParams.topMargin = 900;
+
+
+    }
+}
+>>>>>>> 5b9eb63e0cb49b16395afd772c8ec68a08198586
