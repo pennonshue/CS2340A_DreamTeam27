@@ -46,6 +46,9 @@ public class EndScreen extends AppCompatActivity {
         TextView number3 = findViewById(R.id.number3);
         TextView number4 = findViewById(R.id.number4);
         TextView number5 = findViewById(R.id.number5);
+        TextView number6 = findViewById(R.id.number6);
+        number6.setText("Latest Attempt: " + Leaderboard.getInstance().getLastEntry());
+
 
         ArrayList<TextView> numbers = new ArrayList<>();
         numbers.add(number1);
