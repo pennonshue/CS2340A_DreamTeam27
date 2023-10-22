@@ -23,9 +23,6 @@ public class GameViewSprite extends View {
     private static boolean moveLeft;
 
 
-
-
-
     public GameViewSprite(Context context, int num) {
         super(context);
 

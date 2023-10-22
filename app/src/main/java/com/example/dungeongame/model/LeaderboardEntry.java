@@ -30,4 +30,11 @@ public class LeaderboardEntry {
     public Date getTimestamp() {
         return timestamp;
     }
+
+    @Override
+    public String toString() {
+        return Leaderboard.getInstance().getLastEntry().getPlayerName() + "   "
+                + Leaderboard.getInstance().getLastEntry().getScore() + "      "
+                + Leaderboard.getInstance().getLastEntry().getTimestamp();
+    }
 }
