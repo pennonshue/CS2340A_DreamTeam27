@@ -47,9 +47,16 @@ public class JUnitsSprint2 {
         lead.addEntry(l1);
         assertTrue(lead.getLastEntry().toString().equals(l1.getPlayerName() +  "   "
                 + lead.getLastEntry().getScore() + "      "
-                + lead.getLastEntry().getTimestamp()));
+                + lead.getLastEntry().getFormattedDate()));
     }
 
+    @Test
+    public void checkLoseScore() {
+        User test = User.getInstance("player1", 1, "Medium", 10);
+        test.setHealth(0);
+        assertTrue(User.getScore() == 0);
+
+    }
 
 
 }
