@@ -13,6 +13,7 @@ public class Leaderboard {
         return leaderboardEntries;
     }
     private static Leaderboard instance;
+    private LeaderboardEntry lastEntry;
 
     private Leaderboard() {
         leaderboardEntries = new ArrayList<>();
@@ -26,6 +27,7 @@ public class Leaderboard {
     }
 
     public void addEntry(LeaderboardEntry entry) {
+        lastEntry = entry;
         leaderboardEntries.add(entry);
         System.out.println("YO" + leaderboardEntries);
         // Sort entries in descending order by score
@@ -40,7 +42,9 @@ public class Leaderboard {
             return leaderboardEntries;
         }
     }
-
+    public LeaderboardEntry getLastEntry() {
+        return lastEntry;
+    }
     public List<String> getTop5PlayerNames() {
         List<LeaderboardEntry> top5Entries = getTop5Entries();
         List<String> top5PlayerNames = new ArrayList<>();
