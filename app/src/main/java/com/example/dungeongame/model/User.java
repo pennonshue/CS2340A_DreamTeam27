@@ -94,7 +94,8 @@ public class User {
         User.win = win;
     }
 
-    public static boolean getWin() { return win; }
+    public static boolean getWin() {
+        return win; }
     public static String getDifficulty() {
         return difficulty;
     }

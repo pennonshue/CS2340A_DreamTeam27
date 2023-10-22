@@ -3,7 +3,6 @@ package com.example.dungeongame.views;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.KeyEvent;
@@ -100,10 +99,10 @@ public class GameScreen extends AppCompatActivity {
 
         TileMapData t = TMXLoader.readTMX("Map1.tmx", this);
         mapView = (ImageView) findViewById(R.id.MapImage);
-        Bitmap mapImage = TMXLoader.createBitmap (t, this, 0, t.getLayers().size());
+        Bitmap mapImage = TMXLoader.createBitmap(t, this, 0, t.getLayers().size());
 
         if (mapImage != null) {
-            mapView.setImageBitmap (mapImage);
+            mapView.setImageBitmap(mapImage);
         } else {
             Toast errorMessage = Toast.makeText(getApplicationContext(),
                     "Map could not be loaded", Toast.LENGTH_LONG);
