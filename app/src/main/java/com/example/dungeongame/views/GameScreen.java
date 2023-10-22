@@ -138,23 +138,31 @@ public class GameScreen extends AppCompatActivity {
     }
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         switch (keyCode) {
-        case KeyEvent.KEYCODE_DPAD_LEFT:
-            gameViewSprite.setMoveLeft(true);
-            gameViewSprite.moveLeft();
-            return true;
-        case KeyEvent.KEYCODE_DPAD_RIGHT:
-            gameViewSprite.setMoveRight(true);
-            gameViewSprite.moveRight();
-            return true;
-        case KeyEvent.KEYCODE_DPAD_UP:
-            gameViewSprite.setMoveUp(true);
-            gameViewSprite.moveUp();
-            return true;
-        case KeyEvent.KEYCODE_DPAD_DOWN:
-            gameViewSprite.setMoveDown(true);
-            gameViewSprite.moveDown();
-            return true;
-        default:
+            case KeyEvent.KEYCODE_DPAD_LEFT:
+                gameViewSprite.setMoveLeft(true);
+                if (gameViewSprite.getX() >= findViewById(R.id.MapImage).getLeft()) {
+                    gameViewSprite.moveLeft();
+                }
+                return true;
+            case KeyEvent.KEYCODE_DPAD_RIGHT:
+                gameViewSprite.setMoveRight(true);
+                if (gameViewSprite.getRight() <= findViewById(R.id.MapImage).getRight()) {
+                    gameViewSprite.moveRight();
+                }
+                return true;
+            case KeyEvent.KEYCODE_DPAD_UP:
+                gameViewSprite.setMoveUp(true);
+                if (gameViewSprite.getY() >= findViewById(R.id.MapImage).getTop()) {
+                    gameViewSprite.moveUp();
+                }
+                return true;
+            case KeyEvent.KEYCODE_DPAD_DOWN:
+                gameViewSprite.setMoveDown(true);
+                if (gameViewSprite.getY() <= findViewById(R.id.MapImage).getBottom()) {
+                    gameViewSprite.moveDown();
+                }
+                return true;
+            default:
         }
         return false;
     }
