@@ -112,10 +112,10 @@ public class User extends View {
         invalidate();
     }
 
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-        canvas.drawBitmap(sprite1, x, y, null);
-    }
+//    protected void onDraw(Canvas canvas) {
+//        super.onDraw(canvas);
+//        canvas.drawBitmap(sprite1, x, y, null);
+//    }
 
 
 

@@ -27,11 +27,10 @@ public class GameView extends View {
     }
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        int action = event.getAction();
         float x = User.getInstance().getX();
         float y = User.getInstance().getY();
 
-        switch (action) {
+        switch (keyCode) {
             case KeyEvent.KEYCODE_DPAD_DOWN:
                 handleMove(x, y, 0, 10);  // Move down
                 break;
@@ -53,14 +52,16 @@ public class GameView extends View {
     }
 
     private void handleMove(float x, float y, int dx, int dy) {
-        int tileY = (int) (y + dy) / t.tileheight;
-        int tileX = (int) (x + dx) / t.tilewidth;
+        int tileY = (int) (y + dy) / (t.tileheight + 20);
+        int tileX = (int) (x + dx) / (t.tilewidth + 20);
         long GID = t.getGIDAt(tileX, tileY);
         System.out.println(GID + ", tileX: " + tileX + ", tileY: " + tileY);
 
         if (GID != 130) {
+            System.out.println(GID);
             User.getInstance().updatePosition((int) x , (int) y);
         } else {
+            System.out.println(GID);
             User.getInstance().updatePosition((int) (x + dx), (int) (y + dy));
         }
     }
