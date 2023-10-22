@@ -4,9 +4,7 @@ public class User {
 
 
     private static User userInstance = null;
-
     private static String username;
-
 
     private static int score;
     private static int speed;
