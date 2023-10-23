@@ -1,7 +1,35 @@
 package com.example.dungeongame.model;
 
-public class User {
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.view.View;
 
+import com.example.dungeongame.R;
+import com.example.dungeongame.TMXLoader.TileMapData;
+
+public class User extends View {
+
+    private MovementStrategy movementStrategy;
+    private int x = 300;
+    @Override
+    public float getX() {
+        return x;
+    }
+
+    public float getY() {
+        return y;
+    }
+
+    private int y = 300;
+
+    public static Bitmap getSprite1() {
+        return sprite1;
+    }
+
+    private static Bitmap sprite1;
 
     private static User userInstance = null;
     private static String username;
@@ -16,17 +44,25 @@ public class User {
     private static boolean win;
 
 
-    public static User getInstance(String username, int sprite, String difficulty, int speed) {
+    public static User getInstance(Context context, String username, int sprite, String difficulty, int speed) {
         if (userInstance == null) {
-            userInstance = new User(username, sprite, difficulty, speed);
+            userInstance = new User(context, username, sprite, difficulty, speed);
         }
         return userInstance;
     }
 
-    private User(String username, int sprite, String difficulty, int speed) {
+    public static User getInstance() {
+        return userInstance;
+    }
+
+
+    private User(Context context, String username, int sprite, String difficulty, int speed) {
+        super(context);
         this.difficulty = difficulty;
         this.username = username;
         this.score = 20;
+
+        this.movementStrategy = new WalkStrategy();
         this.win = true;
 
         switch (difficulty) {
@@ -44,13 +80,46 @@ public class User {
         }
         this.speed = speed;
         this.sprite = sprite;
+
+        switch (sprite) {
+            case (1):
+                this.sprite = R.drawable.sprite_1;
+                sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
+
+                break;
+            case (2):
+                this.sprite = R.drawable.sprite_2;
+                sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
+
+                break;
+            case (3):
+                this.sprite = R.drawable.sprite_3;
+                sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
+                break;
+            default:
+                break;
+        }
+        float scaleX = 0.15f;
+        float scaleY = 0.15f;
+        Matrix matrix = new Matrix();
+        matrix.postScale(scaleX, scaleY);
+        sprite1 = Bitmap.createBitmap(sprite1, 0, 0, sprite1.getWidth(),
+                sprite1.getHeight(), matrix, true);
     }
 
-    //    public void draw(Canvas canvas) {
-    //        sprite.draw
-    //
-    //
-    //    }
+    public void updatePosition(int newX, int newY) {
+        x = newX;
+        y = newY;
+        // Call invalidate to trigger redraw
+        invalidate();
+    }
+
+//    protected void onDraw(Canvas canvas) {
+//        super.onDraw(canvas);
+//        canvas.drawBitmap(sprite1, x, y, null);
+//    }
+
+
 
 
     public static String getUsername() {

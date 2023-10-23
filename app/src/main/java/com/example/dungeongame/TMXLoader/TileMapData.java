@@ -14,12 +14,15 @@ public class TileMapData {
 	public static final long GID_MASK = 0x3fffffff;
 	
 	static class TileSet{
+
 		public String name;
 		
 		public int firstGID;
 		public int tileWidth, tileHeight;
 		
 		public String ImageFilename;
+
+
 		public int imageWidth, imageHeight;
 		
 		// Design decision note:
@@ -164,6 +167,7 @@ public class TileMapData {
 	
 	public String name;
 	public int	height, width;
+
 	public int	tilewidth, tileheight;
 	public String orientation; // Must be "orthogonal", for now.
 	
