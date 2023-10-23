@@ -85,10 +85,10 @@ public class GameScreen3 extends AppCompatActivity {
 
         TileMapData t = TMXLoader.readTMX("Map3.tmx", this);
         mapView = (ImageView) findViewById(R.id.MapImage);
-        Bitmap mapImage = TMXLoader.createBitmap (t, this, 0, t.getLayers().size());
+        Bitmap mapImage = TMXLoader.createBitmap(t, this, 0, t.getLayers().size());
 
         if (mapImage != null) {
-            mapView.setImageBitmap (mapImage);
+            mapView.setImageBitmap(mapImage);
         } else {
             Toast errorMessage = Toast.makeText(getApplicationContext(),
                     "Map could not be loaded", Toast.LENGTH_LONG);

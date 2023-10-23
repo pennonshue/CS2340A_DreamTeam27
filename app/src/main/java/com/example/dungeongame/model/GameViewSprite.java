@@ -125,5 +125,20 @@ public class GameViewSprite extends View {
     public void setMoveLeft(boolean moveLeft) {
         this.moveLeft = moveLeft;
     }
-}
+        public static float getMoveUp(float y) {
+            return y -= 50;
+        }
 
+        public static float getMoveDown(float y) {
+            return y += 30;
+        }
+
+        public static float getMoveRight(float x) {
+            return x += 30;
+        }
+
+        public static float getMoveLeft(float x) {
+            return x -= 30;
+        }
+
+}
