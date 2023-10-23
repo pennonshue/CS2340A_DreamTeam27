@@ -128,7 +128,7 @@ public class GameScreen extends AppCompatActivity  {
 //            return false;
 //        }
 
-    }
+}
     //    @Override
     //    public void onCharacterLandedOnTile() {
     //        stopScoreUpdater();
@@ -156,4 +156,4 @@ public class GameScreen extends AppCompatActivity  {
     //            return false;
     //        }
 
-}
+

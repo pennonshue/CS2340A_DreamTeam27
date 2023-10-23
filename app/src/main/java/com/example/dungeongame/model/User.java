@@ -64,7 +64,7 @@ public class User extends View {
         this.difficulty = difficulty;
         this.username = username;
         this.score = 20;
-        this.movementStrategy = new WalkStrategy();
+
         this.win = true;
 
         switch (difficulty) {
@@ -78,13 +78,13 @@ public class User extends View {
             break;
         case "Hard":
             this.health = 60;
-            this.movementStrategy = new WalkStrategy();
+//            this.movementStrategy = new WalkStrategy();
             break;
         default:
             System.out.println("You have entered an invalid difficulty level");
         }
         this.speed = speed;
-        
+
         this.sprite = sprite;
 
         switch (sprite) {
