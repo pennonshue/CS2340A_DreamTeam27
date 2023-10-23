@@ -3,12 +3,10 @@ package com.example.dungeongame.model;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.view.View;
 
 import com.example.dungeongame.R;
-import com.example.dungeongame.TMXLoader.TileMapData;
 
 public class User extends View {
 
@@ -46,7 +44,8 @@ public class User extends View {
 
 
 
-    public static User getInstance(Context context, String username, int sprite, String difficulty, int speed) {
+    public static User getInstance(Context context, String username, int sprite, String difficulty,
+                                   int speed) {
 
         if (userInstance == null) {
             userInstance = new User(context, username, sprite, difficulty, speed);
@@ -78,7 +77,7 @@ public class User extends View {
             break;
         case "Hard":
             this.health = 60;
-//            this.movementStrategy = new WalkStrategy();
+            //this.movementStrategy = new WalkStrategy();
             break;
         default:
             System.out.println("You have entered an invalid difficulty level");
@@ -88,23 +87,20 @@ public class User extends View {
         this.sprite = sprite;
 
         switch (sprite) {
-            case (1):
-                this.sprite = R.drawable.sprite_1;
-                sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
-
-                break;
-            case (2):
-                this.sprite = R.drawable.sprite_2;
-                sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
-
-                break;
-            case (3):
-                this.sprite = R.drawable.sprite_3;
-                sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
-                break;
-            default:
-                break;
-
+        case (1):
+            this.sprite = R.drawable.sprite_1;
+            sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
+            break;
+        case (2):
+            this.sprite = R.drawable.sprite_2;
+            sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
+            break;
+        case (3):
+            this.sprite = R.drawable.sprite_3;
+            sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
+            break;
+        default:
+            break;
         }
         float scaleX = 0.15f;
         float scaleY = 0.15f;
@@ -121,7 +117,9 @@ public class User extends View {
         invalidate();
     }
 
-    public static MovementStrategy getMovementStrategy() { return movementStrategy;}
+    public static MovementStrategy getMovementStrategy() {
+        return movementStrategy;
+    }
 
 
 
@@ -185,17 +183,19 @@ public class User extends View {
         switch (difficulty) {
         case "Easy":
             User.health = 100;
+            User.movementStrategy = new RunStrategy();
             break;
         case "Medium":
             User.health = 85;
+            User.movementStrategy = new RunStrategy();
             break;
         case "Hard":
             User.health = 60;
+            //User.movementStrategy = new WalkStrategy();
             break;
         default:
             System.out.println("You have entered an invalid difficulty level");
         }
-
     }
 
 }

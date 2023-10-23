@@ -5,7 +5,7 @@ public class Player {
     private static com.example.dungeongame.model.Player userInstance = null;
 
     private static String username;
-
+    private static MovementStrategy movementStrategy;
 
     private static int score;
     private static int speed;
@@ -35,12 +35,15 @@ public class Player {
         switch (difficulty) {
         case "Easy":
             this.health = 100;
+            this.movementStrategy = new RunStrategy();
             break;
         case "Medium":
             this.health = 85;
+            this.movementStrategy = new RunStrategy();
             break;
         case "Hard":
             this.health = 60;
+            //this.movementStrategy = new WalkStrategy();
             break;
         default:
             System.out.println("You have entered an invalid difficulty level");
@@ -98,6 +101,9 @@ public class Player {
     public static String getDifficulty() {
         return difficulty;
     }
+    public static MovementStrategy getMovementStrategy() {
+        return movementStrategy;
+    }
     public static int getScore() {
         return score;
     }
@@ -113,13 +119,16 @@ public class Player {
     public static void setDifficulty(String difficulty) {
         switch (difficulty) {
         case "Easy":
-            com.example.dungeongame.model.Player.health = 100;
+            Player.health = 100;
+            Player.movementStrategy = new RunStrategy();
             break;
         case "Medium":
-            com.example.dungeongame.model.Player.health = 85;
+            Player.health = 85;
+            Player.movementStrategy = new RunStrategy();
             break;
         case "Hard":
-            com.example.dungeongame.model.Player.health = 60;
+            Player.health = 60;
+            //Player.movementStrategy = new WalkStrategy();
             break;
         default:
             System.out.println("You have entered an invalid difficulty level");

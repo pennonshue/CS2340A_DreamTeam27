@@ -37,33 +37,37 @@ public class GameView extends View implements GameViewObserver {
         userSprite = User.getSprite1();
     }
 
-public boolean onKeyDown(int keyCode, KeyEvent event) {
-    float x = User.getInstance().getX();
-    float y = User.getInstance().getY();
-    System.out.println(t.tileheight + " , " + t.tilewidth);
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        float x = User.getInstance().getX();
+        float y = User.getInstance().getY();
+        System.out.println(t.tileheight + " , " + t.tilewidth);
 
-    switch (keyCode) {
+        switch (keyCode) {
         case KeyEvent.KEYCODE_DPAD_DOWN:
-            handleMove(x, y, 0, t.tileheight + User.getInstance().getMovementStrategy().movementSpeed());  // Move down
+            handleMove(x, y, 0, t.tileheight
+                    + User.getInstance().getMovementStrategy().movementSpeed());  // Move down
             break;
         case KeyEvent.KEYCODE_DPAD_UP:
-            handleMove(x, y, 0, -t.tileheight - User.getInstance().getMovementStrategy().movementSpeed());  // Move up
+            handleMove(x, y, 0, -t.tileheight
+                    - User.getInstance().getMovementStrategy().movementSpeed());  // Move up
             break;
         case KeyEvent.KEYCODE_DPAD_LEFT:
-            handleMove(x, y, -t.tilewidth - User.getInstance().getMovementStrategy().movementSpeed(), 0);  // Move left
+            handleMove(x, y, -t.tilewidth
+                    - User.getInstance().getMovementStrategy().movementSpeed(), 0);  // Move left
             break;
         case KeyEvent.KEYCODE_DPAD_RIGHT:
-            handleMove(x, y, t.tilewidth + User.getInstance().getMovementStrategy().movementSpeed(), 0);  // Move right
+            handleMove(x, y, t.tilewidth
+                    + User.getInstance().getMovementStrategy().movementSpeed(), 0);  // Move right
             break;
         default:
             break;
+        }
+
+        // Trigger a redraw
+        invalidate();
+
+        return true;
     }
-
-    // Trigger a redraw
-    invalidate();
-
-    return true;
-}
 
     private void handleMove(float x, float y, int dx, int dy) {
         int tileY = (int) (y + dy) / (t.tileheight + 7);

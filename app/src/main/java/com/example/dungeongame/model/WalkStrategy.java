@@ -4,4 +4,5 @@ public class WalkStrategy implements MovementStrategy {
     public int movementSpeed() {
         return 5;
     }
+
 }
