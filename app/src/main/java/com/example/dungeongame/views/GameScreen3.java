@@ -133,11 +133,20 @@ public class GameScreen3 extends AppCompatActivity {
         if (event.getAction() == KeyEvent.ACTION_DOWN) {
             switch (event.getKeyCode()) {
                 case KeyEvent.KEYCODE_DPAD_LEFT:
+                    if (gameView.endTile) {
+                        stopScoreUpdater();
+                        Intent intent = new Intent(GameScreen3.this, EndScreen.class);
+                        LeaderboardEntry entry = new LeaderboardEntry(User.getUsername(), User.getScore());
+                        Leaderboard.getInstance().addEntry(entry);
+                        startActivity(intent);
+                    }
                     return gameView.onKeyDown(KeyEvent.KEYCODE_DPAD_LEFT, event);
                 case KeyEvent.KEYCODE_DPAD_RIGHT:
                     if (gameView.endTile) {
                         stopScoreUpdater();
                         Intent intent = new Intent(GameScreen3.this, EndScreen.class);
+                        LeaderboardEntry entry = new LeaderboardEntry(User.getUsername(), User.getScore());
+                        Leaderboard.getInstance().addEntry(entry);
                         startActivity(intent);
                     }
                     return gameView.onKeyDown(KeyEvent.KEYCODE_DPAD_RIGHT, event);
@@ -151,6 +160,13 @@ public class GameScreen3 extends AppCompatActivity {
                     }
                     return gameView.onKeyDown(KeyEvent.KEYCODE_DPAD_UP, event);
                 case KeyEvent.KEYCODE_DPAD_DOWN:
+                    if (gameView.endTile) {
+                        stopScoreUpdater();
+                        Intent intent = new Intent(GameScreen3.this, EndScreen.class);
+                        LeaderboardEntry entry = new LeaderboardEntry(User.getUsername(), User.getScore());
+                        Leaderboard.getInstance().addEntry(entry);
+                        startActivity(intent);
+                    }
                     return gameView.onKeyDown(KeyEvent.KEYCODE_DPAD_DOWN, event);
             }
         }

@@ -12,7 +12,7 @@ import com.example.dungeongame.TMXLoader.TileMapData;
 
 public class User extends View {
 
-    private MovementStrategy movementStrategy;
+    private static MovementStrategy movementStrategy;
     private int x = 1600;
     @Override
     public float getX() {
@@ -61,17 +61,19 @@ public class User extends View {
         this.difficulty = difficulty;
         this.username = username;
         this.score = 20;
-        this.movementStrategy = new WalkStrategy();
 
         switch (difficulty) {
         case "Easy":
             this.health = 100;
+            this.movementStrategy = new RunStrategy();
             break;
         case "Medium":
             this.health = 85;
+            this.movementStrategy = new RunStrategy();
             break;
         case "Hard":
             this.health = 60;
+            this.movementStrategy = new WalkStrategy();
             break;
         default:
             System.out.println("You have entered an invalid difficulty level");
@@ -118,7 +120,7 @@ public class User extends View {
 //    }
 
 
-
+    public static MovementStrategy getMovementStrategy() { return movementStrategy;}
 
     public static String getUsername() {
         return username;
