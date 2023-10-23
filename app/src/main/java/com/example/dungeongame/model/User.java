@@ -3,14 +3,16 @@ package com.example.dungeongame.model;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.view.View;
 
 import com.example.dungeongame.R;
+import com.example.dungeongame.TMXLoader.TileMapData;
 
 public class User extends View {
 
-    private MovementStrategy movementStrategy;
+    private static MovementStrategy movementStrategy;
     private int x = 1600;
     @Override
     public float getX() {
@@ -22,6 +24,7 @@ public class User extends View {
     }
 
     private int y = 300;
+
 
     public static Bitmap getSprite1() {
         return sprite1;
@@ -40,8 +43,11 @@ public class User extends View {
     private static String difficulty;
     private static boolean win;
 
-    public static User getInstance(Context context, String username, int sprite,
-                                   String difficulty, int speed) {
+
+
+
+    public static User getInstance(Context context, String username, int sprite, String difficulty, int speed) {
+
         if (userInstance == null) {
             userInstance = new User(context, username, sprite, difficulty, speed);
         }
@@ -64,34 +70,41 @@ public class User extends View {
         switch (difficulty) {
         case "Easy":
             this.health = 100;
+            this.movementStrategy = new RunStrategy();
             break;
         case "Medium":
             this.health = 85;
+            this.movementStrategy = new RunStrategy();
             break;
         case "Hard":
             this.health = 60;
+            this.movementStrategy = new WalkStrategy();
             break;
         default:
             System.out.println("You have entered an invalid difficulty level");
         }
         this.speed = speed;
+        
         this.sprite = sprite;
 
         switch (sprite) {
-        case (1):
-            this.sprite = R.drawable.sprite_1;
-            sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
-            break;
-        case (2):
-            this.sprite = R.drawable.sprite_2;
-            sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
-            break;
-        case (3):
-            this.sprite = R.drawable.sprite_3;
-            sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
-            break;
-        default:
-            break;
+            case (1):
+                this.sprite = R.drawable.sprite_1;
+                sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
+
+                break;
+            case (2):
+                this.sprite = R.drawable.sprite_2;
+                sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
+
+                break;
+            case (3):
+                this.sprite = R.drawable.sprite_3;
+                sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
+                break;
+            default:
+                break;
+
         }
         float scaleX = 0.15f;
         float scaleY = 0.15f;
@@ -108,11 +121,7 @@ public class User extends View {
         invalidate();
     }
 
-    //    protected void onDraw(Canvas canvas) {
-    //        super.onDraw(canvas);
-    //        canvas.drawBitmap(sprite1, x, y, null);
-    //    }
-
+    public static MovementStrategy getMovementStrategy() { return movementStrategy;}
 
 
 
