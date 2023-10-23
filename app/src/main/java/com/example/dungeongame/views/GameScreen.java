@@ -11,12 +11,8 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.dungeongame.TMXLoader.TMXLoader;
-import com.example.dungeongame.TMXLoader.TileMapData;
-import com.example.dungeongame.TMXLoader.TileMapView;
 import com.example.dungeongame.model.GameView;
-import com.example.dungeongame.model.GameViewSprite;
-import com.example.dungeongame.R;
+
 
 import com.example.dungeongame.model.User;
 
@@ -58,23 +54,23 @@ public class GameScreen extends AppCompatActivity  {
             }
         };
         handler.post(scoreUpdater);
-//        // Set an OnClickListener for the End Button
-//        Button toScreen2Btn = findViewById(R.id.toScreen2Btn);
-//        toScreen2Btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                stopScoreUpdater();
-//                Intent intent = new Intent(GameScreen.this, GameScreen2.class);
-//                startActivity(intent);
-//            }
-//        });
-//    }
+        //        // Set an OnClickListener for the End Button
+        //        Button toScreen2Btn = findViewById(R.id.toScreen2Btn);
+        //        toScreen2Btn.setOnClickListener(new View.OnClickListener() {
+        //            @Override
+        //            public void onClick(View view) {
+        //                stopScoreUpdater();
+        //                Intent intent = new Intent(GameScreen.this, GameScreen2.class);
+        //                startActivity(intent);
+        //            }
+        //        });
+        //    }
     }
-        private void stopScoreUpdater() {
-            // Remove the callbacks to stop the timer when the button is clicked
-            handler.removeCallbacks(scoreUpdater);
-        }
-//        }
+    private void stopScoreUpdater() {
+        // Remove the callbacks to stop the timer when the button is clicked
+        handler.removeCallbacks(scoreUpdater);
+    }
+    //        }
 
 
 
@@ -101,32 +97,32 @@ public class GameScreen extends AppCompatActivity  {
         return super.dispatchKeyEvent(event);
     }
 
-//    @Override
-//    public void onCharacterLandedOnTile() {
-//        stopScoreUpdater();
-//        Intent intent = new Intent(GameScreen.this, GameScreen2.class);
-//        startActivity(intent);
-//
-//    }
+    //    @Override
+    //    public void onCharacterLandedOnTile() {
+    //        stopScoreUpdater();
+    //        Intent intent = new Intent(GameScreen.this, GameScreen2.class);
+    //        startActivity(intent);
+    //
+    //    }
 
-//        public boolean onKeyUp ( int keyCode, KeyEvent event){
-//            switch (keyCode) {
-//                case KeyEvent.KEYCODE_DPAD_LEFT:
-//                    gameViewSprite.setMoveLeft(false);
-//                    return true; // Return true to indicate that you've handled the event
-//                case KeyEvent.KEYCODE_DPAD_RIGHT:
-//                    gameViewSprite.setMoveRight(false);
-//                    return true;
-//                case KeyEvent.KEYCODE_DPAD_UP:
-//                    gameViewSprite.setMoveUp(false);
-//                    return true;
-//                case KeyEvent.KEYCODE_DPAD_DOWN:
-//                    gameViewSprite.setMoveDown(false);
-//                    return true;
-//                default:
-//            }
-//            return false;
-//        }
+    //        public boolean onKeyUp ( int keyCode, KeyEvent event){
+    //            switch (keyCode) {
+    //                case KeyEvent.KEYCODE_DPAD_LEFT:
+    //                    gameViewSprite.setMoveLeft(false);
+    //                    return true; // Return true to indicate that you've handled the event
+    //                case KeyEvent.KEYCODE_DPAD_RIGHT:
+    //                    gameViewSprite.setMoveRight(false);
+    //                    return true;
+    //                case KeyEvent.KEYCODE_DPAD_UP:
+    //                    gameViewSprite.setMoveUp(false);
+    //                    return true;
+    //                case KeyEvent.KEYCODE_DPAD_DOWN:
+    //                    gameViewSprite.setMoveDown(false);
+    //                    return true;
+    //                default:
+    //            }
+    //            return false;
+    //        }
 
 }
     //    @Override

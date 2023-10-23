@@ -109,7 +109,8 @@ public class SetupActivity extends AppCompatActivity {
                         } else {
 
 
-                            User player = User.getInstance(SetupActivity.this, playerName, sprite, difficulty, 10);
+                            User player = User.getInstance(SetupActivity.this, playerName,
+                                    sprite, difficulty, 10);
 
                             User.setUsername(playerName);
                             User.setSprite(sprite);
