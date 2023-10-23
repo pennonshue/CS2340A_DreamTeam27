@@ -36,6 +36,6 @@ public class LeaderboardEntry {
 
         return Leaderboard.getInstance().getLastEntry().getPlayerName() + "   "
                 + Leaderboard.getInstance().getLastEntry().getScore() + "      "
-                + Leaderboard.getInstance().getLastEntry().getTimestamp();
+                + Leaderboard.getInstance().getLastEntry().getFormattedDate();
     }
 }

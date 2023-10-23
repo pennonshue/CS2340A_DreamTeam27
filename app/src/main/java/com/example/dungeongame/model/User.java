@@ -25,6 +25,7 @@ public class User extends View {
 
     private int y = 300;
 
+
     public static Bitmap getSprite1() {
         return sprite1;
     }
@@ -40,11 +41,13 @@ public class User extends View {
 
     private static int sprite;
     private static String difficulty;
+    private static boolean win;
 
 
 
 
     public static User getInstance(Context context, String username, int sprite, String difficulty, int speed) {
+
         if (userInstance == null) {
             userInstance = new User(context, username, sprite, difficulty, speed);
         }
@@ -61,6 +64,8 @@ public class User extends View {
         this.difficulty = difficulty;
         this.username = username;
         this.score = 20;
+        this.movementStrategy = new WalkStrategy();
+        this.win = true;
 
         switch (difficulty) {
         case "Easy":
@@ -79,6 +84,7 @@ public class User extends View {
             System.out.println("You have entered an invalid difficulty level");
         }
         this.speed = speed;
+        
         this.sprite = sprite;
 
         switch (sprite) {
@@ -98,6 +104,7 @@ public class User extends View {
                 break;
             default:
                 break;
+
         }
         float scaleX = 0.15f;
         float scaleY = 0.15f;
@@ -114,13 +121,9 @@ public class User extends View {
         invalidate();
     }
 
-//    protected void onDraw(Canvas canvas) {
-//        super.onDraw(canvas);
-//        canvas.drawBitmap(sprite1, x, y, null);
-//    }
-
-
     public static MovementStrategy getMovementStrategy() { return movementStrategy;}
+
+
 
     public static String getUsername() {
         return username;
@@ -152,6 +155,15 @@ public class User extends View {
 
     public static void setHealth(int health) {
         User.health = health;
+        if (health <= 0) {
+            win = false;
+            setScore(0);
+        } else {
+            win = true;
+        }
+    }
+    public static boolean getWin() {
+        return win;
     }
 
     public static String getDifficulty() {
