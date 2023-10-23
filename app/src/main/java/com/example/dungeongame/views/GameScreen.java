@@ -46,7 +46,7 @@ public class GameScreen extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         System.out.println(User.getSprite());
 
-        gameView = new GameView(this);
+        gameView = new GameView(this, "Map1.tmx");
         setContentView(gameView);
 
         User.setScore(1000);

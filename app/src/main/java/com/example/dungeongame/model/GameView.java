@@ -14,6 +14,7 @@ import com.example.dungeongame.TMXLoader.TileMapData;
 public class GameView extends View {
 
     private GameViewListener gameViewListener;
+    private String mapName;
 
     public boolean endTile;
     private Bitmap tilemapBitmap;
@@ -22,12 +23,13 @@ public class GameView extends View {
     private TileMapData t;
 
 
-    public GameView(Context context) {
+    public GameView(Context context, String map) {
         super(context);
         setFocusable(true);
         this.endTile = false;
+        this.mapName = map;
         // Load the map and user sprite
-        t = TMXLoader.readTMX("Map1.tmx", context);
+        t = TMXLoader.readTMX(map, context);
         tilemapBitmap = TMXLoader.createBitmap(t, context, 0, t.getLayers().size());
         userSprite = User.getSprite1();
     }
@@ -95,6 +97,7 @@ public class GameView extends View {
         canvas.drawBitmap(tilemapBitmap, 0, 0, null);
 
         // Draw the user sprite
+
         canvas.drawBitmap(userSprite, User.getInstance().getX(), User.getInstance().getY(), null);
 
         // Draw user information (replace with your actual values)
