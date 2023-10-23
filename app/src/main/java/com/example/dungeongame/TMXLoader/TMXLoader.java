@@ -19,13 +19,11 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.Log;
 
-import com.example.dungeongame.model.GameViewSprite;
-
 /**
  * Loader for .tmx XML map file
  */
 public class TMXLoader {
-
+	
 	/**
 	 * Create a bitmap based on the data in the TileMapData structure.
 	 * 
@@ -38,7 +36,7 @@ public class TMXLoader {
 	public static Bitmap createBitmap(TileMapData t, Context c, int startLayer, int endLayer){
 	    	
 	    	
-
+	    	
 	    	try{
 	    		AssetManager assetManager = c.getAssets();
 	    		
@@ -117,10 +115,8 @@ public class TMXLoader {
 	    			}    			    			
 	    			
 	    		}
-
-				Bitmap mapImage1 = Bitmap.createScaledBitmap(mapImage, (int) (t.width * t.tilewidth * 1.8), (int) (t.height * t.tileheight* 1.6), true);
 	    		
-	    		return mapImage1;
+	    		return mapImage;
 	    		
 	    	}
 	    	catch (IOException e){
