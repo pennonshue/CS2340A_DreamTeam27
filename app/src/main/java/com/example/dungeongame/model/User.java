@@ -20,7 +20,7 @@ public class User extends View {
     }
 
     public float getY() {
-        return x;
+        return y;
     }
 
     private int y = 300;

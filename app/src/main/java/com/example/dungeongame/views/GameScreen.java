@@ -27,7 +27,7 @@ import com.example.dungeongame.R;
 import com.example.dungeongame.model.User;
 
 
-public class GameScreen extends AppCompatActivity {
+public class GameScreen extends AppCompatActivity  {
     private double difficulty;
 
     private User user;
@@ -76,10 +76,10 @@ public class GameScreen extends AppCompatActivity {
 //        });
 //    }
     }
-//        private void stopScoreUpdater() {
-//            // Remove the callbacks to stop the timer when the button is clicked
-//            handler.removeCallbacks(scoreUpdater);
-//        }
+        private void stopScoreUpdater() {
+            // Remove the callbacks to stop the timer when the button is clicked
+            handler.removeCallbacks(scoreUpdater);
+        }
 //        }
 
 
@@ -90,6 +90,11 @@ public class GameScreen extends AppCompatActivity {
                 case KeyEvent.KEYCODE_DPAD_LEFT:
                     return gameView.onKeyDown(KeyEvent.KEYCODE_DPAD_LEFT, event);
                 case KeyEvent.KEYCODE_DPAD_RIGHT:
+                    if (gameView.endTile) {
+                        stopScoreUpdater();
+                        Intent intent = new Intent(GameScreen.this, GameScreen2.class);
+                        startActivity(intent);
+                    }
                     return gameView.onKeyDown(KeyEvent.KEYCODE_DPAD_RIGHT, event);
                 case KeyEvent.KEYCODE_DPAD_UP:
                     return gameView.onKeyDown(KeyEvent.KEYCODE_DPAD_UP, event);
@@ -99,6 +104,14 @@ public class GameScreen extends AppCompatActivity {
         }
         return super.dispatchKeyEvent(event);
     }
+
+//    @Override
+//    public void onCharacterLandedOnTile() {
+//        stopScoreUpdater();
+//        Intent intent = new Intent(GameScreen.this, GameScreen2.class);
+//        startActivity(intent);
+//
+//    }
 
 //        public boolean onKeyUp ( int keyCode, KeyEvent event){
 //            switch (keyCode) {
