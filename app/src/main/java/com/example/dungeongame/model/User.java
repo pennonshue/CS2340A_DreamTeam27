@@ -13,7 +13,7 @@ import com.example.dungeongame.TMXLoader.TileMapData;
 public class User extends View {
 
     private MovementStrategy movementStrategy;
-    private int x = 300;
+    private int x = 1600;
     @Override
     public float getX() {
         return x;
