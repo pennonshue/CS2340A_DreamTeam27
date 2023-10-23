@@ -82,20 +82,20 @@ public class GameScreen extends AppCompatActivity  {
     public boolean dispatchKeyEvent(KeyEvent event) {
         if (event.getAction() == KeyEvent.ACTION_DOWN) {
             switch (event.getKeyCode()) {
-                case KeyEvent.KEYCODE_DPAD_LEFT:
-                    return gameView.onKeyDown(KeyEvent.KEYCODE_DPAD_LEFT, event);
-                case KeyEvent.KEYCODE_DPAD_RIGHT:
-                    if (gameView.endTile) {
-                        stopScoreUpdater();
-                        Intent intent = new Intent(GameScreen.this, GameScreen2.class);
-                        startActivity(intent);
-                    }
-                    return gameView.onKeyDown(KeyEvent.KEYCODE_DPAD_RIGHT, event);
-                case KeyEvent.KEYCODE_DPAD_UP:
-                    return gameView.onKeyDown(KeyEvent.KEYCODE_DPAD_UP, event);
-                case KeyEvent.KEYCODE_DPAD_DOWN:
-                    return gameView.onKeyDown(KeyEvent.KEYCODE_DPAD_DOWN, event);
-
+            case KeyEvent.KEYCODE_DPAD_LEFT:
+                return gameView.onKeyDown(KeyEvent.KEYCODE_DPAD_LEFT, event);
+            case KeyEvent.KEYCODE_DPAD_RIGHT:
+                if (gameView.getEndTile()) {
+                    stopScoreUpdater();
+                    Intent intent = new Intent(GameScreen.this, GameScreen2.class);
+                    startActivity(intent);
+                }
+                return gameView.onKeyDown(KeyEvent.KEYCODE_DPAD_RIGHT, event);
+            case KeyEvent.KEYCODE_DPAD_UP:
+                return gameView.onKeyDown(KeyEvent.KEYCODE_DPAD_UP, event);
+            case KeyEvent.KEYCODE_DPAD_DOWN:
+                return gameView.onKeyDown(KeyEvent.KEYCODE_DPAD_DOWN, event);
+            default:
             }
         }
         return super.dispatchKeyEvent(event);

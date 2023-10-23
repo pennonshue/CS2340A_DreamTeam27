@@ -143,7 +143,7 @@ public class GameScreen3 extends AppCompatActivity {
 
                     return gameView.onKeyDown(KeyEvent.KEYCODE_DPAD_LEFT, event);
                 case KeyEvent.KEYCODE_DPAD_RIGHT:
-                    if (gameView.endTile) {
+                    if (gameView.getEndTile()) {
                         stopScoreUpdater();
                         Intent intent = new Intent(GameScreen3.this, EndScreen.class);
                         LeaderboardEntry entry = new LeaderboardEntry(User.getUsername(), User.getScore());
@@ -153,7 +153,7 @@ public class GameScreen3 extends AppCompatActivity {
                     }
                     return gameView.onKeyDown(KeyEvent.KEYCODE_DPAD_RIGHT, event);
                 case KeyEvent.KEYCODE_DPAD_UP:
-                    if (gameView.endTile) {
+                    if (gameView.getEndTile()) {
                         stopScoreUpdater();
                         Intent intent = new Intent(GameScreen3.this, EndScreen.class);
                         LeaderboardEntry entry = new LeaderboardEntry(User.getUsername(), User.getScore());

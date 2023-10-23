@@ -11,12 +11,15 @@ import android.view.View;
 import com.example.dungeongame.TMXLoader.TMXLoader;
 import com.example.dungeongame.TMXLoader.TileMapData;
 
-public class GameView extends View {
+import java.util.List;
 
-    private GameViewListener gameViewListener;
+public class GameView extends View implements GameViewObserver {
+
+    private List<GameViewObserver> observers;
+
     private String mapName;
 
-    public boolean endTile;
+    private boolean endTile;
     private Bitmap tilemapBitmap;
     private Bitmap userSprite;
 
@@ -34,33 +37,6 @@ public class GameView extends View {
         userSprite = User.getSprite1();
     }
 
-//    public boolean onKeyDown(int keyCode, KeyEvent event) {
-//        float x = User.getInstance().getX();
-//        float y = User.getInstance().getY();
-//        System.out.println(t.tileheight + " , " + t.tilewidth);
-//
-//        switch (keyCode) {
-//            case KeyEvent.KEYCODE_DPAD_DOWN:
-//                handleMove(x, y, 0, t.tileheight+20);  // Move down
-//                break;
-//            case KeyEvent.KEYCODE_DPAD_UP:
-//                handleMove(x, y, 0, -t.tileheight - 20);  // Move up
-//                break;
-//            case KeyEvent.KEYCODE_DPAD_LEFT:
-//                handleMove(x, y, -t.tilewidth - 20, 0);  // Move left
-//                break;
-//            case KeyEvent.KEYCODE_DPAD_RIGHT:
-//                handleMove(x, y, t.tilewidth + 20, 0);  // Move right
-//                break;
-//            default:
-//                break;
-//        }
-//
-//        // Trigger a redraw
-//        invalidate();
-//
-//        return true;
-//    }
 public boolean onKeyDown(int keyCode, KeyEvent event) {
     float x = User.getInstance().getX();
     float y = User.getInstance().getY();
@@ -89,10 +65,6 @@ public boolean onKeyDown(int keyCode, KeyEvent event) {
     return true;
 }
 
-    public void setGameViewListener(GameViewListener listener) {
-        this.gameViewListener = listener;
-    }
-
     private void handleMove(float x, float y, int dx, int dy) {
         int tileY = (int) (y + dy) / (t.tileheight + 7);
         int tileX = (int) (x + dx) / (t.tilewidth + 12);
@@ -112,7 +84,9 @@ public boolean onKeyDown(int keyCode, KeyEvent event) {
             User.getInstance().updatePosition((int) x, (int) y);
         }
     }
-
+    public boolean getEndTile() {
+        return endTile;
+    }
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -143,8 +117,20 @@ public boolean onKeyDown(int keyCode, KeyEvent event) {
         canvas.drawText(score, 100, 110, textPaint);
     }
 
-    public interface GameViewListener {
-        void onCharacterLandedOnTile(int x, int y);
+    public void setGameViewListener(GameViewObserver observer) {
+        observers.add(observer);
+    }
 
+    public void notifyCharacterLandedOnTile(int x, int y) {
+        for (GameViewObserver observer : observers) {
+            observer.updateOnCharacterLandedOnTile(x, y);
+        }
+    }
+
+    // Implement the GameViewObserver interface method
+    @Override
+    public void updateOnCharacterLandedOnTile(int x, int y) {
+        // Handle updates when the character lands on a tile here
+        // You can add custom logic or simply call the GameViewListener if needed
     }
 }
