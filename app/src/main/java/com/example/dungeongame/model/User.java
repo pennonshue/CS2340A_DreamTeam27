@@ -3,12 +3,10 @@ package com.example.dungeongame.model;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.view.View;
 
 import com.example.dungeongame.R;
-import com.example.dungeongame.TMXLoader.TileMapData;
 
 public class User extends View {
 
@@ -40,9 +38,10 @@ public class User extends View {
 
     private static int sprite;
     private static String difficulty;
-    public static boolean win;
+    private static boolean win;
 
-    public static User getInstance(Context context, String username, int sprite, String difficulty, int speed) {
+    public static User getInstance(Context context, String username, int sprite,
+                                   String difficulty, int speed) {
         if (userInstance == null) {
             userInstance = new User(context, username, sprite, difficulty, speed);
         }
@@ -79,22 +78,20 @@ public class User extends View {
         this.sprite = sprite;
 
         switch (sprite) {
-            case (1):
-                this.sprite = R.drawable.sprite_1;
-                sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
-
-                break;
-            case (2):
-                this.sprite = R.drawable.sprite_2;
-                sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
-
-                break;
-            case (3):
-                this.sprite = R.drawable.sprite_3;
-                sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
-                break;
-            default:
-                break;
+        case (1):
+            this.sprite = R.drawable.sprite_1;
+            sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
+            break;
+        case (2):
+            this.sprite = R.drawable.sprite_2;
+            sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
+            break;
+        case (3):
+            this.sprite = R.drawable.sprite_3;
+            sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
+            break;
+        default:
+            break;
         }
         float scaleX = 0.15f;
         float scaleY = 0.15f;
@@ -111,10 +108,10 @@ public class User extends View {
         invalidate();
     }
 
-//    protected void onDraw(Canvas canvas) {
-//        super.onDraw(canvas);
-//        canvas.drawBitmap(sprite1, x, y, null);
-//    }
+    //    protected void onDraw(Canvas canvas) {
+    //        super.onDraw(canvas);
+    //        canvas.drawBitmap(sprite1, x, y, null);
+    //    }
 
 
 
