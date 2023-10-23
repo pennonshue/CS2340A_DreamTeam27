@@ -9,14 +9,16 @@ import android.view.View;
 
 import com.example.dungeongame.R;
 
-public class GameViewSprite extends View {
+import java.util.List;
+
+public class GameViewSprite extends View implements GameViewObserver {
 
     private Bitmap sprite;
     private static int spriteNumber;
     private int x = 100;
 
     private int y = 100;
-
+    private List<GameViewObserver> observers;
     private static boolean moveUp;
     private static boolean moveDown;
     private static boolean moveRight;
@@ -127,19 +129,39 @@ public class GameViewSprite extends View {
     }
 
     public static float getMoveUp(float y) {
-        return y -= 50;
+        y -= 50;
+        return y;
     }
 
     public static float getMoveDown(float y) {
-        return y += 30;
+        y += 30;
+        return y;
     }
 
     public static float getMoveRight(float x) {
-        return x += 30;
+        x += 30;
+        return x;
     }
 
     public static float getMoveLeft(float x) {
-        return x -= 30;
+        x -= 30;
+        return x;
+    }
+    public void setGameViewListener(GameViewObserver observer) {
+        observers.add(observer);
+    }
+
+    public void notifyCharacterLandedOnTile(int x, int y) {
+        for (GameViewObserver observer : observers) {
+            observer.updateOnCharacterLandedOnTile(x, y);
+        }
+    }
+
+    // Implement the GameViewObserver interface method
+    @Override
+    public void updateOnCharacterLandedOnTile(int x, int y) {
+        // Handle updates when the character lands on a tile here
+        // You can add custom logic or simply call the GameViewListener if needed
     }
 
 }

@@ -124,7 +124,7 @@ public class GameScreen2 extends AppCompatActivity {
             case KeyEvent.KEYCODE_DPAD_LEFT:
                 return gameView.onKeyDown(KeyEvent.KEYCODE_DPAD_LEFT, event);
             case KeyEvent.KEYCODE_DPAD_RIGHT:
-                if (gameView.endTile) {
+                if (gameView.getEndTile()) {
                     stopScoreUpdater();
                     Intent intent = new Intent(GameScreen2.this, GameScreen3.class);
                     startActivity(intent);
@@ -133,7 +133,7 @@ public class GameScreen2 extends AppCompatActivity {
             case KeyEvent.KEYCODE_DPAD_UP:
                 return gameView.onKeyDown(KeyEvent.KEYCODE_DPAD_UP, event);
             case KeyEvent.KEYCODE_DPAD_DOWN:
-                if (gameView.endTile) {
+                if (gameView.getEndTile()) {
                     stopScoreUpdater();
                     Intent intent = new Intent(GameScreen2.this, GameScreen3.class);
                     startActivity(intent);

@@ -79,7 +79,7 @@ public class GameScreen extends AppCompatActivity  {
             case KeyEvent.KEYCODE_DPAD_LEFT:
                 return gameView.onKeyDown(KeyEvent.KEYCODE_DPAD_LEFT, event);
             case KeyEvent.KEYCODE_DPAD_RIGHT:
-                if (gameView.endTile) {
+                if (gameView.getEndTile()) {
                     stopScoreUpdater();
                     Intent intent = new Intent(GameScreen.this, GameScreen2.class);
                     startActivity(intent);
