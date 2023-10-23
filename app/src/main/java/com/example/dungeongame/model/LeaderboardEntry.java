@@ -35,6 +35,6 @@ public class LeaderboardEntry {
     public String toString() {
         return Leaderboard.getInstance().getLastEntry().getPlayerName() + "   "
                 + Leaderboard.getInstance().getLastEntry().getScore() + "      "
-                + Leaderboard.getInstance().getLastEntry().getTimestamp();
+                + Leaderboard.getInstance().getLastEntry().getFormattedDate();
     }
 }

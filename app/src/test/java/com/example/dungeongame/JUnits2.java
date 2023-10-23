@@ -4,7 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import com.example.dungeongame.model.Leaderboard;
 import com.example.dungeongame.model.LeaderboardEntry;
-import com.example.dungeongame.model.User;
+import com.example.dungeongame.model.Player;
 
 import org.junit.Test;
 
@@ -14,14 +14,14 @@ import java.util.List;
 public class JUnits2 {
     @Test
     public void hardDifficultyHealth() {
-        User test = User.getInstance("player1", 1, "Easy", 10);
+        Player test = Player.getInstance("player1", 1, "Easy", 10);
         assertTrue(test.getHealth() == 100);
         test.setDifficulty("Hard");
         assertTrue(test.getHealth() == 60);
     }
     @Test
     public void easyDifficultyHealth() {
-        User test = User.getInstance("player1", 1, "Medium", 10);
+        Player test = Player.getInstance("player1", 1, "Medium", 10);
         test.setDifficulty("Medium");
         assertTrue(test.getHealth() == 85);
         test.setDifficulty("Easy");
