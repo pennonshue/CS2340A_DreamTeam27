@@ -8,7 +8,7 @@ import com.example.dungeongame.model.Leaderboard;
 import com.example.dungeongame.model.LeaderboardEntry;
 import com.example.dungeongame.views.SetupActivity;
 
-import com.example.dungeongame.model.User;
+import com.example.dungeongame.model.Player;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -25,14 +25,14 @@ public class JUnits1 {
 
     @Test
     public void negativeScore() {
-        User test = User.getInstance("player1", 1, "Easy", 10);
+        Player test = Player.getInstance("player1", 1, "Easy", 10);
         test.setScore(-5);
         assertTrue(test.getScore() == 0);
     }
 
     @Test
     public void medDifficultyHealth() {
-        User test = User.getInstance("player1", 1, "Hard", 10);
+        Player test = Player.getInstance("player1", 1, "Hard", 10);
         test.setDifficulty("Hard");
         assertTrue(test.getHealth() == 60);
         test.setDifficulty("Medium");
@@ -74,7 +74,7 @@ public class JUnits1 {
 
     @Test
     public void validSprite() {
-        User test = User.getInstance("player1", 1, "Hard", 10);
-        assertEquals(true, SetupActivity.validSprite(User.getSprite()));
+        Player test = Player.getInstance("player1", 1, "Hard", 10);
+        assertEquals(true, SetupActivity.validSprite(Player.getSprite()));
     }
 }

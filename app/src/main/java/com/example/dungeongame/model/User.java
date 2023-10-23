@@ -40,9 +40,7 @@ public class User extends View {
 
     private static int sprite;
     private static String difficulty;
-
-
-
+    public static boolean win;
 
     public static User getInstance(Context context, String username, int sprite, String difficulty, int speed) {
         if (userInstance == null) {
@@ -62,6 +60,7 @@ public class User extends View {
         this.username = username;
         this.score = 20;
         this.movementStrategy = new WalkStrategy();
+        this.win = true;
 
         switch (difficulty) {
         case "Easy":
@@ -150,6 +149,15 @@ public class User extends View {
 
     public static void setHealth(int health) {
         User.health = health;
+        if (health <= 0) {
+            win = false;
+            setScore(0);
+        } else {
+            win = true;
+        }
+    }
+    public static boolean getWin() {
+        return win;
     }
 
     public static String getDifficulty() {

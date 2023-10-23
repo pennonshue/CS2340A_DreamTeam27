@@ -4,7 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import com.example.dungeongame.model.Leaderboard;
 import com.example.dungeongame.model.LeaderboardEntry;
-import com.example.dungeongame.model.User;
+import com.example.dungeongame.model.Player;
 
 import org.junit.Test;
 
@@ -21,13 +21,13 @@ public class SingletonTests {
     }
 
     @Test
-    public void userSingleton() {
-        User test = User.getInstance("player1", 1, "Easy", 10);
-        User test2 = User.getInstance("player100", 3, "Hard", 50);
+    public void PlayerSingleton() {
+        Player test = Player.getInstance("player1", 1, "Easy", 10);
+        Player test2 = Player.getInstance("player100", 3, "Hard", 50);
         assertTrue(test == test2);
-        assertTrue(User.getUsername() == "player1");
-        assertTrue(User.getDifficulty() == "Easy");
-        assertTrue(User.getSprite() == 1);
-        assertTrue(User.getSpeed() == 10);
+        assertTrue(Player.getUsername() == "player1");
+        assertTrue(Player.getDifficulty() == "Easy");
+        assertTrue(Player.getSprite() == 1);
+        assertTrue(Player.getSpeed() == 10);
     }
 }
