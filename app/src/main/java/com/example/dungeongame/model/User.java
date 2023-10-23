@@ -77,7 +77,7 @@ public class User extends View {
             break;
         case "Hard":
             this.health = 60;
-            //this.movementStrategy = new WalkStrategy();
+            this.movementStrategy =  new JogStrategy();
             break;
         default:
             System.out.println("You have entered an invalid difficulty level");
@@ -191,7 +191,7 @@ public class User extends View {
             break;
         case "Hard":
             User.health = 60;
-            //User.movementStrategy = new WalkStrategy();
+            User.movementStrategy = new JogStrategy();
             break;
         default:
             System.out.println("You have entered an invalid difficulty level");

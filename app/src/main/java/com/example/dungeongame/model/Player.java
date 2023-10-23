@@ -43,10 +43,11 @@ public class Player {
             break;
         case "Hard":
             this.health = 60;
-            //this.movementStrategy = new WalkStrategy();
+            this.movementStrategy = new JogStrategy();
             break;
         default:
             System.out.println("You have entered an invalid difficulty level");
+            break;
         }
         this.speed = speed;
         this.sprite = sprite;
@@ -128,7 +129,7 @@ public class Player {
             break;
         case "Hard":
             Player.health = 60;
-            //Player.movementStrategy = new WalkStrategy();
+            Player.movementStrategy = new JogStrategy();
             break;
         default:
             System.out.println("You have entered an invalid difficulty level");
