@@ -12,7 +12,7 @@ public class LeaderboardEntry {
         this.playerName = playerName;
         this.score = score;
         this.timestamp = new Date();
-
+        System.out.println("leaderboard is created");
     }
 
     public String getPlayerName() {
@@ -33,6 +33,7 @@ public class LeaderboardEntry {
 
     @Override
     public String toString() {
+
         return Leaderboard.getInstance().getLastEntry().getPlayerName() + "   "
                 + Leaderboard.getInstance().getLastEntry().getScore() + "      "
                 + Leaderboard.getInstance().getLastEntry().getFormattedDate();
