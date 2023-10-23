@@ -12,14 +12,20 @@ import com.example.dungeongame.TMXLoader.TMXLoader;
 import com.example.dungeongame.TMXLoader.TileMapData;
 
 public class GameView extends View {
+
+    private GameViewListener gameViewListener;
+
+    public boolean endTile;
     private Bitmap tilemapBitmap;
     private Bitmap userSprite;
 
     private TileMapData t;
 
+
     public GameView(Context context) {
         super(context);
         setFocusable(true);
+        this.endTile = false;
         // Load the map and user sprite
         t = TMXLoader.readTMX("Map1.tmx", context);
         tilemapBitmap = TMXLoader.createBitmap(t, context, 0, t.getLayers().size());
@@ -29,19 +35,22 @@ public class GameView extends View {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         float x = User.getInstance().getX();
         float y = User.getInstance().getY();
+        System.out.println(t.tileheight + " , " + t.tilewidth);
 
         switch (keyCode) {
             case KeyEvent.KEYCODE_DPAD_DOWN:
-                handleMove(x, y, 0, 10);  // Move down
+                handleMove(x, y, 0, t.tileheight);  // Move down
                 break;
             case KeyEvent.KEYCODE_DPAD_UP:
-                handleMove(x, y, 0, -10);  // Move up
+                handleMove(x, y, 0, -t.tileheight);  // Move up
                 break;
             case KeyEvent.KEYCODE_DPAD_LEFT:
-                handleMove(x, y, -10, 0);  // Move left
+                handleMove(x, y, -t.tilewidth, 0);  // Move left
                 break;
             case KeyEvent.KEYCODE_DPAD_RIGHT:
-                handleMove(x, y, 10, 0);  // Move right
+                handleMove(x, y, t.tilewidth, 0);  // Move right
+                break;
+            default:
                 break;
         }
 
@@ -51,18 +60,27 @@ public class GameView extends View {
         return true;
     }
 
+    public void setGameViewListener(GameViewListener listener) {
+        this.gameViewListener = listener;
+    }
+
     private void handleMove(float x, float y, int dx, int dy) {
-        int tileY = (int) (y + dy) / (t.tileheight + 20);
-        int tileX = (int) (x + dx) / (t.tilewidth + 20);
+        int tileY = (int) (y + dy) / (t.tileheight + 7);
+        int tileX = (int) (x + dx) / (t.tilewidth + 12);
         long GID = t.getGIDAt(tileX, tileY);
+
+        if (GID == 100) {
+            endTile = true;
+        }
+
         System.out.println(GID + ", tileX: " + tileX + ", tileY: " + tileY);
 
-        if (GID != 130) {
-            System.out.println(GID);
-            User.getInstance().updatePosition((int) x , (int) y);
-        } else {
+        if (GID >= 120 && GID <= 231) {
             System.out.println(GID);
             User.getInstance().updatePosition((int) (x + dx), (int) (y + dy));
+        } else {
+            System.out.println(GID);
+            User.getInstance().updatePosition((int) x, (int) y);
         }
     }
 
@@ -70,6 +88,7 @@ public class GameView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+
 
 
         // Draw the map
@@ -92,5 +111,10 @@ public class GameView extends View {
         canvas.drawText(difficulty, 100, 70, textPaint);
         canvas.drawText(health, 100, 90, textPaint);
         canvas.drawText(score, 100, 110, textPaint);
+    }
+
+    public interface GameViewListener {
+        void onCharacterLandedOnTile(int x, int y);
+
     }
 }
