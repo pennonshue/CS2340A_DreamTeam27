@@ -47,6 +47,7 @@ public class GameScreen extends AppCompatActivity  {
         System.out.println(User.getSprite());
 
         gameView = new GameView(this, "Map1.tmx");
+        User.getInstance().updatePosition(100, 100);
         setContentView(gameView);
 
         User.setScore(1000);

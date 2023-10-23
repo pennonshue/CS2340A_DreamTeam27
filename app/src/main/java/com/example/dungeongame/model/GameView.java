@@ -41,16 +41,16 @@ public class GameView extends View {
 
         switch (keyCode) {
             case KeyEvent.KEYCODE_DPAD_DOWN:
-                handleMove(x, y, 0, t.tileheight);  // Move down
+                handleMove(x, y, 0, t.tileheight+20);  // Move down
                 break;
             case KeyEvent.KEYCODE_DPAD_UP:
-                handleMove(x, y, 0, -t.tileheight);  // Move up
+                handleMove(x, y, 0, -t.tileheight - 20);  // Move up
                 break;
             case KeyEvent.KEYCODE_DPAD_LEFT:
-                handleMove(x, y, -t.tilewidth, 0);  // Move left
+                handleMove(x, y, -t.tilewidth - 20, 0);  // Move left
                 break;
             case KeyEvent.KEYCODE_DPAD_RIGHT:
-                handleMove(x, y, t.tilewidth, 0);  // Move right
+                handleMove(x, y, t.tilewidth + 20, 0);  // Move right
                 break;
             default:
                 break;

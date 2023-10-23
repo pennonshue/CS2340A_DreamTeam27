@@ -37,6 +37,7 @@ public class GameScreen3 extends AppCompatActivity {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        User.getInstance().updatePosition(100, 100);
         gameView = new GameView(this, "Map3.tmx");
         setContentView(gameView);
 
@@ -144,6 +145,8 @@ public class GameScreen3 extends AppCompatActivity {
                     if (gameView.endTile) {
                         stopScoreUpdater();
                         Intent intent = new Intent(GameScreen3.this, EndScreen.class);
+                        LeaderboardEntry entry = new LeaderboardEntry(User.getUsername(), User.getScore());
+                        Leaderboard.getInstance().addEntry(entry);
                         startActivity(intent);
                     }
                     return gameView.onKeyDown(KeyEvent.KEYCODE_DPAD_UP, event);

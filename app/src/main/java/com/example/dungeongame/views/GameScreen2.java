@@ -35,6 +35,7 @@ public class GameScreen2 extends AppCompatActivity {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        User.getInstance().updatePosition(100, 100);
         gameView = new GameView(this, "Map2.tmx");
         setContentView(gameView);
 
