@@ -6,11 +6,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="838dp"
+        android:layout_height="1351dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/leaderboardbackground"/>
+
     <Button
         android:id="@+id/playAgainButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="#00FFFFFF"
+        android:fontFamily="@font/dungeonfont"
         android:text="Play Again"
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#00FFFFFF"
+        android:textColorLink="#00FFFFFF"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -18,9 +38,11 @@
         android:id="@+id/leaderboardTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="-5dp"
+        android:fontFamily="@font/dungeonfont"
         android:text="Leaderboard"
-        android:textSize="24sp"
+        android:textColor="#FFFFFF"
+        android:textSize="48sp"
         android:translationY="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,8 +53,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="424dp"
+        android:fontFamily="@font/dungeonfont"
         android:text="WIN"
-        android:textSize="24sp"
+        android:textColor="#FFFFFF"
+        android:textSize="48sp"
         android:translationY="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,48 +78,62 @@
 
     <TextView
         android:id="@+id/number2"
-        android:layout_width="253dp"
-        android:layout_height="39dp"
-        android:layout_marginBottom="36dp"
+        android:layout_width="258dp"
+        android:layout_height="54dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/dungeonfont"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/number3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/number3"
-        android:layout_width="253dp"
-        android:layout_height="39dp"
+        android:layout_width="255dp"
+        android:layout_height="42dp"
+        android:fontFamily="@font/dungeonfont"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/number4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/number4"
-        android:layout_width="253dp"
-        android:layout_height="39dp"
+        android:layout_width="251dp"
+        android:layout_height="49dp"
+        android:fontFamily="@font/dungeonfont"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/number5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.585"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/number5"
         android:layout_width="253dp"
-        android:layout_height="39dp"
-        android:layout_marginBottom="324dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="276dp"
+        android:fontFamily="@font/dungeonfont"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/number6"
-        android:layout_width="253dp"
-        android:layout_height="39dp"
-        android:layout_marginBottom="156dp"
+        android:layout_width="262dp"
+        android:layout_height="79dp"
+        android:layout_marginBottom="164dp"
+        android:fontFamily="@font/dungeonfont"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintHorizontal_bias="0.46"
         app:layout_constraintStart_toStartOf="parent" />
 
 
