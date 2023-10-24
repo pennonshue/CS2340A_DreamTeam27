@@ -34,7 +34,6 @@ public class User extends View {
     private static String username;
 
     private static int score;
-    private static int speed;
     private static int health;
 
     private static int sprite;
@@ -44,11 +43,10 @@ public class User extends View {
 
 
 
-    public static User getInstance(Context context, String username, int sprite, String difficulty,
-                                   int speed) {
+    public static User getInstance(Context context, String username, int sprite, String difficulty) {
 
         if (userInstance == null) {
-            userInstance = new User(context, username, sprite, difficulty, speed);
+            userInstance = new User(context, username, sprite, difficulty);
         }
         return userInstance;
     }
@@ -58,7 +56,7 @@ public class User extends View {
     }
 
 
-    private User(Context context, String username, int sprite, String difficulty, int speed) {
+    private User(Context context, String username, int sprite, String difficulty) {
         super(context);
         this.difficulty = difficulty;
         this.username = username;
@@ -82,7 +80,6 @@ public class User extends View {
         default:
             System.out.println("You have entered an invalid difficulty level");
         }
-        this.speed = speed;
 
         this.sprite = sprite;
 
@@ -121,8 +118,6 @@ public class User extends View {
         return movementStrategy;
     }
 
-
-
     public static String getUsername() {
         return username;
     }
@@ -139,13 +134,6 @@ public class User extends View {
         User.sprite = sprite;
     }
 
-    public static int getSpeed() {
-        return speed;
-    }
-
-    public static void setSpeed(int speed) {
-        User.speed = speed;
-    }
 
     public static int getHealth() {
         return health;
