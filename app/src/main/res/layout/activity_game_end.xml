@@ -49,10 +49,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/leaderboardWin"
+        android:id="@+id/leaderboardResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="424dp"
+        android:layout_marginTop="-10dp"
         android:fontFamily="@font/dungeonfont"
         android:text="WIN"
         android:textColor="#FFFFFF"
@@ -60,21 +60,21 @@
         android:translationY="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/number6" />
 
     <TextView
         android:id="@+id/number1"
         android:layout_width="253dp"
         android:layout_height="39dp"
         android:layout_marginStart="68dp"
-        android:layout_marginTop="152dp"
+        android:layout_marginTop="124dp"
         android:layout_marginEnd="72dp"
+
         app:layout_constraintBottom_toTopOf="@+id/number2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.611"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/leaderboardTitle"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/leaderboardTitle" />
 
     <TextView
         android:id="@+id/number2"
@@ -86,7 +86,9 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/number3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/number3"
@@ -97,7 +99,9 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/number4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/number4"
@@ -109,6 +113,7 @@
         app:layout_constraintBottom_toTopOf="@+id/number5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 
     <TextView
         android:id="@+id/number5"
@@ -135,6 +140,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.46"
         app:layout_constraintStart_toStartOf="parent" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

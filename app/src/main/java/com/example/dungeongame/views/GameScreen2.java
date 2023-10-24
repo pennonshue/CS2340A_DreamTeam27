@@ -15,6 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.dungeongame.model.GameView;
 import com.example.dungeongame.model.GameViewSprite;
+import com.example.dungeongame.model.Leaderboard;
+import com.example.dungeongame.model.LeaderboardEntry;
 import com.example.dungeongame.model.User;
 
 public class GameScreen2 extends AppCompatActivity {
@@ -37,6 +39,14 @@ public class GameScreen2 extends AppCompatActivity {
                 User.setScore(User.getScore() - 1);
                 //Delay update by 1 second
                 handler.postDelayed(this, 1000);
+                if (User.getScore() == 0) {
+                    stopScoreUpdater();
+                    Intent intent = new Intent(GameScreen2.this, EndScreen.class);
+                    LeaderboardEntry entry = new LeaderboardEntry(User.getUsername(),
+                            User.getScore());
+                    Leaderboard.getInstance().addEntry(entry);
+                    startActivity(intent);
+                }
             }
         };
         handler.post(scoreUpdater);
