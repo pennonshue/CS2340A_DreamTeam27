@@ -48,6 +48,13 @@ public class EndScreen extends AppCompatActivity {
         TextView number5 = findViewById(R.id.number5);
         TextView number6 = findViewById(R.id.number6);
         number6.setText("Latest Attempt: " + Leaderboard.getInstance().getLastEntry());
+        TextView leaderboardResult = findViewById(R.id.leaderboardResult);
+        if (User.getInstance().getScore() > 0) {
+            leaderboardResult.setText("WINNER");
+        } else {
+            leaderboardResult.setText("LOSER");
+        }
+
 
 
         ArrayList<TextView> numbers = new ArrayList<>();

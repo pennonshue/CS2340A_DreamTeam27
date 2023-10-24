@@ -161,7 +161,7 @@ public class User extends View {
         }
     }
     public static boolean getWin() {
-        return win;
+        return score > 0;
     }
 
     public static String getDifficulty() {

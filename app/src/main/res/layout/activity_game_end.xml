@@ -27,14 +27,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/leaderboardWin"
+        android:id="@+id/leaderboardResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="424dp"
-        android:text="WIN"
+        android:layout_marginTop="428dp"
         android:textSize="24sp"
         android:translationY="100dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,32 +43,36 @@
         android:layout_width="253dp"
         android:layout_height="39dp"
         android:layout_marginStart="68dp"
-        android:layout_marginTop="152dp"
+        android:layout_marginTop="124dp"
         android:layout_marginEnd="72dp"
+
         app:layout_constraintBottom_toTopOf="@+id/number2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.611"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/leaderboardTitle"
-        app:layout_constraintVertical_bias="0.845" />
+        app:layout_constraintTop_toBottomOf="@+id/leaderboardTitle" />
 
     <TextView
         android:id="@+id/number2"
         android:layout_width="253dp"
         android:layout_height="39dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toTopOf="@+id/number3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/number3"
         android:layout_width="253dp"
         android:layout_height="39dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="12dp"
         app:layout_constraintBottom_toTopOf="@+id/number4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/number4"
@@ -76,8 +80,9 @@
         android:layout_height="39dp"
         app:layout_constraintBottom_toTopOf="@+id/number5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.585"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/number5"
@@ -92,11 +97,11 @@
         android:id="@+id/number6"
         android:layout_width="253dp"
         android:layout_height="39dp"
-        android:layout_marginBottom="120dp"
+        android:layout_marginBottom="96dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/leaderboardWin"
+        app:layout_constraintTop_toBottomOf="@+id/leaderboardResult"
         app:layout_constraintVertical_bias="1.0" />
 
 
