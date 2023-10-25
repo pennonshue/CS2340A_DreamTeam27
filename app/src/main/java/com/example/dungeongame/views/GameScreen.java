@@ -11,6 +11,7 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.dungeongame.model.Enemy;
 import com.example.dungeongame.model.GameView;
 
 
@@ -50,8 +51,9 @@ public class GameScreen extends AppCompatActivity  {
             @Override
             public void run() {
                 User.setScore(User.getScore() - 1);
-
-
+                for (Enemy enemy: gameView.getEnemies()) {
+                    enemy.update();
+                }
                 //Delay update by 1 second
                 handler.postDelayed(this, 1000);
                 if (User.getScore() == 0) {
@@ -108,59 +110,8 @@ public class GameScreen extends AppCompatActivity  {
         return super.dispatchKeyEvent(event);
     }
 
-    //    @Override
-    //    public void onCharacterLandedOnTile() {
-    //        stopScoreUpdater();
-    //        Intent intent = new Intent(GameScreen.this, GameScreen2.class);
-    //        startActivity(intent);
-    //
-    //    }
-
-    //        public boolean onKeyUp ( int keyCode, KeyEvent event){
-    //            switch (keyCode) {
-    //                case KeyEvent.KEYCODE_DPAD_LEFT:
-    //                    gameViewSprite.setMoveLeft(false);
-    //                    return true; // Return true to indicate that you've handled the event
-    //                case KeyEvent.KEYCODE_DPAD_RIGHT:
-    //                    gameViewSprite.setMoveRight(false);
-    //                    return true;
-    //                case KeyEvent.KEYCODE_DPAD_UP:
-    //                    gameViewSprite.setMoveUp(false);
-    //                    return true;
-    //                case KeyEvent.KEYCODE_DPAD_DOWN:
-    //                    gameViewSprite.setMoveDown(false);
-    //                    return true;
-    //                default:
-    //            }
-    //            return false;
-    //        }
 
 }
-    //    @Override
-    //    public void onCharacterLandedOnTile() {
-    //        stopScoreUpdater();
-    //        Intent intent = new Intent(GameScreen.this, GameScreen2.class);
-    //        startActivity(intent);
-    //
-    //    }
 
-    //        public boolean onKeyUp ( int keyCode, KeyEvent event){
-    //            switch (keyCode) {
-    //                case KeyEvent.KEYCODE_DPAD_LEFT:
-    //                    gameViewSprite.setMoveLeft(false);
-    //                    return true; // Return true to indicate that you've handled the event
-    //                case KeyEvent.KEYCODE_DPAD_RIGHT:
-    //                    gameViewSprite.setMoveRight(false);
-    //                    return true;
-    //                case KeyEvent.KEYCODE_DPAD_UP:
-    //                    gameViewSprite.setMoveUp(false);
-    //                    return true;
-    //                case KeyEvent.KEYCODE_DPAD_DOWN:
-    //                    gameViewSprite.setMoveDown(false);
-    //                    return true;
-    //                default:
-    //            }
-    //            return false;
-    //        }
 
 

@@ -11,6 +11,7 @@ import android.view.View;
 import com.example.dungeongame.TMXLoader.TMXLoader;
 import com.example.dungeongame.TMXLoader.TileMapData;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameView extends View implements GameViewObserver {
@@ -21,9 +22,17 @@ public class GameView extends View implements GameViewObserver {
 
     private boolean endTile;
     private Bitmap tilemapBitmap;
+
     private Bitmap userSprite;
 
     private TileMapData t;
+
+    public List<Enemy> getEnemies() {
+        return enemies;
+    }
+
+    private List<Enemy> enemies;
+
 
 
     public GameView(Context context, String map) {
@@ -31,10 +40,13 @@ public class GameView extends View implements GameViewObserver {
         setFocusable(true);
         this.endTile = false;
         this.mapName = map;
+        this.enemies = new ArrayList<>();
+        this.enemies.add(new Devil(context));
         // Load the map and user sprite
         t = TMXLoader.readTMX(map, context);
         tilemapBitmap = TMXLoader.createBitmap(t, context, 0, t.getLayers().size());
         userSprite = User.getSprite1();
+
     }
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -104,6 +116,12 @@ public class GameView extends View implements GameViewObserver {
         // Draw the user sprite
 
         canvas.drawBitmap(userSprite, User.getInstance().getX(), User.getInstance().getY(), null);
+
+        for (Enemy enemy : enemies) {
+            Bitmap enemySprite = enemy.getCurrentSprite();
+            // Draw the enemySprite at the enemy's position on the canvas
+            canvas.drawBitmap(enemySprite, 300, 300, null);
+        }
 
         // Draw user information (replace with your actual values)
         Paint textPaint = new Paint();
