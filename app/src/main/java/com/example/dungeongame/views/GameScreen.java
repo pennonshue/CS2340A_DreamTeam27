@@ -14,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.dungeongame.model.GameView;
 
 
+import com.example.dungeongame.model.Leaderboard;
+import com.example.dungeongame.model.LeaderboardEntry;
 import com.example.dungeongame.model.User;
 
 
@@ -40,7 +42,7 @@ public class GameScreen extends AppCompatActivity  {
         User.getInstance().updatePosition(100, 100);
         setContentView(gameView);
 
-        User.setScore(1000);
+        User.setScore(30);
 
 
         // Create a Runnable to update the score every second
@@ -49,8 +51,17 @@ public class GameScreen extends AppCompatActivity  {
             public void run() {
                 User.setScore(User.getScore() - 1);
 
+
                 //Delay update by 1 second
                 handler.postDelayed(this, 1000);
+                if (User.getScore() == 0) {
+                    stopScoreUpdater();
+                    Intent intent = new Intent(GameScreen.this, EndScreen.class);
+                    LeaderboardEntry entry = new LeaderboardEntry(User.getUsername(),
+                            User.getScore());
+                    Leaderboard.getInstance().addEntry(entry);
+                    startActivity(intent);
+                }
             }
         };
         handler.post(scoreUpdater);

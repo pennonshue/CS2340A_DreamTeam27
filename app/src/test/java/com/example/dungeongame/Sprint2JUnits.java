@@ -2,6 +2,7 @@ package com.example.dungeongame;
 
 import static org.junit.Assert.assertTrue;
 
+import com.example.dungeongame.model.JogStrategy;
 import com.example.dungeongame.model.Leaderboard;
 import com.example.dungeongame.model.LeaderboardEntry;
 import com.example.dungeongame.model.Player;
@@ -73,7 +74,7 @@ public class Sprint2JUnits {
     public void checkWalkMovementHard() {
         Player test = Player.getInstance("player1", 1, "Medium", 10);
         test.setDifficulty("Hard");
-        assertTrue(Player.getMovementStrategy() instanceof RunStrategy);
+        assertTrue(Player.getMovementStrategy() instanceof JogStrategy);
     }
 
 }
