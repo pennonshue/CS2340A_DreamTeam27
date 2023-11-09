@@ -29,11 +29,6 @@ public class GameScreen extends AppCompatActivity  {
     private Handler handler = new Handler();
 
     private GameView gameView;
-
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,9 +79,6 @@ public class GameScreen extends AppCompatActivity  {
         handler.removeCallbacks(scoreUpdater);
     }
     //        }
-
-
-
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
         if (event.getAction() == KeyEvent.ACTION_DOWN) {
@@ -109,8 +101,6 @@ public class GameScreen extends AppCompatActivity  {
         }
         return super.dispatchKeyEvent(event);
     }
-
-
 }
 
 

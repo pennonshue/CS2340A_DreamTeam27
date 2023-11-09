@@ -41,7 +41,7 @@ public class GameView extends View implements GameViewObserver {
         this.endTile = false;
         this.mapName = map;
         this.enemies = new ArrayList<>();
-        this.enemies.add(new Devil(context));
+        //this.enemies.add(new Devil(context));
         // Load the map and user sprite
         t = TMXLoader.readTMX(map, context);
         tilemapBitmap = TMXLoader.createBitmap(t, context, 0, t.getLayers().size());
@@ -107,18 +107,15 @@ public class GameView extends View implements GameViewObserver {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
-
-
         // Draw the map
         canvas.drawBitmap(tilemapBitmap, 0, 0, null);
 
         // Draw the user sprite
-
         canvas.drawBitmap(userSprite, User.getInstance().getX(), User.getInstance().getY(), null);
 
+        //Draw enemy sprites
         for (Enemy enemy : enemies) {
-            Bitmap enemySprite = enemy.getCurrentSprite();
+            Bitmap enemySprite = enemy.getSprite1();
             // Draw the enemySprite at the enemy's position on the canvas
             canvas.drawBitmap(enemySprite, 300, 300, null);
         }
