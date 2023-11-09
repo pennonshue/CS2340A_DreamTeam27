@@ -4,49 +4,54 @@ import android.graphics.Bitmap;
 
 import java.util.List;
 
-public abstract class Enemy {
-    private MovementStrategy movementStrategy;
-    private int x;
-    private int y;
-
-    public int getX() {
-        return x;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
-    private int currentFrame;
-    private int damage;
-    private int path;
-
-    private List<Bitmap> sprites;
+public interface Enemy {
+    int getSprite();
+//    int getSpeed();
+//    int getSize();
+    int getHealth();
+    float getX();
+    float getY();
+    void update(float x, float y);
 
 
-    public Enemy(List<Bitmap> sprites) {
-        this.sprites = sprites;
-        this.currentFrame = 0;
-    }
 
-    public Bitmap getCurrentSprite() {
-        return sprites.get(currentFrame);
-    }
-
-    public void update() {
-        currentFrame = (currentFrame + 1) % sprites.size();
-    }
-
-public abstract class Enemy {
-    int health;
-    abstract void attack();
-
+//    private MovementStrategy movementStrategy;
+//    private int x;
+//    private int y;
+//
+//    public int getX() {
+//        return x;
+//    }
+//
+//    public void setX(int x) {
+//        this.x = x;
+//    }
+//
+//    public int getY() {
+//        return y;
+//    }
+//
+//    public void setY(int y) {
+//        this.y = y;
+//    }
+//
+//    private int currentFrame;
+//    private int damage;
+//    private int path;
+//
+//    private List<Bitmap> sprites;
+//
+//
+//    public Enemy(List<Bitmap> sprites) {
+//        this.sprites = sprites;
+//        this.currentFrame = 0;
+//    }
+//
+//    public Bitmap getCurrentSprite() {
+//        return sprites.get(currentFrame);
+//    }
+//
+//    public void update() {
+//        currentFrame = (currentFrame + 1) % sprites.size();
+//    }
 }
