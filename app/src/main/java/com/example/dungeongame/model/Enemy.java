@@ -1,7 +1,6 @@
 package com.example.dungeongame.model;
 
-public interface Enemy {
-    void attack();
-
-
+public abstract class Enemy {
+    int health;
+    abstract void attack();
 }
