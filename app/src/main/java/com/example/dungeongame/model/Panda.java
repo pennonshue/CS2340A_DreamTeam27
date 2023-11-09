@@ -7,7 +7,7 @@ import com.example.dungeongame.R;
 
 import java.util.List;
 
-public class Panda extends Enemy {
+public class Panda implements Enemy {
     public void attack() {
         System.out.println("implement a strong attack");
     }
@@ -57,7 +57,6 @@ public class Panda extends Enemy {
         matrix.postScale(scaleX, scaleY);
         sprite1 = Bitmap.createBitmap(sprite1, 0, 0, sprite1.getWidth(),
                 sprite1.getHeight(), matrix, true);
-        enemies.add(this);
     }
 
 //    public static com.example.dungeongame.model.Enemy getInstance(float x, float y, String difficulty) {

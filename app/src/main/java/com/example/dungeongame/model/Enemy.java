@@ -4,16 +4,16 @@ import android.graphics.Bitmap;
 
 import java.util.List;
 
-public abstract class Enemy {
-    abstract int getSprite();
-    abstract Bitmap getSprite1();
+public interface Enemy {
+    int getSprite();
+    Bitmap getSprite1();
+//    abstract static Bitmap getSprite1();
 //    int getSpeed();
 //    int getSize();
-    abstract int getHealth();
-    abstract float getX();
-    abstract float getY();
-    abstract void update(float x, float y);
-    List<Enemy> enemies;
+    int getHealth();
+    float getX();
+    float getY();
+    void update(float x, float y);
 //    private MovementStrategy movementStrategy;
 //    private int x;
 //    private int y;
@@ -34,24 +34,15 @@ public abstract class Enemy {
 //        this.y = y;
 //    }
 //
-    private int currentFrame;
+//    private int currentFrame;
 //    private int damage;
 //    private int path;
 //
-    List<Bitmap> sprites;
-
-//    public Enemy(List<Bitmap> sprites) {
-//        this.sprites = sprites;
-//        this.currentFrame = 0;
+//    public Bitmap getCurrentSprite() {
+//        return sprites.get(currentFrame);
 //    }
-    public Enemy() {
-        currentFrame = 0;
-    }
-    public Bitmap getCurrentSprite() {
-        return sprites.get(currentFrame);
-    }
-
-    public void update() {
-        currentFrame = (currentFrame + 1) % sprites.size();
-    }
+//
+//    public void update() {
+//        currentFrame = (currentFrame + 1) % sprites.size();
+//    }
 }

@@ -12,7 +12,7 @@ import com.example.dungeongame.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Devil extends Enemy {
+public class Devil implements Enemy {
 
 
 //    public Devil(Context context) {
@@ -87,7 +87,6 @@ public void attack() {
         matrix.postScale(scaleX, scaleY);
         sprite1 = Bitmap.createBitmap(sprite1, 0, 0, sprite1.getWidth(),
                 sprite1.getHeight(), matrix, true);
-        enemies.add(this);
     }
 
 //    public static Enemy getInstance(float x, float y, String difficulty) {
