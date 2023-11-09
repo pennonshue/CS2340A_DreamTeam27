@@ -107,21 +107,18 @@ public class GameView extends View implements GameViewObserver {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
-
-
         // Draw the map
         canvas.drawBitmap(tilemapBitmap, 0, 0, null);
 
         // Draw the user sprite
-
         canvas.drawBitmap(userSprite, User.getInstance().getX(), User.getInstance().getY(), null);
 
-//        for (Enemy enemy : enemies) {
-//            Bitmap enemySprite = enemy.getCurrentSprite();
-//            // Draw the enemySprite at the enemy's position on the canvas
-//            canvas.drawBitmap(enemySprite, 300, 300, null);
-//        }
+        //Draw enemy sprites
+        for (Enemy enemy : enemies) {
+            Bitmap enemySprite = enemy.getSprite1();
+            // Draw the enemySprite at the enemy's position on the canvas
+            canvas.drawBitmap(enemySprite, 300, 300, null);
+        }
 
         // Draw user information (replace with your actual values)
         Paint textPaint = new Paint();

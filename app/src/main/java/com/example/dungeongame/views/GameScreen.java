@@ -29,11 +29,6 @@ public class GameScreen extends AppCompatActivity  {
     private Handler handler = new Handler();
 
     private GameView gameView;
-
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,9 +46,9 @@ public class GameScreen extends AppCompatActivity  {
             @Override
             public void run() {
                 User.setScore(User.getScore() - 1);
-//                for (Enemy enemy: gameView.getEnemies()) {
-//                    enemy.update();
-//                }
+                for (Enemy enemy: gameView.getEnemies()) {
+                    enemy.update();
+                }
                 //Delay update by 1 second
                 handler.postDelayed(this, 1000);
                 if (User.getHealth() == 0) {
@@ -84,9 +79,6 @@ public class GameScreen extends AppCompatActivity  {
         handler.removeCallbacks(scoreUpdater);
     }
     //        }
-
-
-
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
         if (event.getAction() == KeyEvent.ACTION_DOWN) {
@@ -109,8 +101,6 @@ public class GameScreen extends AppCompatActivity  {
         }
         return super.dispatchKeyEvent(event);
     }
-
-
 }
 
 

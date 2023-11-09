@@ -1,12 +1,18 @@
 package com.example.dungeongame.model;
 
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
+
 import com.example.dungeongame.R;
 
-public class Creature implements Enemy {
+import java.util.List;
+
+public class Creature extends Enemy {
     public void attack() {
         System.out.println("implement a strong attack");
     }
     private int sprite;
+    private Bitmap sprite1;
     private int speed;
     private String enemySize;
     private int health;
@@ -15,6 +21,7 @@ public class Creature implements Enemy {
     private static String difficulty;
     private static com.example.dungeongame.model.Enemy enemyInstance = null;
     public Creature(float x, float y, String difficulty) {
+        //super(sprites);
         sprite = R.drawable.creatures;
         speed = 15;
         enemySize = "Small";
@@ -46,15 +53,20 @@ public class Creature implements Enemy {
                 System.out.println("You have entered an invalid difficulty level");
                 break;
         }
+        float scaleX = 0.15f;
+        float scaleY = 0.15f;
+        Matrix matrix = new Matrix();
+        matrix.postScale(scaleX, scaleY);
+        sprite1 = Bitmap.createBitmap(sprite1, 0, 0, sprite1.getWidth(),
+                sprite1.getHeight(), matrix, true);
+        enemies.add(Creature.getInstance(x, y, difficulty));
     }
-
     public static com.example.dungeongame.model.Enemy getInstance(float x, float y, String difficulty) {
         if (enemyInstance == null) {
             enemyInstance = new Creature(50, 50, difficulty);
         }
         return enemyInstance;
     }
-
     public void update(float x, float y) {
         if (x < 0) {
             this.x = 0;
@@ -70,7 +82,9 @@ public class Creature implements Enemy {
     public int getSpeed() {
         return speed;
     }
-
+    public Bitmap getSprite1() {
+        return sprite1;
+    }
     public int getSprite() {
         return sprite;
     }
