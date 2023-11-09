@@ -59,14 +59,14 @@ public class Creature extends Enemy {
         matrix.postScale(scaleX, scaleY);
         sprite1 = Bitmap.createBitmap(sprite1, 0, 0, sprite1.getWidth(),
                 sprite1.getHeight(), matrix, true);
-        enemies.add(Creature.getInstance(x, y, difficulty));
+        enemies.add(this);
     }
-    public static com.example.dungeongame.model.Enemy getInstance(float x, float y, String difficulty) {
-        if (enemyInstance == null) {
-            enemyInstance = new Creature(50, 50, difficulty);
-        }
-        return enemyInstance;
-    }
+//    public static com.example.dungeongame.model.Enemy getInstance(float x, float y, String difficulty) {
+//        if (enemyInstance == null) {
+//            enemyInstance = new Creature(50, 50, difficulty);
+//        }
+//        return enemyInstance;
+//    }
     public void update(float x, float y) {
         if (x < 0) {
             this.x = 0;

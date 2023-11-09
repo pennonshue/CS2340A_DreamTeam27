@@ -50,7 +50,6 @@ public void attack() {
     private float x;
     private float y;
     private String difficulty;
-    private static com.example.dungeongame.model.Enemy enemyInstance = null;
     public Devil(float x, float y, String difficulty) {
         sprite = R.drawable.creatures;
         movementSpeed = 25;
@@ -88,15 +87,15 @@ public void attack() {
         matrix.postScale(scaleX, scaleY);
         sprite1 = Bitmap.createBitmap(sprite1, 0, 0, sprite1.getWidth(),
                 sprite1.getHeight(), matrix, true);
-        enemies.add(Devil.getInstance(x, y, difficulty));
+        enemies.add(this);
     }
 
-    public static com.example.dungeongame.model.Enemy getInstance(float x, float y, String difficulty) {
-        if (enemyInstance == null) {
-            enemyInstance = new Devil(50, 50, difficulty);
-        }
-        return enemyInstance;
-    }
+//    public static Enemy getInstance(float x, float y, String difficulty) {
+//        if (enemyInstance == null) {
+//            enemyInstance = new Devil(50, 50, difficulty);
+//        }
+//        return enemyInstance;
+//    }
 //    public List<Bitmap> enemies(List<Bitmap> enemies) {
 //        enemies.add(sprite1);
 //        return enemies;
