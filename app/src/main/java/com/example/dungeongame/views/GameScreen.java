@@ -56,7 +56,7 @@ public class GameScreen extends AppCompatActivity  {
                 }
                 //Delay update by 1 second
                 handler.postDelayed(this, 1000);
-                if (User.getScore() == 0) {
+                if (User.getHealth() == 0) {
                     stopScoreUpdater();
                     Intent intent = new Intent(GameScreen.this, EndScreen.class);
                     LeaderboardEntry entry = new LeaderboardEntry(User.getUsername(),

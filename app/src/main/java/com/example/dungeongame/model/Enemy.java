@@ -45,6 +45,8 @@ public abstract class Enemy {
         currentFrame = (currentFrame + 1) % sprites.size();
     }
 
-
+public abstract class Enemy {
+    int health;
+    abstract void attack();
 
 }

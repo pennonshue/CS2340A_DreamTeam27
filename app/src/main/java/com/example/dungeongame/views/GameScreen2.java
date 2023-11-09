@@ -39,7 +39,7 @@ public class GameScreen2 extends AppCompatActivity {
                 User.setScore(User.getScore() - 1);
                 //Delay update by 1 second
                 handler.postDelayed(this, 1000);
-                if (User.getScore() == 0) {
+                if (User.getHealth() == 0) {
                     stopScoreUpdater();
                     Intent intent = new Intent(GameScreen2.this, EndScreen.class);
                     LeaderboardEntry entry = new LeaderboardEntry(User.getUsername(),

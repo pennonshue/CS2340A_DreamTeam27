@@ -96,7 +96,7 @@ public class GameScreen3 extends AppCompatActivity {
                 //                scoreTextView.setText("Score: " + User.getScore());
                 //Delay update by 1 second
                 handler.postDelayed(this, 1000);
-                if (User.getScore() == 0) {
+                if (User.getHealth() == 0) {
                     stopScoreUpdater();
                     Intent intent = new Intent(GameScreen3.this, EndScreen.class);
                     LeaderboardEntry entry = new LeaderboardEntry(User.getUsername(),
