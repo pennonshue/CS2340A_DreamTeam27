@@ -1,18 +1,19 @@
 package com.example.dungeongame.model;
 
+import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
+import android.view.View;
 
 import com.example.dungeongame.R;
 
-import java.util.List;
-
-public class Creature extends Enemy {
+public class Creature extends View implements Enemy  {
     public void attack() {
         System.out.println("implement a strong attack");
     }
     private int sprite;
-    private Bitmap sprite1;
+    private static Bitmap sprite1;
     private int speed;
     private String enemySize;
     private int health;
@@ -20,9 +21,9 @@ public class Creature extends Enemy {
     private float y;
     private static String difficulty;
     private static com.example.dungeongame.model.Enemy enemyInstance = null;
-    public Creature(float x, float y, String difficulty) {
+    public Creature(float x, float y, String difficulty, Context context) {
+        super(context);
         //super(sprites);
-        sprite = R.drawable.creatures;
         speed = 15;
         enemySize = "Small";
         health = 5;
@@ -53,20 +54,22 @@ public class Creature extends Enemy {
                 System.out.println("You have entered an invalid difficulty level");
                 break;
         }
-        float scaleX = 0.15f;
-        float scaleY = 0.15f;
+        this.sprite = R.drawable.panda;
+        float scaleX = 1.4f;
+        float scaleY = 1.4f;
         Matrix matrix = new Matrix();
         matrix.postScale(scaleX, scaleY);
-        sprite1 = Bitmap.createBitmap(sprite1, 0, 0, sprite1.getWidth(),
-                sprite1.getHeight(), matrix, true);
-        enemies.add(Creature.getInstance(x, y, difficulty));
+        sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
+        sprite1 = Bitmap.createBitmap(sprite1, 0, 0, 80,
+                90, matrix, true);
+        System.out.println("Creature made");
     }
-    public static com.example.dungeongame.model.Enemy getInstance(float x, float y, String difficulty) {
-        if (enemyInstance == null) {
-            enemyInstance = new Creature(50, 50, difficulty);
-        }
-        return enemyInstance;
-    }
+//    public static com.example.dungeongame.model.Enemy getInstance(float x, float y, String difficulty) {
+//        if (enemyInstance == null) {
+//            enemyInstance = new Creature(50, 50, difficulty);
+//        }
+//        return enemyInstance;
+//    }
     public void update(float x, float y) {
         if (x < 0) {
             this.x = 0;
@@ -82,6 +85,8 @@ public class Creature extends Enemy {
     public int getSpeed() {
         return speed;
     }
+
+    @Override
     public Bitmap getSprite1() {
         return sprite1;
     }

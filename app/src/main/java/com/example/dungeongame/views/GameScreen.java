@@ -46,9 +46,10 @@ public class GameScreen extends AppCompatActivity  {
             @Override
             public void run() {
                 User.setScore(User.getScore() - 1);
-                for (Enemy enemy: gameView.getEnemies()) {
-                    enemy.update();
-                }
+//                for (Enemy enemy: gameView.getEnemies()) {
+//                    enemy.update();
+//                }
+//                .update();
                 //Delay update by 1 second
                 handler.postDelayed(this, 1000);
                 if (User.getHealth() == 0) {
