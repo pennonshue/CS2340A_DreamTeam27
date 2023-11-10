@@ -62,7 +62,6 @@ public class Creature extends View implements Enemy  {
         sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
         sprite1 = Bitmap.createBitmap(sprite1, 0, 0, 80,
                 90, matrix, true);
-        System.out.println("Creature made");
     }
 //    public static com.example.dungeongame.model.Enemy getInstance(float x, float y, String difficulty) {
 //        if (enemyInstance == null) {

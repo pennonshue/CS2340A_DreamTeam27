@@ -1,18 +1,19 @@
 package com.example.dungeongame.model;
 
+import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
+import android.view.View;
 
 import com.example.dungeongame.R;
 
-import java.util.List;
-
-public class Panda implements Enemy {
+public class Boss extends View implements Enemy {
     public void attack() {
         System.out.println("implement a strong attack");
     }
     private int sprite;
-    private Bitmap sprite1;
+    private static Bitmap sprite1;
     private String difficulty;
     private int speed;
     private String enemySize;
@@ -20,8 +21,9 @@ public class Panda implements Enemy {
     private float x;
     private float y;
     private static com.example.dungeongame.model.Enemy enemyInstance = null;
-    public Panda(float x, float y, String difficulty) {
-        sprite = R.drawable.panda;
+    public Boss(float x, float y, String difficulty, Context context) {
+        super(context);
+        sprite = R.drawable.toast;
         speed = 30;
         enemySize = "Big";
         if (x < 0) {
@@ -90,7 +92,7 @@ public class Panda implements Enemy {
     }
 
     public int getSprite() {
-        return Panda.enemyInstance.getSprite();
+        return Boss.enemyInstance.getSprite();
     }
 
 //    public int getSize() {

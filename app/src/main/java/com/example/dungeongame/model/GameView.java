@@ -25,6 +25,7 @@ public class GameView extends View implements GameViewObserver {
 
     private Bitmap userSprite;
     private Bitmap creatureSprite;
+    private Bitmap bossSprite;
 
     private TileMapData t;
 
@@ -42,7 +43,9 @@ public class GameView extends View implements GameViewObserver {
         EnemyFactory enemyFactory = new CreatureFactory(context);
         Enemy booger = enemyFactory.generateEnemy();
         creatureSprite = booger.getSprite1();
-
+        EnemyFactory enemyFactoryBoss = new BossFactory(context);
+        Enemy jellySandwhich = enemyFactoryBoss.generateEnemy();
+        bossSprite = jellySandwhich.getSprite1();
     }
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -111,6 +114,7 @@ public class GameView extends View implements GameViewObserver {
 
         //test
         canvas.drawBitmap(creatureSprite, 200, 200, null);
+        canvas.drawBitmap(bossSprite, 250, 250, null);
 
         //Draw enemy sprites
 //        for (Enemy enemy : enemies) {
