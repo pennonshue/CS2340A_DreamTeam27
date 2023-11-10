@@ -1,29 +1,32 @@
 package com.example.dungeongame.model;
 
+import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
+import android.view.View;
 
 import com.example.dungeongame.R;
 
-import java.util.List;
-
-public class Panda implements Enemy {
+public class Boss extends View implements Enemy  {
     public void attack() {
         System.out.println("implement a strong attack");
     }
     private int sprite;
-    private Bitmap sprite1;
-    private String difficulty;
+    private static Bitmap sprite1;
     private int speed;
     private String enemySize;
     private int health;
     private float x;
     private float y;
+    private static String difficulty;
     private static com.example.dungeongame.model.Enemy enemyInstance = null;
-    public Panda(float x, float y, String difficulty) {
-        sprite = R.drawable.panda;
-        speed = 30;
-        enemySize = "Big";
+    public Boss(float x, float y, String difficulty, Context context) {
+        super(context);
+        //super(sprites);
+        speed = 25;
+        enemySize = "Small";
+        health = 40;
         if (x < 0) {
             this.x = 0;
         } else {
@@ -36,35 +39,37 @@ public class Panda implements Enemy {
         }
         switch (difficulty) {
             case "Easy":
-                this.health = 25;
+                this.health = 35;
                 //this.movementStrategy = new RunStrategy();
                 break;
             case "Medium":
-                this.health = 30;
+                this.health = 40;
                 //this.movementStrategy = new RunStrategy();
                 break;
             case "Hard":
-                this.health = 35;
+                this.health = 45;
                 //this.movementStrategy = new JogStrategy();
                 break;
             default:
                 System.out.println("You have entered an invalid difficulty level");
                 break;
         }
-        float scaleX = 0.15f;
-        float scaleY = 0.15f;
+        this.sprite = R.drawable.toast;
+        float scaleX = 1.4f;
+        float scaleY = 1.4f;
         Matrix matrix = new Matrix();
         matrix.postScale(scaleX, scaleY);
-        sprite1 = Bitmap.createBitmap(sprite1, 0, 0, sprite1.getWidth(),
-                sprite1.getHeight(), matrix, true);
+        sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
+        sprite1 = Bitmap.createBitmap(sprite1, 0, 0, 80,
+                90, matrix, true);
     }
-
-//    public static com.example.dungeongame.model.Enemy getInstance(float x, float y, String difficulty) {
+    //    public static com.example.dungeongame.model.Enemy getInstance(float x, float y, String difficulty) {
 //        if (enemyInstance == null) {
-//            enemyInstance = new Panda(50, 50, difficulty);
+//            enemyInstance = new Creature(50, 50, difficulty);
 //        }
 //        return enemyInstance;
 //    }
+<<<<<<< HEAD:app/src/main/java/com/example/dungeongame/model/Panda.java
 //    public List<Bitmap> enemies(List<Bitmap> enemies) {
 //        enemies.add(sprite1);
 //        return enemies;
@@ -88,25 +93,33 @@ public class Panda implements Enemy {
                     }
                 }
             }
+=======
+    public void update(float x, float y) {
+        if (x < 0) {
+            this.x = 0;
+        } else {
+            this.x = x;
+>>>>>>> main:app/src/main/java/com/example/dungeongame/model/Boss.java
         }
     public int getSpeed() {
         return speed;
     }
 
+    @Override
+    public Bitmap getSprite1() {
+        return sprite1;
+    }
     public int getSprite() {
-        return Panda.enemyInstance.getSprite();
+        return sprite;
     }
 
 //    public int getSize() {
 //        return size;
 //    }
-public Bitmap getSprite1() {
-    return sprite1;
-}
+
     public int getHealth() {
         return health;
     }
-
     @Override
     public float getX() {
         return x;
@@ -114,5 +127,9 @@ public Bitmap getSprite1() {
 
     public float getY() {
         return y;
+    }
+
+    public String getDifficulty() {
+        return difficulty;
     }
 }
