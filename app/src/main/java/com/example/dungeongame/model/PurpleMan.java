@@ -62,8 +62,8 @@ public class PurpleMan extends View implements Enemy {
         Matrix matrix = new Matrix();
         matrix.postScale(scaleX, scaleY);
         sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
-        sprite1 = Bitmap.createBitmap(sprite1, 0, 0, 80,
-                90, matrix, true);
+        sprite1 = Bitmap.createBitmap(sprite1, 160, 140, 90,
+                80, matrix, true);
         System.out.println("Creature made");
     }
 

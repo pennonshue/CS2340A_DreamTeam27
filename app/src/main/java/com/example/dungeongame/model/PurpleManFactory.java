@@ -9,6 +9,6 @@ public class PurpleManFactory extends EnemyFactory{
     }
     @Override
     public PurpleMan createEnemy() {
-        return new PurpleMan(200, 200, "Easy", context);
+        return new PurpleMan(200, 200, User.getInstance().getDifficulty(), context);
     }
 }
