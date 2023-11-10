@@ -19,13 +19,23 @@ public class GameView extends View implements GameViewObserver {
     private List<GameViewObserver> observers;
 
     private String mapName;
-
     private boolean endTile;
     private Bitmap tilemapBitmap;
-
     private Bitmap userSprite;
     private Bitmap enemySprite1;
     private Bitmap enemySprite2;
+
+    public Enemy getEnemy1() {
+        return enemy1;
+    }
+
+    public Enemy getEnemy2() {
+        return enemy2;
+    }
+
+    private Enemy enemy1;
+    private Enemy enemy2;
+
 
     private EnemyFactory enemyFactory1;
     private EnemyFactory enemyFactory2;
@@ -46,20 +56,24 @@ public class GameView extends View implements GameViewObserver {
         switch (mapName) {
             case "Map1.tmx":
                 EnemyFactory enemyFactory = new CreatureFactory(context);
-                Enemy booger = enemyFactory.generateEnemy();
-                enemySprite1 = booger.getSprite1();
+                enemy1 = enemyFactory.generateEnemy();
+                enemySprite1 = enemy1.getSprite1();
 
                 enemyFactory2 = new KnightFactory(context);
-                Enemy knight = enemyFactory2.generateEnemy();
-                enemySprite2 = knight.getSprite1();
+                enemy2 = enemyFactory2.generateEnemy();
+                enemySprite2 = enemy2.getSprite1();
 
                 ///PUT UR SECOND CREATURE HERE!!!!!!!
 
                 break;
             case "Map2.tmx":
                 enemyFactory1 = new PurpleManFactory(context);
-                Enemy purpleMan = enemyFactory1.generateEnemy();
-                enemySprite1 = purpleMan.getSprite1();
+                enemy1 = enemyFactory1.generateEnemy();
+                enemySprite1 = enemy1.getSprite1();
+
+                enemyFactory2 = new NecromancerFactory(context);
+                enemy2 = enemyFactory2.generateEnemy();
+                enemySprite2 = enemy2.getSprite1();
 
                 break;
             case "Map3.tmx":
@@ -135,8 +149,8 @@ public class GameView extends View implements GameViewObserver {
         canvas.drawBitmap(userSprite, User.getInstance().getX(), User.getInstance().getY(), null);
 
         //test
-        canvas.drawBitmap(enemySprite1, 200, 200, null);
-        canvas.drawBitmap(enemySprite2, 500, 500, null);
+        canvas.drawBitmap(enemySprite1, enemy1.getX() , enemy1.getY(), null);
+        canvas.drawBitmap(enemySprite2, enemy2.getX() , enemy2.getY(), null);
 
 
         // Draw user information (replace with your actual values)

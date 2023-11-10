@@ -20,7 +20,6 @@ public class Creature extends View implements Enemy  {
     private float x;
     private float y;
     private static String difficulty;
-    private static com.example.dungeongame.model.Enemy enemyInstance = null;
     public Creature(float x, float y, String difficulty, Context context) {
         super(context);
         //super(sprites);

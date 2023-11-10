@@ -22,7 +22,6 @@ public class Knight extends View implements Enemy {
     private int health;
     private float x;
     private float y;
-    private static com.example.dungeongame.model.Enemy enemyInstance = null;
     public Knight(float x, float y, String difficulty, Context context) {
         super(context);
         speed = 30;
@@ -60,7 +59,7 @@ public class Knight extends View implements Enemy {
         matrix.postScale(scaleX, scaleY);
         sprite = R.drawable.knight_attack;
         sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
-        sprite1 = Bitmap.createBitmap(sprite1, 32, 32, 100,
+        sprite1 = Bitmap.createBitmap(sprite1, 70, 85, 90,
                 100, matrix, true);
     }
 
