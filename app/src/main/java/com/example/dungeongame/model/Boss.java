@@ -69,18 +69,38 @@ public class Boss extends View implements Enemy  {
 //        }
 //        return enemyInstance;
 //    }
+<<<<<<< HEAD:app/src/main/java/com/example/dungeongame/model/Panda.java
+//    public List<Bitmap> enemies(List<Bitmap> enemies) {
+//        enemies.add(sprite1);
+//        return enemies;
+//    }
+//    public List<Enemy> enemies(List<Enemy> enemies) {
+//        enemies.add(Creature.getInstance(x, y, difficulty));
+//        return enemies;
+//    }
+        public void update() {
+            boolean right = true;
+            if (x < 400 && right) {
+                x+=3;
+                if (x >= 400) {
+                    right = false;
+                }
+            } else {
+                if (x >= 10) {
+                    x-=3;
+                    if (x <= 10) {
+                        right = true;
+                    }
+                }
+            }
+=======
     public void update(float x, float y) {
         if (x < 0) {
             this.x = 0;
         } else {
             this.x = x;
+>>>>>>> main:app/src/main/java/com/example/dungeongame/model/Boss.java
         }
-        if (y < 0) {
-            this.y = 0;
-        } else {
-            this.y = y;
-        }
-    }
     public int getSpeed() {
         return speed;
     }

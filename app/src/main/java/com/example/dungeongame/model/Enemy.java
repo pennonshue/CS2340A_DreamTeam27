@@ -13,7 +13,8 @@ public interface Enemy {
     int getHealth();
     float getX();
     float getY();
-    void update(float x, float y);
+    void update();
+
 //    private MovementStrategy movementStrategy;
 //    private int x;
 //    private int y;

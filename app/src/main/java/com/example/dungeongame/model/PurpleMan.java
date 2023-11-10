@@ -21,8 +21,6 @@ public class PurpleMan extends View implements Enemy {
     private float x;
     private float y;
     private static String difficulty;
-    private static com.example.dungeongame.model.Enemy enemyInstance = null;
-
     public PurpleMan(float x, float y, String difficulty, Context context) {
         super(context);
         //super(sprites);
@@ -72,17 +70,20 @@ public class PurpleMan extends View implements Enemy {
 //        }
 //        return enemyInstance;
 //    }
-    public void update(float x, float y) {
-        if (x < 0) {
-            this.x = 0;
+    public void update() {
+        if (x < 400) {
+            x+=3;
         } else {
-            this.x = x;
+            x-=3;
         }
-        if (y < 0) {
-            this.y = 0;
+
+        if (y < 400) {
+            y+=3;
         } else {
-            this.y = y;
+            y-=3;
         }
+
+
     }
 
     public int getSpeed() {
