@@ -50,7 +50,7 @@ public class EndScreen extends AppCompatActivity {
 
         number6.setText("Latest Attempt: " + Leaderboard.getInstance().getLastEntry());
         TextView leaderboardResult = findViewById(R.id.leaderboardResult);
-        if (User.getInstance().getScore() > 0) {
+        if (User.getInstance().getHealth() > 0) {
             leaderboardResult.setText("WINNER");
         } else {
             leaderboardResult.setText("LOSER");

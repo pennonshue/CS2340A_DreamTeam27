@@ -14,7 +14,7 @@ public class Player {
     private static String difficulty;
     private static boolean win;
 
-
+    private static int room;
 
 
     public static com.example.dungeongame.model.Player getInstance(String username, int sprite,
@@ -31,6 +31,7 @@ public class Player {
         this.username = username;
         this.score = 20;
         this.win = true;
+        this.room = 0;
 
         switch (difficulty) {
         case "Easy":
@@ -52,14 +53,6 @@ public class Player {
         this.speed = speed;
         this.sprite = sprite;
     }
-
-    //    public void draw(Canvas canvas) {
-    //        sprite.draw
-    //
-    //
-    //    }
-
-
     public static String getUsername() {
         return username;
     }
@@ -81,6 +74,7 @@ public class Player {
     public static void setSpeed(int speed) {
         com.example.dungeongame.model.Player.speed = speed;
     }
+
 
     public static int getHealth() {
         return health;
@@ -116,6 +110,11 @@ public class Player {
         }
     }
 
+    public static void setRoom(int room) {
+        if (room <= 3) {
+            com.example.dungeongame.model.Player.score = room;
+        }
+    }
 
     public static void setDifficulty(String difficulty) {
         switch (difficulty) {

@@ -165,8 +165,6 @@ public class User extends View {
             User.score = score;
         }
     }
-
-
     public static void setDifficulty(String difficulty) {
         switch (difficulty) {
         case "Easy":
@@ -185,6 +183,5 @@ public class User extends View {
             System.out.println("You have entered an invalid difficulty level");
         }
     }
-
 }
 
