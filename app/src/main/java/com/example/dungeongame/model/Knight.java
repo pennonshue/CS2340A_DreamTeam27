@@ -64,21 +64,6 @@ public class Knight extends View implements Enemy {
         sprite1 = Bitmap.createBitmap(sprite1, 70, 85, 90,
                 100, matrix, true);
     }
-
-//    public static com.example.dungeongame.model.Enemy getInstance(float x, float y, String difficulty) {
-//        if (enemyInstance == null) {
-//            enemyInstance = new Knight(50, 50, difficulty);
-//        }
-//        return enemyInstance;
-//    }
-//    public List<Bitmap> enemies(List<Bitmap> enemies) {
-//        enemies.add(sprite1);
-//        return enemies;
-//    }
-//    public List<Enemy> enemies(List<Enemy> enemies) {
-//        enemies.add(Creature.getInstance(x, y, difficulty));
-//        return enemies;
-//    }
         public void update() {
             if (down) {
                 y+=6;
@@ -92,20 +77,13 @@ public class Knight extends View implements Enemy {
                 }
             }
         }
-//    public int getSpeed() {
-//        return speed;
-//    }
 
     public int getSprite() {
         return sprite;
     }
-
-//    public int getSize() {
-//        return size;
-//    }
     public Bitmap getSprite1() {
-    return sprite1;
-}
+        return sprite1;
+    }
     public int getHealth() {
         return health;
     }

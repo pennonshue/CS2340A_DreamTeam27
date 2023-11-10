@@ -24,9 +24,9 @@ public class Boss extends View implements Enemy  {
     public Boss(float x, float y, String difficulty, Context context) {
         super(context);
         //super(sprites);
-        speed = 25;
+        speed = 15;
         enemySize = "Small";
-        health = 40;
+        health = 5;
         if (x < 0) {
             this.x = 0;
         } else {
@@ -39,29 +39,29 @@ public class Boss extends View implements Enemy  {
         }
         switch (difficulty) {
             case "Easy":
-                this.health = 35;
+                this.health = 5;
                 //this.movementStrategy = new RunStrategy();
                 break;
             case "Medium":
-                this.health = 40;
+                this.health = 10;
                 //this.movementStrategy = new RunStrategy();
                 break;
             case "Hard":
-                this.health = 45;
+                this.health = 15;
                 //this.movementStrategy = new JogStrategy();
                 break;
             default:
                 System.out.println("You have entered an invalid difficulty level");
                 break;
         }
-        this.sprite = R.drawable.toast;
+        this.sprite = R.drawable.creatures;
         float scaleX = 1.4f;
         float scaleY = 1.4f;
         Matrix matrix = new Matrix();
         matrix.postScale(scaleX, scaleY);
         sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
-        sprite1 = Bitmap.createBitmap(sprite1, 0, 0, 80,
-                90, matrix, true);
+        sprite1 = Bitmap.createBitmap(sprite1, 710, 260,
+                75, 90, matrix, true);
     }
     //    public static com.example.dungeongame.model.Enemy getInstance(float x, float y, String difficulty) {
 //        if (enemyInstance == null) {
