@@ -24,28 +24,24 @@ public class GameView extends View implements GameViewObserver {
     private Bitmap tilemapBitmap;
 
     private Bitmap userSprite;
+    private Bitmap creatureSprite;
 
     private TileMapData t;
-
-    public List<Enemy> getEnemies() {
-        return enemies;
-    }
-
-    private List<Enemy> enemies;
-
-
 
     public GameView(Context context, String map) {
         super(context);
         setFocusable(true);
         this.endTile = false;
         this.mapName = map;
-        this.enemies = new ArrayList<>();
-        this.enemies.add(new Devil(context));
+//        this.enemies = new ArrayList<>();
+        //this.enemies.add(new Devil(context));
         // Load the map and user sprite
         t = TMXLoader.readTMX(map, context);
         tilemapBitmap = TMXLoader.createBitmap(t, context, 0, t.getLayers().size());
         userSprite = User.getSprite1();
+        EnemyFactory enemyFactory = new CreatureFactory(context);
+        Enemy booger = enemyFactory.generateEnemy();
+        creatureSprite = booger.getSprite1();
 
     }
 
@@ -107,21 +103,21 @@ public class GameView extends View implements GameViewObserver {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
-
-
         // Draw the map
         canvas.drawBitmap(tilemapBitmap, 0, 0, null);
 
         // Draw the user sprite
-
         canvas.drawBitmap(userSprite, User.getInstance().getX(), User.getInstance().getY(), null);
 
-        for (Enemy enemy : enemies) {
-            Bitmap enemySprite = enemy.getCurrentSprite();
-            // Draw the enemySprite at the enemy's position on the canvas
-            canvas.drawBitmap(enemySprite, 300, 300, null);
-        }
+        //test
+        canvas.drawBitmap(creatureSprite, 200, 200, null);
+
+        //Draw enemy sprites
+//        for (Enemy enemy : enemies) {
+//            Bitmap enemySprite = enemy.getSprite1();
+//            // Draw the enemySprite at the enemy's position on the canvas
+//            canvas.drawBitmap(enemySprite, enemy.getX(), enemy.getY(), null);
+//        }
 
         // Draw user information (replace with your actual values)
         Paint textPaint = new Paint();
