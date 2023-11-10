@@ -25,6 +25,7 @@ public class GameView extends View implements GameViewObserver {
 
     private Bitmap userSprite;
     private Bitmap enemySprite1;
+    private Bitmap enemySprite2;
 
     private EnemyFactory enemyFactory;
 
@@ -131,7 +132,8 @@ public class GameView extends View implements GameViewObserver {
         canvas.drawBitmap(userSprite, User.getInstance().getX(), User.getInstance().getY(), null);
 
         //test
-        canvas.drawBitmap(enemySprite1, en );
+        canvas.drawBitmap(enemySprite1, 200, 200, null);
+
 
         // Draw user information (replace with your actual values)
         Paint textPaint = new Paint();
