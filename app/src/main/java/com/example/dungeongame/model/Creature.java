@@ -20,6 +20,8 @@ public class Creature extends View implements Enemy  {
     private float x;
     private float y;
     private static String difficulty;
+
+    private boolean down = true;
     public Creature(float x, float y, String difficulty, Context context) {
         super(context);
         //super(sprites);
@@ -69,18 +71,19 @@ public class Creature extends View implements Enemy  {
 //        }
 //        return enemyInstance;
 //    }
-    public void update(float x, float y) {
-        if (x < 0) {
-            this.x = 0;
-        } else {
-            this.x = x;
+        public void update() {
+            if (down) {
+                y+=6;
+                if (y >= 600) {
+                    down = false;
+                }
+            } else {
+                y-=6;
+                if (y <= 100) {
+                    down = true;
+                }
+            }
         }
-        if (y < 0) {
-            this.y = 0;
-        } else {
-            this.y = y;
-        }
-    }
     public int getSpeed() {
         return speed;
     }

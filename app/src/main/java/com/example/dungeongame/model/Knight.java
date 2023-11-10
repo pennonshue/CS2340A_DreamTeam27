@@ -22,6 +22,8 @@ public class Knight extends View implements Enemy {
     private int health;
     private float x;
     private float y;
+
+    private boolean down = true;
     public Knight(float x, float y, String difficulty, Context context) {
         super(context);
         speed = 30;
@@ -77,18 +79,19 @@ public class Knight extends View implements Enemy {
 //        enemies.add(Creature.getInstance(x, y, difficulty));
 //        return enemies;
 //    }
-    public void update(float x, float y) {
-        if (x < 0) {
-            this.x = 0;
-        } else {
-            this.x = x;
+        public void update() {
+            if (down) {
+                y+=6;
+                if (y >= 600) {
+                    down = false;
+                }
+            } else {
+                y-=6;
+                if (y <= 100) {
+                    down = true;
+                }
+            }
         }
-        if (y < 0) {
-            this.y = 0;
-        } else {
-            this.y = y;
-        }
-    }
 //    public int getSpeed() {
 //        return speed;
 //    }

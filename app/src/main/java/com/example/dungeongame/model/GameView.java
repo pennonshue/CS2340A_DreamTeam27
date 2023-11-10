@@ -150,7 +150,7 @@ public class GameView extends View implements GameViewObserver {
 
         //test
         canvas.drawBitmap(enemySprite1, enemy1.getX() , enemy1.getY(), null);
-        canvas.drawBitmap(enemySprite2, enemy2.getX() , enemy2.getY(), null);
+        canvas.drawBitmap(enemySprite2, enemy2.getX(), enemy2.getY(), null);
 
 
         // Draw user information (replace with your actual values)

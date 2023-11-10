@@ -73,18 +73,22 @@ public class Panda implements Enemy {
 //        enemies.add(Creature.getInstance(x, y, difficulty));
 //        return enemies;
 //    }
-    public void update(float x, float y) {
-        if (x < 0) {
-            x = 0;
-        } else {
-            this.x = x;
+        public void update() {
+            boolean right = true;
+            if (x < 400 && right) {
+                x+=3;
+                if (x >= 400) {
+                    right = false;
+                }
+            } else {
+                if (x >= 10) {
+                    x-=3;
+                    if (x <= 10) {
+                        right = true;
+                    }
+                }
+            }
         }
-        if (y < 0) {
-            this.y = 0;
-        } else {
-            this.y = y;
-        }
-    }
     public int getSpeed() {
         return speed;
     }
