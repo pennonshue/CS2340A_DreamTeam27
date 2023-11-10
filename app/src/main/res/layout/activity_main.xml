@@ -5,7 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#402B2B"
+
     tools:context=".views.MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="838dp"
+        android:layout_height="1351dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/leaderboardbackground" />
 
     <Button
         android:id="@+id/startBtn"
@@ -14,8 +26,8 @@
         android:layout_marginStart="163dp"
         android:layout_marginEnd="160dp"
         android:layout_marginBottom="248dp"
-        android:backgroundTint="#402B2B"
-        android:fontFamily="@font/alegreya_sc"
+        android:backgroundTint="#000"
+        android:fontFamily="@font/dungeonfont"
         android:onClick="goToSetupActivity"
         android:text="Start"
         android:textColorHighlight="#302C2C"
@@ -29,13 +41,13 @@
 
     <Button
         android:id="@+id/exitButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="145dp"
+        android:layout_height="65dp"
         android:layout_marginStart="136dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="141dp"
-        android:backgroundTint="#402B2B"
-        android:fontFamily="@font/alegreya_sc"
+        android:backgroundTint="#000"
+        android:fontFamily="@font/dungeonfont"
         android:text="Exit"
         android:textColorHighlight="#1C1C1C"
         android:textColorLink="#1C1C1C"
@@ -48,18 +60,18 @@
     <TextView
         android:id="@+id/textView2"
         android:layout_width="313dp"
-        android:layout_height="257dp"
+        android:layout_height="139dp"
         android:layout_marginStart="49dp"
-        android:layout_marginTop="126dp"
+        android:layout_marginTop="140dp"
         android:layout_marginEnd="49dp"
-        android:fontFamily="@font/alegreya_sc"
+        android:fontFamily="@font/dungeonfont"
         android:shadowColor="#000000"
         android:shadowDx="2"
         android:shadowDy="2"
         android:shadowRadius="30"
         android:text="DUNGEON EXPLORER"
         android:textAlignment="center"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textSize="60sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

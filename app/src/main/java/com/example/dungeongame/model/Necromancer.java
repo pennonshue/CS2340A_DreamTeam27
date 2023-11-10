@@ -8,25 +8,24 @@ import android.view.View;
 
 import com.example.dungeongame.R;
 
-public class Creature extends View implements Enemy  {
+import java.util.List;
+
+public class Necromancer extends View implements Enemy {
     public void attack() {
         System.out.println("implement a strong attack");
     }
     private int sprite;
-    private static Bitmap sprite1;
+    private String difficulty;
+    private Bitmap sprite1;
     private int speed;
     private String enemySize;
     private int health;
     private float x;
     private float y;
-    private static String difficulty;
-    private boolean down = true;
-    public Creature(float x, float y, String difficulty, Context context) {
+    public Necromancer(float x, float y, String difficulty, Context context) {
         super(context);
-        //super(sprites);
-        speed = 15;
-        enemySize = "Small";
-        health = 5;
+        speed = 30;
+        enemySize = "Medium";
         if (x < 0) {
             this.x = 0;
         } else {
@@ -39,60 +38,79 @@ public class Creature extends View implements Enemy  {
         }
         switch (difficulty) {
             case "Easy":
-                this.health = 5;
+                this.health = 20;
                 //this.movementStrategy = new RunStrategy();
                 break;
             case "Medium":
-                this.health = 10;
+                this.health = 25;
                 //this.movementStrategy = new RunStrategy();
                 break;
             case "Hard":
-                this.health = 15;
+                this.health = 30;
                 //this.movementStrategy = new JogStrategy();
                 break;
             default:
                 System.out.println("You have entered an invalid difficulty level");
                 break;
         }
-        this.sprite = R.drawable.panda;
-        float scaleX = 1.4f;
-        float scaleY = 1.4f;
+        float scaleX = 1.1f;
+        float scaleY = 1.1f;
         Matrix matrix = new Matrix();
         matrix.postScale(scaleX, scaleY);
+        sprite = R.drawable.necromancer;
         sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
-        sprite1 = Bitmap.createBitmap(sprite1, 0, 0, 80,
-                90, matrix, true);
+        sprite1 = Bitmap.createBitmap(sprite1, 90, 70, 200,
+                400, matrix, true);
     }
 
-        public void update() {
-            if (down) {
-                y+=6;
-                if (y >= 600) {
-                    down = false;
-                }
-            } else {
-                y-=6;
-                if (y <= 100) {
-                    down = true;
+    //    public static com.example.dungeongame.model.Enemy getInstance(float x, float y, String difficulty) {
+//        if (enemyInstance == null) {
+//            enemyInstance = new Knight(50, 50, difficulty);
+//        }
+//        return enemyInstance;
+//    }
+//    public List<Bitmap> enemies(List<Bitmap> enemies) {
+//        enemies.add(sprite1);
+//        return enemies;
+//    }
+//    public List<Enemy> enemies(List<Enemy> enemies) {
+//        enemies.add(Creature.getInstance(x, y, difficulty));
+//        return enemies;
+//    }
+    public void update() {
+        boolean right = true;
+        if (x < 400 && right) {
+            x+=3;
+            if (x >= 400) {
+                right = false;
+            }
+        } else {
+            if (x >= 10) {
+                x-=3;
+                if (x <= 10) {
+                    right = true;
                 }
             }
         }
-
-    public int getSpeed() {
-        return speed;
     }
+//    public int getSpeed() {
+//        return speed;
+//    }
 
-    @Override
-    public Bitmap getSprite1() {
-        return sprite1;
-    }
     public int getSprite() {
         return sprite;
     }
 
+    //    public int getSize() {
+//        return size;
+//    }
+    public Bitmap getSprite1() {
+        return sprite1;
+    }
     public int getHealth() {
         return health;
     }
+
     @Override
     public float getX() {
         return x;
@@ -100,9 +118,5 @@ public class Creature extends View implements Enemy  {
 
     public float getY() {
         return y;
-    }
-
-    public String getDifficulty() {
-        return difficulty;
     }
 }

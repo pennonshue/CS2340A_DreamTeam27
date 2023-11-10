@@ -21,11 +21,8 @@ public class PurpleMan extends View implements Enemy {
     private float x;
     private float y;
     private static String difficulty;
-    private static com.example.dungeongame.model.Enemy enemyInstance = null;
-
     public PurpleMan(float x, float y, String difficulty, Context context) {
         super(context);
-        //super(sprites);
         speed = 15;
         enemySize = "Small";
         health = 5;
@@ -65,23 +62,17 @@ public class PurpleMan extends View implements Enemy {
         sprite1 = Bitmap.createBitmap(sprite1, 360, 355, 75, 80, matrix, true);
         System.out.println("Creature made");
     }
-
-    //    public static com.example.dungeongame.model.Enemy getInstance(float x, float y, String difficulty) {
-//        if (enemyInstance == null) {
-//            enemyInstance = new Creature(50, 50, difficulty);
-//        }
-//        return enemyInstance;
-//    }
     public void update() {
-        if (x < 0) {
-            this.x = 0;
+        if (x < 400) {
+            x+=3;
         } else {
-            this.x = x;
+            x-=3;
         }
-        if (y < 0) {
-            this.y = 0;
+
+        if (y < 400) {
+            y+=3;
         } else {
-            this.y = y;
+            y-=3;
         }
     }
 
@@ -97,11 +88,6 @@ public class PurpleMan extends View implements Enemy {
     public int getSprite() {
         return sprite;
     }
-
-//    public int getSize() {
-//        return size;
-//    }
-
     public int getHealth() {
         return health;
     }
