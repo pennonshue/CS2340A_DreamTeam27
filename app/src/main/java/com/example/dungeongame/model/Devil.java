@@ -99,7 +99,7 @@ public void attack() {
 //        enemies.add(sprite1);
 //        return enemies;
 //    }
-    public void update(float x, float y) {
+    public void update() {
         if (x < 0) {
             this.x = 0;
         } else {

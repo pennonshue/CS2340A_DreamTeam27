@@ -72,7 +72,7 @@ public class PurpleMan extends View implements Enemy {
 //        }
 //        return enemyInstance;
 //    }
-    public void update(float x, float y) {
+    public void update() {
         if (x < 0) {
             this.x = 0;
         } else {
