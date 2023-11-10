@@ -1,13 +1,16 @@
 package com.example.dungeongame.model;
 
+import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
+import android.view.View;
 
 import com.example.dungeongame.R;
 
 import java.util.List;
 
-public class Knight implements Enemy {
+public class Knight extends View implements Enemy {
     public void attack() {
         System.out.println("implement a strong attack");
     }
@@ -20,8 +23,8 @@ public class Knight implements Enemy {
     private float x;
     private float y;
     private static com.example.dungeongame.model.Enemy enemyInstance = null;
-    public Knight(float x, float y, String difficulty) {
-        sprite = R.drawable.knight;
+    public Knight(float x, float y, String difficulty, Context context) {
+        super(context);
         speed = 30;
         enemySize = "Medium";
         if (x < 0) {
@@ -51,12 +54,14 @@ public class Knight implements Enemy {
                 System.out.println("You have entered an invalid difficulty level");
                 break;
         }
-        float scaleX = 0.15f;
-        float scaleY = 0.15f;
+        float scaleX = 1.5f;
+        float scaleY = 1.5f;
         Matrix matrix = new Matrix();
         matrix.postScale(scaleX, scaleY);
-        sprite1 = Bitmap.createBitmap(sprite1, 0, 0, sprite1.getWidth(),
-                sprite1.getHeight(), matrix, true);
+        sprite = R.drawable.knight_attack;
+        sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
+        sprite1 = Bitmap.createBitmap(sprite1, 32, 32, 100,
+                100, matrix, true);
     }
 
 //    public static com.example.dungeongame.model.Enemy getInstance(float x, float y, String difficulty) {
