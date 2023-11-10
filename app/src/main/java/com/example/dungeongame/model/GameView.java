@@ -24,8 +24,15 @@ public class GameView extends View implements GameViewObserver {
     private Bitmap tilemapBitmap;
 
     private Bitmap userSprite;
+<<<<<<< HEAD
     private Bitmap creatureSprite;
     private Bitmap bossSprite;
+=======
+    private Bitmap enemySprite1;
+    private Bitmap enemySprite2;
+
+    private EnemyFactory enemyFactory;
+>>>>>>> refs/remotes/origin/main
 
     private TileMapData t;
 
@@ -40,12 +47,26 @@ public class GameView extends View implements GameViewObserver {
         t = TMXLoader.readTMX(map, context);
         tilemapBitmap = TMXLoader.createBitmap(t, context, 0, t.getLayers().size());
         userSprite = User.getSprite1();
-        EnemyFactory enemyFactory = new CreatureFactory(context);
-        Enemy booger = enemyFactory.generateEnemy();
-        creatureSprite = booger.getSprite1();
-        EnemyFactory enemyFactoryBoss = new BossFactory(context);
-        Enemy jellySandwhich = enemyFactoryBoss.generateEnemy();
-        bossSprite = jellySandwhich.getSprite1();
+        switch (mapName) {
+            case "Map1.tmx":
+                enemyFactory = new CreatureFactory(context);
+                Enemy booger = enemyFactory.generateEnemy();
+                enemySprite1 = booger.getSprite1();
+
+                ///PUT UR SECOND CREATURE HERE!!!!!!!
+
+                break;
+            case "Map2.tmx":
+                enemyFactory = new PurpleManFactory(context);
+                Enemy purpleMan = enemyFactory.generateEnemy();
+                enemySprite1 = purpleMan.getSprite1();
+                break;
+            case "Map3.tmx":
+                break;
+            default:
+                break;
+        }
+        
     }
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -113,15 +134,8 @@ public class GameView extends View implements GameViewObserver {
         canvas.drawBitmap(userSprite, User.getInstance().getX(), User.getInstance().getY(), null);
 
         //test
-        canvas.drawBitmap(creatureSprite, 200, 200, null);
+        canvas.drawBitmap(enemySprite1, 200, 200, null);
 
-
-        //Draw enemy sprites
-//        for (Enemy enemy : enemies) {
-//            Bitmap enemySprite = enemy.getSprite1();
-//            // Draw the enemySprite at the enemy's position on the canvas
-//            canvas.drawBitmap(enemySprite, enemy.getX(), enemy.getY(), null);
-//        }
 
         // Draw user information (replace with your actual values)
         Paint textPaint = new Paint();
