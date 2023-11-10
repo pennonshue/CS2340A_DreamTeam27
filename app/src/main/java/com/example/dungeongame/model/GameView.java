@@ -77,9 +77,13 @@ public class GameView extends View implements GameViewObserver {
 
                 break;
             case "Map3.tmx":
-                enemyFactory = new BossFactory(context);
-                Enemy jellytoast = enemyFactory.generateEnemy();
-                enemySprite1 = jellytoast.getSprite1();
+                enemyFactory1 = new NecromancerFactory(context);
+                enemy1 = enemyFactory1.generateEnemy();
+                enemySprite1 = enemy1.getSprite1();
+
+                enemyFactory2 = new BossFactory(context);
+                enemy2 = enemyFactory2.generateEnemy();
+                enemySprite2 = enemy2.getSprite1();
                 break;
             default:
                 break;
