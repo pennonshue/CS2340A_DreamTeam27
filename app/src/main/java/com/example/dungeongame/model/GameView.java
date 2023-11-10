@@ -114,7 +114,7 @@ public class GameView extends View implements GameViewObserver {
 
         //test
         canvas.drawBitmap(creatureSprite, 200, 200, null);
-        canvas.drawBitmap(bossSprite, 250, 250, null);
+
 
         //Draw enemy sprites
 //        for (Enemy enemy : enemies) {
