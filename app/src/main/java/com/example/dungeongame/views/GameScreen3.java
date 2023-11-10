@@ -24,7 +24,7 @@ public class GameScreen3 extends AppCompatActivity {
     private GameView gameView;
 
 
-
+@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         User.getInstance().updatePosition(100, 100);

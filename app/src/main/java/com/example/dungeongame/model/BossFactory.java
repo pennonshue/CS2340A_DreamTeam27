@@ -9,6 +9,6 @@ public class BossFactory extends EnemyFactory {
     }
     @Override
     public Boss createEnemy() {
-        return new Boss(200, 200, "Easy", context);
+        return new Boss(200, 200, User.getInstance().getDifficulty(), context);
     }
 }
