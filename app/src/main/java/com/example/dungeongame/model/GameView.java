@@ -24,15 +24,10 @@ public class GameView extends View implements GameViewObserver {
     private Bitmap tilemapBitmap;
 
     private Bitmap userSprite;
-<<<<<<< HEAD
-    private Bitmap creatureSprite;
-    private Bitmap bossSprite;
-=======
     private Bitmap enemySprite1;
     private Bitmap enemySprite2;
 
     private EnemyFactory enemyFactory;
->>>>>>> refs/remotes/origin/main
 
     private TileMapData t;
 
@@ -66,7 +61,7 @@ public class GameView extends View implements GameViewObserver {
             default:
                 break;
         }
-        
+
     }
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {
