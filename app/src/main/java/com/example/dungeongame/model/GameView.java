@@ -188,4 +188,11 @@ public class GameView extends View implements GameViewObserver {
         // Handle updates when the character lands on a tile here
         // You can add custom logic or simply call the GameViewListener if needed
     }
+
+
+    public void updateEnemy() {
+        enemy1.update();
+        enemy2.update();
+        invalidate();
+    }
 }

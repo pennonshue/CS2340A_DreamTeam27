@@ -26,16 +26,8 @@ public class Necromancer extends View implements Enemy {
         super(context);
         speed = 30;
         enemySize = "Medium";
-        if (x < 0) {
-            this.x = 0;
-        } else {
-            this.x = y;
-        }
-        if (y < 0) {
-            this.y = 0;
-        } else {
-            this.y = y;
-        }
+        this.x = x;
+        this.y = y;
         switch (difficulty) {
             case "Easy":
                 this.health = 20;

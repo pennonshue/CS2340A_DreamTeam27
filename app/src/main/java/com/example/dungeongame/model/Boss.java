@@ -26,17 +26,10 @@ public class Boss extends View implements Enemy  {
         //super(sprites);
         speed = 15;
         enemySize = "Small";
-        health = 5;
-        if (x < 0) {
-            this.x = 0;
-        } else {
-            this.x = y;
-        }
-        if (y < 0) {
-            this.y = 0;
-        } else {
-            this.y = y;
-        }
+        health = 40;
+        this.x = x;
+        this.y = y;
+
         switch (difficulty) {
             case "Easy":
                 this.health = 5;
@@ -63,12 +56,6 @@ public class Boss extends View implements Enemy  {
         sprite1 = Bitmap.createBitmap(sprite1, 710, 260,
                 75, 90, matrix, true);
     }
-    //    public static com.example.dungeongame.model.Enemy getInstance(float x, float y, String difficulty) {
-//        if (enemyInstance == null) {
-//            enemyInstance = new Creature(50, 50, difficulty);
-//        }
-//        return enemyInstance;
-//    }
         public void update() {
             boolean right = true;
             if (x < 400 && right) {
@@ -84,6 +71,8 @@ public class Boss extends View implements Enemy  {
                     }
                 }
             }
+
+          
         }
     public int getSpeed() {
         return speed;
