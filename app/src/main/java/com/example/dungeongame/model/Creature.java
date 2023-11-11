@@ -20,7 +20,6 @@ public class Creature extends View implements Enemy  {
     private float x;
     private float y;
     private static String difficulty;
-
     private boolean down = true;
     public Creature(float x, float y, String difficulty, Context context) {
         super(context);
@@ -56,12 +55,7 @@ public class Creature extends View implements Enemy  {
         sprite1 = Bitmap.createBitmap(sprite1, 0, 0, 80,
                 90, matrix, true);
     }
-//    public static com.example.dungeongame.model.Enemy getInstance(float x, float y, String difficulty) {
-//        if (enemyInstance == null) {
-//            enemyInstance = new Creature(50, 50, difficulty);
-//        }
-//        return enemyInstance;
-//    }
+
         public void update() {
             if (down) {
                 y+=6;
@@ -75,6 +69,7 @@ public class Creature extends View implements Enemy  {
                 }
             }
         }
+
     public int getSpeed() {
         return speed;
     }
@@ -86,10 +81,6 @@ public class Creature extends View implements Enemy  {
     public int getSprite() {
         return sprite;
     }
-
-//    public int getSize() {
-//        return size;
-//    }
 
     public int getHealth() {
         return health;
