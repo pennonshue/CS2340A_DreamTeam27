@@ -23,6 +23,9 @@ public class GameScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initializeGame();
+//        while (running) {
+//            updateGame();
+//        }
         startGameLoop();
         startScoreUpdater();
     }
@@ -56,8 +59,7 @@ public class GameScreen extends AppCompatActivity {
     }
 
     private void updateGame() {
-        gameView.getEnemy1().update();
-        gameView.getEnemy2().update();
+        gameView.updateEnemy();
     }
 
 //    private void renderGame() {

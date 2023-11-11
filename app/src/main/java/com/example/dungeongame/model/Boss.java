@@ -27,16 +27,8 @@ public class Boss extends View implements Enemy  {
         speed = 25;
         enemySize = "Small";
         health = 40;
-        if (x < 0) {
-            this.x = 0;
-        } else {
-            this.x = y;
-        }
-        if (y < 0) {
-            this.y = 0;
-        } else {
-            this.y = y;
-        }
+        this.x = x;
+        this.y = y;
         switch (difficulty) {
             case "Easy":
                 this.health = 35;
@@ -63,21 +55,6 @@ public class Boss extends View implements Enemy  {
         sprite1 = Bitmap.createBitmap(sprite1, 0, 0, 80,
                 90, matrix, true);
     }
-    //    public static com.example.dungeongame.model.Enemy getInstance(float x, float y, String difficulty) {
-//        if (enemyInstance == null) {
-//            enemyInstance = new Creature(50, 50, difficulty);
-//        }
-//        return enemyInstance;
-//    }
-<<<<<<< HEAD:app/src/main/java/com/example/dungeongame/model/Panda.java
-//    public List<Bitmap> enemies(List<Bitmap> enemies) {
-//        enemies.add(sprite1);
-//        return enemies;
-//    }
-//    public List<Enemy> enemies(List<Enemy> enemies) {
-//        enemies.add(Creature.getInstance(x, y, difficulty));
-//        return enemies;
-//    }
         public void update() {
             boolean right = true;
             if (x < 400 && right) {
@@ -93,13 +70,7 @@ public class Boss extends View implements Enemy  {
                     }
                 }
             }
-=======
-    public void update(float x, float y) {
-        if (x < 0) {
-            this.x = 0;
-        } else {
-            this.x = x;
->>>>>>> main:app/src/main/java/com/example/dungeongame/model/Boss.java
+
         }
     public int getSpeed() {
         return speed;

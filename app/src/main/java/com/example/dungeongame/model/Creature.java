@@ -28,16 +28,8 @@ public class Creature extends View implements Enemy  {
         speed = 15;
         enemySize = "Small";
         health = 5;
-        if (x < 0) {
-            this.x = 0;
-        } else {
-            this.x = y;
-        }
-        if (y < 0) {
-            this.y = 0;
-        } else {
-            this.y = y;
-        }
+        this.x = x;
+        this.y = y;
         switch (difficulty) {
             case "Easy":
                 this.health = 5;

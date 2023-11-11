@@ -9,6 +9,6 @@ public class KnightFactory extends EnemyFactory {
     }
     @Override
     public Knight createEnemy() {
-        return new Knight(100, 200, User.getInstance().getDifficulty(), context);
+        return new Knight(300, 100, User.getInstance().getDifficulty(), context);
     }
 }
