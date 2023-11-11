@@ -54,35 +54,35 @@ public class GameView extends View implements GameViewObserver {
         userSprite = User.getSprite1();
 
         switch (mapName) {
-            case "Map1.tmx":
-                EnemyFactory enemyFactory = new CreatureFactory(context);
-                enemy1 = enemyFactory.generateEnemy();
-                enemySprite1 = enemy1.getSprite1();
+        case "Map1.tmx":
+            EnemyFactory enemyFactory = new CreatureFactory(context);
+            enemy1 = enemyFactory.generateEnemy();
+            enemySprite1 = enemy1.getSprite1();
 
-                enemyFactory2 = new KnightFactory(context);
-                enemy2 = enemyFactory2.generateEnemy();
-                enemySprite2 = enemy2.getSprite1();
+            enemyFactory2 = new KnightFactory(context);
+            enemy2 = enemyFactory2.generateEnemy();
+            enemySprite2 = enemy2.getSprite1();
 
-                ///PUT UR SECOND CREATURE HERE!!!!!!!
+            ///PUT UR SECOND CREATURE HERE!!!!!!!
 
-                break;
-            case "Map2.tmx":
-                enemyFactory1 = new PurpleManFactory(context);
-                enemy1 = enemyFactory1.generateEnemy();
-                enemySprite1 = enemy1.getSprite1();
+            break;
+        case "Map2.tmx":
+            enemyFactory1 = new PurpleManFactory(context);
+            enemy1 = enemyFactory1.generateEnemy();
+            enemySprite1 = enemy1.getSprite1();
 
-                enemyFactory2 = new NecromancerFactory(context);
-                enemy2 = enemyFactory2.generateEnemy();
-                enemySprite2 = enemy2.getSprite1();
+            enemyFactory2 = new NecromancerFactory(context);
+            enemy2 = enemyFactory2.generateEnemy();
+            enemySprite2 = enemy2.getSprite1();
 
-                break;
-            case "Map3.tmx":
-                enemyFactory = new BossFactory(context);
-                Enemy jellytoast = enemyFactory.generateEnemy();
-                enemySprite1 = jellytoast.getSprite1();
-                break;
-            default:
-                break;
+            break;
+        case "Map3.tmx":
+            enemyFactory = new BossFactory(context);
+            Enemy jellytoast = enemyFactory.generateEnemy();
+            enemySprite1 = jellytoast.getSprite1();
+            break;
+        default:
+            break;
         }
 
     }
@@ -152,7 +152,7 @@ public class GameView extends View implements GameViewObserver {
         canvas.drawBitmap(userSprite, User.getInstance().getX(), User.getInstance().getY(), null);
 
         //test
-        canvas.drawBitmap(enemySprite1, enemy1.getX() , enemy1.getY(), null);
+        canvas.drawBitmap(enemySprite1, enemy1.getX(), enemy1.getY(), null);
         canvas.drawBitmap(enemySprite2, enemy2.getX(), enemy2.getY(), null);
 
 
