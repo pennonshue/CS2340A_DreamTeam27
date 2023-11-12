@@ -1,7 +1,9 @@
 package com.example.dungeongame.views;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import java.util.ArrayList;
@@ -42,11 +44,27 @@ public class EndScreen extends AppCompatActivity {
         // Create TextViews for player name, difficulty, score and health
 
         TextView number1 = findViewById(R.id.number1);
+        number1.setTextColor(Color.WHITE);
+        number1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
+
         TextView number2 = findViewById(R.id.number2);
+        number2.setTextColor(Color.WHITE);
+        number2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
         TextView number3 = findViewById(R.id.number3);
+        number3.setTextColor(Color.WHITE);
+        number3.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
+
         TextView number4 = findViewById(R.id.number4);
+        number4.setTextColor(Color.WHITE);
+        number4.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
+
         TextView number5 = findViewById(R.id.number5);
+        number5.setTextColor(Color.WHITE);
+        number5.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
+
         TextView number6 = findViewById(R.id.number6);
+        number6.setTextColor(Color.WHITE);
+
 
         number6.setText("Latest Attempt: " + Leaderboard.getInstance().getLastEntry());
         TextView leaderboardResult = findViewById(R.id.leaderboardResult);
