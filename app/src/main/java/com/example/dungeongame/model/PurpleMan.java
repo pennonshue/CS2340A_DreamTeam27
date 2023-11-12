@@ -21,10 +21,11 @@ public class PurpleMan extends View implements Enemy {
     private float x;
     private float y;
     private static String difficulty;
+    private boolean right = true;
     public PurpleMan(float x, float y, String difficulty, Context context) {
         super(context);
         //super(sprites);
-        speed = 15;
+        speed = 3;
         enemySize = "Small";
         health = 5;
         this.x = x;
@@ -63,19 +64,19 @@ public class PurpleMan extends View implements Enemy {
 //        return enemyInstance;
 //    }
     public void update() {
-        if (x < 400) {
-            x+=3;
+        if (x < 2500 && right) {
+            x+=speed;
+            if (x >= 2500) {
+                right = false;
+            }
         } else {
-            x-=3;
+            if (x >= 10) {
+                x-=speed;
+                if (x <= 10) {
+                    right = true;
+                }
+            }
         }
-
-        if (y < 400) {
-            y+=3;
-        } else {
-            y-=3;
-        }
-
-
     }
 
     public int getSpeed() {
