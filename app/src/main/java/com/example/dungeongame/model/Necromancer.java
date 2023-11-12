@@ -10,10 +10,7 @@ import com.example.dungeongame.R;
 
 import java.util.List;
 
-public class Necromancer extends View implements Enemy {
-    public void attack() {
-        System.out.println("implement a strong attack");
-    }
+public class Necromancer extends View implements Enemy, CollisionObserver {
     private int sprite;
     private String difficulty;
     private Bitmap sprite1;
@@ -25,6 +22,7 @@ public class Necromancer extends View implements Enemy {
     private boolean right = true;
     public Necromancer(float x, float y, String difficulty, Context context) {
         super(context);
+        User.getInstance().addObserver(this);
         speed = 3;
         enemySize = "Medium";
         this.x = x;
@@ -55,21 +53,6 @@ public class Necromancer extends View implements Enemy {
         sprite1 = Bitmap.createBitmap(sprite1, 90, 70, 200,
                 400, matrix, true);
     }
-
-    //    public static com.example.dungeongame.model.Enemy getInstance(float x, float y, String difficulty) {
-//        if (enemyInstance == null) {
-//            enemyInstance = new Knight(50, 50, difficulty);
-//        }
-//        return enemyInstance;
-//    }
-//    public List<Bitmap> enemies(List<Bitmap> enemies) {
-//        enemies.add(sprite1);
-//        return enemies;
-//    }
-//    public List<Enemy> enemies(List<Enemy> enemies) {
-//        enemies.add(Creature.getInstance(x, y, difficulty));
-//        return enemies;
-//    }
     public void update() {
         if (x < 2500 && right) {
             x+=speed;
@@ -85,29 +68,29 @@ public class Necromancer extends View implements Enemy {
             }
         }
     }
-//    public int getSpeed() {
-//        return speed;
-//    }
-
+    //if collision, decrement user health, if creature health <= 0, remove enemy from observer list
+    @Override
+    public void notifyCollision(int x, int y) {
+        if (User.getInstance().getX() == x && User.getInstance().getY() == y) {
+            User.setHealth(User.getHealth() - 20);
+        }
+        if (health <= 0 ) {
+            User.getInstance().removeObserver(this);
+        }
+    }
     public int getSprite() {
         return sprite;
     }
-
-    //    public int getSize() {
-//        return size;
-//    }
     public Bitmap getSprite1() {
         return sprite1;
     }
     public int getHealth() {
         return health;
     }
-
     @Override
     public float getX() {
         return x;
     }
-
     public float getY() {
         return y;
     }

@@ -8,10 +8,7 @@ import android.view.View;
 
 import com.example.dungeongame.R;
 
-public class Boss extends View implements Enemy  {
-    public void attack() {
-        System.out.println("implement a strong attack");
-    }
+public class Boss extends View implements Enemy, CollisionObserver  {
     private int sprite;
     private static Bitmap sprite1;
     private int speed;
@@ -20,7 +17,6 @@ public class Boss extends View implements Enemy  {
     private float x;
     private float y;
     private static String difficulty;
-    private static com.example.dungeongame.model.Enemy enemyInstance = null;
     public Boss(float x, float y, String difficulty, Context context) {
         super(context);
         //super(sprites);
@@ -71,8 +67,16 @@ public class Boss extends View implements Enemy  {
                 }
             }
         }
-
-          
+    }
+    //if collision, decrement user health, if creature health <= 0, remove enemy from observer list
+    @Override
+    public void notifyCollision(int x, int y) {
+        if (User.getInstance().getX() == x && User.getInstance().getY() == y) {
+            User.setHealth(User.getHealth() - 45);
+        }
+        if (health <= 0 ) {
+            User.getInstance().removeObserver(this);
+        }
     }
     public int getSpeed() {
         return speed;

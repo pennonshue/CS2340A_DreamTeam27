@@ -1,13 +1,10 @@
 package com.example.dungeongame.model;
 
-import androidx.lifecycle.Observer;
-
 import java.util.List;
 
 //subject
-public interface UserObserver {
-    List<CollisionObserver> enemies;
+public interface UserSubject {
     void addObserver(CollisionObserver enemy);
     void removeObserver(CollisionObserver enemy);
-    void notifyObserver();
+    void notifyObserver(int x, int y);
 }

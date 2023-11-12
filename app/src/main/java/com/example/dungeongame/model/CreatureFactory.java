@@ -9,7 +9,6 @@ public class CreatureFactory extends EnemyFactory {
     }
     @Override
     public Creature createEnemy() {
-
         return new Creature(1200, 400, User.getInstance().getDifficulty(), context);
     }
 }

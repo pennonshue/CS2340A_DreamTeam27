@@ -8,11 +8,7 @@ import android.view.View;
 
 import com.example.dungeongame.R;
 
-public class PurpleMan extends View implements Enemy {
-    public void attack() {
-        System.out.println("implement a strong attack");
-    }
-
+public class PurpleMan extends View implements Enemy, CollisionObserver {
     private int sprite;
     private static Bitmap sprite1;
     private int speed;
@@ -24,8 +20,8 @@ public class PurpleMan extends View implements Enemy {
     private boolean right = true;
     public PurpleMan(float x, float y, String difficulty, Context context) {
         super(context);
+        User.getInstance().addObserver(this);
         speed = 3;
-
         enemySize = "Small";
         health = 5;
         this.x = x;
@@ -70,18 +66,24 @@ public class PurpleMan extends View implements Enemy {
                 }
             }
         }
-
     }
-
+    //if collision, decrement user health, if creature health <= 0, remove enemy from observer list
+    @Override
+    public void notifyCollision(int x, int y) {
+        if (User.getInstance().getX() == x && User.getInstance().getY() == y) {
+            User.setHealth(User.getHealth() - 30);
+        }
+        if (health <= 0 ) {
+            User.getInstance().removeObserver(this);
+        }
+    }
     public int getSpeed() {
         return speed;
     }
-
     @Override
     public Bitmap getSprite1() {
         return sprite1;
     }
-
     public int getSprite() {
         return sprite;
     }

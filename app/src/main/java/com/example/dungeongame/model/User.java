@@ -11,7 +11,7 @@ import java.util.List;
 
 import com.example.dungeongame.R;
 
-public class User extends View implements UserObserver {
+public class User extends View implements UserSubject {
     private List<CollisionObserver> enemies;
     private static MovementStrategy movementStrategy;
     private int x = 1600;
@@ -19,16 +19,12 @@ public class User extends View implements UserObserver {
     private static Bitmap sprite1;
     private static User userInstance = null;
     private static String username;
-
     private static int score;
     private static int health;
 
     private static int sprite;
     private static String difficulty;
     private static boolean win;
-
-
-
 
     public static User getInstance(Context context, String username, int sprite, String difficulty) {
 
@@ -45,12 +41,11 @@ public class User extends View implements UserObserver {
 
     private User(Context context, String username, int sprite, String difficulty) {
         super(context);
+        enemies = new ArrayList<>();
         this.difficulty = difficulty;
         this.username = username;
         this.score = 20;
-
         this.win = true;
-
         switch (difficulty) {
         case "Easy":
             this.health = 100;
@@ -97,48 +92,40 @@ public class User extends View implements UserObserver {
     public void updatePosition(int newX, int newY) {
         x = newX;
         y = newY;
-        notifyObserver();
+        notifyObserver(newX, newY);
         // Call invalidate to trigger redraw
         invalidate();
     }
-    enemies = new List<CollisionObserver>();
+    @Override
+    public void notifyObserver(int x, int y) {
+        for (CollisionObserver enemy : enemies) {
+            enemy.notifyCollision(x, y);
+        }
+    }
     @Override
     public void addObserver(CollisionObserver enemy) {
-        System.out.println("add enemy to list");
+        enemies.add(enemy);
     }
     @Override
     public void removeObserver(CollisionObserver enemy) {
-        System.out.println("if enemy health < 0, remove from enemy list");
-
-    }
-    @Override
-    public void notifyObserver() {
-        System.out.println("update enmeies on movement");
-        for (CollisionObserver enemy : enemies) {
-            enemy.notifyPosition();
-        }
+        enemies.remove(enemy);
     }
 
     public static MovementStrategy getMovementStrategy() {
         return movementStrategy;
     }
-
     public static String getUsername() {
         return username;
     }
-
     public static void setUsername(String username) {
         User.username = username;
     }
-
     public static int getSprite() {
         return sprite;
     }
-
     public static void setSprite(int sprite) {
         User.sprite = sprite;
     }
-
     @Override
     public float getX() {
         return x;
