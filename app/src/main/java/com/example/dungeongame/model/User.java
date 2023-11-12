@@ -196,10 +196,10 @@ public class User extends View implements UserObserver {
     }
     @Override
     public void notifyObserver() {
-        System.out.println("update enmeies on movement");
+        System.out.println("update enemies on movement");
         //for CollisionObserver enemy : enemies
         //enmey.uppdateContext(this.context);
-        checkCollision();
+//        checkCollision();
     }
 }
 

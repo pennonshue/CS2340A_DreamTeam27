@@ -146,18 +146,18 @@ public class GameViewSprite extends View {
         x -= 30;
         return x;
     }
-    public void setGameViewListener(GameViewObserver observer) {
-        observers.add(observer);
-    }
-
-    public void notifyCharacterLandedOnTile(int x, int y) {
-        for (GameViewObserver observer : observers) {
-            observer.updateOnCharacterLandedOnTile(x, y);
-        }
-    }
+//    public void setGameViewListener(GameViewObserver observer) {
+//        observers.add(observer);
+//    }
+//
+//    public void notifyCharacterLandedOnTile(int x, int y) {
+//        for (GameViewObserver observer : observers) {
+//            observer.updateOnCharacterLandedOnTile(x, y);
+//        }
+//    }
 
     // Implement the GameViewObserver interface method
-    @Override
+//    @Override
     public void updateOnCharacterLandedOnTile(int x, int y) {
         // Handle updates when the character lands on a tile here
         // You can add custom logic or simply call the GameViewListener if needed

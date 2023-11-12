@@ -8,7 +8,7 @@ import android.view.View;
 
 import com.example.dungeongame.R;
 
-public class Boss extends View implements Enemy  {
+public class Goober extends View implements Enemy  {
     public void attack() {
         System.out.println("implement a strong attack");
     }
@@ -22,8 +22,7 @@ public class Boss extends View implements Enemy  {
     private static String difficulty;
 
     private boolean right = true;
-    private static com.example.dungeongame.model.Enemy enemyInstance = null;
-    public Boss(float x, float y, String difficulty, Context context) {
+    public Goober(float x, float y, String difficulty, Context context) {
         super(context);
         //super(sprites);
         speed = 3;
@@ -33,21 +32,21 @@ public class Boss extends View implements Enemy  {
         this.y = y;
 
         switch (difficulty) {
-        case "Easy":
-            this.health = 5;
-            //this.movementStrategy = new RunStrategy();
-            break;
-        case "Medium":
-            this.health = 10;
-            //this.movementStrategy = new RunStrategy();
-            break;
-        case "Hard":
-            this.health = 15;
-            //this.movementStrategy = new JogStrategy();
-            break;
-        default:
-            System.out.println("You have entered an invalid difficulty level");
-            break;
+            case "Easy":
+                this.health = 5;
+                //this.movementStrategy = new RunStrategy();
+                break;
+            case "Medium":
+                this.health = 10;
+                //this.movementStrategy = new RunStrategy();
+                break;
+            case "Hard":
+                this.health = 15;
+                //this.movementStrategy = new JogStrategy();
+                break;
+            default:
+                System.out.println("You have entered an invalid difficulty level");
+                break;
         }
         this.sprite = R.drawable.creatures;
         float scaleX = 1.4f;
@@ -55,8 +54,8 @@ public class Boss extends View implements Enemy  {
         Matrix matrix = new Matrix();
         matrix.postScale(scaleX, scaleY);
         sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
-        sprite1 = Bitmap.createBitmap(sprite1, 710, 260,
-                75, 90, matrix, true);
+        sprite1 = Bitmap.createBitmap(sprite1, 180, 175,
+                80, 90, matrix, true);
     }
     public void update() {
         if (x < 2000 && right) {
@@ -73,7 +72,7 @@ public class Boss extends View implements Enemy  {
             }
         }
 
-          
+
     }
     public int getSpeed() {
         return speed;

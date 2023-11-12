@@ -23,9 +23,6 @@ public class GameScreen2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initializeGame();
-//        while (running) {
-//            updateGame();
-//        }
         startGameLoop();
         startScoreUpdater();
     }

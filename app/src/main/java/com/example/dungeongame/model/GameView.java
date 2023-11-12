@@ -68,7 +68,7 @@ public class GameView extends View {
 
                 break;
             case "Map3.tmx":
-                enemyFactory1 = new NecromancerFactory(context);
+                enemyFactory1 = new GooberFactory(context);
                 enemy1 = enemyFactory1.generateEnemy();
                 enemySprite1 = enemy1.getSprite1();
 
@@ -167,22 +167,22 @@ public class GameView extends View {
         canvas.drawText(score, 100, 110, textPaint);
     }
 
-    public void setGameViewListener(GameViewObserver observer) {
-        observers.add(observer);
-    }
-
-    public void notifyCharacterLandedOnTile(int x, int y) {
-        for (GameViewObserver observer : observers) {
-            observer.updateOnCharacterLandedOnTile(x, y);
-        }
-    }
+//    public void setGameViewListener(GameViewObserver observer) {
+//        observers.add(observer);
+//    }
+//
+//    public void notifyCharacterLandedOnTile(int x, int y) {
+//        for (GameViewObserver observer : observers) {
+//            observer.updateOnCharacterLandedOnTile(x, y);
+//        }
+//    }
 
     // Implement the GameViewObserver interface method
-    @Override
-    public void updateOnCharacterLandedOnTile(int x, int y) {
-        // Handle updates when the character lands on a tile here
-        // You can add custom logic or simply call the GameViewListener if needed
-    }
+//    @Override
+//    public void updateOnCharacterLandedOnTile(int x, int y) {
+//        // Handle updates when the character lands on a tile here
+//        // You can add custom logic or simply call the GameViewListener if needed
+//    }
 
 
     public void updateEnemy() {

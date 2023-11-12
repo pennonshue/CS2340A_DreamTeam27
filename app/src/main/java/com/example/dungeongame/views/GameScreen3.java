@@ -31,7 +31,7 @@ public class GameScreen3 extends AppCompatActivity {
     }
 
     private void initializeGame() {
-        gameView = new GameView(this, "Map2.tmx");
+        gameView = new GameView(this, "Map3.tmx");
         User.getInstance().updatePosition(100, 100);
         setContentView(gameView);
         User.setScore(30);
