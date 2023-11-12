@@ -5,11 +5,12 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.view.View;
+import java.util.List;
 
 import com.example.dungeongame.R;
 
-public class User extends View {
-
+public class User extends View implements UserObserver {
+    private List<CollisionObserver> enemies;
     private static MovementStrategy movementStrategy;
     private int x = 1600;
     @Override
@@ -182,6 +183,23 @@ public class User extends View {
         default:
             System.out.println("You have entered an invalid difficulty level");
         }
+    }
+
+    @Override
+    public void addObserver(CollisionObserver enemy) {
+        System.out.println("add enemy to list");
+    }
+    @Override
+    public void removeObserver(CollisionObserver enemy) {
+        System.out.println("if enemy health < 0, remove from enemy list");
+
+    }
+    @Override
+    public void notifyObserver() {
+        System.out.println("update enmeies on movement");
+        //for CollisionObserver enemy : enemies
+        //enmey.uppdateContext(this.context);
+        checkCollision();
     }
 }
 

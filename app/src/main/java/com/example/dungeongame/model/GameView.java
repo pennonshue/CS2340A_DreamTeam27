@@ -14,9 +14,7 @@ import com.example.dungeongame.TMXLoader.TileMapData;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameView extends View implements GameViewObserver {
-
-    private List<GameViewObserver> observers;
+public class GameView extends View {
 
     private String mapName;
     private boolean endTile;
@@ -24,23 +22,16 @@ public class GameView extends View implements GameViewObserver {
     private Bitmap userSprite;
     private Bitmap enemySprite1;
     private Bitmap enemySprite2;
-
     public Enemy getEnemy1() {
         return enemy1;
     }
-
     public Enemy getEnemy2() {
         return enemy2;
     }
-
     private Enemy enemy1;
     private Enemy enemy2;
-
-
     private EnemyFactory enemyFactory1;
     private EnemyFactory enemyFactory2;
-
-
     private TileMapData t;
 
     public GameView(Context context, String map) {
@@ -174,22 +165,5 @@ public class GameView extends View implements GameViewObserver {
         canvas.drawText(difficulty, 100, 70, textPaint);
         canvas.drawText(health, 100, 90, textPaint);
         canvas.drawText(score, 100, 110, textPaint);
-    }
-
-    public void setGameViewListener(GameViewObserver observer) {
-        observers.add(observer);
-    }
-
-    public void notifyCharacterLandedOnTile(int x, int y) {
-        for (GameViewObserver observer : observers) {
-            observer.updateOnCharacterLandedOnTile(x, y);
-        }
-    }
-
-    // Implement the GameViewObserver interface method
-    @Override
-    public void updateOnCharacterLandedOnTile(int x, int y) {
-        // Handle updates when the character lands on a tile here
-        // You can add custom logic or simply call the GameViewListener if needed
     }
 }
