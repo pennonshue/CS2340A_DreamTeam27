@@ -25,7 +25,7 @@ public class Goober extends View implements Enemy  {
     public Goober(float x, float y, String difficulty, Context context) {
         super(context);
         //super(sprites);
-        speed = 3;
+        speed = 6;
         enemySize = "Small";
         health = 40;
         this.x = x;

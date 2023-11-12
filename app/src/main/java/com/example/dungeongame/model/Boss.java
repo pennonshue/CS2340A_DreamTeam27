@@ -26,7 +26,7 @@ public class Boss extends View implements Enemy  {
     public Boss(float x, float y, String difficulty, Context context) {
         super(context);
         //super(sprites);
-        speed = 3;
+        speed = 9;
         enemySize = "Small";
         health = 40;
         this.x = x;
@@ -50,8 +50,8 @@ public class Boss extends View implements Enemy  {
             break;
         }
         this.sprite = R.drawable.creatures;
-        float scaleX = 1.4f;
-        float scaleY = 1.4f;
+        float scaleX = 2.4f;
+        float scaleY = 2.4f;
         Matrix matrix = new Matrix();
         matrix.postScale(scaleX, scaleY);
         sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);

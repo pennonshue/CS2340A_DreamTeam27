@@ -25,7 +25,7 @@ public class Necromancer extends View implements Enemy {
     private boolean right = true;
     public Necromancer(float x, float y, String difficulty, Context context) {
         super(context);
-        speed = 3;
+        speed = 14;
         enemySize = "Medium";
         this.x = x;
         this.y = y;
@@ -46,14 +46,14 @@ public class Necromancer extends View implements Enemy {
                 System.out.println("You have entered an invalid difficulty level");
                 break;
         }
-        float scaleX = 1.1f;
-        float scaleY = 1.1f;
+        float scaleX = 0.8f;
+        float scaleY = 0.8f;
         Matrix matrix = new Matrix();
         matrix.postScale(scaleX, scaleY);
         sprite = R.drawable.necromancer;
         sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
-        sprite1 = Bitmap.createBitmap(sprite1, 90, 70, 200,
-                400, matrix, true);
+        sprite1 = Bitmap.createBitmap(sprite1, 90, 190, 200,
+                160, matrix, true);
     }
 
     //    public static com.example.dungeongame.model.Enemy getInstance(float x, float y, String difficulty) {
@@ -71,9 +71,9 @@ public class Necromancer extends View implements Enemy {
 //        return enemies;
 //    }
     public void update() {
-        if (x < 2500 && right) {
+        if (x < 1900 && right) {
             x+=speed;
-            if (x >= 2500) {
+            if (x >= 1900) {
                 right = false;
             }
         } else {

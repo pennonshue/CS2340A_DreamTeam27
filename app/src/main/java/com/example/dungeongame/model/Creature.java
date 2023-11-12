@@ -45,8 +45,8 @@ public class Creature extends View implements Enemy, CollisionObserver  {
                 break;
         }
         this.sprite = R.drawable.panda;
-        float scaleX = 1.4f;
-        float scaleY = 1.4f;
+        float scaleX = 3.0f;
+        float scaleY = 3.0f;
         Matrix matrix = new Matrix();
         matrix.postScale(scaleX, scaleY);
         sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);

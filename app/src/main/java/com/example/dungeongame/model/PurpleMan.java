@@ -24,7 +24,7 @@ public class PurpleMan extends View implements Enemy {
     private boolean right = true;
     public PurpleMan(float x, float y, String difficulty, Context context) {
         super(context);
-        speed = 3;
+        speed = 8;
 
         enemySize = "Small";
         health = 5;
@@ -57,9 +57,9 @@ public class PurpleMan extends View implements Enemy {
         System.out.println("Creature made");
     }
     public void update() {
-        if (x < 2500 && right) {
+        if (x < 1900 && right) {
             x+=speed;
-            if (x >= 2500) {
+            if (x >= 1900) {
                 right = false;
             }
         } else {

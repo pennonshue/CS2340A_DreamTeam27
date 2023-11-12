@@ -26,7 +26,7 @@ public class Knight extends View implements Enemy {
     private boolean down = true;
     public Knight(float x, float y, String difficulty, Context context) {
         super(context);
-        speed = 30;
+        speed = 10;
         enemySize = "Medium";
         this.x = x;
         this.y = y;
@@ -58,12 +58,12 @@ public class Knight extends View implements Enemy {
     }
         public void update() {
             if (down) {
-                y+=6;
+                y+=speed;
                 if (y >= 600) {
                     down = false;
                 }
             } else {
-                y-=6;
+                y-=speed;
                 if (y <= 100) {
                     down = true;
                 }
