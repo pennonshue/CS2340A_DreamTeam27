@@ -6,5 +6,5 @@ import java.util.List;
 public interface UserSubject {
     void addObserver(CollisionObserver enemy);
     void removeObserver(CollisionObserver enemy);
-    void notifyObserver(int x, int y);
+    void notifyObserver();
 }

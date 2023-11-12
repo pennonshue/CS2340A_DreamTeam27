@@ -8,7 +8,7 @@ import android.view.View;
 
 import com.example.dungeongame.R;
 
-public class Goober extends View implements Enemy  {
+public class Goober extends View implements Enemy, CollisionObserver  {
     public void attack() {
         System.out.println("implement a strong attack");
     }
@@ -71,13 +71,17 @@ public class Goober extends View implements Enemy  {
                 }
             }
         }
-
-
     }
-    public int getSpeed() {
-        return speed;
+    //if collision, decrement user health, if creature health <= 0, remove enemy from observer list
+    @Override
+    public void notifyCollision() {
+        if (User.getInstance().getX() == x && User.getInstance().getY() == y) {
+            User.setHealth(User.getHealth() - 45);
+        }
+        if (health <= 0 ) {
+            User.getInstance().removeObserver(this);
+        }
     }
-
     @Override
     public Bitmap getSprite1() {
         return sprite1;
