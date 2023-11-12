@@ -14,9 +14,7 @@ import com.example.dungeongame.TMXLoader.TileMapData;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameView extends View implements GameViewObserver {
-
-    private List<GameViewObserver> observers;
+public class GameView extends View {
 
     private String mapName;
     private boolean endTile;
@@ -24,23 +22,16 @@ public class GameView extends View implements GameViewObserver {
     private Bitmap userSprite;
     private Bitmap enemySprite1;
     private Bitmap enemySprite2;
-
     public Enemy getEnemy1() {
         return enemy1;
     }
-
     public Enemy getEnemy2() {
         return enemy2;
     }
-
     private Enemy enemy1;
     private Enemy enemy2;
-
-
     private EnemyFactory enemyFactory1;
     private EnemyFactory enemyFactory2;
-
-
     private TileMapData t;
 
     public GameView(Context context, String map) {
@@ -54,35 +45,39 @@ public class GameView extends View implements GameViewObserver {
         userSprite = User.getSprite1();
 
         switch (mapName) {
-        case "Map1.tmx":
-            EnemyFactory enemyFactory = new CreatureFactory(context);
-            enemy1 = enemyFactory.generateEnemy();
-            enemySprite1 = enemy1.getSprite1();
+            case "Map1.tmx":
+                EnemyFactory enemyFactory = new CreatureFactory(context);
+                enemy1 = enemyFactory.generateEnemy();
+                enemySprite1 = enemy1.getSprite1();
 
-            enemyFactory2 = new KnightFactory(context);
-            enemy2 = enemyFactory2.generateEnemy();
-            enemySprite2 = enemy2.getSprite1();
+                enemyFactory2 = new KnightFactory(context);
+                enemy2 = enemyFactory2.generateEnemy();
+                enemySprite2 = enemy2.getSprite1();
 
-            ///PUT UR SECOND CREATURE HERE!!!!!!!
+                ///PUT UR SECOND CREATURE HERE!!!!!!!
 
-            break;
-        case "Map2.tmx":
-            enemyFactory1 = new PurpleManFactory(context);
-            enemy1 = enemyFactory1.generateEnemy();
-            enemySprite1 = enemy1.getSprite1();
+                break;
+            case "Map2.tmx":
+                enemyFactory1 = new PurpleManFactory(context);
+                enemy1 = enemyFactory1.generateEnemy();
+                enemySprite1 = enemy1.getSprite1();
 
-            enemyFactory2 = new NecromancerFactory(context);
-            enemy2 = enemyFactory2.generateEnemy();
-            enemySprite2 = enemy2.getSprite1();
+                enemyFactory2 = new NecromancerFactory(context);
+                enemy2 = enemyFactory2.generateEnemy();
+                enemySprite2 = enemy2.getSprite1();
 
-            break;
-        case "Map3.tmx":
-            enemyFactory = new BossFactory(context);
-            Enemy jellytoast = enemyFactory.generateEnemy();
-            enemySprite1 = jellytoast.getSprite1();
-            break;
-        default:
-            break;
+                break;
+            case "Map3.tmx":
+                enemyFactory1 = new GooberFactory(context);
+                enemy1 = enemyFactory1.generateEnemy();
+                enemySprite1 = enemy1.getSprite1();
+
+                enemyFactory2 = new BossFactory(context);
+                enemy2 = enemyFactory2.generateEnemy();
+                enemySprite2 = enemy2.getSprite1();
+                break;
+            default:
+                break;
         }
 
     }
@@ -172,22 +167,22 @@ public class GameView extends View implements GameViewObserver {
         canvas.drawText(score, 100, 110, textPaint);
     }
 
-    public void setGameViewListener(GameViewObserver observer) {
-        observers.add(observer);
-    }
-
-    public void notifyCharacterLandedOnTile(int x, int y) {
-        for (GameViewObserver observer : observers) {
-            observer.updateOnCharacterLandedOnTile(x, y);
-        }
-    }
+//    public void setGameViewListener(GameViewObserver observer) {
+//        observers.add(observer);
+//    }
+//
+//    public void notifyCharacterLandedOnTile(int x, int y) {
+//        for (GameViewObserver observer : observers) {
+//            observer.updateOnCharacterLandedOnTile(x, y);
+//        }
+//    }
 
     // Implement the GameViewObserver interface method
-    @Override
-    public void updateOnCharacterLandedOnTile(int x, int y) {
-        // Handle updates when the character lands on a tile here
-        // You can add custom logic or simply call the GameViewListener if needed
-    }
+//    @Override
+//    public void updateOnCharacterLandedOnTile(int x, int y) {
+//        // Handle updates when the character lands on a tile here
+//        // You can add custom logic or simply call the GameViewListener if needed
+//    }
 
 
     public void updateEnemy() {

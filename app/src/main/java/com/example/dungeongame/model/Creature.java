@@ -7,11 +7,9 @@ import android.graphics.Matrix;
 import android.view.View;
 
 import com.example.dungeongame.R;
+import com.google.android.material.button.MaterialButton;
 
-public class Creature extends View implements Enemy  {
-    public void attack() {
-        System.out.println("implement a strong attack");
-    }
+public class Creature extends View implements Enemy, CollisionObserver  {
     private int sprite;
     private static Bitmap sprite1;
     private int speed;
@@ -47,8 +45,8 @@ public class Creature extends View implements Enemy  {
                 break;
         }
         this.sprite = R.drawable.panda;
-        float scaleX = 1.4f;
-        float scaleY = 1.4f;
+        float scaleX = 3.0f;
+        float scaleY = 3.0f;
         Matrix matrix = new Matrix();
         matrix.postScale(scaleX, scaleY);
         sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
@@ -68,6 +66,11 @@ public class Creature extends View implements Enemy  {
                     down = true;
                 }
             }
+        }
+
+        @Override
+        public void updatePosition() {
+        //check for collsiion
         }
 
     public int getSpeed() {

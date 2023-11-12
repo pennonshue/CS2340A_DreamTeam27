@@ -11,14 +11,13 @@ import com.example.dungeongame.R;
 
 import java.util.List;
 
-public class GameViewSprite extends View implements GameViewObserver {
+public class GameViewSprite extends View {
 
     private Bitmap sprite;
     private static int spriteNumber;
     private int x = 100;
 
     private int y = 100;
-    private List<GameViewObserver> observers;
     private static boolean moveUp;
     private static boolean moveDown;
     private static boolean moveRight;
@@ -147,18 +146,18 @@ public class GameViewSprite extends View implements GameViewObserver {
         x -= 30;
         return x;
     }
-    public void setGameViewListener(GameViewObserver observer) {
-        observers.add(observer);
-    }
-
-    public void notifyCharacterLandedOnTile(int x, int y) {
-        for (GameViewObserver observer : observers) {
-            observer.updateOnCharacterLandedOnTile(x, y);
-        }
-    }
+//    public void setGameViewListener(GameViewObserver observer) {
+//        observers.add(observer);
+//    }
+//
+//    public void notifyCharacterLandedOnTile(int x, int y) {
+//        for (GameViewObserver observer : observers) {
+//            observer.updateOnCharacterLandedOnTile(x, y);
+//        }
+//    }
 
     // Implement the GameViewObserver interface method
-    @Override
+//    @Override
     public void updateOnCharacterLandedOnTile(int x, int y) {
         // Handle updates when the character lands on a tile here
         // You can add custom logic or simply call the GameViewListener if needed

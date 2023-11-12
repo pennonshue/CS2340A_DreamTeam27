@@ -20,11 +20,13 @@ public class Boss extends View implements Enemy  {
     private float x;
     private float y;
     private static String difficulty;
+
+    private boolean right = true;
     private static com.example.dungeongame.model.Enemy enemyInstance = null;
     public Boss(float x, float y, String difficulty, Context context) {
         super(context);
         //super(sprites);
-        speed = 15;
+        speed = 9;
         enemySize = "Small";
         health = 40;
         this.x = x;
@@ -48,8 +50,8 @@ public class Boss extends View implements Enemy  {
             break;
         }
         this.sprite = R.drawable.creatures;
-        float scaleX = 1.4f;
-        float scaleY = 1.4f;
+        float scaleX = 2.4f;
+        float scaleY = 2.4f;
         Matrix matrix = new Matrix();
         matrix.postScale(scaleX, scaleY);
         sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
@@ -57,15 +59,14 @@ public class Boss extends View implements Enemy  {
                 75, 90, matrix, true);
     }
     public void update() {
-        boolean right = true;
-        if (x < 400 && right) {
-            x += 3;
-            if (x >= 400) {
+        if (x < 2000 && right) {
+            x += speed;
+            if (x >= 2000) {
                 right = false;
             }
         } else {
             if (x >= 10) {
-                x -= 3;
+                x -= speed;
                 if (x <= 10) {
                     right = true;
                 }

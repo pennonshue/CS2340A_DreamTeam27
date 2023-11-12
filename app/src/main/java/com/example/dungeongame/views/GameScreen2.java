@@ -23,9 +23,6 @@ public class GameScreen2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initializeGame();
-//        while (running) {
-//            updateGame();
-//        }
         startGameLoop();
         startScoreUpdater();
     }
@@ -110,7 +107,7 @@ public class GameScreen2 extends AppCompatActivity {
                 case KeyEvent.KEYCODE_DPAD_RIGHT:
                     if (gameView.getEndTile()) {
                         stopGame();
-                        showGameScreen2();
+                        showGameScreen3();
                     }
                     return gameView.onKeyDown(KeyEvent.KEYCODE_DPAD_RIGHT, event);
                 case KeyEvent.KEYCODE_DPAD_UP:
@@ -123,7 +120,7 @@ public class GameScreen2 extends AppCompatActivity {
         return super.dispatchKeyEvent(event);
     }
 
-    private void showGameScreen2() {
+    private void showGameScreen3() {
         Intent intent = new Intent(GameScreen2.this, GameScreen3.class);
         startActivity(intent);
     }
