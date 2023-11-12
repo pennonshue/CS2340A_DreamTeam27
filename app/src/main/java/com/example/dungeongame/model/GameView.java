@@ -68,7 +68,7 @@ public class GameView extends View {
 
                 break;
             case "Map3.tmx":
-                enemyFactory1 = new NecromancerFactory(context);
+                enemyFactory1 = new GooberFactory(context);
                 enemy1 = enemyFactory1.generateEnemy();
                 enemySprite1 = enemy1.getSprite1();
 

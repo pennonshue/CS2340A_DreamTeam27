@@ -21,7 +21,7 @@ public class PurpleMan extends View implements Enemy, CollisionObserver {
     public PurpleMan(float x, float y, String difficulty, Context context) {
         super(context);
         User.getInstance().addObserver(this);
-        speed = 3;
+        speed = 8;
         enemySize = "Small";
         health = 5;
         this.x = x;
@@ -53,9 +53,9 @@ public class PurpleMan extends View implements Enemy, CollisionObserver {
         System.out.println("Creature made");
     }
     public void update() {
-        if (x < 2500 && right) {
+        if (x < 1900 && right) {
             x+=speed;
-            if (x >= 2500) {
+            if (x >= 1900) {
                 right = false;
             }
         } else {
