@@ -24,54 +24,56 @@ public class Boss extends View implements Enemy  {
     public Boss(float x, float y, String difficulty, Context context) {
         super(context);
         //super(sprites);
-        speed = 25;
+        speed = 15;
         enemySize = "Small";
         health = 40;
         this.x = x;
         this.y = y;
+
         switch (difficulty) {
-            case "Easy":
-                this.health = 35;
-                //this.movementStrategy = new RunStrategy();
-                break;
-            case "Medium":
-                this.health = 40;
-                //this.movementStrategy = new RunStrategy();
-                break;
-            case "Hard":
-                this.health = 45;
-                //this.movementStrategy = new JogStrategy();
-                break;
-            default:
-                System.out.println("You have entered an invalid difficulty level");
-                break;
+        case "Easy":
+            this.health = 5;
+            //this.movementStrategy = new RunStrategy();
+            break;
+        case "Medium":
+            this.health = 10;
+            //this.movementStrategy = new RunStrategy();
+            break;
+        case "Hard":
+            this.health = 15;
+            //this.movementStrategy = new JogStrategy();
+            break;
+        default:
+            System.out.println("You have entered an invalid difficulty level");
+            break;
         }
-        this.sprite = R.drawable.toast;
+        this.sprite = R.drawable.creatures;
         float scaleX = 1.4f;
         float scaleY = 1.4f;
         Matrix matrix = new Matrix();
         matrix.postScale(scaleX, scaleY);
         sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
-        sprite1 = Bitmap.createBitmap(sprite1, 0, 0, 80,
-                90, matrix, true);
+        sprite1 = Bitmap.createBitmap(sprite1, 710, 260,
+                75, 90, matrix, true);
     }
-        public void update() {
-            boolean right = true;
-            if (x < 400 && right) {
-                x+=3;
-                if (x >= 400) {
-                    right = false;
-                }
-            } else {
-                if (x >= 10) {
-                    x-=3;
-                    if (x <= 10) {
-                        right = true;
-                    }
+    public void update() {
+        boolean right = true;
+        if (x < 400 && right) {
+            x += 3;
+            if (x >= 400) {
+                right = false;
+            }
+        } else {
+            if (x >= 10) {
+                x -= 3;
+                if (x <= 10) {
+                    right = true;
                 }
             }
-
         }
+
+          
+    }
     public int getSpeed() {
         return speed;
     }
@@ -84,9 +86,9 @@ public class Boss extends View implements Enemy  {
         return sprite;
     }
 
-//    public int getSize() {
-//        return size;
-//    }
+    //    public int getSize() {
+    //        return size;
+    //    }
 
     public int getHealth() {
         return health;

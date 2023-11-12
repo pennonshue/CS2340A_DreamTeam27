@@ -14,7 +14,6 @@ public interface Enemy {
     float getX();
     float getY();
     void update();
-
 //    private MovementStrategy movementStrategy;
 //    private int x;
 //    private int y;
