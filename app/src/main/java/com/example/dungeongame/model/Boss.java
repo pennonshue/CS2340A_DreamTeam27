@@ -18,7 +18,6 @@ public class Boss extends View implements Enemy, CollisionObserver  {
     private float y;
     private static String difficulty;
     private boolean right = true;
-    private static com.example.dungeongame.model.Enemy enemyInstance = null;
     public Boss(float x, float y, String difficulty, Context context) {
         super(context);
         //super(sprites);
@@ -71,7 +70,7 @@ public class Boss extends View implements Enemy, CollisionObserver  {
     }
     //if collision, decrement user health, if creature health <= 0, remove enemy from observer list
     @Override
-    public void notifyCollision(int x, int y) {
+    public void notifyCollision() {
         if (User.getInstance().getX() == x && User.getInstance().getY() == y) {
             User.setHealth(User.getHealth() - 45);
         }

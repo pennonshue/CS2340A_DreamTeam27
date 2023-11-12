@@ -70,7 +70,7 @@ public class Necromancer extends View implements Enemy, CollisionObserver {
     }
     //if collision, decrement user health, if creature health <= 0, remove enemy from observer list
     @Override
-    public void notifyCollision(int x, int y) {
+    public void notifyCollision() {
         if (User.getInstance().getX() == x && User.getInstance().getY() == y) {
             User.setHealth(User.getHealth() - 20);
         }

@@ -12,7 +12,6 @@ public class LeaderboardEntry {
         this.playerName = playerName;
         this.score = score + User.getInstance().getHealth();
         this.timestamp = new Date();
-        System.out.println("leaderboard is created");
     }
 
     public String getPlayerName() {

@@ -21,7 +21,6 @@ public class User extends View implements UserSubject {
     private static String username;
     private static int score;
     private static int health;
-
     private static int sprite;
     private static String difficulty;
     private static boolean win;
@@ -44,7 +43,7 @@ public class User extends View implements UserSubject {
         enemies = new ArrayList<>();
         this.difficulty = difficulty;
         this.username = username;
-        this.score = 20;
+        this.score = 50;
         this.win = true;
         switch (difficulty) {
         case "Easy":
@@ -92,14 +91,14 @@ public class User extends View implements UserSubject {
     public void updatePosition(int newX, int newY) {
         x = newX;
         y = newY;
-        notifyObserver(newX, newY);
+        notifyObserver();
         // Call invalidate to trigger redraw
         invalidate();
     }
     @Override
-    public void notifyObserver(int x, int y) {
+    public void notifyObserver() {
         for (CollisionObserver enemy : enemies) {
-            enemy.notifyCollision(x, y);
+            enemy.notifyCollision();
         }
     }
     @Override
