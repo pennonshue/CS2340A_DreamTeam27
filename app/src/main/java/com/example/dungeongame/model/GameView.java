@@ -79,7 +79,6 @@ public class GameView extends View {
             default:
                 break;
         }
-
     }
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -107,10 +106,8 @@ public class GameView extends View {
         default:
             break;
         }
-
         // Trigger a redraw
         invalidate();
-
         return true;
     }
 

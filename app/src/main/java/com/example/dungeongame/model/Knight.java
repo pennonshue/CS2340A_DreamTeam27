@@ -10,7 +10,7 @@ import com.example.dungeongame.R;
 
 import java.util.List;
 
-public class Knight extends View implements Enemy {
+public class Knight extends View implements Enemy, CollisionObserver {
     public void attack() {
         System.out.println("implement a strong attack");
     }
@@ -26,6 +26,7 @@ public class Knight extends View implements Enemy {
     private boolean down = true;
     public Knight(float x, float y, String difficulty, Context context) {
         super(context);
+        User.getInstance().addObserver(this);
         speed = 10;
         enemySize = "Medium";
         this.x = x;
@@ -70,6 +71,16 @@ public class Knight extends View implements Enemy {
             }
         }
 
+    //if collision, decrement user health, if creature health <= 0, remove enemy from observer list
+    @Override
+    public void notifyCollision(int x, int y) {
+        if (User.getInstance().getX() == x && User.getInstance().getY() == y) {
+            User.setHealth(User.getHealth() - 20);
+        }
+        if (health <= 0 ) {
+            User.getInstance().removeObserver(this);
+        }
+    }
     public int getSprite() {
         return sprite;
     }

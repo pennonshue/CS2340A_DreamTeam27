@@ -1,7 +1,10 @@
 package com.example.dungeongame.model;
+
+import java.util.List;
+
 //subject
-public interface UserObserver {
+public interface UserSubject {
     void addObserver(CollisionObserver enemy);
     void removeObserver(CollisionObserver enemy);
-    void notifyObserver();
+    void notifyObserver(int x, int y);
 }

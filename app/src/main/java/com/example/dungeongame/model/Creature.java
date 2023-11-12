@@ -22,6 +22,7 @@ public class Creature extends View implements Enemy, CollisionObserver  {
     public Creature(float x, float y, String difficulty, Context context) {
         super(context);
         //super(sprites);
+        User.getInstance().addObserver(this);
         speed = 15;
         enemySize = "Small";
         health = 5;
@@ -53,30 +54,29 @@ public class Creature extends View implements Enemy, CollisionObserver  {
         sprite1 = Bitmap.createBitmap(sprite1, 0, 0, 80,
                 90, matrix, true);
     }
-
-        public void update() {
-            if (down) {
-                y+=6;
-                if (y >= 600) {
-                    down = false;
-                }
-            } else {
-                y-=6;
-                if (y <= 100) {
-                    down = true;
-                }
+    public void update() {
+        if (down) {
+            y+=6;
+            if (y >= 600) {
+                down = false;
+            }
+        } else {
+            y-=6;
+            if (y <= 100) {
+                down = true;
             }
         }
-
-        @Override
-        public void updatePosition() {
-        //check for collsiion
-        }
-
-    public int getSpeed() {
-        return speed;
     }
-
+    //if collision, decrement user health, if creature health <= 0, remove enemy from observer list
+    @Override
+    public void notifyCollision(int x, int y) {
+        if (User.getInstance().getX() == x && User.getInstance().getY() == y) {
+            User.setHealth(User.getHealth() - 10);
+        }
+        if (health <= 0 ) {
+            User.getInstance().removeObserver(this);
+        }
+    }
     @Override
     public Bitmap getSprite1() {
         return sprite1;
@@ -84,19 +84,15 @@ public class Creature extends View implements Enemy, CollisionObserver  {
     public int getSprite() {
         return sprite;
     }
-
     public int getHealth() {
         return health;
     }
-    @Override
     public float getX() {
         return x;
     }
-
     public float getY() {
         return y;
     }
-
     public String getDifficulty() {
         return difficulty;
     }
