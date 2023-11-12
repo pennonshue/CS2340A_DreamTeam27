@@ -42,7 +42,7 @@ public class GameScreen extends AppCompatActivity {
             @Override
             public void run() {
                 while (running) {
-                    updateAndRender();
+                    updateGame();
                     try {
                         Thread.sleep(45); // Aim for approximately 60 FPS
                     } catch (InterruptedException e) {
@@ -54,12 +54,10 @@ public class GameScreen extends AppCompatActivity {
         gameLoopThread.start();
     }
 
-    private void updateAndRender() {
-        updateGame();
-    }
 
     private void updateGame() {
         gameView.updateEnemy();
+
     }
 
 //    private void renderGame() {
