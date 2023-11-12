@@ -11,14 +11,13 @@ import com.example.dungeongame.R;
 
 import java.util.List;
 
-public class GameViewSprite extends View implements GameViewObserver {
+public class GameViewSprite extends View {
 
     private Bitmap sprite;
     private static int spriteNumber;
     private int x = 100;
 
     private int y = 100;
-    private List<GameViewObserver> observers;
     private static boolean moveUp;
     private static boolean moveDown;
     private static boolean moveRight;
