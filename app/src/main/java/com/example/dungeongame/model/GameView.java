@@ -79,7 +79,6 @@ public class GameView extends View {
             default:
                 break;
         }
-
     }
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -107,10 +106,8 @@ public class GameView extends View {
         default:
             break;
         }
-
         // Trigger a redraw
         invalidate();
-
         return true;
     }
 
@@ -167,22 +164,22 @@ public class GameView extends View {
         canvas.drawText(score, 100, 110, textPaint);
     }
 
-    public void setGameViewListener(GameViewObserver observer) {
-        observers.add(observer);
-    }
-
-    public void notifyCharacterLandedOnTile(int x, int y) {
-        for (GameViewObserver observer : observers) {
-            observer.updateOnCharacterLandedOnTile(x, y);
-        }
-    }
+//    public void setGameViewListener(GameViewObserver observer) {
+//        observers.add(observer);
+//    }
+//
+//    public void notifyCharacterLandedOnTile(int x, int y) {
+//        for (GameViewObserver observer : observers) {
+//            observer.updateOnCharacterLandedOnTile(x, y);
+//        }
+//    }
 
     // Implement the GameViewObserver interface method
-    @Override
-    public void updateOnCharacterLandedOnTile(int x, int y) {
-        // Handle updates when the character lands on a tile here
-        // You can add custom logic or simply call the GameViewListener if needed
-    }
+//    @Override
+//    public void updateOnCharacterLandedOnTile(int x, int y) {
+//        // Handle updates when the character lands on a tile here
+//        // You can add custom logic or simply call the GameViewListener if needed
+//    }
 
 
     public void updateEnemy() {

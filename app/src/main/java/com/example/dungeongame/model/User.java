@@ -5,6 +5,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.view.View;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import com.example.dungeongame.R;
@@ -13,24 +15,8 @@ public class User extends View implements UserObserver {
     private List<CollisionObserver> enemies;
     private static MovementStrategy movementStrategy;
     private int x = 1600;
-    @Override
-    public float getX() {
-        return x;
-    }
-
-    public float getY() {
-        return y;
-    }
-
     private int y = 300;
-
-
-    public static Bitmap getSprite1() {
-        return sprite1;
-    }
-
     private static Bitmap sprite1;
-
     private static User userInstance = null;
     private static String username;
 
@@ -111,8 +97,26 @@ public class User extends View implements UserObserver {
     public void updatePosition(int newX, int newY) {
         x = newX;
         y = newY;
+        notifyObserver();
         // Call invalidate to trigger redraw
         invalidate();
+    }
+    enemies = new List<CollisionObserver>();
+    @Override
+    public void addObserver(CollisionObserver enemy) {
+        System.out.println("add enemy to list");
+    }
+    @Override
+    public void removeObserver(CollisionObserver enemy) {
+        System.out.println("if enemy health < 0, remove from enemy list");
+
+    }
+    @Override
+    public void notifyObserver() {
+        System.out.println("update enmeies on movement");
+        for (CollisionObserver enemy : enemies) {
+            enemy.notifyPosition();
+        }
     }
 
     public static MovementStrategy getMovementStrategy() {
@@ -135,11 +139,19 @@ public class User extends View implements UserObserver {
         User.sprite = sprite;
     }
 
-
+    @Override
+    public float getX() {
+        return x;
+    }
+    public float getY() {
+        return y;
+    }
+    public static Bitmap getSprite1() {
+        return sprite1;
+    }
     public static int getHealth() {
         return health;
     }
-
     public static void setHealth(int health) {
         User.health = health;
         if (health <= 0) {
@@ -152,7 +164,6 @@ public class User extends View implements UserObserver {
     public static boolean getWin() {
         return score > 0;
     }
-
     public static String getDifficulty() {
         return difficulty;
     }
@@ -183,23 +194,6 @@ public class User extends View implements UserObserver {
         default:
             System.out.println("You have entered an invalid difficulty level");
         }
-    }
-
-    @Override
-    public void addObserver(CollisionObserver enemy) {
-        System.out.println("add enemy to list");
-    }
-    @Override
-    public void removeObserver(CollisionObserver enemy) {
-        System.out.println("if enemy health < 0, remove from enemy list");
-
-    }
-    @Override
-    public void notifyObserver() {
-        System.out.println("update enmeies on movement");
-        //for CollisionObserver enemy : enemies
-        //enmey.uppdateContext(this.context);
-        checkCollision();
     }
 }
 

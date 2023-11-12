@@ -67,10 +67,12 @@ public class Creature extends View implements Enemy, CollisionObserver  {
                 }
             }
         }
-
+        //if collision, decrement user health
         @Override
-        public void updatePosition() {
-        //check for collsiion
+        public void notifyPosition(User.getPosition()) {
+            if (User.getInstance().getX() == Enemy.getX() && User.getY() == Creature.getY()) {
+                User.setHealth(User.getHealth() - 10);
+            }
         }
 
     public int getSpeed() {
