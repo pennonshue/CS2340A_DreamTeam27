@@ -147,7 +147,7 @@ public class GameView extends View {
         canvas.drawBitmap(userSprite, User.getInstance().getX(), User.getInstance().getY(), null);
 
         //test
-        canvas.drawBitmap(enemySprite1, enemy1.getX() , enemy1.getY(), null);
+        canvas.drawBitmap(enemySprite1, enemy1.getX(), enemy1.getY(), null);
         canvas.drawBitmap(enemySprite2, enemy2.getX(), enemy2.getY(), null);
 
 
@@ -165,5 +165,29 @@ public class GameView extends View {
         canvas.drawText(difficulty, 100, 70, textPaint);
         canvas.drawText(health, 100, 90, textPaint);
         canvas.drawText(score, 100, 110, textPaint);
+    }
+
+    public void setGameViewListener(GameViewObserver observer) {
+        observers.add(observer);
+    }
+
+    public void notifyCharacterLandedOnTile(int x, int y) {
+        for (GameViewObserver observer : observers) {
+            observer.updateOnCharacterLandedOnTile(x, y);
+        }
+    }
+
+    // Implement the GameViewObserver interface method
+    @Override
+    public void updateOnCharacterLandedOnTile(int x, int y) {
+        // Handle updates when the character lands on a tile here
+        // You can add custom logic or simply call the GameViewListener if needed
+    }
+
+
+    public void updateEnemy() {
+        enemy1.update();
+        enemy2.update();
+        invalidate();
     }
 }

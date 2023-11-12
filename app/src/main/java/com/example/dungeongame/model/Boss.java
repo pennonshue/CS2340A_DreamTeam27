@@ -26,33 +26,26 @@ public class Boss extends View implements Enemy  {
         //super(sprites);
         speed = 15;
         enemySize = "Small";
-        health = 5;
-        if (x < 0) {
-            this.x = 0;
-        } else {
-            this.x = y;
-        }
-        if (y < 0) {
-            this.y = 0;
-        } else {
-            this.y = y;
-        }
+        health = 40;
+        this.x = x;
+        this.y = y;
+
         switch (difficulty) {
-            case "Easy":
-                this.health = 5;
-                //this.movementStrategy = new RunStrategy();
-                break;
-            case "Medium":
-                this.health = 10;
-                //this.movementStrategy = new RunStrategy();
-                break;
-            case "Hard":
-                this.health = 15;
-                //this.movementStrategy = new JogStrategy();
-                break;
-            default:
-                System.out.println("You have entered an invalid difficulty level");
-                break;
+        case "Easy":
+            this.health = 5;
+            //this.movementStrategy = new RunStrategy();
+            break;
+        case "Medium":
+            this.health = 10;
+            //this.movementStrategy = new RunStrategy();
+            break;
+        case "Hard":
+            this.health = 15;
+            //this.movementStrategy = new JogStrategy();
+            break;
+        default:
+            System.out.println("You have entered an invalid difficulty level");
+            break;
         }
         this.sprite = R.drawable.creatures;
         float scaleX = 1.4f;
@@ -63,28 +56,24 @@ public class Boss extends View implements Enemy  {
         sprite1 = Bitmap.createBitmap(sprite1, 710, 260,
                 75, 90, matrix, true);
     }
-    //    public static com.example.dungeongame.model.Enemy getInstance(float x, float y, String difficulty) {
-//        if (enemyInstance == null) {
-//            enemyInstance = new Creature(50, 50, difficulty);
-//        }
-//        return enemyInstance;
-//    }
-        public void update() {
-            boolean right = true;
-            if (x < 400 && right) {
-                x+=3;
-                if (x >= 400) {
-                    right = false;
-                }
-            } else {
-                if (x >= 10) {
-                    x-=3;
-                    if (x <= 10) {
-                        right = true;
-                    }
+    public void update() {
+        boolean right = true;
+        if (x < 400 && right) {
+            x += 3;
+            if (x >= 400) {
+                right = false;
+            }
+        } else {
+            if (x >= 10) {
+                x -= 3;
+                if (x <= 10) {
+                    right = true;
                 }
             }
         }
+
+          
+    }
     public int getSpeed() {
         return speed;
     }
@@ -97,9 +86,9 @@ public class Boss extends View implements Enemy  {
         return sprite;
     }
 
-//    public int getSize() {
-//        return size;
-//    }
+    //    public int getSize() {
+    //        return size;
+    //    }
 
     public int getHealth() {
         return health;

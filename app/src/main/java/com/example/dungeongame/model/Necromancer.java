@@ -22,20 +22,13 @@ public class Necromancer extends View implements Enemy {
     private int health;
     private float x;
     private float y;
+    private boolean right = true;
     public Necromancer(float x, float y, String difficulty, Context context) {
         super(context);
-        speed = 30;
+        speed = 3;
         enemySize = "Medium";
-        if (x < 0) {
-            this.x = 0;
-        } else {
-            this.x = y;
-        }
-        if (y < 0) {
-            this.y = 0;
-        } else {
-            this.y = y;
-        }
+        this.x = x;
+        this.y = y;
         switch (difficulty) {
             case "Easy":
                 this.health = 20;
@@ -78,15 +71,14 @@ public class Necromancer extends View implements Enemy {
 //        return enemies;
 //    }
     public void update() {
-        boolean right = true;
-        if (x < 400 && right) {
-            x+=3;
-            if (x >= 400) {
+        if (x < 2500 && right) {
+            x+=speed;
+            if (x >= 2500) {
                 right = false;
             }
         } else {
             if (x >= 10) {
-                x-=3;
+                x-=speed;
                 if (x <= 10) {
                     right = true;
                 }
