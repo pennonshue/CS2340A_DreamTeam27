@@ -3,7 +3,7 @@ package com.example.dungeongame.model;
 import android.content.Context;
 
 public class GooberFactory extends EnemyFactory {
-    Context context;
+    private Context context;
     public GooberFactory(Context context) {
         this.context = context;
     }

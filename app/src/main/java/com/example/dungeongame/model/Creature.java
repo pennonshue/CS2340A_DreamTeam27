@@ -12,21 +12,10 @@ import com.google.android.material.button.MaterialButton;
 public class Creature extends View implements Enemy, CollisionObserver  {
     private int sprite;
     private static Bitmap sprite1;
-
-    public void setCollision() {
-        collision = !collision;
-    }
-    public boolean collision = false;
-
-    public boolean getCollision() {
-        return collision;
-    }
     private int speed;
     private String enemySize;
     private int health;
     private float x;
-
-
     private float y;
     private static String difficulty;
     private boolean down = true;
@@ -66,26 +55,22 @@ public class Creature extends View implements Enemy, CollisionObserver  {
                 90, matrix, true);
     }
     public void update() {
-        if (!collision) {
-            if (down) {
-                y+=speed;
-                if (y >= 600) {
-                    down = false;
-                }
-            } else {
-                y-=speed;
-                if (y <= 100) {
-                    down = true;
-                }
+        if (down) {
+            y+=6;
+            if (y >= 600) {
+                down = false;
             }
-
+        } else {
+            y-=6;
+            if (y <= 100) {
+                down = true;
+            }
         }
     }
     //if collision, decrement user health, if creature health <= 0, remove enemy from observer list
     @Override
     public void notifyCollision() {
-        if (User.getInstance().getX() < (x + 20) && User.getInstance().getX() > (x-20)
-                && User.getInstance().getY() < (y + 10) && User.getInstance().getY() > (y - 10)) {
+        if (User.getInstance().getX() == x && User.getInstance().getY() == y) {
             User.setHealth(User.getHealth() - 10);
         }
         if (health <= 0 ) {
