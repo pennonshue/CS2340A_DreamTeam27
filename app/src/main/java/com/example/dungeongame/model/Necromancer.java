@@ -25,6 +25,7 @@ public class Necromancer extends View implements Enemy, CollisionObserver {
 
     private boolean collision = false;
     private int speed;
+    private int attack;
     private String enemySize;
     private int health;
     private float x;
@@ -40,14 +41,17 @@ public class Necromancer extends View implements Enemy, CollisionObserver {
         switch (difficulty) {
             case "Easy":
                 this.health = 20;
+                this.attack = 5;
                 //this.movementStrategy = new RunStrategy();
                 break;
             case "Medium":
                 this.health = 25;
+                this.attack = 10;
                 //this.movementStrategy = new RunStrategy();
                 break;
             case "Hard":
                 this.health = 30;
+                this.attack = 15;
                 //this.movementStrategy = new JogStrategy();
                 break;
             default:
@@ -107,6 +111,6 @@ public class Necromancer extends View implements Enemy, CollisionObserver {
         return y;
     }
     public int getAttack() {
-        return 10;
+        return attack;
     }
 }

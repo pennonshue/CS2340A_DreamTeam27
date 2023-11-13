@@ -19,6 +19,8 @@ public class Creature extends View implements Enemy, CollisionObserver  {
     private float y;
     private static String difficulty;
     private boolean down = true;
+    private int attack;
+
 
     private boolean collision = false;
     public Creature(float x, float y, String difficulty, Context context) {
@@ -33,14 +35,17 @@ public class Creature extends View implements Enemy, CollisionObserver  {
         switch (difficulty) {
             case "Easy":
                 this.health = 5;
+                this.attack = 5;
                 //this.movementStrategy = new RunStrategy();
                 break;
             case "Medium":
                 this.health = 10;
+                this.attack = 10;
                 //this.movementStrategy = new RunStrategy();
                 break;
             case "Hard":
                 this.health = 15;
+                this.attack = 10;
                 //this.movementStrategy = new JogStrategy();
                 break;
             default:
@@ -106,7 +111,7 @@ public class Creature extends View implements Enemy, CollisionObserver  {
         return x;
     }
     public int getAttack() {
-        return 5;
+        return attack;
     }
     public float getY() {
         return y;
