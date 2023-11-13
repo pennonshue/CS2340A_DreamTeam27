@@ -14,6 +14,16 @@ public class Goober extends View implements Enemy, CollisionObserver  {
     }
     private int sprite;
     private static Bitmap sprite1;
+
+    public void setCollision() {
+        collision = !collision;
+    }
+
+    public boolean getCollision() {
+        return collision;
+    }
+
+    private boolean collision = false;
     private int speed;
     private String enemySize;
     private int health;
@@ -58,16 +68,18 @@ public class Goober extends View implements Enemy, CollisionObserver  {
                 80, 90, matrix, true);
     }
     public void update() {
-        if (x < 2000 && right) {
-            x += speed;
-            if (x >= 2000) {
-                right = false;
-            }
-        } else {
-            if (x >= 10) {
-                x -= speed;
-                if (x <= 10) {
-                    right = true;
+        if (!collision) {
+            if (x < 1900 && right) {
+                x+=speed;
+                if (x >= 1900) {
+                    right = false;
+                }
+            } else {
+                if (x >= 10) {
+                    x-=speed;
+                    if (x <= 10) {
+                        right = true;
+                    }
                 }
             }
         }

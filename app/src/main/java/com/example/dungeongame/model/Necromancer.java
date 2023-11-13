@@ -14,6 +14,16 @@ public class Necromancer extends View implements Enemy, CollisionObserver {
     private int sprite;
     private String difficulty;
     private Bitmap sprite1;
+
+    public boolean getCollision() {
+        return collision;
+    }
+
+    public void setCollision() {
+        collision = !collision;
+    }
+
+    private boolean collision = false;
     private int speed;
     private String enemySize;
     private int health;
@@ -54,16 +64,18 @@ public class Necromancer extends View implements Enemy, CollisionObserver {
                 160, matrix, true);
     }
     public void update() {
-        if (x < 1900 && right) {
-            x+=speed;
-            if (x >= 1900) {
-                right = false;
-            }
-        } else {
-            if (x >= 10) {
-                x-=speed;
-                if (x <= 10) {
-                    right = true;
+        if (!collision) {
+            if (x < 1900 && right) {
+                x+=speed;
+                if (x >= 1900) {
+                    right = false;
+                }
+            } else {
+                if (x >= 10) {
+                    x-=speed;
+                    if (x <= 10) {
+                        right = true;
+                    }
                 }
             }
         }

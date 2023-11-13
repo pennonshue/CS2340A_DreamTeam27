@@ -14,7 +14,7 @@ import com.example.dungeongame.TMXLoader.TileMapData;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameView extends View {
+public class GameView extends View implements UserSubject{
 
     private String mapName;
     private boolean endTile;
@@ -119,6 +119,7 @@ public class GameView extends View {
         if (GID == 100) {
             endTile = true;
         }
+
         int Enemy1tileY = (int) (enemy1.getY()) / (t.tileheight+7);
         int Enemy1tileX = (int) (enemy1.getX()) / (t.tilewidth + 12);
         long EnemyGID = t.getGIDAt(Enemy1tileX, Enemy1tileY);
@@ -129,14 +130,27 @@ public class GameView extends View {
         if (GID <= 120 || GID >= 231) {
             System.out.println(GID);
             User.getInstance().updatePosition((int) x, (int) y);
-        } else if (tileX <= Enemy1tileX+2 && tileY <= Enemy1tileY+2 && tileX >= Enemy1tileX-2 && tileY >= Enemy1tileY-2) {
+        } else if (tileX <= Enemy1tileX+2 && tileY <= Enemy1tileY+2 && tileX >= Enemy1tileX && tileY >= Enemy1tileY) {
             User.getInstance().updatePosition((int) x, (int) y);
+            if (!enemy1.getCollision()) {
+                enemy1.setCollision();
+            }
             User.setHealth(User.getHealth() - 10);
-        } else if (tileX <= Enemy2tileX+2 && tileY <= Enemy2tileY+2 && tileX >= Enemy2tileX-2 && tileY >= Enemy2tileY-2) {
+        } else if (tileX <= Enemy2tileX+2 && tileY <= Enemy2tileY+2 && tileX >= Enemy2tileX && tileY >= Enemy2tileY) {
             User.getInstance().updatePosition((int) x, (int) y);
+            if (!enemy2.getCollision()) {
+                enemy2.setCollision();
+            }
+            User.setHealth(User.getHealth() - 10);
         } else {
             System.out.println(GID);
             User.getInstance().updatePosition((int) (x + dx), (int) (y + dy));
+            if (enemy1.getCollision()) {
+                enemy1.setCollision();
+            }
+            if (enemy2.getCollision()) {
+                enemy2.setCollision();
+            }
         }
     }
     public boolean getEndTile() {
@@ -195,5 +209,20 @@ public class GameView extends View {
         enemy1.update();
         enemy2.update();
         invalidate();
+    }
+
+    @Override
+    public void addObserver(CollisionObserver enemy) {
+
+    }
+
+    @Override
+    public void removeObserver(CollisionObserver enemy) {
+
+    }
+
+    @Override
+    public void notifyObserver() {
+
     }
 }
