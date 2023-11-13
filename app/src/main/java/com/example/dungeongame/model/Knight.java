@@ -99,4 +99,8 @@ public class Knight extends View implements Enemy, CollisionObserver {
     public float getY() {
         return y;
     }
+    public int getAttack() {
+        return 5;
+    }
+
 }

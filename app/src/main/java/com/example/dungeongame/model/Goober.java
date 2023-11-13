@@ -105,7 +105,9 @@ public class Goober extends View implements Enemy, CollisionObserver  {
     public float getY() {
         return y;
     }
-
+    public int getAttack() {
+        return 10;
+    }
     public String getDifficulty() {
         return difficulty;
     }

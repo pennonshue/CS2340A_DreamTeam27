@@ -101,7 +101,9 @@ public class Boss extends View implements Enemy, CollisionObserver  {
     public float getX() {
         return x;
     }
-
+    public int getAttack() {
+        return 20;
+    }
     public float getY() {
         return y;
     }
