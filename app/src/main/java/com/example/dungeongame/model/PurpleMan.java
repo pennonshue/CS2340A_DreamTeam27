@@ -102,7 +102,9 @@ public class PurpleMan extends View implements Enemy, CollisionObserver {
     public int getHealth() {
         return health;
     }
-
+    public int getAttack() {
+        return 5;
+    }
     @Override
     public float getX() {
         return x;

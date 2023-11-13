@@ -18,6 +18,7 @@ public interface Enemy {
 
     boolean getCollision();
 
+    int getAttack();
 //    private MovementStrategy movementStrategy;
 //    private int x;
 //    private int y;
