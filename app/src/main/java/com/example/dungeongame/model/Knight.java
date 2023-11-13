@@ -41,24 +41,21 @@ public class Knight extends View implements Enemy, CollisionObserver {
         this.x = x;
         this.y = y;
         switch (difficulty) {
-            case "Easy":
-                this.health = 20;
-                this.attack = 5;
-                //this.movementStrategy = new RunStrategy();
-                break;
-            case "Medium":
-                this.health = 25;
-                this.attack = 5;
-                //this.movementStrategy = new RunStrategy();
-                break;
-            case "Hard":
-                this.health = 30;
-                this.attack = 10;
-                //this.movementStrategy = new JogStrategy();
-                break;
-            default:
-                System.out.println("You have entered an invalid difficulty level");
-                break;
+        case "Easy":
+            this.health = 20;
+            this.attack = 5;
+            break;
+        case "Medium":
+            this.health = 25;
+            this.attack = 5;
+            break;
+        case "Hard":
+            this.health = 30;
+            this.attack = 10;
+            break;
+        default:
+            System.out.println("You have entered an invalid difficulty level");
+            break;
         }
         float scaleX = 1.5f;
         float scaleY = 1.5f;

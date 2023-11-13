@@ -32,24 +32,24 @@ public class Creature extends View implements Enemy, CollisionObserver  {
         this.x = x;
         this.y = y;
         switch (difficulty) {
-            case "Easy":
-                this.health = 5;
-                this.attack = 5;
-                //this.movementStrategy = new RunStrategy();
-                break;
-            case "Medium":
-                this.health = 10;
-                this.attack = 10;
-                //this.movementStrategy = new RunStrategy();
-                break;
-            case "Hard":
-                this.health = 15;
-                this.attack = 10;
-                //this.movementStrategy = new JogStrategy();
-                break;
-            default:
-                System.out.println("You have entered an invalid difficulty level");
-                break;
+        case "Easy":
+            this.health = 5;
+            this.attack = 5;
+            //this.movementStrategy = new RunStrategy();
+            break;
+        case "Medium":
+            this.health = 10;
+            this.attack = 10;
+            //this.movementStrategy = new RunStrategy();
+            break;
+        case "Hard":
+            this.health = 15;
+            this.attack = 10;
+            //this.movementStrategy = new JogStrategy();
+            break;
+        default:
+            System.out.println("You have entered an invalid difficulty level");
+            break;
         }
         this.sprite = R.drawable.panda;
         float scaleX = 3.0f;
