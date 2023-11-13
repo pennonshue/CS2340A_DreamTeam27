@@ -25,7 +25,8 @@ public class User extends View implements UserSubject {
     private static String difficulty;
     private static boolean win;
 
-    public static User getInstance(Context context, String username, int sprite, String difficulty) {
+    public static User getInstance(Context context, String username, int sprite,
+                                   String difficulty) {
 
         if (userInstance == null) {
             userInstance = new User(context, username, sprite, difficulty);
