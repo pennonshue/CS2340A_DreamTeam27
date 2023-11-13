@@ -12,6 +12,7 @@ public class PurpleMan extends View implements Enemy, CollisionObserver {
     private int sprite;
     private static Bitmap sprite1;
     private int speed;
+    private int attack;
     private String enemySize;
 
     public void setCollision() {
@@ -38,21 +39,24 @@ public class PurpleMan extends View implements Enemy, CollisionObserver {
         this.y = y;
 
         switch (difficulty) {
-        case "Easy":
-            this.health = 5;
-            //this.movementStrategy = new RunStrategy();
-            break;
-        case "Medium":
-            this.health = 10;
-            //this.movementStrategy = new RunStrategy();
-            break;
-        case "Hard":
-            this.health = 15;
-            //this.movementStrategy = new JogStrategy();
-            break;
-        default:
-            System.out.println("You have entered an invalid difficulty level");
-            break;
+            case "Easy":
+                this.health = 5;
+                this.attack = 2;
+                //this.movementStrategy = new RunStrategy();
+                break;
+            case "Medium":
+                this.health = 10;
+                this.attack = 5;
+                //this.movementStrategy = new RunStrategy();
+                break;
+            case "Hard":
+                this.health = 15;
+                this.attack = 8;
+                //this.movementStrategy = new JogStrategy();
+                break;
+            default:
+                System.out.println("You have entered an invalid difficulty level");
+                break;
         }
         this.sprite = R.drawable.creatures;
         float scaleX = 1.4f;
@@ -104,7 +108,7 @@ public class PurpleMan extends View implements Enemy, CollisionObserver {
         return health;
     }
     public int getAttack() {
-        return 5;
+        return attack;
     }
     @Override
     public float getX() {

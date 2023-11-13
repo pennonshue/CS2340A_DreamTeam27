@@ -30,6 +30,7 @@ public class Knight extends View implements Enemy, CollisionObserver {
     private int health;
     private float x = 70;
     private float y = 85;
+    private int attack = 5;
 
     private boolean down = true;
     public Knight(float x, float y, String difficulty, Context context) {
@@ -40,21 +41,24 @@ public class Knight extends View implements Enemy, CollisionObserver {
         this.x = x;
         this.y = y;
         switch (difficulty) {
-        case "Easy":
-            this.health = 20;
-            //this.movementStrategy = new RunStrategy();
-            break;
-        case "Medium":
-            this.health = 25;
-            //this.movementStrategy = new RunStrategy();
-            break;
-        case "Hard":
-            this.health = 30;
-            //this.movementStrategy = new JogStrategy();
-            break;
-        default:
-            System.out.println("You have entered an invalid difficulty level");
-            break;
+            case "Easy":
+                this.health = 20;
+                this.attack = 5;
+                //this.movementStrategy = new RunStrategy();
+                break;
+            case "Medium":
+                this.health = 25;
+                this.attack = 5;
+                //this.movementStrategy = new RunStrategy();
+                break;
+            case "Hard":
+                this.health = 30;
+                this.attack = 10;
+                //this.movementStrategy = new JogStrategy();
+                break;
+            default:
+                System.out.println("You have entered an invalid difficulty level");
+                break;
         }
         float scaleX = 1.5f;
         float scaleY = 1.5f;
@@ -112,7 +116,7 @@ public class Knight extends View implements Enemy, CollisionObserver {
         return y;
     }
     public int getAttack() {
-        return 5;
+        return attack;
     }
 
 }

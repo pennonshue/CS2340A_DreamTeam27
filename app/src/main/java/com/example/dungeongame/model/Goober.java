@@ -25,6 +25,7 @@ public class Goober extends View implements Enemy, CollisionObserver  {
 
     private boolean collision = false;
     private int speed;
+    private int attack;
     private String enemySize;
     private int health;
     private float x;
@@ -42,21 +43,24 @@ public class Goober extends View implements Enemy, CollisionObserver  {
         this.y = y;
 
         switch (difficulty) {
-        case "Easy":
-            this.health = 5;
-            //this.movementStrategy = new RunStrategy();
-            break;
-        case "Medium":
-            this.health = 10;
-            //this.movementStrategy = new RunStrategy();
-            break;
-        case "Hard":
-            this.health = 15;
-            //this.movementStrategy = new JogStrategy();
-            break;
-        default:
-            System.out.println("You have entered an invalid difficulty level");
-            break;
+            case "Easy":
+                this.health = 5;
+                this.attack = 5;
+                //this.movementStrategy = new RunStrategy();
+                break;
+            case "Medium":
+                this.health = 10;
+                this.attack = 5;
+                //this.movementStrategy = new RunStrategy();
+                break;
+            case "Hard":
+                this.health = 15;
+                this.attack = 10;
+                //this.movementStrategy = new JogStrategy();
+                break;
+            default:
+                System.out.println("You have entered an invalid difficulty level");
+                break;
         }
         this.sprite = R.drawable.creatures;
         float scaleX = 1.4f;
@@ -118,7 +122,7 @@ public class Goober extends View implements Enemy, CollisionObserver  {
         return y;
     }
     public int getAttack() {
-        return 10;
+        return attack;
     }
     public String getDifficulty() {
         return difficulty;
