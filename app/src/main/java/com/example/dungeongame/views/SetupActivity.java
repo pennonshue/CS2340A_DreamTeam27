@@ -64,13 +64,10 @@ public class SetupActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup);
-        //        User.getInstance().resetHealth();
 
-        // Initialize views
         nameEditText = findViewById(R.id.nameBox);
 
         Button cont = findViewById(R.id.contBtn);
-
 
         cont.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,19 +105,12 @@ public class SetupActivity extends AppCompatActivity {
                             Toast.makeText(SetupActivity.this, "Please enter a "
                                    + "valid name", Toast.LENGTH_SHORT).show();
                         } else {
-
-
+                            User.resetPlayer();
                             User player = User.getInstance(SetupActivity.this, playerName,
                                     sprite, difficulty);
 
-                            User.setUsername(playerName);
-                            User.setSprite(sprite);
-
-
                             Intent intent = new Intent(SetupActivity.this,
-                                    GameScreen.class); // Replace NextActivity with your desired
-                            // destination
-
+                                    GameScreen.class);
 
                             /* Im not sure if we need this exact line since we created a
                             User class and can just access name through User.getUsername()

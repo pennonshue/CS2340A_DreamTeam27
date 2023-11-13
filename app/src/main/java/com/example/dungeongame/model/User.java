@@ -166,9 +166,12 @@ public class User extends View implements UserSubject {
             User.score = score;
         }
     }
+    public static void resetPlayer() {
+        userInstance = null;
+    }
 
 
-    public void resetHealth() {
+    public static void resetHealth() {
         switch (difficulty) {
         case "Easy":
             User.health = 100;
