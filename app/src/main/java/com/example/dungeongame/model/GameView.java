@@ -129,21 +129,20 @@ public class GameView extends View implements UserSubject {
         if (gID <= 120 || gID >= 231) {
             System.out.println(gID);
             User.getInstance().updatePosition((int) x, (int) y);
-        } else if (tileX <= enemy1tileX + 2 && tileY <= enemy1tileY + 2 && tileX > enemy1tileX
+        } else if (tileX <= enemy1tileX + 3 && tileY <= enemy1tileY + 3 && tileX > enemy1tileX
                 && tileY > enemy1tileY) {
-            User.getInstance().updatePosition((int) (x), (int) (y));
+            User.getInstance().updatePosition((int) (x + dx/3), (int) (y + dy/3));
             if (!enemy1.getCollision()) {
                 enemy1.setCollision();
             }
-            User.setHealth(User.getHealth() - 10);
-        } else if (tileX <= enemy2tileX + 2 && tileY <= enemy2tileY + 2 && tileX
+            User.setHealth(User.getHealth() - enemy1.getAttack());
+        } else if (tileX <= enemy2tileX + 3 && tileY <= enemy2tileY + 3 && tileX
                 > enemy2tileX && tileY > enemy2tileY) {
-            User.getInstance().updatePosition((int) (x), (int) (y));
+            User.getInstance().updatePosition((int) (x + dx/3), (int) (y + dy/3));
             if (!enemy2.getCollision()) {
                 enemy2.setCollision();
             }
-            User.setHealth(User.getHealth() - 10);
-            User.setHealth(User.getHealth() - enemy1.getAttack());
+            User.setHealth(User.getHealth() - enemy2.getAttack());
         } else {
             System.out.println(gID);
             User.getInstance().updatePosition((int) (x + dx), (int) (y + dy));
