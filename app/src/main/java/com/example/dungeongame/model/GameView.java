@@ -131,14 +131,14 @@ public class GameView extends View implements UserSubject {
             User.getInstance().updatePosition((int) x, (int) y);
         } else if (tileX <= enemy1tileX + 3 && tileY <= enemy1tileY + 3 && tileX > enemy1tileX
                 && tileY > enemy1tileY) {
-            User.getInstance().updatePosition((int) (x + dx/3), (int) (y + dy/3));
+            User.getInstance().updatePosition((int) (x + dx / 3), (int) (y + dy / 3));
             if (!enemy1.getCollision()) {
                 enemy1.setCollision();
             }
             User.setHealth(User.getHealth() - enemy1.getAttack());
         } else if (tileX <= enemy2tileX + 3 && tileY <= enemy2tileY + 3 && tileX
                 > enemy2tileX && tileY > enemy2tileY) {
-            User.getInstance().updatePosition((int) (x + dx/3), (int) (y + dy/3));
+            User.getInstance().updatePosition((int) (x + dx / 3), (int) (y + dy / 3));
             if (!enemy2.getCollision()) {
                 enemy2.setCollision();
             }
