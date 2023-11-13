@@ -13,6 +13,16 @@ public class PurpleMan extends View implements Enemy, CollisionObserver {
     private static Bitmap sprite1;
     private int speed;
     private String enemySize;
+
+    public void setCollision() {
+        collision = !collision;
+    }
+
+    public boolean getCollision() {
+        return collision;
+    }
+
+    private boolean collision = false;
     private int health;
     private float x;
     private float y;
@@ -53,16 +63,18 @@ public class PurpleMan extends View implements Enemy, CollisionObserver {
         System.out.println("Creature made");
     }
     public void update() {
-        if (x < 1900 && right) {
-            x+=speed;
-            if (x >= 1900) {
-                right = false;
-            }
-        } else {
-            if (x >= 10) {
-                x-=speed;
-                if (x <= 10) {
-                    right = true;
+        if (!collision) {
+            if (x < 1900 && right) {
+                x+=speed;
+                if (x >= 1900) {
+                    right = false;
+                }
+            } else {
+                if (x >= 10) {
+                    x -= speed;
+                    if (x <= 10) {
+                        right = true;
+                    }
                 }
             }
         }
@@ -90,7 +102,9 @@ public class PurpleMan extends View implements Enemy, CollisionObserver {
     public int getHealth() {
         return health;
     }
-
+    public int getAttack() {
+        return 5;
+    }
     @Override
     public float getX() {
         return x;

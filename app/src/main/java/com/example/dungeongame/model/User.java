@@ -44,7 +44,7 @@ public class User extends View implements UserSubject {
         enemies = new ArrayList<>();
         this.difficulty = difficulty;
         this.username = username;
-        this.score = 50;
+        this.score = 200;
         this.win = true;
         switch (difficulty) {
         case "Easy":
@@ -87,6 +87,7 @@ public class User extends View implements UserSubject {
         matrix.postScale(scaleX, scaleY);
         sprite1 = Bitmap.createBitmap(sprite1, 0, 0, sprite1.getWidth(),
                 sprite1.getHeight(), matrix, true);
+        System.out.println("size" + sprite1.getWidth() + "x" + sprite1.getHeight());
     }
 
     public void updatePosition(int newX, int newY) {
@@ -163,6 +164,24 @@ public class User extends View implements UserSubject {
         } else {
             User.score = score;
         }
+    }
+
+
+    public void resetHealth() {
+        switch (difficulty) {
+            case "Easy":
+                User.health = 100;
+                break;
+            case "Medium":
+                User.health = 85;
+                break;
+            case "Hard":
+                User.health = 60;
+                break;
+            default:
+                break;
+        }
+
     }
     public static void setDifficulty(String difficulty) {
         switch (difficulty) {
