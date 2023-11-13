@@ -22,6 +22,7 @@ public class Knight extends View implements Enemy, CollisionObserver {
     private int health;
     private float x = 70;
     private float y = 85;
+    private int attack = 5;
 
     private boolean down = true;
     public Knight(float x, float y, String difficulty, Context context) {
@@ -34,14 +35,17 @@ public class Knight extends View implements Enemy, CollisionObserver {
         switch (difficulty) {
             case "Easy":
                 this.health = 20;
+                this.attack = 5;
                 //this.movementStrategy = new RunStrategy();
                 break;
             case "Medium":
                 this.health = 25;
+                this.attack = 5;
                 //this.movementStrategy = new RunStrategy();
                 break;
             case "Hard":
                 this.health = 30;
+                this.attack = 10;
                 //this.movementStrategy = new JogStrategy();
                 break;
             default:
@@ -100,7 +104,7 @@ public class Knight extends View implements Enemy, CollisionObserver {
         return y;
     }
     public int getAttack() {
-        return 5;
+        return attack;
     }
 
 }
