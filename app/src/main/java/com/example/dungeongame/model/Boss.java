@@ -58,7 +58,7 @@ public class Boss extends View implements Enemy, CollisionObserver  {
     public void update() {
         if (!collision) {
             if (x < 1900 && right) {
-                x+=speed;
+                x += speed;
                 if (x >= 1900) {
                     right = false;
                 }
