@@ -33,7 +33,7 @@ public class Necromancer extends View implements Enemy, CollisionObserver {
     public Necromancer(float x, float y, String difficulty, Context context) {
         super(context);
         User.getInstance().addObserver(this);
-        speed = 14;
+        speed = 3;
         enemySize = "Medium";
         this.x = x;
         this.y = y;

@@ -130,22 +130,19 @@ public class GameView extends View implements UserSubject{
         if (GID <= 120 || GID >= 231) {
             System.out.println(GID);
             User.getInstance().updatePosition((int) x, (int) y);
-        } else if (tileX <= Enemy1tileX+2 && tileY <= Enemy1tileY+2 && tileX >= Enemy1tileX && tileY >= Enemy1tileY) {
-            User.getInstance().updatePosition((int) x, (int) y);
+        } else if (tileX <= Enemy1tileX+2 && tileY <= Enemy1tileY+2 && tileX > Enemy1tileX && tileY > Enemy1tileY) {
+            User.getInstance().updatePosition((int) (x + dx), (int) (y + dy));
             if (!enemy1.getCollision()) {
                 enemy1.setCollision();
             }
             User.setHealth(User.getHealth() - 10);
-        } else if (tileX <= Enemy2tileX+2 && tileY <= Enemy2tileY+2 && tileX >= Enemy2tileX && tileY >= Enemy2tileY) {
-            User.getInstance().updatePosition((int) x, (int) y);
+        } else if (tileX <= Enemy2tileX+2 && tileY <= Enemy2tileY+2 && tileX > Enemy2tileX && tileY > Enemy2tileY) {
+            User.getInstance().updatePosition((int) (x + dx), (int) (y + dy));
             if (!enemy2.getCollision()) {
                 enemy2.setCollision();
             }
             User.setHealth(User.getHealth() - 10);
             User.setHealth(User.getHealth() - enemy1.getAttack());
-        } else if (tileX <= Enemy2tileX+2 && tileY <= Enemy2tileY+2 && tileX >= Enemy2tileX-2 && tileY >= Enemy2tileY-2) {
-            User.getInstance().updatePosition((int) x, (int) y);
-            User.setHealth(User.getHealth() - enemy2.getAttack());
         } else {
             System.out.println(GID);
             User.getInstance().updatePosition((int) (x + dx), (int) (y + dy));
