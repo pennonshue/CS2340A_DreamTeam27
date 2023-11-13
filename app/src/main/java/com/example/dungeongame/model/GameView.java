@@ -119,7 +119,7 @@ public class GameView extends View {
         if (GID == 100) {
             endTile = true;
         }
-        int Enemy1tileY = (int) (enemy1.getY()) / (t.tileheight + 50);
+        int Enemy1tileY = (int) (enemy1.getY()) / (t.tileheight-5);
         int Enemy1tileX = (int) (enemy1.getX()) / (t.tilewidth + 80);
         long EnemyGID = t.getGIDAt(Enemy1tileX, Enemy1tileY);
         System.out.println(GID + ", tileX: " + tileX + ", tileY: " + tileY);
@@ -128,7 +128,7 @@ public class GameView extends View {
         if (GID <= 120 || GID >= 231) {
             System.out.println(GID);
             User.getInstance().updatePosition((int) x, (int) y);
-        } else if (x == 1200 && y == enemy1.getY()/8.8) {
+        } else if (tileX <= Enemy1tileX+1 && tileY <= Enemy1tileY+1 && tileX >= Enemy1tileX-1 && tileY >= Enemy1tileY-1) {
             User.getInstance().updatePosition((int) x, (int) y);
         } else if (x == enemy2.getX() && y == enemy2.getY()) {
             User.getInstance().updatePosition((int) x, (int) y);
