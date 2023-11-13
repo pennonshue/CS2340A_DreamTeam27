@@ -36,22 +36,23 @@ public class PurpleMan extends View implements Enemy, CollisionObserver {
         health = 5;
         this.x = x;
         this.y = y;
+
         switch (difficulty) {
-            case "Easy":
-                this.health = 5;
-                //this.movementStrategy = new RunStrategy();
-                break;
-            case "Medium":
-                this.health = 10;
-                //this.movementStrategy = new RunStrategy();
-                break;
-            case "Hard":
-                this.health = 15;
-                //this.movementStrategy = new JogStrategy();
-                break;
-            default:
-                System.out.println("You have entered an invalid difficulty level");
-                break;
+        case "Easy":
+            this.health = 5;
+            //this.movementStrategy = new RunStrategy();
+            break;
+        case "Medium":
+            this.health = 10;
+            //this.movementStrategy = new RunStrategy();
+            break;
+        case "Hard":
+            this.health = 15;
+            //this.movementStrategy = new JogStrategy();
+            break;
+        default:
+            System.out.println("You have entered an invalid difficulty level");
+            break;
         }
         this.sprite = R.drawable.creatures;
         float scaleX = 1.4f;
@@ -65,7 +66,7 @@ public class PurpleMan extends View implements Enemy, CollisionObserver {
     public void update() {
         if (!collision) {
             if (x < 1900 && right) {
-                x+=speed;
+                x += speed;
                 if (x >= 1900) {
                     right = false;
                 }
@@ -85,7 +86,7 @@ public class PurpleMan extends View implements Enemy, CollisionObserver {
         if (User.getInstance().getX() == x && User.getInstance().getY() == y) {
             User.setHealth(User.getHealth() - 30);
         }
-        if (health <= 0 ) {
+        if (health <= 0) {
             User.getInstance().removeObserver(this);
         }
     }

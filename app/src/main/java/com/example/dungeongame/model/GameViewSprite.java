@@ -9,8 +9,6 @@ import android.view.View;
 
 import com.example.dungeongame.R;
 
-import java.util.List;
-
 public class GameViewSprite extends View {
 
     private Bitmap sprite;

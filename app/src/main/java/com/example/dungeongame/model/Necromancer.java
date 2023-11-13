@@ -8,7 +8,6 @@ import android.view.View;
 
 import com.example.dungeongame.R;
 
-import java.util.List;
 
 public class Necromancer extends View implements Enemy, CollisionObserver {
     private int sprite;
@@ -38,21 +37,21 @@ public class Necromancer extends View implements Enemy, CollisionObserver {
         this.x = x;
         this.y = y;
         switch (difficulty) {
-            case "Easy":
-                this.health = 20;
-                //this.movementStrategy = new RunStrategy();
-                break;
-            case "Medium":
-                this.health = 25;
-                //this.movementStrategy = new RunStrategy();
-                break;
-            case "Hard":
-                this.health = 30;
-                //this.movementStrategy = new JogStrategy();
-                break;
-            default:
-                System.out.println("You have entered an invalid difficulty level");
-                break;
+        case "Easy":
+            this.health = 20;
+            //this.movementStrategy = new RunStrategy();
+            break;
+        case "Medium":
+            this.health = 25;
+            //this.movementStrategy = new RunStrategy();
+            break;
+        case "Hard":
+            this.health = 30;
+            //this.movementStrategy = new JogStrategy();
+            break;
+        default:
+            System.out.println("You have entered an invalid difficulty level");
+            break;
         }
         float scaleX = 0.8f;
         float scaleY = 0.8f;
@@ -66,13 +65,13 @@ public class Necromancer extends View implements Enemy, CollisionObserver {
     public void update() {
         if (!collision) {
             if (x < 1900 && right) {
-                x+=speed;
+                x += speed;
                 if (x >= 1900) {
                     right = false;
                 }
             } else {
                 if (x >= 10) {
-                    x-=speed;
+                    x -= speed;
                     if (x <= 10) {
                         right = true;
                     }
@@ -86,7 +85,7 @@ public class Necromancer extends View implements Enemy, CollisionObserver {
         if (User.getInstance().getX() == x && User.getInstance().getY() == y) {
             User.setHealth(User.getHealth() - 20);
         }
-        if (health <= 0 ) {
+        if (health <= 0) {
             User.getInstance().removeObserver(this);
         }
     }
