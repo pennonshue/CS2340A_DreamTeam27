@@ -20,14 +20,14 @@ public class Knight extends View implements Enemy, CollisionObserver {
     private int speed;
     private String enemySize;
     private int health;
-    private float x;
-    private float y;
+    private float x = 70;
+    private float y = 85;
 
     private boolean down = true;
     public Knight(float x, float y, String difficulty, Context context) {
         super(context);
         User.getInstance().addObserver(this);
-        speed = 10;
+        speed = 16;
         enemySize = "Large";
         this.x = x;
         this.y = y;
@@ -54,7 +54,7 @@ public class Knight extends View implements Enemy, CollisionObserver {
         matrix.postScale(scaleX, scaleY);
         sprite = R.drawable.knight_attack;
         sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
-        sprite1 = Bitmap.createBitmap(sprite1, 70, 85, 100,
+        sprite1 = Bitmap.createBitmap(sprite1, 0, 0, 100,
                 119, matrix, true);
     }
         public void update() {
