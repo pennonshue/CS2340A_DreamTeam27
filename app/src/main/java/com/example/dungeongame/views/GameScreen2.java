@@ -75,8 +75,7 @@ public class GameScreen2 extends AppCompatActivity {
     private void updateScore() {
         User.setScore(User.getScore() - 1);
         handler.postDelayed(scoreUpdater, 1000);
-
-        if (User.getHealth() == 0) {
+        if (User.getHealth() <= 0) {
             stopGame();
             showEndScreen();
         }

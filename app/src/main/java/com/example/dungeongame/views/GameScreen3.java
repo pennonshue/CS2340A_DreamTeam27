@@ -79,7 +79,7 @@ public class GameScreen3 extends AppCompatActivity {
         User.setScore(User.getScore() - 1);
         handler.postDelayed(scoreUpdater, 1000);
 
-        if (User.getHealth() == 0) {
+        if (User.getHealth() <= 0) {
             stopGame();
             showEndScreen();
         }
