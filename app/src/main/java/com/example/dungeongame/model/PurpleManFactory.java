@@ -2,8 +2,8 @@ package com.example.dungeongame.model;
 
 import android.content.Context;
 
-public class PurpleManFactory extends EnemyFactory{
-    Context context;
+public class PurpleManFactory extends EnemyFactory {
+    private Context context;
     public PurpleManFactory(Context context) {
         this.context = context;
     }

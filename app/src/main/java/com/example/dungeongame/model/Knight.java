@@ -14,6 +14,17 @@ public class Knight extends View implements Enemy, CollisionObserver {
     public void attack() {
         System.out.println("implement a strong attack");
     }
+
+
+    public void setCollision() {
+        collision = !collision;
+    }
+
+    public boolean getCollision() {
+        return collision;
+    }
+
+    private boolean collision = false;
     private int sprite;
     private String difficulty;
     private Bitmap sprite1;
@@ -62,6 +73,7 @@ public class Knight extends View implements Enemy, CollisionObserver {
                 119, matrix, true);
     }
         public void update() {
+        if (!collision) {
             if (down) {
                 y+=speed;
                 if (y >= 600) {
@@ -73,15 +85,18 @@ public class Knight extends View implements Enemy, CollisionObserver {
                     down = true;
                 }
             }
+
+        }
         }
 
     //if collision, decrement user health, if creature health <= 0, remove enemy from observer list
     @Override
     public void notifyCollision() {
-        if (User.getInstance().getX() == x && User.getInstance().getY() == y) {
-            User.setHealth(User.getHealth() - 20);
+        if (User.getInstance().getX() < (x + 20) && User.getInstance().getX() > (x-20)
+                && User.getInstance().getY() < (y + 10) && User.getInstance().getY() > (y - 10)) {
+            User.setHealth(User.getHealth() - 10);
         }
-        if (health <= 0 ) {
+        if (health <= 0) {
             User.getInstance().removeObserver(this);
         }
     }

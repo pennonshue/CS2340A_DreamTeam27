@@ -12,6 +12,8 @@ public class Boss extends View implements Enemy, CollisionObserver  {
     private int sprite;
     private static Bitmap sprite1;
     private int speed;
+
+    private boolean collision = false;
     private String enemySize;
     private int health;
     private float x;
@@ -54,16 +56,18 @@ public class Boss extends View implements Enemy, CollisionObserver  {
                 75, 90, matrix, true);
     }
     public void update() {
-        if (x < 2000 && right) {
-            x += speed;
-            if (x >= 2000) {
-                right = false;
-            }
-        } else {
-            if (x >= 10) {
-                x -= speed;
-                if (x <= 10) {
-                    right = true;
+        if (!collision) {
+            if (x < 1900 && right) {
+                x+=speed;
+                if (x >= 1900) {
+                    right = false;
+                }
+            } else {
+                if (x >= 10) {
+                    x -= speed;
+                    if (x <= 10) {
+                        right = true;
+                    }
                 }
             }
         }
@@ -74,7 +78,7 @@ public class Boss extends View implements Enemy, CollisionObserver  {
         if (User.getInstance().getX() == x && User.getInstance().getY() == y) {
             User.setHealth(User.getHealth() - 45);
         }
-        if (health <= 0 ) {
+        if (health <= 0) {
             User.getInstance().removeObserver(this);
         }
     }
@@ -104,6 +108,18 @@ public class Boss extends View implements Enemy, CollisionObserver  {
     public int getAttack() {
         return 20;
     }
+
+    @Override
+    public boolean getCollision() {
+        return collision;
+    }
+
+    @Override
+    public void setCollision() {
+        collision = !collision;
+
+    }
+
     public float getY() {
         return y;
     }

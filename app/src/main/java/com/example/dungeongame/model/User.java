@@ -25,7 +25,8 @@ public class User extends View implements UserSubject {
     private static String difficulty;
     private static boolean win;
 
-    public static User getInstance(Context context, String username, int sprite, String difficulty) {
+    public static User getInstance(Context context, String username, int sprite,
+                                   String difficulty) {
 
         if (userInstance == null) {
             userInstance = new User(context, username, sprite, difficulty);
@@ -43,7 +44,7 @@ public class User extends View implements UserSubject {
         enemies = new ArrayList<>();
         this.difficulty = difficulty;
         this.username = username;
-        this.score = 50;
+        this.score = 200;
         this.win = true;
         switch (difficulty) {
         case "Easy":
@@ -163,6 +164,24 @@ public class User extends View implements UserSubject {
         } else {
             User.score = score;
         }
+    }
+
+
+    public void resetHealth() {
+        switch (difficulty) {
+            case "Easy":
+                User.health = 100;
+                break;
+            case "Medium":
+                User.health = 85;
+                break;
+            case "Hard":
+                User.health = 60;
+                break;
+            default:
+                break;
+        }
+
     }
     public static void setDifficulty(String difficulty) {
         switch (difficulty) {
