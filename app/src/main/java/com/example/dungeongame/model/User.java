@@ -145,6 +145,7 @@ public class User extends View implements UserSubject {
         if (health <= 0) {
             win = false;
             setScore(0);
+            User.health = 0;
         } else {
             win = true;
         }
@@ -169,17 +170,17 @@ public class User extends View implements UserSubject {
 
     public void resetHealth() {
         switch (difficulty) {
-            case "Easy":
-                User.health = 100;
-                break;
-            case "Medium":
-                User.health = 85;
-                break;
-            case "Hard":
-                User.health = 60;
-                break;
-            default:
-                break;
+        case "Easy":
+            User.health = 100;
+            break;
+        case "Medium":
+            User.health = 85;
+            break;
+        case "Hard":
+            User.health = 60;
+            break;
+        default:
+            break;
         }
 
     }

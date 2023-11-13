@@ -8,7 +8,6 @@ import android.view.View;
 
 import com.example.dungeongame.R;
 
-import java.util.List;
 
 public class Necromancer extends View implements Enemy, CollisionObserver {
     private int sprite;
@@ -70,13 +69,13 @@ public class Necromancer extends View implements Enemy, CollisionObserver {
     public void update() {
         if (!collision) {
             if (x < 1900 && right) {
-                x+=speed;
+                x += speed;
                 if (x >= 1900) {
                     right = false;
                 }
             } else {
                 if (x >= 10) {
-                    x-=speed;
+                    x -= speed;
                     if (x <= 10) {
                         right = true;
                     }
@@ -90,7 +89,7 @@ public class Necromancer extends View implements Enemy, CollisionObserver {
         if (User.getInstance().getX() == x && User.getInstance().getY() == y) {
             User.setHealth(User.getHealth() - 20);
         }
-        if (health <= 0 ) {
+        if (health <= 0) {
             User.getInstance().removeObserver(this);
         }
     }

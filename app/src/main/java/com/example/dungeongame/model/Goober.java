@@ -74,13 +74,13 @@ public class Goober extends View implements Enemy, CollisionObserver  {
     public void update() {
         if (!collision) {
             if (x < 1900 && right) {
-                x+=speed;
+                x += speed;
                 if (x >= 1900) {
                     right = false;
                 }
             } else {
                 if (x >= 10) {
-                    x-=speed;
+                    x -= speed;
                     if (x <= 10) {
                         right = true;
                     }
@@ -94,7 +94,7 @@ public class Goober extends View implements Enemy, CollisionObserver  {
         if (User.getInstance().getX() == x && User.getInstance().getY() == y) {
             User.setHealth(User.getHealth() - 45);
         }
-        if (health <= 0 ) {
+        if (health <= 0) {
             User.getInstance().removeObserver(this);
         }
     }

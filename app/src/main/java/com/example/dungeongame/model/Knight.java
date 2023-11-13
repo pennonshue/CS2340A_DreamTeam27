@@ -7,9 +7,6 @@ import android.graphics.Matrix;
 import android.view.View;
 
 import com.example.dungeongame.R;
-
-import java.util.List;
-
 public class Knight extends View implements Enemy, CollisionObserver {
     public void attack() {
         System.out.println("implement a strong attack");
@@ -72,27 +69,27 @@ public class Knight extends View implements Enemy, CollisionObserver {
         sprite1 = Bitmap.createBitmap(sprite1, 70, 85, 100,
                 119, matrix, true);
     }
-        public void update() {
+    public void update() {
         if (!collision) {
             if (down) {
-                y+=speed;
+                y += speed;
                 if (y >= 600) {
                     down = false;
                 }
             } else {
-                y-=speed;
+                y -= speed;
                 if (y <= 100) {
                     down = true;
                 }
             }
 
         }
-        }
+    }
 
     //if collision, decrement user health, if creature health <= 0, remove enemy from observer list
     @Override
     public void notifyCollision() {
-        if (User.getInstance().getX() < (x + 20) && User.getInstance().getX() > (x-20)
+        if (User.getInstance().getX() < (x + 20) && User.getInstance().getX() > (x - 20)
                 && User.getInstance().getY() < (y + 10) && User.getInstance().getY() > (y - 10)) {
             User.setHealth(User.getHealth() - 10);
         }

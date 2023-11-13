@@ -7,7 +7,6 @@ import android.graphics.Matrix;
 import android.view.View;
 
 import com.example.dungeongame.R;
-import com.google.android.material.button.MaterialButton;
 
 public class Creature extends View implements Enemy, CollisionObserver  {
     private int sprite;
@@ -64,12 +63,12 @@ public class Creature extends View implements Enemy, CollisionObserver  {
     public void update() {
         if (!collision) {
             if (down) {
-                y+=speed;
+                y += speed;
                 if (y >= 600) {
                     down = false;
                 }
             } else {
-                y-=speed;
+                y -= speed;
                 if (y <= 100) {
                     down = true;
                 }
@@ -93,7 +92,7 @@ public class Creature extends View implements Enemy, CollisionObserver  {
         if (User.getInstance().getX() == x && User.getInstance().getY() == y) {
             User.setHealth(User.getHealth() - 10);
         }
-        if (health <= 0 ) {
+        if (health <= 0) {
             User.getInstance().removeObserver(this);
         }
     }

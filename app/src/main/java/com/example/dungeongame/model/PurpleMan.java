@@ -37,6 +37,7 @@ public class PurpleMan extends View implements Enemy, CollisionObserver {
         health = 5;
         this.x = x;
         this.y = y;
+
         switch (difficulty) {
             case "Easy":
                 this.health = 5;
@@ -69,7 +70,7 @@ public class PurpleMan extends View implements Enemy, CollisionObserver {
     public void update() {
         if (!collision) {
             if (x < 1900 && right) {
-                x+=speed;
+                x += speed;
                 if (x >= 1900) {
                     right = false;
                 }
@@ -89,7 +90,7 @@ public class PurpleMan extends View implements Enemy, CollisionObserver {
         if (User.getInstance().getX() == x && User.getInstance().getY() == y) {
             User.setHealth(User.getHealth() - 30);
         }
-        if (health <= 0 ) {
+        if (health <= 0) {
             User.getInstance().removeObserver(this);
         }
     }

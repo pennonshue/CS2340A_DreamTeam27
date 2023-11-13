@@ -4,10 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.KeyEvent;
-import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.dungeongame.R;
 import com.example.dungeongame.model.GameView;
 import com.example.dungeongame.model.Leaderboard;
 import com.example.dungeongame.model.LeaderboardEntry;
@@ -57,9 +55,6 @@ public class GameScreen extends AppCompatActivity {
 
     }
 
-//    private void renderGame() {
-//    }
-
     private void startScoreUpdater() {
         scoreUpdater = new Runnable() {
             @Override
@@ -74,7 +69,7 @@ public class GameScreen extends AppCompatActivity {
         User.setScore(User.getScore() - 1);
         handler.postDelayed(scoreUpdater, 1000);
 
-        if (User.getHealth() == 0) {
+        if (User.getHealth() <= 0) {
             stopGame();
             showEndScreen();
         }
@@ -100,19 +95,19 @@ public class GameScreen extends AppCompatActivity {
     public boolean dispatchKeyEvent(KeyEvent event) {
         if (event.getAction() == KeyEvent.ACTION_DOWN) {
             switch (event.getKeyCode()) {
-                case KeyEvent.KEYCODE_DPAD_LEFT:
-                    return gameView.onKeyDown(KeyEvent.KEYCODE_DPAD_LEFT, event);
-                case KeyEvent.KEYCODE_DPAD_RIGHT:
-                    if (gameView.getEndTile()) {
-                        stopGame();
-                        showGameScreen2();
-                    }
-                    return gameView.onKeyDown(KeyEvent.KEYCODE_DPAD_RIGHT, event);
-                case KeyEvent.KEYCODE_DPAD_UP:
-                    return gameView.onKeyDown(KeyEvent.KEYCODE_DPAD_UP, event);
-                case KeyEvent.KEYCODE_DPAD_DOWN:
-                    return gameView.onKeyDown(KeyEvent.KEYCODE_DPAD_DOWN, event);
-                default:
+            case KeyEvent.KEYCODE_DPAD_LEFT:
+                return gameView.onKeyDown(KeyEvent.KEYCODE_DPAD_LEFT, event);
+            case KeyEvent.KEYCODE_DPAD_RIGHT:
+                if (gameView.getEndTile()) {
+                    stopGame();
+                    showGameScreen2();
+                }
+                return gameView.onKeyDown(KeyEvent.KEYCODE_DPAD_RIGHT, event);
+            case KeyEvent.KEYCODE_DPAD_UP:
+                return gameView.onKeyDown(KeyEvent.KEYCODE_DPAD_UP, event);
+            case KeyEvent.KEYCODE_DPAD_DOWN:
+                return gameView.onKeyDown(KeyEvent.KEYCODE_DPAD_DOWN, event);
+            default:
             }
         }
         return super.dispatchKeyEvent(event);
