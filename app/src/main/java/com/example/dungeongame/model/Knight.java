@@ -54,7 +54,7 @@ public class Knight extends View implements Enemy, CollisionObserver {
         matrix.postScale(scaleX, scaleY);
         sprite = R.drawable.knight_attack;
         sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
-        sprite1 = Bitmap.createBitmap(sprite1, 0, 0, 100,
+        sprite1 = Bitmap.createBitmap(sprite1, 70, 85, 100,
                 119, matrix, true);
     }
         public void update() {
