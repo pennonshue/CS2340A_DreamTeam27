@@ -86,6 +86,7 @@ public class User extends View implements UserSubject {
         matrix.postScale(scaleX, scaleY);
         sprite1 = Bitmap.createBitmap(sprite1, 0, 0, sprite1.getWidth(),
                 sprite1.getHeight(), matrix, true);
+        System.out.println("size" + sprite1.getWidth() + "x" + sprite1.getHeight());
     }
 
     public void updatePosition(int newX, int newY) {
