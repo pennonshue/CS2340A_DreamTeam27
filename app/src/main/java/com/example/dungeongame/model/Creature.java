@@ -19,6 +19,8 @@ public class Creature extends View implements Enemy, CollisionObserver  {
     private float y;
     private static String difficulty;
     private boolean down = true;
+
+    private boolean collision = false;
     public Creature(float x, float y, String difficulty, Context context) {
         super(context);
         //super(sprites);
@@ -55,17 +57,30 @@ public class Creature extends View implements Enemy, CollisionObserver  {
                 90, matrix, true);
     }
     public void update() {
-        if (down) {
-            y+=6;
-            if (y >= 600) {
-                down = false;
+        if (!collision) {
+            if (down) {
+                y+=speed;
+                if (y >= 600) {
+                    down = false;
+                }
+            } else {
+                y-=speed;
+                if (y <= 100) {
+                    down = true;
+                }
             }
-        } else {
-            y-=6;
-            if (y <= 100) {
-                down = true;
-            }
+
         }
+    }
+
+    public boolean getCollision() {
+        return collision;
+    }
+
+    @Override
+    public void setCollision() {
+        collision = !collision;
+
     }
     //if collision, decrement user health, if creature health <= 0, remove enemy from observer list
     @Override

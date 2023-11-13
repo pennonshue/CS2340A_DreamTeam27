@@ -13,15 +13,6 @@ public class Boss extends View implements Enemy, CollisionObserver  {
     private static Bitmap sprite1;
     private int speed;
 
-    public void setCollision() {
-        collision = !collision;
-    }
-
-    @Override
-    public boolean getCollision() {
-        return collision;
-    }
-
     private boolean collision = false;
     private String enemySize;
     private int health;
@@ -117,6 +108,18 @@ public class Boss extends View implements Enemy, CollisionObserver  {
     public int getAttack() {
         return 20;
     }
+
+    @Override
+    public boolean getCollision() {
+        return collision;
+    }
+
+    @Override
+    public void setCollision() {
+        collision = !collision;
+
+    }
+
     public float getY() {
         return y;
     }
