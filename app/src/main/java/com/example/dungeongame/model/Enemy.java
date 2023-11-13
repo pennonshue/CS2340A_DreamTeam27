@@ -14,11 +14,7 @@ public interface Enemy {
     float getX();
     float getY();
     void update();
-    void setCollision();
-
-    boolean getCollision();
-
-    int getAttack();
+    public int getAttack();
 //    private MovementStrategy movementStrategy;
 //    private int x;
 //    private int y;
