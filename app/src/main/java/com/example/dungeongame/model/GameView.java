@@ -1,3 +1,4 @@
+
 package com.example.dungeongame.model;
 
 import android.content.Context;
@@ -11,11 +12,20 @@ import android.view.View;
 import com.example.dungeongame.TMXLoader.TMXLoader;
 import com.example.dungeongame.TMXLoader.TileMapData;
 
+import java.util.ArrayList;
+import java.util.List;
 
-public class GameView extends View implements UserSubject {
+public class GameView extends View {
 
     private String mapName;
     private boolean endTile;
+
+    private int enemy1Height;
+
+    private int enemy1Width;
+
+    private int enemy2Height;
+    private int enemy2Width;
     private Bitmap tilemapBitmap;
     private Bitmap userSprite;
     private Bitmap enemySprite1;
@@ -32,50 +42,77 @@ public class GameView extends View implements UserSubject {
     private EnemyFactory enemyFactory2;
     private TileMapData t;
 
+    private int userWidth;
+    private int userHeight;
+
+
     public GameView(Context context, String map) {
         super(context);
         setFocusable(true);
         this.endTile = false;
         this.mapName = map;
+        this.userWidth = User.getInstance().getSprite1().getWidth() - 20;
+        this.userHeight = User.getInstance().getSprite1().getHeight() - 20;
 
         t = TMXLoader.readTMX(map, context);
         tilemapBitmap = TMXLoader.createBitmap(t, context, 0, t.getLayers().size());
         userSprite = User.getSprite1();
 
         switch (mapName) {
-        case "Map1.tmx":
-            EnemyFactory enemyFactory = new CreatureFactory(context);
-            enemy1 = enemyFactory.generateEnemy();
-            enemySprite1 = enemy1.getSprite1();
+            case "Map1.tmx":
+                EnemyFactory enemyFactory = new CreatureFactory(context);
+                enemy1 = enemyFactory.generateEnemy();
+                enemySprite1 = enemy1.getSprite1();
+                enemy1Height = 180;
+                enemy1Width = 200;
 
-            enemyFactory2 = new KnightFactory(context);
-            enemy2 = enemyFactory2.generateEnemy();
-            enemySprite2 = enemy2.getSprite1();
 
-            ///PUT UR SECOND CREATURE HERE!!!!!!!
+//                enemyFactory2 = new KnightFactory(context);
+//                enemy2 = enemyFactory2.generateEnemy();
+//                enemySprite2 = enemy2.getSprite1();
 
-            break;
-        case "Map2.tmx":
-            enemyFactory1 = new PurpleManFactory(context);
-            enemy1 = enemyFactory1.generateEnemy();
-            enemySprite1 = enemy1.getSprite1();
+                enemyFactory2 = new NecromancerFactory(context);
+                enemy2 = enemyFactory2.generateEnemy();
+                enemySprite2 = enemy2.getSprite1();
+                enemy2Height = 140;
+                enemy2Width = 200;
 
-            enemyFactory2 = new NecromancerFactory(context);
-            enemy2 = enemyFactory2.generateEnemy();
-            enemySprite2 = enemy2.getSprite1();
+                ///PUT UR SECOND CREATURE HERE!!!!!!!
 
-            break;
-        case "Map3.tmx":
-            enemyFactory1 = new GooberFactory(context);
-            enemy1 = enemyFactory1.generateEnemy();
-            enemySprite1 = enemy1.getSprite1();
+                break;
+            case "Map2.tmx":
+                enemyFactory1 = new PurpleManFactory(context);
+                enemy1 = enemyFactory1.generateEnemy();
+                enemySprite1 = enemy1.getSprite1();
+                enemy1Height = 80;
+                enemy1Width = 75;
 
-            enemyFactory2 = new BossFactory(context);
-            enemy2 = enemyFactory2.generateEnemy();
-            enemySprite2 = enemy2.getSprite1();
-            break;
-        default:
-            break;
+                enemyFactory2 = new NecromancerFactory(context);
+                enemy2 = enemyFactory2.generateEnemy();
+                enemySprite2 = enemy2.getSprite1();
+                enemy2Height = 140;
+                enemy2Width = 200;
+
+                break;
+            case "Map3.tmx":
+                enemyFactory1 = new GooberFactory(context);
+                enemy1 = enemyFactory1.generateEnemy();
+                enemySprite1 = enemy1.getSprite1();
+                enemy1Height = 126;
+                enemy1Width = 112;
+
+                enemyFactory2 = new NecromancerFactory(context);
+                enemy2 = enemyFactory2.generateEnemy();
+                enemySprite2 = enemy2.getSprite1();
+                enemy2Height = 140;
+                enemy2Width = 200;
+
+//                enemyFactory2 = new BossFactory(context);
+//                enemy2 = enemyFactory2.generateEnemy();
+//                enemySprite2 = enemy2.getSprite1();
+                break;
+            default:
+                break;
         }
     }
 
@@ -85,24 +122,24 @@ public class GameView extends View implements UserSubject {
         System.out.println(t.tileheight + " , " + t.tilewidth);
 
         switch (keyCode) {
-        case KeyEvent.KEYCODE_DPAD_DOWN:
-            handleMove(x, y, 0, t.tileheight
-                    + User.getInstance().getMovementStrategy().movementSpeed());  // Move down
-            break;
-        case KeyEvent.KEYCODE_DPAD_UP:
-            handleMove(x, y, 0, -t.tileheight
-                    - User.getInstance().getMovementStrategy().movementSpeed());  // Move up
-            break;
-        case KeyEvent.KEYCODE_DPAD_LEFT:
-            handleMove(x, y, -t.tilewidth
-                    - User.getInstance().getMovementStrategy().movementSpeed(), 0);  // Move left
-            break;
-        case KeyEvent.KEYCODE_DPAD_RIGHT:
-            handleMove(x, y, t.tilewidth
-                    + User.getInstance().getMovementStrategy().movementSpeed(), 0);  // Move right
-            break;
-        default:
-            break;
+            case KeyEvent.KEYCODE_DPAD_DOWN:
+                handleMove(x, y, 0, t.tileheight
+                        + User.getInstance().getMovementStrategy().movementSpeed());  // Move down
+                break;
+            case KeyEvent.KEYCODE_DPAD_UP:
+                handleMove(x, y, 0, -t.tileheight
+                        - User.getInstance().getMovementStrategy().movementSpeed());  // Move up
+                break;
+            case KeyEvent.KEYCODE_DPAD_LEFT:
+                handleMove(x, y, -t.tilewidth
+                        - User.getInstance().getMovementStrategy().movementSpeed(), 0);  // Move left
+                break;
+            case KeyEvent.KEYCODE_DPAD_RIGHT:
+                handleMove(x, y, t.tilewidth
+                        + User.getInstance().getMovementStrategy().movementSpeed(), 0);  // Move right
+                break;
+            default:
+                break;
         }
         // Trigger a redraw
         invalidate();
@@ -112,46 +149,20 @@ public class GameView extends View implements UserSubject {
     private void handleMove(float x, float y, int dx, int dy) {
         int tileY = (int) (y + dy) / (t.tileheight + 7);
         int tileX = (int) (x + dx) / (t.tilewidth + 12);
-        long gID = t.getGIDAt(tileX, tileY);
+        long GID = t.getGIDAt(tileX, tileY);
 
-        if (gID == 100) {
+        if (GID == 100) {
             endTile = true;
         }
 
-        int enemy1tileY = (int) (enemy1.getY()) / (t.tileheight + 7);
-        int enemy1tileX = (int) (enemy1.getX()) / (t.tilewidth + 12);
-        long enemyGID = t.getGIDAt(enemy1tileX, enemy1tileY);
-        System.out.println(gID + ", tileX: " + tileX + ", tileY: " + tileY);
-        System.out.println(enemyGID + ", ENEMYtileX: " + enemy1tileX + ", ENEMYtileY: "
-                + enemy1tileY);
-        int enemy2tileY = (int) (enemy2.getY()) / (t.tileheight + 7);
-        int enemy2tileX = (int) (enemy2.getX()) / (t.tilewidth + 12);
-        if (gID <= 120 || gID >= 231) {
-            System.out.println(gID);
-            User.getInstance().updatePosition((int) x, (int) y);
-        } else if (tileX <= enemy1tileX + 3 && tileY <= enemy1tileY + 3 && tileX > enemy1tileX
-                && tileY > enemy1tileY) {
-            User.getInstance().updatePosition((int) (x + dx / 3), (int) (y + dy / 3));
-            if (!enemy1.getCollision()) {
-                enemy1.setCollision();
-            }
-            User.setHealth(User.getHealth() - enemy1.getAttack());
-        } else if (tileX <= enemy2tileX + 3 && tileY <= enemy2tileY + 3 && tileX
-                > enemy2tileX && tileY > enemy2tileY) {
-            User.getInstance().updatePosition((int) (x + dx / 3), (int) (y + dy / 3));
-            if (!enemy2.getCollision()) {
-                enemy2.setCollision();
-            }
-            User.setHealth(User.getHealth() - enemy2.getAttack());
-        } else {
-            System.out.println(gID);
+        System.out.println(GID + ", tileX: " + tileX + ", tileY: " + tileY);
+
+        if (GID >= 120 && GID <= 231) {
+            System.out.println(GID);
             User.getInstance().updatePosition((int) (x + dx), (int) (y + dy));
-            if (enemy1.getCollision()) {
-                enemy1.setCollision();
-            }
-            if (enemy2.getCollision()) {
-                enemy2.setCollision();
-            }
+        } else {
+            System.out.println(GID);
+            User.getInstance().updatePosition((int) x, (int) y);
         }
     }
     public boolean getEndTile() {
@@ -188,42 +199,75 @@ public class GameView extends View implements UserSubject {
         canvas.drawText(score, 100, 110, textPaint);
     }
 
-    //    public void setGameViewListener(GameViewObserver observer) {
-    //        observers.add(observer);
-    //    }
-
-    //    public void notifyCharacterLandedOnTile(int x, int y) {
-    //        for (GameViewObserver observer : observers) {
-    //            observer.updateOnCharacterLandedOnTile(x, y);
-    //        }
-    //    }
+//    public void setGameViewListener(GameViewObserver observer) {
+//        observers.add(observer);
+//    }
+//
+//    public void notifyCharacterLandedOnTile(int x, int y) {
+//        for (GameViewObserver observer : observers) {
+//            observer.updateOnCharacterLandedOnTile(x, y);
+//        }
+//    }
 
     // Implement the GameViewObserver interface method
-    //    @Override
-    //    public void updateOnCharacterLandedOnTile(int x, int y) {
-    //        // Handle updates when the character lands on a tile here
-    //        // You can add custom logic or simply call the GameViewListener if needed
-    //    }
+//    @Override
+//    public void updateOnCharacterLandedOnTile(int x, int y) {
+//        // Handle updates when the character lands on a tile here
+//        // You can add custom logic or simply call the GameViewListener if needed
+//    }
 
 
     public void updateEnemy() {
         enemy1.update();
         enemy2.update();
+
+        int x = (int) User.getInstance().getX();
+        int y = (int) User.getInstance().getY();
+        int enemy1X = (int) enemy1.getX();
+        int enemy1Y = (int) enemy1.getY();
+        int enemy2X = (int) enemy2.getX();
+        int enemy2Y = (int) enemy2.getY();
+
+        int tileY = (int) User.getInstance().getY() / (t.tilewidth + 7);
+        int tileX = (int) User.getInstance().getX() / (t.tilewidth + 12);
+        long GID = t.getGIDAt(tileX, tileY);
+
+        if (GID == 100) {
+            endTile = true;
+        }
+
+//        int Enemy1tileY = (int) (enemy1.getY()) / (t.tileheight+7);
+//        int Enemy1tileX = (int) (enemy1.getX()) / (t.tilewidth + 12);
+////        long EnemyGID = t.getGIDAt(Enemy1tileX, Enemy1tileY);
+////        System.out.println(GID + ", tileX: " + tileX + ", tileY: " + tileY);
+////        System.out.println(EnemyGID + ", ENEMYtileX: " + Enemy1tileX + ", ENEMYtileY: " + Enemy1tileY);
+//        int Enemy2tileY = (int) (enemy2.getY()) / (t.tileheight + 7);
+//        int Enemy2tileX = (int) (enemy2.getX()) / (t.tilewidth + 12);
+
+        if (x <= (enemy1X+enemy1Width) && y <= (enemy1Y + enemy1Height) && (x+userWidth) > (enemy1X) && (y) > (enemy1Y - userHeight)) {
+            if (!enemy1.getCollision()) {
+                enemy1.setCollision();
+            }
+            User.setHealth(User.getHealth() - 10);
+        } else if (x <= (enemy2X+enemy2Width) && y <= (enemy2Y + enemy2Height) && (x+userWidth) > (enemy2X) && (y) > (enemy2Y - userHeight)) {
+            if (!enemy2.getCollision()) {
+                enemy2.setCollision();
+            }
+            User.setHealth(User.getHealth() - 1);
+            User.setHealth(User.getHealth() - enemy1.getAttack());
+            enemySprite2 = enemy2.getSprite2();
+        } else {
+            enemySprite2 = enemy2.getSprite1();
+//            System.out.println(GID);
+            if (enemy1.getCollision()) {
+                enemy1.setCollision();
+            }
+            if (enemy2.getCollision()) {
+                enemy2.setCollision();
+            }
+        }
+
         invalidate();
     }
-
-    @Override
-    public void addObserver(CollisionObserver enemy) {
-
-    }
-
-    @Override
-    public void removeObserver(CollisionObserver enemy) {
-
-    }
-
-    @Override
-    public void notifyObserver() {
-
-    }
 }
+

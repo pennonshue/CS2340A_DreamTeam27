@@ -11,6 +11,8 @@ import com.example.dungeongame.R;
 public class Creature extends View implements Enemy, CollisionObserver  {
     private int sprite;
     private static Bitmap sprite1;
+    private static Bitmap sprite2;
+
     private int speed;
     private String enemySize;
     private int health;
@@ -52,12 +54,12 @@ public class Creature extends View implements Enemy, CollisionObserver  {
             break;
         }
         this.sprite = R.drawable.panda;
-        float scaleX = 3.0f;
-        float scaleY = 3.0f;
+        float scaleX = 2.5f;
+        float scaleY = 2.5f;
         Matrix matrix = new Matrix();
         matrix.postScale(scaleX, scaleY);
         sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
-        sprite1 = Bitmap.createBitmap(sprite1, 0, 0, 80,
+        sprite1 = Bitmap.createBitmap(sprite1, 5, 0, 80,
                 90, matrix, true);
     }
     public void update() {
@@ -100,6 +102,12 @@ public class Creature extends View implements Enemy, CollisionObserver  {
     public Bitmap getSprite1() {
         return sprite1;
     }
+
+    @Override
+    public Bitmap getSprite2() {
+        return sprite2;
+    }
+
     public int getSprite() {
         return sprite;
     }

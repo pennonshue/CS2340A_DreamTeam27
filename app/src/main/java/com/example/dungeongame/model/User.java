@@ -44,19 +44,19 @@ public class User extends View implements UserSubject {
         enemies = new ArrayList<>();
         this.difficulty = difficulty;
         this.username = username;
-        this.score = 200;
+        this.score = 600;
         this.win = true;
         switch (difficulty) {
         case "Easy":
-            this.health = 100;
+            this.health = 1000;
             this.movementStrategy = new RunStrategy();
             break;
         case "Medium":
-            this.health = 85;
+            this.health = 900;
             this.movementStrategy = new RunStrategy();
             break;
         case "Hard":
-            this.health = 60;
+            this.health = 800;
             this.movementStrategy =  new JogStrategy();
             break;
         default:

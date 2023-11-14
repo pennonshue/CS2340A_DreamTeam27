@@ -14,6 +14,8 @@ public class Goober extends View implements Enemy, CollisionObserver  {
     }
     private int sprite;
     private static Bitmap sprite1;
+    private static Bitmap sprite2;
+
 
     public void setCollision() {
         collision = !collision;
@@ -99,6 +101,12 @@ public class Goober extends View implements Enemy, CollisionObserver  {
     public Bitmap getSprite1() {
         return sprite1;
     }
+
+    @Override
+    public Bitmap getSprite2() {
+        return sprite2;
+    }
+
     public int getSprite() {
         return sprite;
     }
