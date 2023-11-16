@@ -113,7 +113,7 @@ public class Boss extends View implements Enemy, CollisionObserver  {
     public boolean getCollision() {
         return collision;
     }
-
+//hello
     @Override
     public void setCollision() {
         collision = !collision;
