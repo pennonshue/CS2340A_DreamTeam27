@@ -19,15 +19,12 @@ public class GameView extends View {
 
     private String mapName;
     private boolean endTile;
-
-    private int enemy1Height;
-
-    private int enemy1Width;
-
-    private int enemy2Height;
-    private int enemy2Width;
     private Bitmap tilemapBitmap;
     private Bitmap userSprite;
+    private int enemy1Height;
+    private int enemy1Width;
+    private int enemy2Height;
+    private int enemy2Width;
     private Bitmap enemySprite1;
     private Bitmap enemySprite2;
     public Enemy getEnemy1() {
@@ -41,6 +38,10 @@ public class GameView extends View {
     private EnemyFactory enemyFactory1;
     private EnemyFactory enemyFactory2;
     private TileMapData t;
+    private Potion potion;
+    private Bitmap potion1;
+    private int potionWidth;
+    private int potionHeight;
 
     private int userWidth;
     private int userHeight;
@@ -65,21 +66,21 @@ public class GameView extends View {
                 enemySprite1 = enemy1.getSprite1();
                 enemy1Height = 180;
                 enemy1Width = 200;
-
-
-//                enemyFactory2 = new KnightFactory(context);
-//                enemy2 = enemyFactory2.generateEnemy();
-//                enemySprite2 = enemy2.getSprite1();
-
+                ///PUT UR SECOND CREATURE HERE!!!!!!!
                 enemyFactory2 = new NecromancerFactory(context);
                 enemy2 = enemyFactory2.generateEnemy();
                 enemySprite2 = enemy2.getSprite1();
                 enemy2Height = 140;
                 enemy2Width = 200;
+                //POTION
 
-                ///PUT UR SECOND CREATURE HERE!!!!!!!
-
+                potion = new SpeedPotion(context);
+                potion1 = potion.getSprite1();
+                potionHeight = 46;
+                potionWidth = 50;
                 break;
+
+
             case "Map2.tmx":
                 enemyFactory1 = new PurpleManFactory(context);
                 enemy1 = enemyFactory1.generateEnemy();
@@ -92,8 +93,14 @@ public class GameView extends View {
                 enemySprite2 = enemy2.getSprite1();
                 enemy2Height = 140;
                 enemy2Width = 200;
+                //POTION
+                potion = new SpeedPotion(context);
+                potion1 = potion.getSprite1();
+                potionHeight = 46;
+                potionWidth = 50;
 
                 break;
+
             case "Map3.tmx":
                 enemyFactory1 = new GooberFactory(context);
                 enemy1 = enemyFactory1.generateEnemy();
@@ -107,9 +114,8 @@ public class GameView extends View {
                 enemy2Height = 140;
                 enemy2Width = 200;
 
-//                enemyFactory2 = new BossFactory(context);
-//                enemy2 = enemyFactory2.generateEnemy();
-//                enemySprite2 = enemy2.getSprite1();
+                //POTION HERE
+
                 break;
             default:
                 break;
@@ -164,6 +170,14 @@ public class GameView extends View {
             System.out.println(GID);
             User.getInstance().updatePosition((int) x, (int) y);
         }
+        //check if at power up
+        if (x <= (potion.getX() + potionWidth) && y <= (potion.getY() + potionHeight)
+                && (x + userWidth) > (potion.getX()) && (y) > (potion.getY() - userHeight)) {
+            System.out.println("Potion collect!");
+//            potion.powerUp();
+            User.getInstance().powerUp();
+            //delete potion here
+        }
     }
     public boolean getEndTile() {
         return endTile;
@@ -178,10 +192,12 @@ public class GameView extends View {
         // Draw the user sprite
         canvas.drawBitmap(userSprite, User.getInstance().getX(), User.getInstance().getY(), null);
 
-        //test
+        //enemies
         canvas.drawBitmap(enemySprite1, enemy1.getX(), enemy1.getY(), null);
         canvas.drawBitmap(enemySprite2, enemy2.getX(), enemy2.getY(), null);
 
+        //powerup
+        canvas.drawBitmap(potion1, potion.getX(), potion.getY(), null);
 
         // Draw user information (replace with your actual values)
         Paint textPaint = new Paint();
@@ -198,25 +214,6 @@ public class GameView extends View {
         canvas.drawText(health, 100, 90, textPaint);
         canvas.drawText(score, 100, 110, textPaint);
     }
-
-//    public void setGameViewListener(GameViewObserver observer) {
-//        observers.add(observer);
-//    }
-//
-//    public void notifyCharacterLandedOnTile(int x, int y) {
-//        for (GameViewObserver observer : observers) {
-//            observer.updateOnCharacterLandedOnTile(x, y);
-//        }
-//    }
-
-    // Implement the GameViewObserver interface method
-//    @Override
-//    public void updateOnCharacterLandedOnTile(int x, int y) {
-//        // Handle updates when the character lands on a tile here
-//        // You can add custom logic or simply call the GameViewListener if needed
-//    }
-
-
     public void updateEnemy() {
         enemy1.update();
         enemy2.update();
@@ -236,14 +233,6 @@ public class GameView extends View {
             endTile = true;
         }
 
-//        int Enemy1tileY = (int) (enemy1.getY()) / (t.tileheight+7);
-//        int Enemy1tileX = (int) (enemy1.getX()) / (t.tilewidth + 12);
-////        long EnemyGID = t.getGIDAt(Enemy1tileX, Enemy1tileY);
-////        System.out.println(GID + ", tileX: " + tileX + ", tileY: " + tileY);
-////        System.out.println(EnemyGID + ", ENEMYtileX: " + Enemy1tileX + ", ENEMYtileY: " + Enemy1tileY);
-//        int Enemy2tileY = (int) (enemy2.getY()) / (t.tileheight + 7);
-//        int Enemy2tileX = (int) (enemy2.getX()) / (t.tilewidth + 12);
-
         if (x <= (enemy1X+enemy1Width) && y <= (enemy1Y + enemy1Height) && (x+userWidth) > (enemy1X) && (y) > (enemy1Y - userHeight)) {
             if (!enemy1.getCollision()) {
                 enemy1.setCollision();
@@ -258,7 +247,6 @@ public class GameView extends View {
             enemySprite2 = enemy2.getSprite2();
         } else {
             enemySprite2 = enemy2.getSprite1();
-//            System.out.println(GID);
             if (enemy1.getCollision()) {
                 enemy1.setCollision();
             }

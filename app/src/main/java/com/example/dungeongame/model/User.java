@@ -115,6 +115,9 @@ public class User extends View implements UserSubject {
     public static MovementStrategy getMovementStrategy() {
         return movementStrategy;
     }
+    public static void setMovementStrategy(MovementStrategy ms) {
+        User.movementStrategy = ms;
+    }
     public static String getUsername() {
         return username;
     }
@@ -204,6 +207,9 @@ public class User extends View implements UserSubject {
         default:
             System.out.println("You have entered an invalid difficulty level");
         }
+    }
+    public static void powerUp() {
+        health += 100;
     }
 }
 
