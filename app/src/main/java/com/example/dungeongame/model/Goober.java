@@ -14,6 +14,8 @@ public class Goober extends View implements Enemy, CollisionObserver  {
     }
     private int sprite;
     private static Bitmap sprite1;
+    private static Bitmap sprite2;
+
 
     public void setCollision() {
         collision = !collision;
@@ -25,6 +27,7 @@ public class Goober extends View implements Enemy, CollisionObserver  {
 
     private boolean collision = false;
     private int speed;
+    private int attack;
     private String enemySize;
     private int health;
     private float x;
@@ -44,15 +47,15 @@ public class Goober extends View implements Enemy, CollisionObserver  {
         switch (difficulty) {
         case "Easy":
             this.health = 5;
-            //this.movementStrategy = new RunStrategy();
+            this.attack = 5;
             break;
         case "Medium":
             this.health = 10;
-            //this.movementStrategy = new RunStrategy();
+            this.attack = 5;
             break;
         case "Hard":
             this.health = 15;
-            //this.movementStrategy = new JogStrategy();
+            this.attack = 10;
             break;
         default:
             System.out.println("You have entered an invalid difficulty level");
@@ -98,6 +101,12 @@ public class Goober extends View implements Enemy, CollisionObserver  {
     public Bitmap getSprite1() {
         return sprite1;
     }
+
+    @Override
+    public Bitmap getSprite2() {
+        return sprite2;
+    }
+
     public int getSprite() {
         return sprite;
     }
@@ -118,7 +127,7 @@ public class Goober extends View implements Enemy, CollisionObserver  {
         return y;
     }
     public int getAttack() {
-        return 10;
+        return attack;
     }
     public String getDifficulty() {
         return difficulty;

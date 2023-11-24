@@ -6,6 +6,9 @@ import android.graphics.Bitmap;
 public interface Enemy {
     int getSprite();
     Bitmap getSprite1();
+
+    Bitmap getSprite2();
+
     //    abstract static Bitmap getSprite1();
     //    int getSpeed();
     //    int getSize();

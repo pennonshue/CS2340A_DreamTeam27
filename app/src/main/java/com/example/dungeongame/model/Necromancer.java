@@ -14,6 +14,8 @@ public class Necromancer extends View implements Enemy, CollisionObserver {
     private String difficulty;
     private Bitmap sprite1;
 
+    private Bitmap sprite2;
+
     public boolean getCollision() {
         return collision;
     }
@@ -24,6 +26,7 @@ public class Necromancer extends View implements Enemy, CollisionObserver {
 
     private boolean collision = false;
     private int speed;
+    private int attack;
     private String enemySize;
     private int health;
     private float x;
@@ -37,21 +40,24 @@ public class Necromancer extends View implements Enemy, CollisionObserver {
         this.x = x;
         this.y = y;
         switch (difficulty) {
-        case "Easy":
-            this.health = 20;
-            //this.movementStrategy = new RunStrategy();
-            break;
-        case "Medium":
-            this.health = 25;
-            //this.movementStrategy = new RunStrategy();
-            break;
-        case "Hard":
-            this.health = 30;
-            //this.movementStrategy = new JogStrategy();
-            break;
-        default:
-            System.out.println("You have entered an invalid difficulty level");
-            break;
+            case "Easy":
+                this.health = 20;
+                this.attack = 0;
+                //this.movementStrategy = new RunStrategy();
+                break;
+            case "Medium":
+                this.health = 25;
+                this.attack = 10;
+                //this.movementStrategy = new RunStrategy();
+                break;
+            case "Hard":
+                this.health = 30;
+                this.attack = 15;
+                //this.movementStrategy = new JogStrategy();
+                break;
+            default:
+                System.out.println("You have entered an invalid difficulty level");
+                break;
         }
         float scaleX = 0.8f;
         float scaleY = 0.8f;
@@ -59,8 +65,12 @@ public class Necromancer extends View implements Enemy, CollisionObserver {
         matrix.postScale(scaleX, scaleY);
         sprite = R.drawable.necromancer;
         sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
-        sprite1 = Bitmap.createBitmap(sprite1, 90, 190, 200,
+        sprite1 = Bitmap.createBitmap(sprite1, 100, 190, 200,
                 160, matrix, true);
+
+        sprite2 = BitmapFactory.decodeResource(getResources(), this.sprite);
+        sprite2 = Bitmap.createBitmap(sprite2, 3600, 830, 250,
+                200, matrix, true);
     }
     public void update() {
         if (!collision) {
@@ -95,6 +105,10 @@ public class Necromancer extends View implements Enemy, CollisionObserver {
     public Bitmap getSprite1() {
         return sprite1;
     }
+
+    public Bitmap getSprite2() {
+        return sprite2;
+    }
     public int getHealth() {
         return health;
     }
@@ -106,6 +120,6 @@ public class Necromancer extends View implements Enemy, CollisionObserver {
         return y;
     }
     public int getAttack() {
-        return 10;
+        return attack;
     }
 }

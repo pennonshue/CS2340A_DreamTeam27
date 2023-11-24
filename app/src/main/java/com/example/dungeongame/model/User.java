@@ -44,19 +44,19 @@ public class User extends View implements UserSubject {
         enemies = new ArrayList<>();
         this.difficulty = difficulty;
         this.username = username;
-        this.score = 200;
+        this.score = 600;
         this.win = true;
         switch (difficulty) {
         case "Easy":
-            this.health = 100;
+            this.health = 1000;
             this.movementStrategy = new RunStrategy();
             break;
         case "Medium":
-            this.health = 85;
+            this.health = 900;
             this.movementStrategy = new RunStrategy();
             break;
         case "Hard":
-            this.health = 60;
+            this.health = 800;
             this.movementStrategy =  new JogStrategy();
             break;
         default:
@@ -115,6 +115,9 @@ public class User extends View implements UserSubject {
     public static MovementStrategy getMovementStrategy() {
         return movementStrategy;
     }
+    public static void setMovementStrategy(MovementStrategy ms) {
+        User.movementStrategy = ms;
+    }
     public static String getUsername() {
         return username;
     }
@@ -159,6 +162,8 @@ public class User extends View implements UserSubject {
     public static int getScore() {
         return score;
     }
+
+    // this is where the score comes from
     public static void setScore(int score) {
         if (score < 0) {
             User.score = 0;
@@ -166,9 +171,12 @@ public class User extends View implements UserSubject {
             User.score = score;
         }
     }
+    public static void resetPlayer() {
+        userInstance = null;
+    }
 
 
-    public void resetHealth() {
+    public static void resetHealth() {
         switch (difficulty) {
         case "Easy":
             User.health = 100;
@@ -201,6 +209,9 @@ public class User extends View implements UserSubject {
         default:
             System.out.println("You have entered an invalid difficulty level");
         }
+    }
+    public static void powerUp() {
+        health += 100;
     }
 }
 

@@ -14,14 +14,14 @@ import java.util.List;
 public class JUnits2 {
     @Test
     public void hardDifficultyHealth() {
-        Player test = Player.getInstance("player1", 1, "Easy", 10);
+        Player test = Player.getInstance("player1", 1, "Easy");
         assertTrue(test.getHealth() == 100);
         test.setDifficulty("Hard");
         assertTrue(test.getHealth() == 60);
     }
     @Test
     public void easyDifficultyHealth() {
-        Player test = Player.getInstance("player1", 1, "Medium", 10);
+        Player test = Player.getInstance("player1", 1, "Medium");
         test.setDifficulty("Medium");
         assertTrue(test.getHealth() == 85);
         test.setDifficulty("Easy");

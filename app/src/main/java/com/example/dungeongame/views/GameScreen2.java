@@ -29,7 +29,7 @@ public class GameScreen2 extends AppCompatActivity {
         gameView = new GameView(this, "Map2.tmx");
         User.getInstance().updatePosition(100, 100);
         setContentView(gameView);
-        User.setScore(30);
+        User.setScore(200);
     }
 
     private void startGameLoop() {

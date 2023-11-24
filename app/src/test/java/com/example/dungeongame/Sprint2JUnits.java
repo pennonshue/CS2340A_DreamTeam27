@@ -29,14 +29,14 @@ public class Sprint2JUnits {
     }
     @Test
     public void checkLose() {
-        Player test = Player.getInstance("player1", 1, "Medium", 10);
+        Player test = Player.getInstance("player1", 1, "Medium");
         test.setHealth(0);
         assertTrue(Player.getWin() == false);
 
     }
     @Test
     public void checkWin() {
-        Player test = Player.getInstance("player1", 1, "Medium", 10);
+        Player test = Player.getInstance("player1", 1, "Medium");
         test.setHealth(50);
         assertTrue(Player.getWin() == true);
 
@@ -53,26 +53,26 @@ public class Sprint2JUnits {
 
     @Test
     public void checkLoseScore() {
-        Player test = Player.getInstance("player1", 1, "Medium", 10);
+        Player test = Player.getInstance("player1", 1, "Medium");
         test.setHealth(0);
         assertTrue(Player.getScore() == 0);
 
     }
     @Test
     public void checkWalkMovementEasy() {
-        Player test = Player.getInstance("player1", 1, "Medium", 10);
+        Player test = Player.getInstance("player1", 1, "Medium");
         test.setDifficulty("Easy");
         assertTrue(Player.getMovementStrategy() instanceof RunStrategy);
     }
     @Test
     public void checkWalkMovementMedium() {
-        Player test = Player.getInstance("player1", 1, "Medium", 10);
+        Player test = Player.getInstance("player1", 1, "Medium");
         test.setDifficulty("Medium");
         assertTrue(Player.getMovementStrategy() instanceof RunStrategy);
     }
     @Test
     public void checkWalkMovementHard() {
-        Player test = Player.getInstance("player1", 1, "Medium", 10);
+        Player test = Player.getInstance("player1", 1, "Medium");
         test.setDifficulty("Hard");
         assertTrue(Player.getMovementStrategy() instanceof JogStrategy);
     }

@@ -11,6 +11,8 @@ import com.example.dungeongame.R;
 public class Creature extends View implements Enemy, CollisionObserver  {
     private int sprite;
     private static Bitmap sprite1;
+    private static Bitmap sprite2;
+
     private int speed;
     private String enemySize;
     private int health;
@@ -18,6 +20,8 @@ public class Creature extends View implements Enemy, CollisionObserver  {
     private float y;
     private static String difficulty;
     private boolean down = true;
+    private int attack;
+
 
     private boolean collision = false;
     public Creature(float x, float y, String difficulty, Context context) {
@@ -32,14 +36,17 @@ public class Creature extends View implements Enemy, CollisionObserver  {
         switch (difficulty) {
         case "Easy":
             this.health = 5;
+            this.attack = 5;
             //this.movementStrategy = new RunStrategy();
             break;
         case "Medium":
             this.health = 10;
+            this.attack = 10;
             //this.movementStrategy = new RunStrategy();
             break;
         case "Hard":
             this.health = 15;
+            this.attack = 10;
             //this.movementStrategy = new JogStrategy();
             break;
         default:
@@ -47,12 +54,12 @@ public class Creature extends View implements Enemy, CollisionObserver  {
             break;
         }
         this.sprite = R.drawable.panda;
-        float scaleX = 3.0f;
-        float scaleY = 3.0f;
+        float scaleX = 2.5f;
+        float scaleY = 2.5f;
         Matrix matrix = new Matrix();
         matrix.postScale(scaleX, scaleY);
         sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
-        sprite1 = Bitmap.createBitmap(sprite1, 0, 0, 80,
+        sprite1 = Bitmap.createBitmap(sprite1, 5, 0, 80,
                 90, matrix, true);
     }
     public void update() {
@@ -95,6 +102,12 @@ public class Creature extends View implements Enemy, CollisionObserver  {
     public Bitmap getSprite1() {
         return sprite1;
     }
+
+    @Override
+    public Bitmap getSprite2() {
+        return sprite2;
+    }
+
     public int getSprite() {
         return sprite;
     }
@@ -105,7 +118,7 @@ public class Creature extends View implements Enemy, CollisionObserver  {
         return x;
     }
     public int getAttack() {
-        return 5;
+        return attack;
     }
     public float getY() {
         return y;

@@ -45,22 +45,22 @@ public class EndScreen extends AppCompatActivity {
 
         TextView number1 = findViewById(R.id.number1);
         number1.setTextColor(Color.WHITE);
-        number1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
+        number1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
 
         TextView number2 = findViewById(R.id.number2);
         number2.setTextColor(Color.WHITE);
-        number2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
+        number2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
         TextView number3 = findViewById(R.id.number3);
         number3.setTextColor(Color.WHITE);
-        number3.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
+        number3.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
 
         TextView number4 = findViewById(R.id.number4);
         number4.setTextColor(Color.WHITE);
-        number4.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
+        number4.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
 
         TextView number5 = findViewById(R.id.number5);
         number5.setTextColor(Color.WHITE);
-        number5.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
+        number5.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
 
         TextView number6 = findViewById(R.id.number6);
         number6.setTextColor(Color.WHITE);
