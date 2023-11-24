@@ -162,6 +162,8 @@ public class User extends View implements UserSubject {
     public static int getScore() {
         return score;
     }
+
+    // this is where the score comes from
     public static void setScore(int score) {
         if (score < 0) {
             User.score = 0;
