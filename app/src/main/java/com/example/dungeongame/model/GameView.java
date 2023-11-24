@@ -114,8 +114,11 @@ public class GameView extends View {
                 enemy2Height = 140;
                 enemy2Width = 200;
 
-                //POTION HERE
-
+                //POTION
+                potion = new SpeedPotion(context);
+                potion1 = potion.getSprite1();
+                potionHeight = 46;
+                potionWidth = 50;
                 break;
             default:
                 break;
