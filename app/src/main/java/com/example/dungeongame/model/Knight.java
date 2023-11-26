@@ -113,10 +113,13 @@ public class Knight extends View implements Enemy, CollisionObserver {
         return sprite2;
     }
 
+    //Getting heatlh score
+
     public int getHealth() {
         return health;
     }
 
+    //Getting x coordinate
     @Override
     public float getX() {
         return x;
