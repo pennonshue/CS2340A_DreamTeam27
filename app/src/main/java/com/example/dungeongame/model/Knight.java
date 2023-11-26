@@ -97,10 +97,13 @@ public class Knight extends View implements Enemy, CollisionObserver {
         }
     }
 
-    //Getting Sprite
+    //Getting Sprite without weapon
     public int getSprite() {
         return sprite;
     }
+
+    //Getting sprite with attack
+
     public Bitmap getSprite1() {
         return sprite1;
     }
