@@ -87,7 +87,7 @@ public class Boss extends View implements Enemy, CollisionObserver  {
     public int getSpeed() {
         return speed;
     }
-//my commit>
+//my commit>2
     @Override
     public Bitmap getSprite1() {
         return sprite1;
