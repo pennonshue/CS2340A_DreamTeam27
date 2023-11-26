@@ -98,6 +98,9 @@ public class Creature extends View implements Enemy, CollisionObserver  {
             User.getInstance().removeObserver(this);
         }
     }
+
+
+    //All getters
     @Override
     public Bitmap getSprite1() {
         return sprite1;
