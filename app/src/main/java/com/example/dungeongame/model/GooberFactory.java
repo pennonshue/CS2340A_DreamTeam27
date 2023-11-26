@@ -8,6 +8,7 @@ public class GooberFactory extends EnemyFactory {
         this.context = context;
     }
     @Override
+    //spawns goobers
     public Goober createEnemy() {
         return new Goober(200, 700, User.getInstance().getDifficulty(), context);
     }

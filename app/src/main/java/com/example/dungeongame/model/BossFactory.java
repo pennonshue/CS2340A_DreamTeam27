@@ -8,6 +8,7 @@ public class BossFactory extends EnemyFactory {
         this.context = context;
     }
     @Override
+    //spawns bosses
     public Boss createEnemy() {
         return new Boss(200, 85, User.getInstance().getDifficulty(), context);
     }

@@ -8,6 +8,7 @@ public class CreatureFactory extends EnemyFactory {
         this.context = context;
     }
     @Override
+    //spawns creatures
     public Creature createEnemy() {
         return new Creature(1200, 400, User.getInstance().getDifficulty(), context);
     }
