@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JUnit3 {
+    //Leaderboard add test
     @Test
     public void leaderboardAdd() {
         Leaderboard lead = Leaderboard.getInstance();
@@ -22,12 +23,14 @@ public class JUnit3 {
         tester.add(l1);
         assertTrue(lead.getLeaderboardEntries().equals(tester));
     }
+    //Invalid Name Test
     @Test
     public void invalidName() {
         assertEquals(false, SetupActivity.validName("    "));
         assertEquals(false, SetupActivity.validName(""));
 
     }
+    //Valid Name Test
     @Test
     public void validName() {
         assertEquals(true, SetupActivity.validName(" a;slkdjf;asdlkf   "));

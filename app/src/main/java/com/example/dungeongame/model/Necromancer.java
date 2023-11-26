@@ -8,13 +8,25 @@ import android.view.View;
 
 import com.example.dungeongame.R;
 
-import java.util.List;
 
 public class Necromancer extends View implements Enemy, CollisionObserver {
     private int sprite;
     private String difficulty;
     private Bitmap sprite1;
+
+    private Bitmap sprite2;
+
+    public boolean getCollision() {
+        return collision;
+    }
+
+    public void setCollision() {
+        collision = !collision;
+    }
+
+    private boolean collision = false;
     private int speed;
+    private int attack;
     private String enemySize;
     private int health;
     private float x;
@@ -23,21 +35,24 @@ public class Necromancer extends View implements Enemy, CollisionObserver {
     public Necromancer(float x, float y, String difficulty, Context context) {
         super(context);
         User.getInstance().addObserver(this);
-        speed = 14;
+        speed = 3;
         enemySize = "Medium";
         this.x = x;
         this.y = y;
         switch (difficulty) {
             case "Easy":
                 this.health = 20;
+                this.attack = 0;
                 //this.movementStrategy = new RunStrategy();
                 break;
             case "Medium":
                 this.health = 25;
+                this.attack = 10;
                 //this.movementStrategy = new RunStrategy();
                 break;
             case "Hard":
                 this.health = 30;
+                this.attack = 15;
                 //this.movementStrategy = new JogStrategy();
                 break;
             default:
@@ -50,24 +65,16 @@ public class Necromancer extends View implements Enemy, CollisionObserver {
         matrix.postScale(scaleX, scaleY);
         sprite = R.drawable.necromancer;
         sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
-        sprite1 = Bitmap.createBitmap(sprite1, 90, 190, 200,
+        sprite1 = Bitmap.createBitmap(sprite1, 100, 190, 200,
                 160, matrix, true);
+
+        sprite2 = BitmapFactory.decodeResource(getResources(), this.sprite);
+        sprite2 = Bitmap.createBitmap(sprite2, 3600, 830, 250,
+                200, matrix, true);
     }
 
     //Movement speed + wall collisions
     public void update() {
-<<<<<<< Updated upstream
-        if (x < 1900 && right) {
-            x+=speed;
-            if (x >= 1900) {
-                right = false;
-            }
-        } else {
-            if (x >= 10) {
-                x-=speed;
-                if (x <= 10) {
-                    right = true;
-=======
         if (!collision) {
             if (x < 1895 && right) {
                 x += speed;
@@ -80,7 +87,6 @@ public class Necromancer extends View implements Enemy, CollisionObserver {
                     if (x <= 15) {
                         right = true;
                     }
->>>>>>> Stashed changes
                 }
             }
         }
@@ -91,7 +97,7 @@ public class Necromancer extends View implements Enemy, CollisionObserver {
         if (User.getInstance().getX() == x && User.getInstance().getY() == y) {
             User.setHealth(User.getHealth() - 20);
         }
-        if (health <= 0 ) {
+        if (health <= 0) {
             User.getInstance().removeObserver(this);
         }
     }
@@ -100,6 +106,10 @@ public class Necromancer extends View implements Enemy, CollisionObserver {
     }
     public Bitmap getSprite1() {
         return sprite1;
+    }
+
+    public Bitmap getSprite2() {
+        return sprite2;
     }
     public int getHealth() {
         return health;
@@ -110,5 +120,8 @@ public class Necromancer extends View implements Enemy, CollisionObserver {
     }
     public float getY() {
         return y;
+    }
+    public int getAttack() {
+        return attack;
     }
 }

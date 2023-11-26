@@ -8,6 +8,7 @@ public class NecromancerFactory extends EnemyFactory {
         this.context = context;
     }
     @Override
+    //spawns necromancers
     public Necromancer createEnemy() {
         return new Necromancer(300, 300, User.getInstance().getDifficulty(), context);
     }

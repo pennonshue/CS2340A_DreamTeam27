@@ -25,14 +25,14 @@ public class JUnits1 {
 
     @Test
     public void negativeScore() {
-        Player test = Player.getInstance("player1", 1, "Easy", 10);
+        Player test = Player.getInstance("player1", 1, "Easy");
         test.setScore(-5);
         assertTrue(test.getScore() == 0);
     }
 
     @Test
     public void medDifficultyHealth() {
-        Player test = Player.getInstance("player1", 1, "Hard", 10);
+        Player test = Player.getInstance("player1", 1, "Hard");
         test.setDifficulty("Hard");
         assertTrue(test.getHealth() == 60);
         test.setDifficulty("Medium");
@@ -74,7 +74,7 @@ public class JUnits1 {
 
     @Test
     public void validSprite() {
-        Player test = Player.getInstance("player1", 1, "Hard", 10);
+        Player test = Player.getInstance("player1", 1, "Hard");
         assertEquals(true, SetupActivity.validSprite(Player.getSprite()));
     }
 }
