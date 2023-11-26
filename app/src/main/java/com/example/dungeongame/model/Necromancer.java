@@ -53,7 +53,10 @@ public class Necromancer extends View implements Enemy, CollisionObserver {
         sprite1 = Bitmap.createBitmap(sprite1, 90, 190, 200,
                 160, matrix, true);
     }
+
+    //Movement speed + wall collisions
     public void update() {
+<<<<<<< Updated upstream
         if (x < 1900 && right) {
             x+=speed;
             if (x >= 1900) {
@@ -64,6 +67,20 @@ public class Necromancer extends View implements Enemy, CollisionObserver {
                 x-=speed;
                 if (x <= 10) {
                     right = true;
+=======
+        if (!collision) {
+            if (x < 1895 && right) {
+                x += speed;
+                if (x >= 1895) {
+                    right = false;
+                }
+            } else {
+                if (x >= 15) {
+                    x -= speed;
+                    if (x <= 15) {
+                        right = true;
+                    }
+>>>>>>> Stashed changes
                 }
             }
         }
