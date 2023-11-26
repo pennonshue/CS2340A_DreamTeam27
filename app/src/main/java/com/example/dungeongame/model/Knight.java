@@ -81,6 +81,8 @@ public class Knight extends View implements Enemy, CollisionObserver {
             User.getInstance().removeObserver(this);
         }
     }
+
+    //Getting Sprite
     public int getSprite() {
         return sprite;
     }
