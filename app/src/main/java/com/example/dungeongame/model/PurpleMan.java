@@ -11,8 +11,21 @@ import com.example.dungeongame.R;
 public class PurpleMan extends View implements Enemy, CollisionObserver {
     private int sprite;
     private static Bitmap sprite1;
+    private static Bitmap sprite2;
+
     private int speed;
+    private int attack;
     private String enemySize;
+
+    public void setCollision() {
+        collision = !collision;
+    }
+
+    public boolean getCollision() {
+        return collision;
+    }
+
+    private boolean collision = false;
     private int health;
     private float x;
     private float y;
@@ -26,26 +39,30 @@ public class PurpleMan extends View implements Enemy, CollisionObserver {
         health = 5;
         this.x = x;
         this.y = y;
+
         switch (difficulty) {
-            case "Easy":
-                this.health = 5;
-                //this.movementStrategy = new RunStrategy();
-                break;
-            case "Medium":
-                this.health = 10;
-                //this.movementStrategy = new RunStrategy();
-                break;
-            case "Hard":
-                this.health = 15;
-                //this.movementStrategy = new JogStrategy();
-                break;
-            default:
-                System.out.println("You have entered an invalid difficulty level");
-                break;
+        case "Easy":
+            this.health = 5;
+            this.attack = 2;
+            //this.movementStrategy = new RunStrategy();
+            break;
+        case "Medium":
+            this.health = 10;
+            this.attack = 5;
+            //this.movementStrategy = new RunStrategy();
+            break;
+        case "Hard":
+            this.health = 15;
+            this.attack = 8;
+            //this.movementStrategy = new JogStrategy();
+            break;
+        default:
+            System.out.println("You have entered an invalid difficulty level");
+            break;
         }
         this.sprite = R.drawable.creatures;
-        float scaleX = 1.4f;
-        float scaleY = 1.4f;
+        float scaleX = 1.0f;
+        float scaleY = 1.0f;
         Matrix matrix = new Matrix();
         matrix.postScale(scaleX, scaleY);
         sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
@@ -53,16 +70,18 @@ public class PurpleMan extends View implements Enemy, CollisionObserver {
         System.out.println("Creature made");
     }
     public void update() {
-        if (x < 1900 && right) {
-            x+=speed;
-            if (x >= 1900) {
-                right = false;
-            }
-        } else {
-            if (x >= 10) {
-                x-=speed;
-                if (x <= 10) {
-                    right = true;
+        if (!collision) {
+            if (x < 1900 && right) {
+                x += speed;
+                if (x >= 1900) {
+                    right = false;
+                }
+            } else {
+                if (x >= 10) {
+                    x -= speed;
+                    if (x <= 10) {
+                        right = true;
+                    }
                 }
             }
         }
@@ -73,7 +92,7 @@ public class PurpleMan extends View implements Enemy, CollisionObserver {
         if (User.getInstance().getX() == x && User.getInstance().getY() == y) {
             User.setHealth(User.getHealth() - 30);
         }
-        if (health <= 0 ) {
+        if (health <= 0) {
             User.getInstance().removeObserver(this);
         }
     }
@@ -84,13 +103,21 @@ public class PurpleMan extends View implements Enemy, CollisionObserver {
     public Bitmap getSprite1() {
         return sprite1;
     }
+
+    @Override
+    public Bitmap getSprite2() {
+        return sprite2;
+    }
+
     public int getSprite() {
         return sprite;
     }
     public int getHealth() {
         return health;
     }
-
+    public int getAttack() {
+        return attack;
+    }
     @Override
     public float getX() {
         return x;

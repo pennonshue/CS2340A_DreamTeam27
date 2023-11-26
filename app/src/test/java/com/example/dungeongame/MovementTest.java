@@ -50,20 +50,20 @@ public class MovementTest {
 
     @Test
     public void easyStrategyTest() {
-        Player testPlayer = Player.getInstance("Test", 1, "Easy", 5);
+        Player testPlayer = Player.getInstance("Test", 1, "Easy");
         assertEquals(20, testPlayer.getMovementStrategy().movementSpeed());
     }
 
     @Test
     public void mediumStrategyTest() {
-        Player testPlayer = Player.getInstance("Test", 1, "Medium", 5);
+        Player testPlayer = Player.getInstance("Test", 1, "Medium");
         assertEquals(20, testPlayer.getMovementStrategy().movementSpeed());
     }
 
 
     @Test
     public void hardStrategyTest() {
-        Player testPlayer = Player.getInstance("Test", 1, "Hard", 5);
+        Player testPlayer = Player.getInstance("Test", 1, "Hard");
         testPlayer.setDifficulty("Hard");
         assertEquals(5, testPlayer.getMovementStrategy().movementSpeed());
     }

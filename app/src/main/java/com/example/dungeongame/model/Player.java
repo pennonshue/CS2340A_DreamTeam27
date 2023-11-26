@@ -8,25 +8,26 @@ public class Player {
     private static MovementStrategy movementStrategy;
 
     private static int score;
-    private static int speed;
     private static int health;
     private static int sprite;
     private static String difficulty;
     private static boolean win;
 
     private static int room;
+    private static int x = 100;
+    private static int y = 100;
 
 
     public static com.example.dungeongame.model.Player getInstance(String username, int sprite,
-                                                                   String difficulty, int speed) {
+                                                                   String difficulty) {
         if (userInstance == null) {
             userInstance = new com.example.dungeongame.model.Player(username, sprite,
-                    difficulty, speed);
+                    difficulty);
         }
         return userInstance;
     }
 
-    private Player(String username, int sprite, String difficulty, int speed) {
+    private Player(String username, int sprite, String difficulty) {
         this.difficulty = difficulty;
         this.username = username;
         this.score = 20;
@@ -50,7 +51,6 @@ public class Player {
             System.out.println("You have entered an invalid difficulty level");
             break;
         }
-        this.speed = speed;
         this.sprite = sprite;
     }
     public static String getUsername() {
@@ -67,14 +67,6 @@ public class Player {
         com.example.dungeongame.model.Player.sprite = sprite;
     }
 
-    public static int getSpeed() {
-        return speed;
-    }
-
-    public static void setSpeed(int speed) {
-        com.example.dungeongame.model.Player.speed = speed;
-    }
-
 
     public static int getHealth() {
         return health;
@@ -85,6 +77,7 @@ public class Player {
         if (health <= 0) {
             win = false;
             setScore(0);
+            Player.health = 0;
         } else {
             win = true;
         }
@@ -115,7 +108,29 @@ public class Player {
             com.example.dungeongame.model.Player.score = room;
         }
     }
+    public static Player getInstance() {
+        return userInstance;
+    }
 
+    public static void resetPlayer() {
+        userInstance = null;
+    }
+    public static void collisionDamage() {
+        if (difficulty == "Hard") {
+            Player.setHealth(Player.getHealth() - 20);
+        } else if (difficulty == "Medium") {
+            Player.setHealth(Player.getHealth() - 15);
+        } else {
+            Player.setHealth(Player.getHealth() - 10);
+        }
+    }
+    public static boolean ifCollide(int x, int y) {
+        if (Player.x == x && Player.y == y) {
+            collisionDamage();
+            return true;
+        }
+        return false;
+    }
     public static void setDifficulty(String difficulty) {
         switch (difficulty) {
         case "Easy":

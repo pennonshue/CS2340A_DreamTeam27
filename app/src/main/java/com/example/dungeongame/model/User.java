@@ -44,19 +44,19 @@ public class User extends View implements UserSubject {
         enemies = new ArrayList<>();
         this.difficulty = difficulty;
         this.username = username;
-        this.score = 50;
+        this.score = 600;
         this.win = true;
         switch (difficulty) {
         case "Easy":
-            this.health = 100;
+            this.health = 1000;
             this.movementStrategy = new RunStrategy();
             break;
         case "Medium":
-            this.health = 85;
+            this.health = 900;
             this.movementStrategy = new RunStrategy();
             break;
         case "Hard":
-            this.health = 60;
+            this.health = 800;
             this.movementStrategy =  new JogStrategy();
             break;
         default:
@@ -87,6 +87,7 @@ public class User extends View implements UserSubject {
         matrix.postScale(scaleX, scaleY);
         sprite1 = Bitmap.createBitmap(sprite1, 0, 0, sprite1.getWidth(),
                 sprite1.getHeight(), matrix, true);
+        System.out.println("size" + sprite1.getWidth() + "x" + sprite1.getHeight());
     }
 
     public void updatePosition(int newX, int newY) {
@@ -113,6 +114,9 @@ public class User extends View implements UserSubject {
 
     public static MovementStrategy getMovementStrategy() {
         return movementStrategy;
+    }
+    public static void setMovementStrategy(MovementStrategy ms) {
+        User.movementStrategy = ms;
     }
     public static String getUsername() {
         return username;
@@ -144,6 +148,7 @@ public class User extends View implements UserSubject {
         if (health <= 0) {
             win = false;
             setScore(0);
+            User.health = 0;
         } else {
             win = true;
         }
@@ -157,12 +162,42 @@ public class User extends View implements UserSubject {
     public static int getScore() {
         return score;
     }
+
+    // this is where the score comes from
     public static void setScore(int score) {
         if (score < 0) {
             User.score = 0;
         } else {
             User.score = score;
         }
+    }
+    public static void decreaseScore(int decrease) {
+        if (score < 0) {
+            User.score = 0;
+        } else {
+            User.score = User.score - decrease;
+        }
+    }
+    public static void resetPlayer() {
+        userInstance = null;
+    }
+
+
+    public static void resetHealth() {
+        switch (difficulty) {
+        case "Easy":
+            User.health = 100;
+            break;
+        case "Medium":
+            User.health = 85;
+            break;
+        case "Hard":
+            User.health = 60;
+            break;
+        default:
+            break;
+        }
+
     }
     public static void setDifficulty(String difficulty) {
         switch (difficulty) {
@@ -181,6 +216,9 @@ public class User extends View implements UserSubject {
         default:
             System.out.println("You have entered an invalid difficulty level");
         }
+    }
+    public static void powerUp() {
+        health += 100;
     }
 }
 

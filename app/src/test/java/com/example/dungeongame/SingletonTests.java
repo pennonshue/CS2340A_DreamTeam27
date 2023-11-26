@@ -22,12 +22,11 @@ public class SingletonTests {
 
     @Test
     public void PlayerSingleton() {
-        Player test = Player.getInstance("player1", 1, "Easy", 10);
-        Player test2 = Player.getInstance("player100", 3, "Hard", 50);
+        Player test = Player.getInstance("player1", 1, "Easy");
+        Player test2 = Player.getInstance("player100", 3, "Hard");
         assertTrue(test == test2);
         assertTrue(Player.getUsername() == "player1");
         assertTrue(Player.getDifficulty() == "Easy");
         assertTrue(Player.getSprite() == 1);
-        assertTrue(Player.getSpeed() == 10);
     }
 }
