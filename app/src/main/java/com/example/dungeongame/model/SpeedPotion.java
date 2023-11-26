@@ -53,6 +53,7 @@ public class SpeedPotion extends View implements Potion {
 //        }
 //    }
 
+    //Returning the sprite of the speed potion
     public Bitmap getSprite1() {
         return sprite1;
     }
