@@ -258,7 +258,7 @@ public class GameView extends View {
                 enemy2.setCollision();
             }
         }
-
+        //trigger redraw
         invalidate();
     }
 }
