@@ -9,7 +9,7 @@ public class TileMapData {
 	 * This can be used to reconstruct a graphical tilemap of theoretically
 	 * arbitrarily large size onscreen from repeated images of a tileset.
 	 */
-	
+
 	/* Constants */
 	public static final long GID_MASK = 0x3fffffff;
 	

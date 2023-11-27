@@ -3,13 +3,13 @@ package com.example.dungeongame.model;
 import android.content.Context;
 
 public class CreatureFactory extends EnemyFactory {
-    Context context;
+    private Context context;
     public CreatureFactory(Context context) {
         this.context = context;
     }
     @Override
     //spawns creatures
     public Creature createEnemy() {
-        return new Creature(1200, 400, User.getInstance().getDifficulty(), context);
+        return new Creature(1201, 401, User.getInstance().getDifficulty(), context);
     }
 }

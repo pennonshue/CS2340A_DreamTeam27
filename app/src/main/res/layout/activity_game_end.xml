@@ -52,7 +52,6 @@
         android:id="@+id/leaderboardResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-10dp"
         android:fontFamily="@font/dungeonfont"
         android:text="WIN"
         android:textColor="#FFFFFF"
@@ -61,11 +60,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/number6" />
-    
-  <TextView
+
+    <TextView
         android:id="@+id/number1"
-        android:layout_width="253dp"
-        android:layout_height="39dp"
+        android:layout_width="270dp"
+        android:layout_height="50dp"
         android:layout_marginStart="68dp"
         android:layout_marginTop="124dp"
         android:layout_marginEnd="72dp"
@@ -77,69 +76,72 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/leaderboardTitle" />
 
+
     <TextView
         android:id="@+id/number2"
-        android:layout_width="258dp"
-        android:layout_height="54dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="270dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="8dp"
         android:fontFamily="@font/dungeonfont"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/number3"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/number3"
-        android:layout_width="255dp"
-        android:layout_height="42dp"
+        android:layout_width="270dp"
+        android:layout_height="50dp"
         android:fontFamily="@font/dungeonfont"
         android:textColor="#FFFFFF"
         android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@+id/number4"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.909" />
 
     <TextView
         android:id="@+id/number4"
-        android:layout_width="251dp"
-        android:layout_height="49dp"
+        android:layout_width="270dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="16dp"
         android:fontFamily="@font/dungeonfont"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/number5"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent" />
-
 
     <TextView
         android:id="@+id/number5"
-        android:layout_width="253dp"
-        android:layout_height="55dp"
-        android:layout_marginBottom="276dp"
+        android:layout_width="270dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="268dp"
         android:fontFamily="@font/dungeonfont"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/number6"
         android:layout_width="262dp"
         android:layout_height="79dp"
-        android:layout_marginBottom="164dp"
+        android:layout_marginBottom="168dp"
         android:fontFamily="@font/dungeonfont"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.46"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,9 +10,8 @@ public class LeaderboardEntry {
 
     public LeaderboardEntry(String playerName, int score) {
         this.playerName = playerName;
-        this.score = score;
+        this.score = score + User.getInstance().getHealth();
         this.timestamp = new Date();
-        System.out.println("leaderboard is created");
     }
 
     public String getPlayerName() {

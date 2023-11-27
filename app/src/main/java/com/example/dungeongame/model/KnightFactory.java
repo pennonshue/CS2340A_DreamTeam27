@@ -3,7 +3,7 @@ package com.example.dungeongame.model;
 import android.content.Context;
 
 public class KnightFactory extends EnemyFactory {
-    Context context;
+    private Context context;
     public KnightFactory(Context context) {
         this.context = context;
     }
