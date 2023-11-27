@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.example.dungeongame.TMXLoader.TMXLoader;
 import com.example.dungeongame.TMXLoader.TileMapData;
@@ -47,6 +48,7 @@ public class GameView extends View {
 
     private int userWidth;
     private int userHeight;
+    private boolean powerup;
 
 
     public GameView(Context context, String map) {
@@ -56,6 +58,7 @@ public class GameView extends View {
         this.mapName = map;
         this.userWidth = User.getInstance().getSprite1().getWidth() - 20;
         this.userHeight = User.getInstance().getSprite1().getHeight() - 20;
+        this.powerup = true;
 
         t = TMXLoader.readTMX(map, context);
         tilemapBitmap = TMXLoader.createBitmap(t, context, 0, t.getLayers().size());
@@ -76,7 +79,7 @@ public class GameView extends View {
                 enemy2Width = 200;
                 //POTION
 
-                potion = new SpeedPotion(context);
+                potion = new HealthPotion(context);
                 potion1 = potion.getSprite1();
                 potionHeight = 46;
                 potionWidth = 50;
@@ -127,7 +130,7 @@ public class GameView extends View {
                 enemy2Width = 200;
 
                 //POTION
-                potion = new SpeedPotion(context);
+                potion = new SizePotion(context);
                 potion1 = potion.getSprite1();
                 potionHeight = 46;
                 potionWidth = 50;
@@ -194,9 +197,11 @@ public class GameView extends View {
         if (x <= (potion.getX() + potionWidth) && y <= (potion.getY() + potionHeight)
                 && (x + userWidth) > (potion.getX()) && (y) > (potion.getY() - userHeight)) {
             System.out.println("Potion collect!");
-//            potion.powerUp();
-            User.getInstance().powerUp();
+            potion.powerUp();
             //delete potion here
+//            potion.getSprite1().recycle();
+            powerup = false;
+
         }
     }
     public boolean getEndTile() {
@@ -216,12 +221,13 @@ public class GameView extends View {
         canvas.drawBitmap(enemySprite1, enemy1.getX(), enemy1.getY(), null);
         canvas.drawBitmap(enemySprite2, enemy2.getX(), enemy2.getY(), null);
 
-        //powerup
-        canvas.drawBitmap(potion1, potion.getX(), potion.getY(), null);
 
         //weapon
         canvas.drawBitmap(weaponSprite, weapon.getX(), weapon.getY(), null);
 
+        if (powerup) {
+            canvas.drawBitmap(potion1, potion.getX(), potion.getY(), null);
+        }
         // Draw user information (replace with your actual values)
         Paint textPaint = new Paint();
         textPaint.setColor(Color.WHITE);

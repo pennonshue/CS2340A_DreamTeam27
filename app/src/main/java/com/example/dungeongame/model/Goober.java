@@ -44,6 +44,7 @@ public class Goober extends View implements Enemy, CollisionObserver  {
         this.x = x;
         this.y = y;
 
+        // changes goober settings based on difficulty selected
         switch (difficulty) {
         case "Easy":
             this.health = 5;

@@ -8,4 +8,5 @@ public interface Potion {
     float getY();
     Bitmap getSprite1();
 
+    void powerUp();
 }
