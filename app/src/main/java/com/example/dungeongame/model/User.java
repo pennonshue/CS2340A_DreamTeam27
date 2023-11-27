@@ -19,6 +19,7 @@ public class User extends View implements UserSubject {
     private static Bitmap sprite1;
     private static User userInstance = null;
     private static String username;
+    private boolean weapon;
     private static int score;
     private static int health;
     private static int sprite;
@@ -50,15 +51,15 @@ public class User extends View implements UserSubject {
         this.win = true;
         switch (difficulty) {
         case "Easy":
-            this.health = 1000;
+            this.health = 500;
             this.movementStrategy = new RunStrategy();
             break;
         case "Medium":
-            this.health = 900;
+            this.health = 400;
             this.movementStrategy = new RunStrategy();
             break;
         case "Hard":
-            this.health = 800;
+            this.health = 300;
             this.movementStrategy =  new JogStrategy();
             break;
         default:
@@ -184,23 +185,6 @@ public class User extends View implements UserSubject {
         userInstance = null;
     }
 
-
-    public static void resetHealth() {
-        switch (difficulty) {
-        case "Easy":
-            User.health = 100;
-            break;
-        case "Medium":
-            User.health = 85;
-            break;
-        case "Hard":
-            User.health = 60;
-            break;
-        default:
-            break;
-        }
-
-    }
     public static void setDifficulty(String difficulty) {
         switch (difficulty) {
         case "Easy":
@@ -224,6 +208,14 @@ public class User extends View implements UserSubject {
     }
     public void setScaleY(float scaleY) {
         User.scaleY = scaleY;
+    }
+
+    public boolean getWeapon() {
+        return weapon;
+    }
+
+    public void setWeapon(boolean weapon) {
+        this.weapon = weapon;
     }
 }
 

@@ -57,6 +57,8 @@ public class GameViewSprite extends View {
         return y;
     }
 
+    //getting coordinates
+
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.drawBitmap(sprite, x, y, null);
@@ -66,20 +68,24 @@ public class GameViewSprite extends View {
         y -= 50;
         return y;
     }
+    //move up
 
     public static float getMoveDown(float y) {
         y += 30;
         return y;
     }
+    // move down
 
     public static float getMoveRight(float x) {
         x += 30;
         return x;
     }
+    //move right
 
     public static float getMoveLeft(float x) {
         x -= 30;
         return x;
     }
+    // move left
 }
 

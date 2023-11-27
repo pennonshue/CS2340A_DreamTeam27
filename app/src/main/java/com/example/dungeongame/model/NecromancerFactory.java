@@ -10,6 +10,6 @@ public class NecromancerFactory extends EnemyFactory {
     @Override
     //spawns necromancers
     public Necromancer createEnemy() {
-        return new Necromancer(300, 300, User.getInstance().getDifficulty(), context);
+        return new Necromancer(300, 240, User.getInstance().getDifficulty(), context);
     }
 }

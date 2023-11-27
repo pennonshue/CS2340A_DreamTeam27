@@ -28,24 +28,25 @@ public class GameView extends View {
     private int enemy2Width;
     private Bitmap enemySprite1;
     private Bitmap enemySprite2;
-    public Enemy getEnemy1() {
-        return enemy1;
-    }
-    public Enemy getEnemy2() {
-        return enemy2;
-    }
+
     private Enemy enemy1;
     private Enemy enemy2;
     private EnemyFactory enemyFactory1;
     private EnemyFactory enemyFactory2;
     private TileMapData t;
     private Potion potion;
+    private Weapon weapon;
+    private Bitmap weaponSprite;
     private Bitmap potion1;
     private int potionWidth;
     private int potionHeight;
     private int userWidth;
     private int userHeight;
     private boolean powerup;
+    private boolean weaponDisplay;
+
+    private boolean enemy1display = true;
+    private boolean enemy2display = true;
 
 
     public GameView(Context context, String map) {
@@ -56,6 +57,8 @@ public class GameView extends View {
         this.userWidth = User.getInstance().getSprite1().getWidth() - 20;
         this.userHeight = User.getInstance().getSprite1().getHeight() - 20;
         this.powerup = true;
+        this.weaponDisplay = true;
+        User.getInstance().setWeapon(false);
 
         t = TMXLoader.readTMX(map, context);
         tilemapBitmap = TMXLoader.createBitmap(t, context, 0, t.getLayers().size());
@@ -80,6 +83,12 @@ public class GameView extends View {
                 potion1 = potion.getSprite1();
                 potionHeight = 46;
                 potionWidth = 50;
+
+
+                weapon = new Weapon1(context);
+                weaponSprite = weapon.getSprite();
+                weapon.setX(200);
+                weapon.setY(300);
                 break;
 
 
@@ -101,6 +110,10 @@ public class GameView extends View {
                 potionHeight = 46;
                 potionWidth = 50;
 
+                weapon = new Weapon2(context);
+                weaponSprite = weapon.getSprite();
+                weapon.setX(1100);
+                weapon.setY(700);
                 break;
 
             case "Map3.tmx":
@@ -121,6 +134,11 @@ public class GameView extends View {
                 potion1 = potion.getSprite1();
                 potionHeight = 46;
                 potionWidth = 50;
+
+                weapon = new Weapon3(context);
+                weaponSprite = weapon.getSprite();
+                weapon.setX(1200);
+                weapon.setY(100);
                 break;
             default:
                 break;
@@ -149,12 +167,32 @@ public class GameView extends View {
                 handleMove(x, y, t.tilewidth
                         + User.getInstance().getMovementStrategy().movementSpeed(), 0);  // Move right
                 break;
+            case KeyEvent.KEYCODE_SPACE:
+                if (User.getInstance().getWeapon()) {
+                    attack(x, y);
+                }
+                break;
             default:
                 break;
         }
         // Trigger a redraw
         invalidate();
         return true;
+    }
+
+
+    private void attack(float x, float y) {
+        int enemy1X = (int) enemy1.getX();
+        int enemy1Y = (int) enemy1.getY();
+        int enemy2X = (int) enemy2.getX();
+        int enemy2Y = (int) enemy2.getY();
+
+        if (x <= (enemy1X+enemy1Width) && y <= (enemy1Y + enemy1Height) && (x+userWidth) > (enemy1X) && (y) > (enemy1Y - userHeight)) {
+            enemy1display = false;
+        } else if (x <= (enemy2X+enemy2Width) && y <= (enemy2Y + enemy2Height) && (x+userWidth) > (enemy2X) && (y) > (enemy2Y - userHeight)) {
+            enemy2display = false;
+        }
+
     }
 
     private void handleMove(float x, float y, int dx, int dy) {
@@ -176,12 +214,20 @@ public class GameView extends View {
             User.getInstance().updatePosition((int) x, (int) y);
         }
         //check if at power up
-        if (x <= (potion.getX() + potionWidth) && y <= (potion.getY() + potionHeight)
+        if ((powerup) && x <= (potion.getX() + potionWidth) && y <= (potion.getY() + potionHeight)
                 && (x + userWidth) > (potion.getX()) && (y) > (potion.getY() - userHeight)) {
             System.out.println("Potion collect!");
             potion.powerUp();
             //delete potion
             powerup = false;
+        }
+
+        if (x <= (weapon.getX() + 20) && y <= (weapon.getY() + 20)
+                && (x + userWidth) > (weapon.getX()) && (y + userHeight) > (weapon.getY())) {
+            //delete potion here
+//            potion.getSprite1().recycle();
+            User.getInstance().setWeapon(true);
+            weaponDisplay = false;
         }
     }
     public boolean getEndTile() {
@@ -198,17 +244,29 @@ public class GameView extends View {
         canvas.drawBitmap(userSprite, User.getInstance().getX(), User.getInstance().getY(), null);
 
         //enemies
-        canvas.drawBitmap(enemySprite1, enemy1.getX(), enemy1.getY(), null);
-        canvas.drawBitmap(enemySprite2, enemy2.getX(), enemy2.getY(), null);
+        if (enemy1display) {
+            canvas.drawBitmap(enemySprite1, enemy1.getX(), enemy1.getY(), null);
+        }
+        if (enemy2display) {
+            canvas.drawBitmap(enemySprite2, enemy2.getX(), enemy2.getY(), null);
 
-        //powerup
+        }
+
+
+        //weapon
+        if (weaponDisplay) {
+            canvas.drawBitmap(weaponSprite, weapon.getX(), weapon.getY(), null);
+        } else {
+            canvas.drawBitmap(weaponSprite, User.getInstance().getX() + 50, User.getInstance().getY() + 45, null);
+        }
+
         if (powerup) {
             canvas.drawBitmap(potion1, potion.getX(), potion.getY(), null);
         }
         // Draw user information (replace with your actual values)
         Paint textPaint = new Paint();
         textPaint.setColor(Color.WHITE);
-        textPaint.setTextSize(20);
+        textPaint.setTextSize(25);
 
         String playerName = "Name: " + User.getUsername();
         String difficulty = "Difficulty: " + User.getDifficulty();
@@ -221,8 +279,13 @@ public class GameView extends View {
         canvas.drawText(score, 100, 110, textPaint);
     }
     public void updateEnemy() {
-        enemy1.update();
-        enemy2.update();
+        if (enemy1display) {
+            enemy1.update();
+        }
+        if (enemy2display) {
+            enemy2.update();
+        }
+
 
         int x = (int) User.getInstance().getX();
         int y = (int) User.getInstance().getY();
@@ -239,13 +302,13 @@ public class GameView extends View {
             endTile = true;
         }
 
-        if (x <= (enemy1X+enemy1Width) && y <= (enemy1Y + enemy1Height) && (x+userWidth) > (enemy1X) && (y) > (enemy1Y - userHeight)) {
+        if (enemy1display && x <= (enemy1X+enemy1Width) && y <= (enemy1Y + enemy1Height) && (x+userWidth) > (enemy1X) && (y) > (enemy1Y - userHeight)) {
             if (!enemy1.getCollision()) {
                 enemy1.setCollision();
             }
             User.setHealth(User.getHealth() - enemy1.getAttack());
             User.decreaseScore(enemy1.getAttack() * 4);
-        } else if (x <= (enemy2X+enemy2Width) && y <= (enemy2Y + enemy2Height) && (x+userWidth) > (enemy2X) && (y) > (enemy2Y - userHeight)) {
+        } else if (enemy2display && x <= (enemy2X+enemy2Width) && y <= (enemy2Y + enemy2Height) && (x+userWidth) > (enemy2X) && (y) > (enemy2Y - userHeight)) {
             if (!enemy2.getCollision()) {
                 enemy2.setCollision();
             }

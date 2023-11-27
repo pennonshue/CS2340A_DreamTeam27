@@ -34,6 +34,7 @@ public class Player {
         this.win = true;
         this.room = 0;
 
+        //alters health and movement speed based on difficulty chosen
         switch (difficulty) {
         case "Easy":
             this.health = 100;
