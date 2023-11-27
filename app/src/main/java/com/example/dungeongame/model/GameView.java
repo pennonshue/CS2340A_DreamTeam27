@@ -46,6 +46,7 @@ public class GameView extends View {
 
     private int userWidth;
     private int userHeight;
+    private boolean powerup;
 
 
     public GameView(Context context, String map) {
@@ -55,6 +56,7 @@ public class GameView extends View {
         this.mapName = map;
         this.userWidth = User.getInstance().getSprite1().getWidth() - 20;
         this.userHeight = User.getInstance().getSprite1().getHeight() - 20;
+        this.powerup = true;
 
         t = TMXLoader.readTMX(map, context);
         tilemapBitmap = TMXLoader.createBitmap(t, context, 0, t.getLayers().size());
@@ -180,6 +182,9 @@ public class GameView extends View {
             System.out.println("Potion collect!");
             potion.powerUp();
             //delete potion here
+//            potion.getSprite1().recycle();
+            powerup = false;
+
         }
     }
     public boolean getEndTile() {
@@ -200,8 +205,9 @@ public class GameView extends View {
         canvas.drawBitmap(enemySprite2, enemy2.getX(), enemy2.getY(), null);
 
         //powerup
-        canvas.drawBitmap(potion1, potion.getX(), potion.getY(), null);
-
+        if (powerup) {
+            canvas.drawBitmap(potion1, potion.getX(), potion.getY(), null);
+        }
         // Draw user information (replace with your actual values)
         Paint textPaint = new Paint();
         textPaint.setColor(Color.WHITE);
