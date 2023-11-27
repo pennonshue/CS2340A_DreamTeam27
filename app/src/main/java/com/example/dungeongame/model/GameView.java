@@ -40,6 +40,8 @@ public class GameView extends View {
     private EnemyFactory enemyFactory2;
     private TileMapData t;
     private Potion potion;
+    private Weapon weapon;
+    private Bitmap weaponSprite;
     private Bitmap potion1;
     private int potionWidth;
     private int potionHeight;
@@ -81,6 +83,12 @@ public class GameView extends View {
                 potion1 = potion.getSprite1();
                 potionHeight = 46;
                 potionWidth = 50;
+
+
+                weapon = new Weapon1(context);
+                weaponSprite = weapon.getSprite();
+                weapon.setX(200);
+                weapon.setY(300);
                 break;
 
 
@@ -102,6 +110,10 @@ public class GameView extends View {
                 potionHeight = 46;
                 potionWidth = 50;
 
+                weapon = new Weapon2(context);
+                weaponSprite = weapon.getSprite();
+                weapon.setX(500);
+                weapon.setY(700);
                 break;
 
             case "Map3.tmx":
@@ -122,6 +134,11 @@ public class GameView extends View {
                 potion1 = potion.getSprite1();
                 potionHeight = 46;
                 potionWidth = 50;
+
+                weapon = new Weapon3(context);
+                weaponSprite = weapon.getSprite();
+                weapon.setX(400);
+                weapon.setY(100);
                 break;
             default:
                 break;
@@ -204,7 +221,10 @@ public class GameView extends View {
         canvas.drawBitmap(enemySprite1, enemy1.getX(), enemy1.getY(), null);
         canvas.drawBitmap(enemySprite2, enemy2.getX(), enemy2.getY(), null);
 
-        //powerup
+
+        //weapon
+        canvas.drawBitmap(weaponSprite, weapon.getX(), weapon.getY(), null);
+
         if (powerup) {
             canvas.drawBitmap(potion1, potion.getX(), potion.getY(), null);
         }
