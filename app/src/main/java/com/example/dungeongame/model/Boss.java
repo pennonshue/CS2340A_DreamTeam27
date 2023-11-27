@@ -93,6 +93,7 @@ public class Boss extends View implements Enemy, CollisionObserver  {
     @Override
     public Bitmap getSprite1() {
         return sprite1;
+        //this returns sprite
     }
 
     @Override
