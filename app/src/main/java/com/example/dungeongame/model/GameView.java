@@ -72,6 +72,8 @@ public class GameView extends View {
 
         switch (mapName) {
             case "Map1.tmx":
+                setEnemy1display(true);
+                setEnemy2display(true);
                 EnemyFactory enemyFactory = new CreatureFactory(context);
                 enemy1 = enemyFactory.generateEnemy();
                 enemySprite1 = enemy1.getSprite1();
