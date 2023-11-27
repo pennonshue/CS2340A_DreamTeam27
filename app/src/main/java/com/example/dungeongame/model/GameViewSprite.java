@@ -57,6 +57,8 @@ public class GameViewSprite extends View {
         return y;
     }
 
+    //getting coordinates
+
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.drawBitmap(sprite, x, y, null);
