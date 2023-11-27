@@ -19,6 +19,8 @@ public class User extends View implements UserSubject {
     private static Bitmap sprite1;
     private static User userInstance = null;
     private static String username;
+
+    private boolean weapon;
     private static int score;
     private static int health;
     private static int sprite;

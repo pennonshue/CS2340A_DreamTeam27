@@ -2,10 +2,11 @@ package com.example.dungeongame.model;
 
 import android.graphics.Bitmap;
 
-//Adding Potion
-public interface Potion {
+public interface Weapon {
+    Bitmap getSprite();
+    void setX(int x);
+    void setY(int y);
     float getX();
     float getY();
-    Bitmap getSprite1();
 
 }
