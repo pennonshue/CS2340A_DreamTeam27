@@ -84,5 +84,6 @@ public class GameViewSprite extends View {
         x -= 30;
         return x;
     }
+    // move left
 }
 
