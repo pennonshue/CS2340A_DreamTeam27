@@ -17,8 +17,6 @@ public class Weapon2 extends View  implements Weapon{
 
     public Weapon2(Context context) {
         super(context);
-        x = 500;
-        y = 500;
         this.sprite = R.drawable.weapon2;
 //        float scaleX = 1.5f;
 //        float scaleY = 1.5f;
@@ -38,7 +36,7 @@ public class Weapon2 extends View  implements Weapon{
     }
 
     public void setY(int y) {
-        this.x = y;
+        this.y = y;
     }
 
     public float getX() {

@@ -112,7 +112,7 @@ public class GameView extends View {
 
                 weapon = new Weapon2(context);
                 weaponSprite = weapon.getSprite();
-                weapon.setX(500);
+                weapon.setX(1100);
                 weapon.setY(700);
                 break;
 
@@ -137,7 +137,7 @@ public class GameView extends View {
 
                 weapon = new Weapon3(context);
                 weaponSprite = weapon.getSprite();
-                weapon.setX(400);
+                weapon.setX(1200);
                 weapon.setY(100);
                 break;
             default:
