@@ -55,6 +55,7 @@ public class Boss extends View implements Enemy, CollisionObserver  {
         Matrix matrix = new Matrix();
         matrix.postScale(scaleX, scaleY);
         sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
+        //yes
         sprite1 = Bitmap.createBitmap(sprite1, 710, 260,
                 75, 90, matrix, true);
     }
