@@ -39,6 +39,8 @@ public class Necromancer extends View implements Enemy, CollisionObserver {
         enemySize = "Medium";
         this.x = x;
         this.y = y;
+
+        // changes necromancer settings based on difficulty selected
         switch (difficulty) {
             case "Easy":
                 this.health = 20;
