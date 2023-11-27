@@ -29,7 +29,7 @@ public class SizePotion extends View implements Potion {
     public void powerUp() { //doesn't work rn
         User.getInstance().setScaleX(1);
         User.getInstance().setScaleY(1);
-//        invalidate();
+        invalidate();
 //        while ()
 //        User.getInstance().updatePosition(, 500);
     }

@@ -43,7 +43,6 @@ public class GameView extends View {
     private Bitmap potion1;
     private int potionWidth;
     private int potionHeight;
-
     private int userWidth;
     private int userHeight;
     private boolean powerup;
@@ -75,8 +74,8 @@ public class GameView extends View {
                 enemySprite2 = enemy2.getSprite1();
                 enemy2Height = 140;
                 enemy2Width = 200;
-                //POTION
 
+                //POTION
                 potion = new HealthPotion(context);
                 potion1 = potion.getSprite1();
                 potionHeight = 46;
@@ -181,10 +180,8 @@ public class GameView extends View {
                 && (x + userWidth) > (potion.getX()) && (y) > (potion.getY() - userHeight)) {
             System.out.println("Potion collect!");
             potion.powerUp();
-            //delete potion here
-//            potion.getSprite1().recycle();
+            //delete potion
             powerup = false;
-
         }
     }
     public boolean getEndTile() {
