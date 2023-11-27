@@ -185,23 +185,6 @@ public class User extends View implements UserSubject {
         userInstance = null;
     }
 
-
-    public static void resetHealth() {
-        switch (difficulty) {
-        case "Easy":
-            User.health = 100;
-            break;
-        case "Medium":
-            User.health = 85;
-            break;
-        case "Hard":
-            User.health = 60;
-            break;
-        default:
-            break;
-        }
-
-    }
     public static void setDifficulty(String difficulty) {
         switch (difficulty) {
         case "Easy":

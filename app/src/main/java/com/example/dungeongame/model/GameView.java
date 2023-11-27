@@ -214,14 +214,13 @@ public class GameView extends View {
             User.getInstance().updatePosition((int) x, (int) y);
         }
         //check if at power up
-        if (x <= (potion.getX() + potionWidth) && y <= (potion.getY() + potionHeight)
+        if ((powerup) && x <= (potion.getX() + potionWidth) && y <= (potion.getY() + potionHeight)
                 && (x + userWidth) > (potion.getX()) && (y) > (potion.getY() - userHeight)) {
             System.out.println("Potion collect!");
             potion.powerUp();
             //delete potion here
 //            potion.getSprite1().recycle();
             powerup = false;
-
         }
 
         if (x <= (weapon.getX() + 20) && y <= (weapon.getY() + 20)
