@@ -39,7 +39,7 @@ public class PurpleMan extends View implements Enemy, CollisionObserver {
         health = 5;
         this.x = x;
         this.y = y;
-
+        // changes purple man settings based on difficulty selected
         switch (difficulty) {
         case "Easy":
             this.health = 5;
