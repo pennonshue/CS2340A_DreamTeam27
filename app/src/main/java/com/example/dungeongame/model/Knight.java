@@ -96,9 +96,14 @@ public class Knight extends View implements Enemy, CollisionObserver {
             User.getInstance().removeObserver(this);
         }
     }
+
+    //Getting Sprite without weapon
     public int getSprite() {
         return sprite;
     }
+
+    //Getting sprite with attack
+
     public Bitmap getSprite1() {
         return sprite1;
     }
@@ -108,10 +113,13 @@ public class Knight extends View implements Enemy, CollisionObserver {
         return sprite2;
     }
 
+    //Getting heatlh score
+
     public int getHealth() {
         return health;
     }
 
+    //Getting x coordinate
     @Override
     public float getX() {
         return x;
