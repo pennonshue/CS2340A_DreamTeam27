@@ -30,7 +30,7 @@ public class JUnit3 {
         assertEquals(false, SetupActivity.validName(""));
 
     }
-    //Valid Name Test
+    //Valid Name Test name
     @Test
     public void validName() {
         assertEquals(true, SetupActivity.validName(" a;slkdjf;asdlkf   "));
