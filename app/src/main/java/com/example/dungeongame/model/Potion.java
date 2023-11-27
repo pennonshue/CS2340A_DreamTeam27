@@ -7,5 +7,5 @@ public interface Potion {
     float getX();
     float getY();
     Bitmap getSprite1();
-//    void powerUp();
+    void powerUp();
 }
