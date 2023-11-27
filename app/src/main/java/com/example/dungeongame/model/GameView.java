@@ -45,9 +45,15 @@ public class GameView extends View {
     private boolean powerup;
     private boolean weaponDisplay;
 
-    private boolean enemy1display = true;
-    private boolean enemy2display = true;
+    private static boolean enemy1display = true;
+    private static boolean enemy2display = true;
 
+    public static void setEnemy1display(boolean enemy1display) {
+        GameView.enemy1display = enemy1display;
+    }
+    public static void setEnemy2display(boolean enemy2display) {
+        GameView.enemy2display = enemy2display;
+    }
 
     public GameView(Context context, String map) {
         super(context);
@@ -93,6 +99,9 @@ public class GameView extends View {
 
 
             case "Map2.tmx":
+                setEnemy1display(true);
+                setEnemy2display(true);
+
                 enemyFactory1 = new PurpleManFactory(context);
                 enemy1 = enemyFactory1.generateEnemy();
                 enemySprite1 = enemy1.getSprite1();
@@ -117,6 +126,8 @@ public class GameView extends View {
                 break;
 
             case "Map3.tmx":
+                setEnemy1display(true);
+                setEnemy2display(true);
                 enemyFactory1 = new GooberFactory(context);
                 enemy1 = enemyFactory1.generateEnemy();
                 enemySprite1 = enemy1.getSprite1();
@@ -327,5 +338,6 @@ public class GameView extends View {
         //trigger redraw
         invalidate();
     }
+
 }
 
