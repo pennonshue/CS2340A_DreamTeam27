@@ -6,18 +6,15 @@ import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.view.View;
 
-
 import com.example.dungeongame.R;
 
-
-public class SpeedPotion extends View implements Potion {
-
+public class HealthPotion extends View implements Potion {
     private int sprite;
     private float x;
     private float y;
     private String difficulty;
     private Bitmap sprite1;
-    public SpeedPotion(Context context) {
+    public HealthPotion(Context context) {
         super(context);
         x = 500;
         y = 500;
@@ -27,12 +24,10 @@ public class SpeedPotion extends View implements Potion {
         Matrix matrix = new Matrix();
         matrix.postScale(scaleX, scaleY);
         sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
-        sprite1 = Bitmap.createBitmap(sprite1, 80, 130, 50, 46, matrix, true);
+        sprite1 = Bitmap.createBitmap(sprite1, 180, 87, 50, 46, matrix, true);
     }
     public void powerUp() {
-        MovementStrategy ms = new SprintStrategy();
-        User.getInstance().setMovementStrategy(ms);
-        System.out.println("speeding");
+        User.getInstance().setHealth(User.getInstance().getHealth() + 200);
     }
     public Bitmap getSprite1() {
         return sprite1;

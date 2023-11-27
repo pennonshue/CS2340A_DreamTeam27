@@ -24,6 +24,8 @@ public class User extends View implements UserSubject {
     private static int sprite;
     private static String difficulty;
     private static boolean win;
+    private static float scaleX;
+    private static float scaleY;
 
     public static User getInstance(Context context, String username, int sprite,
                                    String difficulty) {
@@ -81,8 +83,8 @@ public class User extends View implements UserSubject {
         default:
             break;
         }
-        float scaleX = 0.15f;
-        float scaleY = 0.15f;
+        scaleX = 0.15f;
+        scaleY = 0.15f;
         Matrix matrix = new Matrix();
         matrix.postScale(scaleX, scaleY);
         sprite1 = Bitmap.createBitmap(sprite1, 0, 0, sprite1.getWidth(),
@@ -210,8 +212,11 @@ public class User extends View implements UserSubject {
             System.out.println("You have entered an invalid difficulty level");
         }
     }
-    public static void powerUp() {
-        health += 100;
+    public void setScaleX(float scaleX) {
+        User.scaleX = scaleX;
+    }
+    public void setScaleY(float scaleY) {
+        User.scaleY = scaleY;
     }
 }
 
