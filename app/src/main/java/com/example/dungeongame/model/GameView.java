@@ -28,12 +28,7 @@ public class GameView extends View {
     private int enemy2Width;
     private Bitmap enemySprite1;
     private Bitmap enemySprite2;
-    public Enemy getEnemy1() {
-        return enemy1;
-    }
-    public Enemy getEnemy2() {
-        return enemy2;
-    }
+
     private Enemy enemy1;
     private Enemy enemy2;
     private EnemyFactory enemyFactory1;
@@ -50,6 +45,9 @@ public class GameView extends View {
     private boolean powerup;
     private boolean weaponDisplay;
 
+    private boolean enemy1display = true;
+    private boolean enemy2display = true;
+
 
     public GameView(Context context, String map) {
         super(context);
@@ -60,6 +58,7 @@ public class GameView extends View {
         this.userHeight = User.getInstance().getSprite1().getHeight() - 20;
         this.powerup = true;
         this.weaponDisplay = true;
+        User.getInstance().setWeapon(false);
 
         t = TMXLoader.readTMX(map, context);
         tilemapBitmap = TMXLoader.createBitmap(t, context, 0, t.getLayers().size());
@@ -168,12 +167,32 @@ public class GameView extends View {
                 handleMove(x, y, t.tilewidth
                         + User.getInstance().getMovementStrategy().movementSpeed(), 0);  // Move right
                 break;
+            case KeyEvent.KEYCODE_SPACE:
+                if (User.getInstance().getWeapon()) {
+                    attack(x, y);
+                }
+                break;
             default:
                 break;
         }
         // Trigger a redraw
         invalidate();
         return true;
+    }
+
+
+    private void attack(float x, float y) {
+        int enemy1X = (int) enemy1.getX();
+        int enemy1Y = (int) enemy1.getY();
+        int enemy2X = (int) enemy2.getX();
+        int enemy2Y = (int) enemy2.getY();
+
+        if (x <= (enemy1X+enemy1Width) && y <= (enemy1Y + enemy1Height) && (x+userWidth) > (enemy1X) && (y) > (enemy1Y - userHeight)) {
+            enemy1display = false;
+        } else if (x <= (enemy2X+enemy2Width) && y <= (enemy2Y + enemy2Height) && (x+userWidth) > (enemy2X) && (y) > (enemy2Y - userHeight)) {
+            enemy2display = false;
+        }
+
     }
 
     private void handleMove(float x, float y, int dx, int dy) {
@@ -209,6 +228,7 @@ public class GameView extends View {
                 && (x + userWidth) > (weapon.getX()) && (y + userHeight) > (weapon.getY())) {
             //delete potion here
 //            potion.getSprite1().recycle();
+            User.getInstance().setWeapon(true);
             weaponDisplay = false;
         }
     }
@@ -226,13 +246,20 @@ public class GameView extends View {
         canvas.drawBitmap(userSprite, User.getInstance().getX(), User.getInstance().getY(), null);
 
         //enemies
-        canvas.drawBitmap(enemySprite1, enemy1.getX(), enemy1.getY(), null);
-        canvas.drawBitmap(enemySprite2, enemy2.getX(), enemy2.getY(), null);
+        if (enemy1display) {
+            canvas.drawBitmap(enemySprite1, enemy1.getX(), enemy1.getY(), null);
+        }
+        if (enemy2display) {
+            canvas.drawBitmap(enemySprite2, enemy2.getX(), enemy2.getY(), null);
+
+        }
 
 
         //weapon
         if (weaponDisplay) {
             canvas.drawBitmap(weaponSprite, weapon.getX(), weapon.getY(), null);
+        } else {
+            canvas.drawBitmap(weaponSprite, User.getInstance().getX() + 50, User.getInstance().getY() + 45, null);
         }
 
         if (powerup) {
@@ -254,8 +281,13 @@ public class GameView extends View {
         canvas.drawText(score, 100, 110, textPaint);
     }
     public void updateEnemy() {
-        enemy1.update();
-        enemy2.update();
+        if (enemy1display) {
+            enemy1.update();
+        }
+        if (enemy2display) {
+            enemy2.update();
+        }
+
 
         int x = (int) User.getInstance().getX();
         int y = (int) User.getInstance().getY();
@@ -272,13 +304,13 @@ public class GameView extends View {
             endTile = true;
         }
 
-        if (x <= (enemy1X+enemy1Width) && y <= (enemy1Y + enemy1Height) && (x+userWidth) > (enemy1X) && (y) > (enemy1Y - userHeight)) {
+        if (enemy1display && x <= (enemy1X+enemy1Width) && y <= (enemy1Y + enemy1Height) && (x+userWidth) > (enemy1X) && (y) > (enemy1Y - userHeight)) {
             if (!enemy1.getCollision()) {
                 enemy1.setCollision();
             }
             User.setHealth(User.getHealth() - enemy1.getAttack());
             User.decreaseScore(enemy1.getAttack() * 4);
-        } else if (x <= (enemy2X+enemy2Width) && y <= (enemy2Y + enemy2Height) && (x+userWidth) > (enemy2X) && (y) > (enemy2Y - userHeight)) {
+        } else if (enemy2display && x <= (enemy2X+enemy2Width) && y <= (enemy2Y + enemy2Height) && (x+userWidth) > (enemy2X) && (y) > (enemy2Y - userHeight)) {
             if (!enemy2.getCollision()) {
                 enemy2.setCollision();
             }

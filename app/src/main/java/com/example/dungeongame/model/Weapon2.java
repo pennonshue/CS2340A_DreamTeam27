@@ -18,12 +18,12 @@ public class Weapon2 extends View  implements Weapon{
     public Weapon2(Context context) {
         super(context);
         this.sprite = R.drawable.weapon2;
-//        float scaleX = 1.5f;
-//        float scaleY = 1.5f;
-//        Matrix matrix = new Matrix();
-//        matrix.postScale(scaleX, scaleY);
+        float scaleX = 0.7f;
+        float scaleY = 0.7f;
+        Matrix matrix = new Matrix();
+        matrix.postScale(scaleX, scaleY);
         sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
-        sprite1 = Bitmap.createBitmap(sprite1, 0, 0, sprite1.getWidth(), sprite1.getHeight());
+        sprite1 = Bitmap.createBitmap(sprite1, 0, 0, sprite1.getWidth(), sprite1.getHeight(), matrix, true);
     }
 
     @Override
