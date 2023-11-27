@@ -19,6 +19,8 @@ public class Creature extends View implements Enemy, CollisionObserver  {
     private float y;
     private static String difficulty;
     private boolean down = true;
+
+    // changes creature settings based on difficulty selected
     public Creature(float x, float y, String difficulty, Context context) {
         super(context);
         //super(sprites);
