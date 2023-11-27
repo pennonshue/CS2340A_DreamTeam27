@@ -33,7 +33,7 @@ public class EndScreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(EndScreen.this, SetupActivity.class);
-                User.setScore(1000);
+                User.setScore(User.getHealth() * 4);
                 startActivity(intent);
             }
         });

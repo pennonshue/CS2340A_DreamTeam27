@@ -8,7 +8,8 @@ public class PurpleManFactory extends EnemyFactory {
         this.context = context;
     }
     @Override
+    //spawns purplemen
     public PurpleMan createEnemy() {
-        return new PurpleMan(200, 70, User.getInstance().getDifficulty(), context);
+        return new PurpleMan(201, 71, User.getInstance().getDifficulty(), context);
     }
 }

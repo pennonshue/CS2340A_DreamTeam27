@@ -44,6 +44,7 @@ public class Goober extends View implements Enemy, CollisionObserver  {
         this.x = x;
         this.y = y;
 
+        // changes creature settings based on difficulty selected
         switch (difficulty) {
         case "Easy":
             this.health = 5;
@@ -87,6 +88,9 @@ public class Goober extends View implements Enemy, CollisionObserver  {
             }
         }
     }
+
+
+
     //if collision, decrement user health, if creature health <= 0, remove enemy from observer list
     @Override
     public void notifyCollision() {
@@ -110,11 +114,7 @@ public class Goober extends View implements Enemy, CollisionObserver  {
     public int getSprite() {
         return sprite;
     }
-
-    //    public int getSize() {
-    //        return size;
-    //    }
-
+    
     public int getHealth() {
         return health;
     }

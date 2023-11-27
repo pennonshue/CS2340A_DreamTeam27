@@ -240,13 +240,14 @@ public class GameView extends View {
             if (!enemy1.getCollision()) {
                 enemy1.setCollision();
             }
-            User.setHealth(User.getHealth() - 10);
+            User.setHealth(User.getHealth() - enemy1.getAttack());
+            User.decreaseScore(enemy1.getAttack() * 4);
         } else if (x <= (enemy2X+enemy2Width) && y <= (enemy2Y + enemy2Height) && (x+userWidth) > (enemy2X) && (y) > (enemy2Y - userHeight)) {
             if (!enemy2.getCollision()) {
                 enemy2.setCollision();
             }
-            User.setHealth(User.getHealth() - 1);
-            User.setHealth(User.getHealth() - enemy1.getAttack());
+            User.setHealth(User.getHealth() - enemy2.getAttack());
+            User.decreaseScore(enemy2.getAttack() * 4);
             enemySprite2 = enemy2.getSprite2();
         } else {
             enemySprite2 = enemy2.getSprite1();
@@ -257,7 +258,7 @@ public class GameView extends View {
                 enemy2.setCollision();
             }
         }
-
+        //trigger redraw
         invalidate();
     }
 }
