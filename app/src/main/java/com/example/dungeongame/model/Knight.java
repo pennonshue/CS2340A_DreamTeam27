@@ -42,6 +42,8 @@ public class Knight extends View implements Enemy, CollisionObserver {
         enemySize = "Large";
         this.x = x;
         this.y = y;
+
+        // changes knight settings based on difficulty selected
         switch (difficulty) {
         case "Easy":
             this.health = 20;
