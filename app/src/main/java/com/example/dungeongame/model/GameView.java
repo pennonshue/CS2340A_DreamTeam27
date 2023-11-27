@@ -50,6 +50,8 @@ public class GameView extends View {
     private int userHeight;
     private boolean powerup;
 
+    private boolean weaponDisplay;
+
 
     public GameView(Context context, String map) {
         super(context);
@@ -59,6 +61,7 @@ public class GameView extends View {
         this.userWidth = User.getInstance().getSprite1().getWidth() - 20;
         this.userHeight = User.getInstance().getSprite1().getHeight() - 20;
         this.powerup = true;
+        this.weaponDisplay = true;
 
         t = TMXLoader.readTMX(map, context);
         tilemapBitmap = TMXLoader.createBitmap(t, context, 0, t.getLayers().size());
@@ -203,6 +206,13 @@ public class GameView extends View {
             powerup = false;
 
         }
+
+        if (x <= (weapon.getX() + 20) && y <= (weapon.getY() + 20)
+                && (x + userWidth) > (weapon.getX()) && (y + userHeight) > (weapon.getY())) {
+            //delete potion here
+//            potion.getSprite1().recycle();
+            weaponDisplay = false;
+        }
     }
     public boolean getEndTile() {
         return endTile;
@@ -223,7 +233,9 @@ public class GameView extends View {
 
 
         //weapon
-        canvas.drawBitmap(weaponSprite, weapon.getX(), weapon.getY(), null);
+        if (weaponDisplay) {
+            canvas.drawBitmap(weaponSprite, weapon.getX(), weapon.getY(), null);
+        }
 
         if (powerup) {
             canvas.drawBitmap(potion1, potion.getX(), potion.getY(), null);
