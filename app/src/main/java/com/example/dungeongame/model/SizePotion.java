@@ -26,7 +26,7 @@ public class SizePotion extends View implements Potion {
         sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
         sprite1 = Bitmap.createBitmap(sprite1, 305, 310, 50, 46, matrix, true);
     }
-    public void powerUp() {
+    public void powerUp() { //doesn't work rn
         User.getInstance().setScaleX(1);
         User.getInstance().setScaleY(1);
 //        invalidate();

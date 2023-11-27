@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.example.dungeongame.TMXLoader.TMXLoader;
 import com.example.dungeongame.TMXLoader.TileMapData;
@@ -178,7 +179,6 @@ public class GameView extends View {
                 && (x + userWidth) > (potion.getX()) && (y) > (potion.getY() - userHeight)) {
             System.out.println("Potion collect!");
             potion.powerUp();
-//            User.getInstance().powerUp();
             //delete potion here
         }
     }
