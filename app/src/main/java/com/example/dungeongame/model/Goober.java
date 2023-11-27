@@ -31,6 +31,7 @@ public class Goober extends View implements Enemy  {
         this.x = x;
         this.y = y;
 
+        // changes creature settings based on difficulty selected
         switch (difficulty) {
             case "Easy":
                 this.health = 5;
