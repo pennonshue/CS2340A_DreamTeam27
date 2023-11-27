@@ -31,6 +31,7 @@ public class Boss extends View implements Enemy, CollisionObserver  {
         this.x = x;
         this.y = y;
 
+        // changes boss settings based on difficulty selected
         switch (difficulty) {
         case "Easy":
             this.health = 5;
@@ -136,3 +137,4 @@ public class Boss extends View implements Enemy, CollisionObserver  {
         return difficulty;
     }
 }
+//me

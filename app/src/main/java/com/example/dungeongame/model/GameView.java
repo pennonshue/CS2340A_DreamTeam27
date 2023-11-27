@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.example.dungeongame.TMXLoader.TMXLoader;
 import com.example.dungeongame.TMXLoader.TileMapData;
@@ -74,7 +75,7 @@ public class GameView extends View {
                 enemy2Width = 200;
                 //POTION
 
-                potion = new SpeedPotion(context);
+                potion = new HealthPotion(context);
                 potion1 = potion.getSprite1();
                 potionHeight = 46;
                 potionWidth = 50;
@@ -115,7 +116,7 @@ public class GameView extends View {
                 enemy2Width = 200;
 
                 //POTION
-                potion = new SpeedPotion(context);
+                potion = new SizePotion(context);
                 potion1 = potion.getSprite1();
                 potionHeight = 46;
                 potionWidth = 50;
@@ -177,8 +178,7 @@ public class GameView extends View {
         if (x <= (potion.getX() + potionWidth) && y <= (potion.getY() + potionHeight)
                 && (x + userWidth) > (potion.getX()) && (y) > (potion.getY() - userHeight)) {
             System.out.println("Potion collect!");
-//            potion.powerUp();
-            User.getInstance().powerUp();
+            potion.powerUp();
             //delete potion here
         }
     }
@@ -258,7 +258,7 @@ public class GameView extends View {
                 enemy2.setCollision();
             }
         }
-
+        //trigger redraw
         invalidate();
     }
 }
