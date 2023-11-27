@@ -45,11 +45,9 @@ public class GameView extends View {
     private Bitmap potion1;
     private int potionWidth;
     private int potionHeight;
-
     private int userWidth;
     private int userHeight;
     private boolean powerup;
-
     private boolean weaponDisplay;
 
 
@@ -243,7 +241,7 @@ public class GameView extends View {
         // Draw user information (replace with your actual values)
         Paint textPaint = new Paint();
         textPaint.setColor(Color.WHITE);
-        textPaint.setTextSize(20);
+        textPaint.setTextSize(25);
 
         String playerName = "Name: " + User.getUsername();
         String difficulty = "Difficulty: " + User.getDifficulty();
