@@ -87,6 +87,9 @@ public class Goober extends View implements Enemy, CollisionObserver  {
             }
         }
     }
+
+
+
     //if collision, decrement user health, if creature health <= 0, remove enemy from observer list
     @Override
     public void notifyCollision() {
@@ -110,11 +113,7 @@ public class Goober extends View implements Enemy, CollisionObserver  {
     public int getSprite() {
         return sprite;
     }
-
-    //    public int getSize() {
-    //        return size;
-    //    }
-
+    
     public int getHealth() {
         return health;
     }
