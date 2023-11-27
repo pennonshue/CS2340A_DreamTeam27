@@ -8,6 +8,8 @@ import android.view.View;
 
 import com.example.dungeongame.R;
 public class Knight extends View implements Enemy, CollisionObserver {
+    //this is a night
+    
     public void attack() {
         System.out.println("implement a strong attack");
     }
