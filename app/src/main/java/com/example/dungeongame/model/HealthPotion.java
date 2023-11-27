@@ -9,6 +9,7 @@ import android.view.View;
 import com.example.dungeongame.R;
 
 public class HealthPotion extends View implements Potion {
+    //this is an item
     private int sprite;
     private float x;
     private float y;
