@@ -42,24 +42,24 @@ public class Necromancer extends View implements Enemy, CollisionObserver {
 
         // changes necromancer settings based on difficulty selected
         switch (difficulty) {
-            case "Easy":
-                this.health = 20;
-                this.attack = 10;
-                //this.movementStrategy = new RunStrategy();
-                break;
-            case "Medium":
-                this.health = 25;
-                this.attack = 15;
-                //this.movementStrategy = new RunStrategy();
-                break;
-            case "Hard":
-                this.health = 30;
-                this.attack = 20;
-                //this.movementStrategy = new JogStrategy();
-                break;
-            default:
-                System.out.println("You have entered an invalid difficulty level");
-                break;
+        case "Easy":
+            this.health = 20;
+            this.attack = 10;
+            //this.movementStrategy = new RunStrategy();
+            break;
+        case "Medium":
+            this.health = 25;
+            this.attack = 15;
+            //this.movementStrategy = new RunStrategy();
+            break;
+        case "Hard":
+            this.health = 30;
+            this.attack = 20;
+            //this.movementStrategy = new JogStrategy();
+            break;
+        default:
+            System.out.println("You have entered an invalid difficulty level");
+            break;
         }
         float scaleX = 0.8f;
         float scaleY = 0.8f;

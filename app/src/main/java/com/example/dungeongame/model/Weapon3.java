@@ -8,8 +8,8 @@ import android.view.View;
 
 import com.example.dungeongame.R;
 
-public class Weapon3 extends View  implements Weapon{
-    int sprite;
+public class Weapon3 extends View  implements Weapon {
+    private int sprite;
     private int x;
     private int y;
     private String difficulty;
@@ -23,7 +23,8 @@ public class Weapon3 extends View  implements Weapon{
         Matrix matrix = new Matrix();
         matrix.postScale(scaleX, scaleY);
         sprite1 = BitmapFactory.decodeResource(getResources(), this.sprite);
-        sprite1 = Bitmap.createBitmap(sprite1, 0, 0, sprite1.getWidth(), sprite1.getHeight(), matrix, true);
+        sprite1 = Bitmap.createBitmap(sprite1, 0, 0, sprite1.getWidth(), sprite1.getHeight(),
+                matrix, true);
     }
 
     @Override

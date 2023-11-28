@@ -8,13 +8,9 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.ImageView;
 
 import com.example.dungeongame.TMXLoader.TMXLoader;
 import com.example.dungeongame.TMXLoader.TileMapData;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class GameView extends View {
 
@@ -71,90 +67,86 @@ public class GameView extends View {
         userSprite = User.getSprite1();
 
         switch (mapName) {
-            case "Map1.tmx":
-                setEnemy1display(true);
-                setEnemy2display(true);
-                EnemyFactory enemyFactory = new CreatureFactory(context);
-                enemy1 = enemyFactory.generateEnemy();
-                enemySprite1 = enemy1.getSprite1();
-                enemy1Height = 180;
-                enemy1Width = 200;
-                ///PUT UR SECOND CREATURE HERE!!!!!!!
-                enemyFactory2 = new NecromancerFactory(context);
-                enemy2 = enemyFactory2.generateEnemy();
-                enemySprite2 = enemy2.getSprite1();
-                enemy2Height = 140;
-                enemy2Width = 200;
+        case "Map1.tmx":
+            setEnemy1display(true);
+            setEnemy2display(true);
+            EnemyFactory enemyFactory = new CreatureFactory(context);
+            enemy1 = enemyFactory.generateEnemy();
+            enemySprite1 = enemy1.getSprite1();
+            enemy1Height = 180;
+            enemy1Width = 200;
+            ///PUT UR SECOND CREATURE HERE!!!!!!!
+            enemyFactory2 = new NecromancerFactory(context);
+            enemy2 = enemyFactory2.generateEnemy();
+            enemySprite2 = enemy2.getSprite1();
+            enemy2Height = 140;
+            enemy2Width = 200;
+            //POTION
+            potion = new HealthPotion(context);
+            potion1 = potion.getSprite1();
+            potionHeight = 46;
+            potionWidth = 50;
+            weapon = new Weapon1(context);
+            weaponSprite = weapon.getSprite();
+            weapon.setX(200);
+            weapon.setY(300);
+            break;
 
-                //POTION
-                potion = new HealthPotion(context);
-                potion1 = potion.getSprite1();
-                potionHeight = 46;
-                potionWidth = 50;
+        case "Map2.tmx":
+            setEnemy1display(true);
+            setEnemy2display(true);
 
+            enemyFactory1 = new PurpleManFactory(context);
+            enemy1 = enemyFactory1.generateEnemy();
+            enemySprite1 = enemy1.getSprite1();
+            enemy1Height = 80;
+            enemy1Width = 75;
 
-                weapon = new Weapon1(context);
-                weaponSprite = weapon.getSprite();
-                weapon.setX(200);
-                weapon.setY(300);
-                break;
+            enemyFactory2 = new NecromancerFactory(context);
+            enemy2 = enemyFactory2.generateEnemy();
+            enemySprite2 = enemy2.getSprite1();
+            enemy2Height = 140;
+            enemy2Width = 200;
+            //POTION
+            potion = new SpeedPotion(context);
+            potion1 = potion.getSprite1();
+            potionHeight = 46;
+            potionWidth = 50;
 
+            weapon = new Weapon2(context);
+            weaponSprite = weapon.getSprite();
+            weapon.setX(1100);
+            weapon.setY(700);
+            break;
 
-            case "Map2.tmx":
-                setEnemy1display(true);
-                setEnemy2display(true);
+        case "Map3.tmx":
+            setEnemy1display(true);
+            setEnemy2display(true);
+            enemyFactory1 = new GooberFactory(context);
+            enemy1 = enemyFactory1.generateEnemy();
+            enemySprite1 = enemy1.getSprite1();
+            enemy1Height = 126;
+            enemy1Width = 112;
 
-                enemyFactory1 = new PurpleManFactory(context);
-                enemy1 = enemyFactory1.generateEnemy();
-                enemySprite1 = enemy1.getSprite1();
-                enemy1Height = 80;
-                enemy1Width = 75;
+            enemyFactory2 = new NecromancerFactory(context);
+            enemy2 = enemyFactory2.generateEnemy();
+            enemySprite2 = enemy2.getSprite1();
+            enemy2Height = 140;
+            enemy2Width = 200;
 
-                enemyFactory2 = new NecromancerFactory(context);
-                enemy2 = enemyFactory2.generateEnemy();
-                enemySprite2 = enemy2.getSprite1();
-                enemy2Height = 140;
-                enemy2Width = 200;
-                //POTION
-                potion = new SpeedPotion(context);
-                potion1 = potion.getSprite1();
-                potionHeight = 46;
-                potionWidth = 50;
+            //POTION
+            potion = new SizePotion(context);
+            potion1 = potion.getSprite1();
+            potionHeight = 46;
+            potionWidth = 50;
 
-                weapon = new Weapon2(context);
-                weaponSprite = weapon.getSprite();
-                weapon.setX(1100);
-                weapon.setY(700);
-                break;
-
-            case "Map3.tmx":
-                setEnemy1display(true);
-                setEnemy2display(true);
-                enemyFactory1 = new GooberFactory(context);
-                enemy1 = enemyFactory1.generateEnemy();
-                enemySprite1 = enemy1.getSprite1();
-                enemy1Height = 126;
-                enemy1Width = 112;
-
-                enemyFactory2 = new NecromancerFactory(context);
-                enemy2 = enemyFactory2.generateEnemy();
-                enemySprite2 = enemy2.getSprite1();
-                enemy2Height = 140;
-                enemy2Width = 200;
-
-                //POTION
-                potion = new SizePotion(context);
-                potion1 = potion.getSprite1();
-                potionHeight = 46;
-                potionWidth = 50;
-
-                weapon = new Weapon3(context);
-                weaponSprite = weapon.getSprite();
-                weapon.setX(1200);
-                weapon.setY(100);
-                break;
-            default:
-                break;
+            weapon = new Weapon3(context);
+            weaponSprite = weapon.getSprite();
+            weapon.setX(1200);
+            weapon.setY(100);
+            break;
+        default:
+            break;
         }
     }
 
@@ -164,29 +156,29 @@ public class GameView extends View {
         System.out.println(t.tileheight + " , " + t.tilewidth);
 
         switch (keyCode) {
-            case KeyEvent.KEYCODE_DPAD_DOWN:
-                handleMove(x, y, 0, t.tileheight
-                        + User.getInstance().getMovementStrategy().movementSpeed());  // Move down
-                break;
-            case KeyEvent.KEYCODE_DPAD_UP:
-                handleMove(x, y, 0, -t.tileheight
-                        - User.getInstance().getMovementStrategy().movementSpeed());  // Move up
-                break;
-            case KeyEvent.KEYCODE_DPAD_LEFT:
-                handleMove(x, y, -t.tilewidth
-                        - User.getInstance().getMovementStrategy().movementSpeed(), 0);  // Move left
-                break;
-            case KeyEvent.KEYCODE_DPAD_RIGHT:
-                handleMove(x, y, t.tilewidth
-                        + User.getInstance().getMovementStrategy().movementSpeed(), 0);  // Move right
-                break;
-            case KeyEvent.KEYCODE_SPACE:
-                if (User.getInstance().getWeapon()) {
-                    attack(x, y);
-                }
-                break;
-            default:
-                break;
+        case KeyEvent.KEYCODE_DPAD_DOWN:
+            handleMove(x, y, 0, t.tileheight
+                    + User.getInstance().getMovementStrategy().movementSpeed());  // Move down
+            break;
+        case KeyEvent.KEYCODE_DPAD_UP:
+            handleMove(x, y, 0, -t.tileheight
+                    - User.getInstance().getMovementStrategy().movementSpeed());  // Move up
+            break;
+        case KeyEvent.KEYCODE_DPAD_LEFT:
+            handleMove(x, y, -t.tilewidth
+                    - User.getInstance().getMovementStrategy().movementSpeed(), 0);  // Move left
+            break;
+        case KeyEvent.KEYCODE_DPAD_RIGHT:
+            handleMove(x, y, t.tilewidth
+                    + User.getInstance().getMovementStrategy().movementSpeed(), 0);  // Move right
+            break;
+        case KeyEvent.KEYCODE_SPACE:
+            if (User.getInstance().getWeapon()) {
+                attack(x, y);
+            }
+            break;
+        default:
+            break;
         }
         // Trigger a redraw
         invalidate();
@@ -200,9 +192,11 @@ public class GameView extends View {
         int enemy2X = (int) enemy2.getX();
         int enemy2Y = (int) enemy2.getY();
 
-        if (x <= (enemy1X+enemy1Width) && y <= (enemy1Y + enemy1Height) && (x+userWidth) > (enemy1X) && (y) > (enemy1Y - userHeight)) {
+        if (x <= (enemy1X + enemy1Width) && y <= (enemy1Y + enemy1Height) && (x + userWidth)
+                > (enemy1X) && (y) > (enemy1Y - userHeight)) {
             enemy1display = false;
-        } else if (x <= (enemy2X+enemy2Width) && y <= (enemy2Y + enemy2Height) && (x+userWidth) > (enemy2X) && (y) > (enemy2Y - userHeight)) {
+        } else if (x <= (enemy2X + enemy2Width) && y <= (enemy2Y + enemy2Height) && (x + userWidth)
+                > (enemy2X) && (y) > (enemy2Y - userHeight)) {
             enemy2display = false;
         }
 
@@ -211,19 +205,19 @@ public class GameView extends View {
     private void handleMove(float x, float y, int dx, int dy) {
         int tileY = (int) (y + dy) / (t.tileheight + 7);
         int tileX = (int) (x + dx) / (t.tilewidth + 12);
-        long GID = t.getGIDAt(tileX, tileY);
+        long gID = t.getGIDAt(tileX, tileY);
 
-        if (GID == 100) {
+        if (gID == 100) {
             endTile = true;
         }
 
-        System.out.println(GID + ", tileX: " + tileX + ", tileY: " + tileY);
+        System.out.println(gID + ", tileX: " + tileX + ", tileY: " + tileY);
 
-        if (GID >= 120 && GID <= 231) {
-            System.out.println(GID);
+        if (gID >= 120 && gID <= 231) {
+            System.out.println(gID);
             User.getInstance().updatePosition((int) (x + dx), (int) (y + dy));
         } else {
-            System.out.println(GID);
+            System.out.println(gID);
             User.getInstance().updatePosition((int) x, (int) y);
         }
         //check if at power up
@@ -238,7 +232,7 @@ public class GameView extends View {
         if (x <= (weapon.getX() + 20) && y <= (weapon.getY() + 20)
                 && (x + userWidth) > (weapon.getX()) && (y + userHeight) > (weapon.getY())) {
             //delete potion here
-//            potion.getSprite1().recycle();
+            //            potion.getSprite1().recycle();
             User.getInstance().setWeapon(true);
             weaponDisplay = false;
         }
@@ -270,7 +264,8 @@ public class GameView extends View {
         if (weaponDisplay) {
             canvas.drawBitmap(weaponSprite, weapon.getX(), weapon.getY(), null);
         } else {
-            canvas.drawBitmap(weaponSprite, User.getInstance().getX() + 50, User.getInstance().getY() + 45, null);
+            canvas.drawBitmap(weaponSprite, User.getInstance().getX() + 50,
+                    User.getInstance().getY() + 45, null);
         }
 
         if (powerup) {
@@ -309,19 +304,21 @@ public class GameView extends View {
 
         int tileY = (int) User.getInstance().getY() / (t.tilewidth + 7);
         int tileX = (int) User.getInstance().getX() / (t.tilewidth + 12);
-        long GID = t.getGIDAt(tileX, tileY);
+        long gID = t.getGIDAt(tileX, tileY);
 
-        if (GID == 100) {
+        if (gID == 100) {
             endTile = true;
         }
 
-        if (enemy1display && x <= (enemy1X+enemy1Width) && y <= (enemy1Y + enemy1Height) && (x+userWidth) > (enemy1X) && (y) > (enemy1Y - userHeight)) {
+        if (enemy1display && x <= (enemy1X + enemy1Width) && y <= (enemy1Y + enemy1Height)
+                && (x + userWidth) > (enemy1X) && (y) > (enemy1Y - userHeight)) {
             if (!enemy1.getCollision()) {
                 enemy1.setCollision();
             }
             User.setHealth(User.getHealth() - enemy1.getAttack());
             User.decreaseScore(enemy1.getAttack() * 4);
-        } else if (enemy2display && x <= (enemy2X+enemy2Width) && y <= (enemy2Y + enemy2Height) && (x+userWidth) > (enemy2X) && (y) > (enemy2Y - userHeight)) {
+        } else if (enemy2display && x <= (enemy2X + enemy2Width) && y <= (enemy2Y + enemy2Height)
+                && (x + userWidth) > (enemy2X) && (y) > (enemy2Y - userHeight)) {
             if (!enemy2.getCollision()) {
                 enemy2.setCollision();
             }
