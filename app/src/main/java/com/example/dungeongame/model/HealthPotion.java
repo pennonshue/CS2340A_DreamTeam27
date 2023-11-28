@@ -29,6 +29,7 @@ public class HealthPotion extends View implements Potion {
     }
     public void powerUp() {
         User.getInstance().setHealth(User.getInstance().getHealth() + 200);
+        User.increaseScore(200 * 4);
     }
     public Bitmap getSprite1() {
         return sprite1;

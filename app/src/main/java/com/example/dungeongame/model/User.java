@@ -175,11 +175,14 @@ public class User extends View implements UserSubject {
         }
     }
     public static void decreaseScore(int decrease) {
-        if (score < 0) {
+        if (score - decrease < 0) {
             User.score = 0;
         } else {
             User.score = User.score - decrease;
         }
+    }
+    public static void increaseScore(int increase) {
+        User.score = User.score + increase;
     }
     public static void resetPlayer() {
         userInstance = null;

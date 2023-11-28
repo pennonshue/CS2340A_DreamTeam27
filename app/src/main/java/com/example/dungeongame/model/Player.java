@@ -12,7 +12,7 @@ public class Player {
     private static int sprite;
     private static String difficulty;
     private static boolean win;
-
+    private boolean weapon;
     private static int room;
     private static int x = 100;
     private static int y = 100;
@@ -132,6 +132,16 @@ public class Player {
         }
         return false;
     }
+    public static void decreaseScore(int decrease) {
+        if (score - decrease < 0) {
+            Player.score = 0;
+        } else {
+            Player.score = Player.score - decrease;
+        }
+    }
+    public static void increaseScore(int increase) {
+        Player.score = Player.score + increase;
+    }
     public static void setDifficulty(String difficulty) {
         switch (difficulty) {
         case "Easy":
@@ -150,6 +160,15 @@ public class Player {
             System.out.println("You have entered an invalid difficulty level");
         }
 
+    }
+    public boolean getWeapon() {
+        return weapon;
+    }
+    public void setWeapon(boolean weapon) {
+        this.weapon = weapon;
+    }
+    public boolean canAttack(int x, int y) {
+        return weapon && this.x == x && this.y == y;
     }
 
 }
