@@ -30,8 +30,8 @@ public class SizePotion extends View implements Potion {
         GameView.setEnemy1display(false);
         GameView.setEnemy2display(false);
         invalidate();
-//        while ()
-//        User.getInstance().updatePosition(, 500);
+        //        while ()
+        //        User.getInstance().updatePosition(, 500);
     }
 
     public Bitmap getSprite1() {

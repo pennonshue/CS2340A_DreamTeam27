@@ -89,7 +89,7 @@ public class Boss extends View implements Enemy, CollisionObserver  {
     public int getSpeed() {
         return speed;
     }
-//my commit>2
+    //my commit>2
     @Override
     public Bitmap getSprite1() {
         return sprite1;
@@ -119,12 +119,12 @@ public class Boss extends View implements Enemy, CollisionObserver  {
     public int getAttack() {
         return 20;
     }
-//hello2
+    //hello2
     @Override
     public boolean getCollision() {
         return collision;
     }
-//hello
+    //hello
     @Override
     public void setCollision() {
         collision = !collision;
@@ -139,4 +139,4 @@ public class Boss extends View implements Enemy, CollisionObserver  {
         return difficulty;
     }
 }
-//me
+    //me
