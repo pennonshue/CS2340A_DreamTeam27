@@ -20,7 +20,7 @@ public class SpeedPotion extends View implements Potion {
     public SpeedPotion(Context context) {
         super(context);
         x = 500;
-        y = 500;
+        y = 200;
         this.sprite = R.drawable.potions;
         float scaleX = 1.5f;
         float scaleY = 1.5f;
